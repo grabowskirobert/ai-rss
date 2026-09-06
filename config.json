@@ -1,0 +1,14 @@
+{
+  "sources": [
+    "https://oko.press/feed/",
+    "https://www.polsatnews.pl/rss/polska.xml",
+    "https://rss.dw.com/rdf/rss-pol-all",
+    "https://feeds.bbci.co.uk/polska/rss.xml",
+    "https://feeds.bbci.co.uk/news/world/rss.xml",
+    "https://www.economist.com/international/rss.xml"
+  ],
+  "maxAgeHours": 24,
+  "maxHistorySize": 500,
+  "maxItemsPerRun": 5,
+  "delayBetweenRequestsMs": 2500
+}

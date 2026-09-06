@@ -1,0 +1,13 @@
+{
+  "name": "ai-rss",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.21.0",
+    "feed": "^4.2.2",
+    "rss-parser": "^3.13.0"
+  }
+}
