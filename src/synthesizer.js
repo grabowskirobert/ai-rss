@@ -4,11 +4,11 @@ import config from '../config.json' with { type: 'json' };
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 const modelWithSearch = genAI.getGenerativeModel({
-  model: 'gemini-2.0-flash',
+  model: 'gemini-2.5-flash-lite',
   tools: [{ googleSearch: {} }],
 });
 
-const modelFallback = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
+const modelFallback = genAI.getGenerativeModel({ model: 'gemini-2.5-flash-lite' });
 
 const SYNTHESIS_PROMPT = (title, description) => `
 Jesteś neutralnym dziennikarzem piszącym syntezę dla poważnego dziennika newsowego. Piszesz po polsku.
