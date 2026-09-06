@@ -23,22 +23,27 @@ TITLE: Tutaj tytuł po polsku
 Następnie wyszukaj temat w co najmniej 3 niezależnych źródłach i napisz artykuł syntetyzujący w czystym HTML, dokładnie według tej struktury:
 
 <h3>Sedno sprawy</h3>
-<p>1–2 zdania opisujące istotę problemu.</p>
+<p>2–3 zdania opisujące istotę problemu — co się stało, kto jest zaangażowany i dlaczego to ważne.</p>
 
 <h3>Kluczowe fakty</h3>
 <ul>
-  <li>Fakt 1 (liczby, daty, konkretne decyzje)</li>
-  <li>Fakt 2</li>
-  <li>Fakt 3</li>
+  <li>Fakt z konkretną liczbą, datą lub nazwiskiem</li>
+  <li>Fakt z konkretną liczbą, datą lub nazwiskiem</li>
+  <li>Fakt z konkretną liczbą, datą lub nazwiskiem</li>
+  <li>Fakt z konkretną liczbą, datą lub nazwiskiem</li>
 </ul>
+(4–6 bulletów — tylko twarde fakty, żadnych ogólników)
 
 <h3>Kontekst i różne perspektywy</h3>
-<p>Szerszy kontekst i ewentualne różnice w interpretacji między źródłami.</p>
+<p>Akapit 1: tło historyczne lub geopolityczne — co doprowadziło do tej sytuacji.</p>
+<p>Akapit 2: jak różne strony lub źródła interpretują to wydarzenie — rozbieżności, spory, różne narracje.</p>
+<p>Akapit 3 (jeśli materiał na to pozwala): możliwe konsekwencje lub kolejne kroki.</p>
 
 Zasady:
 - Pisz wyłącznie po polsku
 - Zero języka emocjonalnego i politycznych skrzywień
-- Tylko weryfikowalne fakty, żadnych spekulacji
+- Tylko weryfikowalne fakty z co najmniej 3 źródeł — jeśli czegoś nie możesz potwierdzić, nie pisz
+- Docelowa długość: 2000–4000 znaków, ale nie rozciągaj sztucznie — jeśli materiał jest prosty, krótszy artykuł jest lepszy niż wypełniacz
 - Jeśli temat okazał się nieistotny lub nie możesz go zweryfikować — odpowiedz słowem SKIP
 - Wypisz tylko HTML (albo SKIP), bez markdown, bez wyjaśnień
 `;
