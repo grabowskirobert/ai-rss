@@ -13,7 +13,12 @@ export async function filterItems(items) {
 
   const prompt = `Jesteś redaktorem poważnego dziennika newsowego. Masz do oceny listę artykułów.
 
-Wybierz maksymalnie ${config.maxItemsPerRun} NAJWAŻNIEJSZYCH artykułów, które zasługują na publikację.
+Wybierz dokładnie ${config.maxItemsPerRun} artykułów według poniższych zasad.
+
+OBOWIĄZKOWE PROPORCJE — musisz ich przestrzegać:
+- minimum 2 artykuły dotyczące Polski (krajowe decyzje, wydarzenia w Polsce)
+- minimum 2 artykuły dotyczące świata (geopolityka, gospodarka globalna, inne kraje)
+- pozostałe miejsca: według własnej oceny ważności
 
 ODRZUĆ bezwzględnie:
 - clickbait i sensacja bez treści
@@ -24,11 +29,11 @@ ODRZUĆ bezwzględnie:
 - sport (chyba że poważny skandal korupcyjny lub systemowy)
 - kłótnie polityków, przepychanki słowne, partyjne przepychanki — interesują nas KONKRETNE zdarzenia i decyzje, nie spory
 
-AKCEPTUJ (w kolejności priorytetu):
+AKCEPTUJ (w kolejności priorytetu w swojej kategorii):
 1. Geopolityka, konflikty zbrojne, ważne decyzje dyplomatyczne
 2. Gospodarka: decyzje banków centralnych, recesja, inflacja, duże bankructwa, zmiany systemowe
-3. Poważne katastrofy i wypadki z dużą liczbą ofiar lub o znaczeniu krajowym/globalnym — tylko jeśli należą do ważniejszych wydarzeń dnia
-4. Nauka i technologia: przełomowe odkrycia, AI, klimat
+3. Nauka i technologia: przełomowe odkrycia, AI, klimat
+4. Poważne katastrofy z dużą liczbą ofiar — tylko jeśli należą do ważniejszych wydarzeń dnia
 5. Polska: ważne decyzje rządu, Sejmu, sądów — konkretne, nie polityczna pyskówka
 
 DEDUPLICATION: jeśli kilka artykułów opisuje to samo wydarzenie, wybierz tylko jeden — z najlepszego, najbardziej wiarygodnego źródła. Nie przepuszczaj dwóch artykułów o tym samym temacie.
