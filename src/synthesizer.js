@@ -1,5 +1,6 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import config from '../config.json' with { type: 'json' };
+import { log } from './logger.js';
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
@@ -48,22 +49,30 @@ export async function synthesizeItems(items) {
 
   for (let i = 0; i < items.length; i++) {
     const item = items[i];
-    if (i > 0) await sleep(config.delayBetweenRequestsMs);
+    if (i > 0) {
+      log.info(`Czekam ${config.delayBetweenRequestsMs}ms przed kolejnym zapytaniem...`);
+      await sleep(config.delayBetweenRequestsMs);
+    }
 
-    console.log(`[synthesizer] (${i + 1}/${items.length}): ${item.title}`);
+    log.info(`Synteza (${i + 1}/${items.length}): ${item.title}`);
 
     let html = await tryWithSearch(item);
-    if (html === null) html = await tryFallback(item);
     if (html === null) {
-      console.log(`[synthesizer] Pomijam (błąd): ${item.title}`);
+      log.warn(`Search grounding niedostępny, używam fallback dla: ${item.title}`);
+      html = await tryFallback(item);
+    }
+
+    if (html === null) {
+      log.error(`Oba modele zawiodły, pomijam: ${item.title}`);
       continue;
     }
 
     if (html.trim().startsWith('SKIP')) {
-      console.log(`[synthesizer] SKIP: ${item.title}`);
+      log.skip(`SKIP od modelu: ${item.title}`);
       continue;
     }
 
+    log.ok(`Zsyntezowano: ${item.title}`);
     synthesized.push({ ...item, html });
   }
 
@@ -77,7 +86,7 @@ async function tryWithSearch(item) {
     );
     return result.response.text().trim();
   } catch (err) {
-    console.warn(`[synthesizer] Search grounding error dla "${item.title}": ${err.message}`);
+    log.warn(`Search grounding error: ${err.message.slice(0, 120)}`);
     return null;
   }
 }
@@ -89,7 +98,7 @@ async function tryFallback(item) {
     );
     return result.response.text().trim();
   } catch (err) {
-    console.error(`[synthesizer] Fallback error dla "${item.title}": ${err.message}`);
+    log.error(`Fallback error: ${err.message.slice(0, 120)}`);
     return null;
   }
 }

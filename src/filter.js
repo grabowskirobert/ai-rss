@@ -1,11 +1,14 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import config from '../config.json' with { type: 'json' };
+import { log } from './logger.js';
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 const model = genAI.getGenerativeModel({ model: 'gemini-3.5-flash-lite' });
 
 export async function filterItems(items) {
   if (items.length === 0) return [];
+
+  log.info(`Wysyłam ${items.length} artykułów do Gemini (filtr)...`);
 
   const numbered = items.map((item, idx) =>
     `[${idx}] ${item.title}\n${item.description}`
@@ -49,12 +52,18 @@ Bez wyjaśnień, bez markdown, tylko tablica JSON.`;
     const text = result.response.text().trim().replace(/```json|```/g, '').trim();
     const indices = JSON.parse(text);
     if (!Array.isArray(indices)) return [];
-    return indices
+
+    const selected = indices
       .filter((idx) => typeof idx === 'number' && idx >= 0 && idx < items.length)
       .slice(0, config.maxItemsPerRun)
       .map((idx) => items[idx]);
+
+    log.ok(`Filtr wybrał ${selected.length} artykułów:`);
+    selected.forEach((item, i) => log.info(`  ${i + 1}. ${item.title}`));
+
+    return selected;
   } catch (err) {
-    console.error(`[filter] Failed: ${err.message}`);
+    log.error(`Filtr nie powiódł się: ${err.message}`);
     return [];
   }
 }

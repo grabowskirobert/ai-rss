@@ -5,6 +5,7 @@ import { fetchAllItems } from './fetcher.js';
 import { filterItems } from './filter.js';
 import { synthesizeItems } from './synthesizer.js';
 import { buildFeed } from './feed-builder.js';
+import { log } from './logger.js';
 import config from '../config.json' with { type: 'json' };
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -26,58 +27,56 @@ function saveHistory(history, newGuids) {
 
 async function main() {
   if (!process.env.GEMINI_API_KEY) {
-    console.error('[index] GEMINI_API_KEY is not set');
+    log.error('GEMINI_API_KEY nie jest ustawiony');
     process.exit(1);
   }
 
-  console.log('[index] Starting AI RSS Synthesizer');
+  log.phase('AI RSS Synthesizer — start');
 
   const history = loadHistory();
-  console.log(`[index] History contains ${history.length} seen GUIDs`);
+  log.info(`Historia: ${history.length} znanych GUIDów`);
 
-  // Phase 1: Fetch
-  console.log('[index] Phase 1: Fetching RSS feeds');
+  // Faza 1
+  log.phase('Faza 1 — pobieranie RSS');
   const fetched = await fetchAllItems(history);
-  console.log(`[index] Fetched ${fetched.length} new items`);
+  log.ok(`Łącznie nowych artykułów: ${fetched.length}`);
 
   if (fetched.length === 0) {
-    console.log('[index] No new items found, exiting');
+    log.warn('Brak nowych artykułów — kończę');
     return;
   }
 
-  // Phase 2: Filter
-  console.log('[index] Phase 2: First-pass filtering via Gemini');
+  // Faza 2
+  log.phase('Faza 2 — filtrowanie (Gemini)');
   const filtered = await filterItems(fetched);
-  console.log(`[index] ${filtered.length} items passed the filter`);
 
   if (filtered.length === 0) {
-    console.log('[index] No items passed the filter, exiting without writing feed');
+    log.warn('Żaden artykuł nie przeszedł filtra — kończę bez zapisu feed.xml');
     return;
   }
 
-  // Phase 3: Synthesize
-  console.log('[index] Phase 3: Synthesizing articles with Gemini + web search');
+  // Faza 3
+  log.phase('Faza 3 — synteza (Gemini + web search)');
   const synthesized = await synthesizeItems(filtered);
-  console.log(`[index] ${synthesized.length} articles synthesized`);
+  log.ok(`Zsyntezowano ${synthesized.length} artykułów`);
 
   if (synthesized.length === 0) {
-    console.log('[index] No synthesized articles, exiting without writing feed');
+    log.warn('Brak zsyntezowanych artykułów — kończę bez zapisu feed.xml');
     return;
   }
 
-  // Phase 4: Build feed
-  console.log('[index] Phase 4: Building feed.xml');
+  // Faza 4
+  log.phase('Faza 4 — budowanie feed.xml');
   buildFeed(synthesized);
 
-  // Update history with all fetched GUIDs (not just synthesized — prevents re-fetching rejected items)
   const newGuids = fetched.map((item) => item.guid);
   saveHistory(history, newGuids);
-  console.log(`[index] History updated with ${newGuids.length} new GUIDs`);
+  log.info(`Historia zaktualizowana o ${newGuids.length} GUIDów`);
 
-  console.log('[index] Done');
+  log.done('Gotowe');
 }
 
 main().catch((err) => {
-  console.error('[index] Fatal error:', err);
+  log.error(`Błąd krytyczny: ${err.message}`);
   process.exit(1);
 });
