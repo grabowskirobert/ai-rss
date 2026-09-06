@@ -17,7 +17,10 @@ Jesteś neutralnym dziennikarzem piszącym syntezę dla poważnego dziennika new
 Temat: ${title}
 Oryginalne streszczenie: ${description}
 
-Wyszukaj temat w co najmniej 3 niezależnych źródłach i napisz artykuł syntetyzujący w czystym HTML, dokładnie według tej struktury:
+Pierwsza linia odpowiedzi musi być tytułem artykułu po polsku (przetłumacz jeśli oryginał jest w innym języku, zachowaj jeśli już po polsku), w formacie:
+TITLE: Tutaj tytuł po polsku
+
+Następnie wyszukaj temat w co najmniej 3 niezależnych źródłach i napisz artykuł syntetyzujący w czystym HTML, dokładnie według tej struktury:
 
 <h3>Sedno sprawy</h3>
 <p>1–2 zdania opisujące istotę problemu.</p>
@@ -39,6 +42,14 @@ Zasady:
 - Jeśli temat okazał się nieistotny lub nie możesz go zweryfikować — odpowiedz słowem SKIP
 - Wypisz tylko HTML (albo SKIP), bez markdown, bez wyjaśnień
 `;
+
+function extractTitle(html, fallback) {
+  const match = html.match(/^TITLE:\s*(.+)/m);
+  if (!match) return { title: fallback, body: html };
+  const title = match[1].trim();
+  const body = html.replace(/^TITLE:\s*.+\n?/m, '').trim();
+  return { title, body };
+}
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -72,8 +83,9 @@ export async function synthesizeItems(items) {
       continue;
     }
 
-    log.ok(`Zsyntezowano: ${item.title}`);
-    synthesized.push({ ...item, html });
+    const { title, body } = extractTitle(html, item.title);
+    log.ok(`Zsyntezowano: ${title}`);
+    synthesized.push({ ...item, title, html: body });
   }
 
   return synthesized;
