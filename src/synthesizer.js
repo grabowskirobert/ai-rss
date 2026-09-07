@@ -17,7 +17,7 @@ Jesteś neutralnym dziennikarzem piszącym syntezę dla poważnego dziennika new
 Temat: ${title}
 Oryginalne streszczenie: ${description}
 
-Pierwsza linia odpowiedzi musi być tytułem artykułu po polsku (przetłumacz jeśli oryginał jest w innym języku, zachowaj jeśli już po polsku), w formacie:
+Pierwsza linia odpowiedzi musi być tytułem artykułu ZAWSZE po polsku — przetłumacz jeśli oryginał jest w innym języku (angielskim, niemieckim, itd.), zachowaj tylko jeśli już po polsku. Tytuł musi być zwięzły i informacyjny. Format:
 TITLE: Tutaj tytuł po polsku
 
 Następnie wyszukaj temat w co najmniej 3 niezależnych źródłach i napisz artykuł syntetyzujący w czystym HTML, dokładnie według tej struktury:

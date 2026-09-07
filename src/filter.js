@@ -39,7 +39,7 @@ AKCEPTUJ (w kolejności priorytetu w swojej kategorii):
 4. Poważne katastrofy z dużą liczbą ofiar — tylko jeśli należą do ważniejszych wydarzeń dnia
 5. Polska: ważne decyzje rządu, Sejmu, sądów — konkretne, nie polityczna pyskówka
 
-DEDUPLICATION: jeśli kilka artykułów opisuje to samo wydarzenie, wybierz tylko jeden — z najlepszego, najbardziej wiarygodnego źródła. Nie przepuszczaj dwóch artykułów o tym samym temacie.
+DEDUPLICATION: jeśli kilka artykułów opisuje to samo wydarzenie — niezależnie od języka, w jakim są napisane — wybierz tylko jeden, z najlepszego źródła. Traktuj artykuły jako ten sam temat nawet jeśli jeden jest po polsku, drugi po angielsku czy niemiecku. Jeden temat = jeden artykuł w wynikowej liście.
 
 Artykuły:
 ${numbered.join('\n\n')}
