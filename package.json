@@ -4,8 +4,8 @@
   "type": "module",
   "scripts": {
     "start": "node src/index.js",
-    "dry-run": "node src/index.js --dry-run --limit 2 --out /tmp/feed-dry.xml",
-    "filter-only": "node src/index.js --dry-run --skip-synthesis"
+    "dry-run": "node --env-file-if-exists=.env src/index.js --dry-run --limit 2",
+    "filter-only": "node --env-file-if-exists=.env src/index.js --dry-run --skip-synthesis"
   },
   "dependencies": {
     "@google/generative-ai": "^0.21.0",
