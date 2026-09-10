@@ -4,12 +4,24 @@ import { fileURLToPath } from 'url';
 import { fetchAllItems } from './fetcher.js';
 import { filterItems } from './filter.js';
 import { synthesizeItems } from './synthesizer.js';
-import { buildFeed } from './feed-builder.js';
+import { buildFeed, loadArchive } from './feed-builder.js';
 import { log } from './logger.js';
 import config from '../config.json' with { type: 'json' };
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const HISTORY_PATH = resolve(__dirname, '../history.json');
+
+const args = process.argv.slice(2);
+const hasFlag = (name) => args.includes(name);
+const flagValue = (name) => {
+  const idx = args.indexOf(name);
+  return idx === -1 ? null : args[idx + 1];
+};
+
+const DRY_RUN = hasFlag('--dry-run');
+const SKIP_SYNTHESIS = hasFlag('--skip-synthesis');
+const LIMIT = Number(flagValue('--limit')) || null;
+const FEED_OUT = flagValue('--out') || (hasFlag('--dry-run') ? '/tmp/feed-dry.xml' : null);
 
 function loadHistory() {
   try {
@@ -25,6 +37,13 @@ function saveHistory(history, newGuids) {
   writeFileSync(HISTORY_PATH, JSON.stringify(trimmed, null, 2), 'utf-8');
 }
 
+function recentTopics() {
+  const cutoff = Date.now() - config.recentTopicsDays * 24 * 60 * 60 * 1000;
+  return loadArchive()
+    .filter((entry) => new Date(entry.publishedAt).getTime() >= cutoff)
+    .map((entry) => entry.topic || entry.title);
+}
+
 async function main() {
   if (!process.env.GEMINI_API_KEY) {
     log.error('GEMINI_API_KEY nie jest ustawiony');
@@ -32,6 +51,7 @@ async function main() {
   }
 
   log.phase('AI RSS Synthesizer — start');
+  if (DRY_RUN) log.warn('DRY RUN — history.json i archive.json nie zostaną zmienione');
 
   const history = loadHistory();
   log.info(`Historia: ${history.length} znanych GUIDów`);
@@ -48,16 +68,23 @@ async function main() {
 
   // Faza 2
   log.phase('Faza 2 — filtrowanie (Gemini)');
-  const filtered = await filterItems(fetched);
+  const filtered = await filterItems(fetched, recentTopics());
 
   if (filtered.length === 0) {
     log.warn('Żaden artykuł nie przeszedł filtra — kończę bez zapisu feed.xml');
     return;
   }
 
+  if (SKIP_SYNTHESIS) {
+    log.skip('--skip-synthesis: kończę po filtrze');
+    return;
+  }
+
   // Faza 3
   log.phase('Faza 3 — synteza (Gemini + web search)');
-  const synthesized = await synthesizeItems(filtered);
+  const toSynthesize = LIMIT ? filtered.slice(0, LIMIT) : filtered;
+  if (LIMIT) log.warn(`--limit ${LIMIT}: syntezuję tylko ${toSynthesize.length} z ${filtered.length}`);
+  const synthesized = await synthesizeItems(toSynthesize);
   log.ok(`Zsyntezowano ${synthesized.length} artykułów`);
 
   if (synthesized.length === 0) {
@@ -67,7 +94,12 @@ async function main() {
 
   // Faza 4
   log.phase('Faza 4 — budowanie feed.xml');
-  buildFeed(synthesized);
+  buildFeed(synthesized, { dryRun: DRY_RUN, outputPath: FEED_OUT });
+
+  if (DRY_RUN) {
+    log.done('Gotowe (dry run)');
+    return;
+  }
 
   const newGuids = fetched.map((item) => item.guid);
   saveHistory(history, newGuids);

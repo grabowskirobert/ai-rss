@@ -1,10 +1,12 @@
 import { Feed } from 'feed';
-import { writeFileSync } from 'fs';
+import { writeFileSync, readFileSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import config from '../config.json' with { type: 'json' };
 import { log } from './logger.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
+const ARCHIVE_PATH = resolve(__dirname, '../archive.json');
 
 const STYLES = {
   img: 'max-width:100%;height:auto;border-radius:4px;margin:0 0 1em;display:block',
@@ -26,7 +28,43 @@ function applyStyles(html, imageUrl) {
     .replace(/<li>/g, `<li style="${STYLES.li}">`);
 }
 
-export function buildFeed(items) {
+export function loadArchive() {
+  try {
+    const parsed = JSON.parse(readFileSync(ARCHIVE_PATH, 'utf-8'));
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
+function mergeArchive(archive, items) {
+  const publishedAt = new Date().toISOString();
+  const fresh = items.map((item) => ({
+    guid: item.guid,
+    title: item.title,
+    link: item.link,
+    html: item.html,
+    imageUrl: item.imageUrl || null,
+    source: item.source,
+    category: item.category || null,
+    topic: item.topic || null,
+    pubDate: item.pubDate,
+    publishedAt,
+  }));
+
+  const byGuid = new Map();
+  for (const entry of [...fresh, ...archive]) {
+    if (!byGuid.has(entry.guid)) byGuid.set(entry.guid, entry);
+  }
+
+  return [...byGuid.values()]
+    .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt))
+    .slice(0, config.maxFeedItems);
+}
+
+export function buildFeed(items, { dryRun = false, outputPath } = {}) {
+  const archive = mergeArchive(loadArchive(), items);
+
   const feed = new Feed({
     title: 'AI RSS',
     description: 'Synteza newsów — Gemini AI',
@@ -34,26 +72,35 @@ export function buildFeed(items) {
     link: 'https://github.com/ai-rss',
     language: 'pl',
     updated: new Date(),
-    generator: 'AI RSS (Gemini 3.5 Flash Lite)',
+    generator: `AI RSS (${config.synthesisModel})`,
   });
 
   let withImages = 0;
 
-  for (const item of items) {
-    const styledHtml = applyStyles(item.html, item.imageUrl);
-    if (item.imageUrl) withImages++;
+  for (const entry of archive) {
+    if (entry.imageUrl) withImages++;
 
     feed.addItem({
-      title: item.title,
-      id: item.guid,
-      link: item.link,
-      content: styledHtml,
-      date: new Date(item.pubDate),
-      description: item.html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 300),
+      title: entry.title,
+      id: entry.guid,
+      link: entry.link,
+      content: applyStyles(entry.html, entry.imageUrl),
+      // Data publikacji w NASZYM feedzie — nie oryginalna data źródła,
+      // inaczej czytniki rozsypują dzienny zestaw po wcześniejszych dniach.
+      date: new Date(entry.publishedAt),
+      description: entry.html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 300),
     });
   }
 
-  const outputPath = resolve(__dirname, '../public/feed.xml');
-  writeFileSync(outputPath, feed.rss2(), 'utf-8');
-  log.ok(`Zapisano ${items.length} artykułów (${withImages} ze zdjęciem) → ${outputPath}`);
+  const feedPath = outputPath || resolve(__dirname, '../public/feed.xml');
+  writeFileSync(feedPath, feed.rss2(), 'utf-8');
+  if (!dryRun) writeFileSync(ARCHIVE_PATH, JSON.stringify(archive, null, 2) + '\n', 'utf-8');
+
+  log.ok(
+    `Zapisano feed: ${items.length} nowych + ${archive.length - items.length} archiwalnych ` +
+    `(${withImages} ze zdjęciem) → ${feedPath}`
+  );
+  if (dryRun) log.skip('dry-run: archive.json nietknięty');
+
+  return archive;
 }

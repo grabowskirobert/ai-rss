@@ -10,5 +10,11 @@
   "maxAgeHours": 24,
   "maxHistorySize": 500,
   "maxItemsPerRun": 5,
-  "delayBetweenRequestsMs": 2500
+  "delayBetweenRequestsMs": 2500,
+  "fetchTimeoutMs": 20000,
+  "maxFeedItems": 50,
+  "recentTopicsDays": 3,
+  "maxPublishedHistory": 60,
+  "filterModel": "gemini-3.5-flash",
+  "synthesisModel": "gemini-3.5-flash-lite"
 }

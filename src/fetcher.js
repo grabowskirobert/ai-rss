@@ -3,7 +3,7 @@ import config from '../config.json' with { type: 'json' };
 import { log } from './logger.js';
 
 const parser = new Parser({
-  timeout: 10000,
+  timeout: config.fetchTimeoutMs,
   customFields: {
     item: [
       ['media:content', 'mediaContent', { keepArray: false }],
@@ -19,6 +19,15 @@ function extractImage(item) {
   return null;
 }
 
+async function parseWithRetry(url) {
+  try {
+    return await parser.parseURL(url);
+  } catch (err) {
+    log.warn(`Pobieranie ${url} nie udało się (${err.message}) — ponawiam`);
+    return await parser.parseURL(url);
+  }
+}
+
 export async function fetchAllItems(history) {
   const historySet = new Set(history);
   const cutoff = Date.now() - config.maxAgeHours * 60 * 60 * 1000;
@@ -27,7 +36,7 @@ export async function fetchAllItems(history) {
   for (const url of config.sources) {
     try {
       log.info(`Fetching: ${url}`);
-      const feed = await parser.parseURL(url);
+      const feed = await parseWithRetry(url);
       let added = 0;
 
       for (const item of feed.items) {
@@ -44,13 +53,13 @@ export async function fetchAllItems(history) {
           description: item.contentSnippet || item.content || item.summary || '',
           link: item.link || '',
           pubDate: new Date(pubDate).toISOString(),
-          source: feed.title || url,
+          source: (feed.title || url).replace(/\s+/g, ' ').trim(),
           imageUrl: extractImage(item),
         });
         added++;
       }
 
-      log.ok(`${feed.title || url} → ${added} nowych artykułów`);
+      log.ok(`${(feed.title || url).replace(/\s+/g, ' ').trim()} → ${added} nowych artykułów`);
     } catch (err) {
       log.error(`Błąd pobierania ${url}: ${err.message}`);
     }
