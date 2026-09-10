@@ -4,8 +4,9 @@
   "type": "module",
   "scripts": {
     "start": "node src/index.js",
-    "dry-run": "node --env-file-if-exists=.env src/index.js --dry-run --limit 2",
-    "filter-only": "node --env-file-if-exists=.env src/index.js --dry-run --skip-synthesis"
+    "dry-run": "node --env-file-if-exists=.env src/index.js --dry-run",
+    "filter-only": "node --env-file-if-exists=.env src/index.js --dry-run --skip-synthesis",
+    "dry-run-cheap": "node --env-file-if-exists=.env src/index.js --dry-run --limit 2"
   },
   "dependencies": {
     "@google/generative-ai": "^0.21.0",

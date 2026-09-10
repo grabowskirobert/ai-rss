@@ -4,7 +4,7 @@ import { fileURLToPath } from 'url';
 import { fetchAllItems } from './fetcher.js';
 import { filterItems } from './filter.js';
 import { synthesizeItems } from './synthesizer.js';
-import { buildFeed, loadArchive } from './feed-builder.js';
+import { buildFeed, loadArchive, writePreview } from './feed-builder.js';
 import { log } from './logger.js';
 import config from '../config.json' with { type: 'json' };
 
@@ -22,6 +22,7 @@ const DRY_RUN = hasFlag('--dry-run');
 const SKIP_SYNTHESIS = hasFlag('--skip-synthesis');
 const LIMIT = Number(flagValue('--limit')) || null;
 const FEED_OUT = flagValue('--out') || (hasFlag('--dry-run') ? '/tmp/feed-dry.xml' : null);
+const PREVIEW_OUT = flagValue('--preview') || (hasFlag('--dry-run') ? '/tmp/preview.html' : null);
 
 function loadHistory() {
   try {
@@ -94,7 +95,11 @@ async function main() {
 
   // Faza 4
   log.phase('Faza 4 — budowanie feed.xml');
-  buildFeed(synthesized, { dryRun: DRY_RUN, outputPath: FEED_OUT });
+  const archive = buildFeed(synthesized, { dryRun: DRY_RUN, outputPath: FEED_OUT });
+
+  if (PREVIEW_OUT) {
+    writePreview(archive, synthesized.map((item) => item.guid), PREVIEW_OUT);
+  }
 
   if (DRY_RUN) {
     log.done('Gotowe (dry run)');

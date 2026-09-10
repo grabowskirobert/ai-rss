@@ -41,9 +41,15 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
-      - name: Show generated feed (dry run)
+      - name: Upload dry-run preview
         if: inputs.dry_run == true
-        run: cat /tmp/feed-dry.xml || echo "brak pliku — run zakończył się przed budowaniem feeda"
+        uses: actions/upload-artifact@v4
+        with:
+          name: dry-run-preview
+          path: |
+            /tmp/preview.html
+            /tmp/feed-dry.xml
+          if-no-files-found: warn
 
       - name: Commit state
         if: inputs.dry_run != true

@@ -104,3 +104,47 @@ export function buildFeed(items, { dryRun = false, outputPath } = {}) {
 
   return archive;
 }
+
+export function writePreview(archive, newGuids, path) {
+  const isNew = new Set(newGuids);
+  const items = archive.map((entry, i) => `
+    <article${isNew.has(entry.guid) ? ' class="new"' : ''}>
+      <div class="meta">
+        ${isNew.has(entry.guid) ? '<span class="badge">NOWY</span>' : ''}
+        <span>#${i + 1}</span>
+        <span>${entry.category || '—'}</span>
+        <span>${entry.source || '—'}</span>
+        <span>wątek: ${entry.topic || '—'}</span>
+        <span>${new Date(entry.publishedAt).toLocaleString('pl-PL')}</span>
+        <span>${entry.html.replace(/<[^>]+>/g, '').length} znaków</span>
+      </div>
+      <h2>${entry.title}</h2>
+      ${applyStyles(entry.html, entry.imageUrl)}
+      <p class="src"><a href="${entry.link}">źródło</a></p>
+    </article>`).join('\n');
+
+  const categories = [...new Set(archive.filter((e) => isNew.has(e.guid)).map((e) => e.category))];
+
+  const html = `<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><title>AI RSS — podgląd</title>
+<style>
+  body{max-width:44em;margin:2em auto;padding:0 1.2em;font-family:system-ui,sans-serif;background:#fafafa}
+  article{background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1.2em 1.5em;margin-bottom:1.5em}
+  article.new{border-color:#2a6496;border-width:2px}
+  h2{font-family:Georgia,serif;font-size:1.35em;line-height:1.3;margin:.2em 0 .8em}
+  .meta{display:flex;flex-wrap:wrap;gap:.6em;font-size:.75em;color:#666;text-transform:uppercase;letter-spacing:.04em;margin-bottom:.4em}
+  .badge{background:#2a6496;color:#fff;padding:0 .4em;border-radius:3px}
+  .src{font-size:.8em;color:#888;margin-top:1em}
+  .summary{background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em 1.5em;margin-bottom:2em;font-size:.9em}
+</style></head><body>
+<div class="summary">
+  <strong>Podgląd dry-run</strong><br>
+  Nowe artykuły: ${newGuids.length} · w archiwum łącznie: ${archive.length}<br>
+  Kategorie nowych: ${categories.join(', ') || '—'} (${categories.length} różnych)
+</div>
+${items}
+</body></html>`;
+
+  writeFileSync(path, html, 'utf-8');
+  log.ok(`Podgląd HTML → ${path}`);
+}
