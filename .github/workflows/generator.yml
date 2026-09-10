@@ -31,9 +31,6 @@ jobs:
 
       - run: npm ci
 
-      - name: Sync with remote
-        run: git fetch origin && git reset --hard origin/main
-
       - name: Run generator
         run: |
           FLAGS=""
@@ -54,11 +51,11 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git stash --include-untracked
-          git pull --rebase origin main
+          git pull --rebase origin "${GITHUB_REF_NAME}"
           git stash pop
           git add history.json archive.json public/feed.xml
           git diff --staged --quiet || git commit -m "chore: update feed state"
-          git push
+          git push origin "HEAD:${GITHUB_REF_NAME}"
 
       - name: Deploy feed to GitHub Pages
         if: inputs.dry_run != true
