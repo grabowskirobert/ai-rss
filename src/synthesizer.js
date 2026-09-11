@@ -10,6 +10,7 @@ const modelWithSearch = genAI.getGenerativeModel({
 });
 
 const modelFallback = genAI.getGenerativeModel({ model: config.synthesisModel });
+const titleModel = genAI.getGenerativeModel({ model: config.filterModel });
 
 const SYNTHESIS_PROMPT = (title, description) => `
 Jesteś dziennikarzem piszącym po polsku dla wydawnictwa typu "slow news" (w duchu Delayed Gratification albo Long Reads). Twój czytelnik czyta raz dziennie, nie śledził tej sprawy wcześniej i nie ma czasu na trzecią aktualizację tego samego wątku. Chce ZROZUMIEĆ, nie być na bieżąco.
@@ -17,7 +18,7 @@ Jesteś dziennikarzem piszącym po polsku dla wydawnictwa typu "slow news" (w du
 Temat: ${title}
 Oryginalne streszczenie: ${description}
 
-Pierwsza linia odpowiedzi musi być tytułem artykułu ZAWSZE po polsku — przetłumacz, jeśli oryginał jest w innym języku; sprawdź poprawność gramatyczną i odmianę. Tytuł zwięzły, informacyjny, bez wykrzykników i bez słów typu "szok", "pilne". Format:
+Pierwsza linia odpowiedzi musi być tytułem artykułu ZAWSZE po polsku — przetłumacz, jeśli oryginał jest w innym języku; sprawdź poprawność gramatyczną i odmianę. Format:
 TITLE: Tutaj tytuł po polsku
 
 Następnie wyszukaj temat w co najmniej 3 niezależnych źródłach i napisz tekst w czystym HTML, dokładnie według tej struktury:
@@ -53,6 +54,24 @@ Zasady:
 - Wypisz tylko HTML (albo SKIP), bez markdown, bez wyjaśnień.
 `;
 
+const TITLE_PROMPT = (draftTitle, body) => `
+Napisz tytuł polskiego artykułu prasowego typu slow news na podstawie tekstu poniżej.
+
+Wymagania:
+- Poprawna, naturalna polszczyzna: sprawdź odmianę, składnię i zgodność rodzajów. Nazwy własne i obce terminy zapisz poprawnie po polsku.
+- Konkret zamiast zapowiedzi: kto, co i gdzie. Najlepiej rzeczownikowo lub jednym zdaniem oznajmującym.
+- ZAKAZANE: publicystyczne metafory i idiomy prasowe ("szykuje bat", "wbija szpilę", "twarde stanowisko", "w ogniu", "przełom"), wykrzykniki, wielkie litery dla emfazy, słowa "szok", "pilne", "właśnie", "sensacja", pytania retoryczne, dwukropek dzielący tytuł na hasło i wyjaśnienie.
+- Bez ocen i emocji — czytelnik ma poznać fakt, nie nastrój.
+- Maksymalnie 90 znaków.
+
+Roboczy tytuł (może być tabloidowy — nie kopiuj jego tonu): ${draftTitle}
+
+Tekst artykułu:
+${body.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').slice(0, 2500)}
+
+Odpowiedz WYŁĄCZNIE samym tytułem, w jednej linii, bez cudzysłowów i bez żadnych prefiksów.
+`;
+
 function extractTitle(html, fallback) {
   const match = html.match(/^TITLE:\s*(.+)/m);
   if (!match) return { title: fallback, body: html };
@@ -77,11 +96,14 @@ export async function synthesizeItems(items) {
 
     log.info(`Synteza (${i + 1}/${items.length}): ${item.title}`);
 
-    let html = await tryWithSearch(item);
-    if (html === null) {
+    let result = await tryWithSearch(item);
+    if (result === null) {
       log.warn(`Search grounding niedostępny, używam fallback dla: ${item.title}`);
-      html = await tryFallback(item);
+      result = await tryFallback(item);
     }
+
+    const html = result?.text ?? null;
+    const sources = result?.sources ?? [];
 
     if (html === null) {
       log.error(`Oba modele zawiodły, pomijam: ${item.title}`);
@@ -94,11 +116,28 @@ export async function synthesizeItems(items) {
     }
 
     const { title, body } = extractTitle(html, item.title);
-    log.ok(`Zsyntezowano: ${title}`);
-    synthesized.push({ ...item, title, html: body });
+    const finalTitle = await refineTitle(title, body);
+    if (finalTitle !== title) log.info(`  tytuł poprawiony: "${title}" → "${finalTitle}"`);
+    log.ok(`Zsyntezowano: ${finalTitle}${sources.length ? ` (${sources.length} źródeł)` : ' (bez źródeł!)'}`);
+    synthesized.push({ ...item, title: finalTitle, html: body, sources });
   }
 
   return synthesized;
+}
+
+function extractSources(response) {
+  const chunks = response?.candidates?.[0]?.groundingMetadata?.groundingChunks || [];
+  const seen = new Set();
+  const sources = [];
+
+  for (const chunk of chunks) {
+    const uri = chunk?.web?.uri;
+    if (!uri || seen.has(uri)) continue;
+    seen.add(uri);
+    sources.push({ title: chunk.web.title || uri, uri });
+  }
+
+  return sources;
 }
 
 async function tryWithSearch(item) {
@@ -106,7 +145,10 @@ async function tryWithSearch(item) {
     const result = await modelWithSearch.generateContent(
       SYNTHESIS_PROMPT(item.title, item.description)
     );
-    return result.response.text().trim();
+    return {
+      text: result.response.text().trim(),
+      sources: extractSources(result.response),
+    };
   } catch (err) {
     log.warn(`Search grounding error: ${err.message.slice(0, 120)}`);
     return null;
@@ -118,9 +160,21 @@ async function tryFallback(item) {
     const result = await modelFallback.generateContent(
       SYNTHESIS_PROMPT(item.title, item.description)
     );
-    return result.response.text().trim();
+    return { text: result.response.text().trim(), sources: [] };
   } catch (err) {
     log.error(`Fallback error: ${err.message.slice(0, 120)}`);
     return null;
+  }
+}
+
+async function refineTitle(draftTitle, body) {
+  try {
+    const result = await titleModel.generateContent(TITLE_PROMPT(draftTitle, body));
+    const title = result.response.text().trim().split('\n')[0].replace(/^["'„]|["'"]$/g, '').trim();
+    if (!title || title.length > 140) return draftTitle;
+    return title;
+  } catch (err) {
+    log.warn(`Poprawa tytułu nie udała się (${err.message.slice(0, 80)}) — zostawiam oryginał`);
+    return draftTitle;
   }
 }

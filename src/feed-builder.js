@@ -14,9 +14,25 @@ const STYLES = {
   p: 'font-family:Georgia,serif;font-size:1em;line-height:1.65;margin:0.4em 0 0.8em;color:#222',
   ul: 'font-family:Georgia,serif;font-size:1em;line-height:1.65;margin:0.4em 0 0.8em;padding-left:1.4em;color:#222',
   li: 'margin-bottom:0.3em',
+  sources: 'font-family:system-ui,sans-serif;font-size:0.8em;line-height:1.6;margin:1.5em 0 0;padding-left:1.4em;color:#666',
 };
 
-function applyStyles(html, imageUrl) {
+const UNVERIFIED_NOTE =
+  '<p style="font-family:system-ui,sans-serif;font-size:0.8em;line-height:1.5;margin:1.5em 0 0;' +
+  'padding:0.7em 0.9em;border-left:3px solid #b58900;background:#fdf6e3;color:#665c40">' +
+  'Uwaga: przy tym tekście wyszukiwarka nie zwróciła żadnych źródeł, ' +
+  'więc powstał na podstawie wiedzy modelu, a nie zweryfikowanych publikacji. ' +
+  'Traktuj liczby i szczegóły ostrożnie.</p>';
+
+function renderSources(sources) {
+  if (!sources || sources.length === 0) return UNVERIFIED_NOTE;
+  const items = sources
+    .map((s) => `<li><a href="${s.uri}">${s.title}</a></li>`)
+    .join('');
+  return `<h3 style="${STYLES.h3}">Źródła</h3><ul style="${STYLES.sources}">${items}</ul>`;
+}
+
+function applyStyles(html, imageUrl, sources) {
   const img = imageUrl
     ? `<img src="${imageUrl}" alt="" style="${STYLES.img}">`
     : '';
@@ -25,7 +41,8 @@ function applyStyles(html, imageUrl) {
     .replace(/<h3>/g, `<h3 style="${STYLES.h3}">`)
     .replace(/<p>/g, `<p style="${STYLES.p}">`)
     .replace(/<ul>/g, `<ul style="${STYLES.ul}">`)
-    .replace(/<li>/g, `<li style="${STYLES.li}">`);
+    .replace(/<li>/g, `<li style="${STYLES.li}">`)
+    + renderSources(sources);
 }
 
 export function loadArchive() {
@@ -46,6 +63,7 @@ function mergeArchive(archive, items) {
     html: item.html,
     imageUrl: item.imageUrl || null,
     source: item.source,
+    sources: item.sources || [],
     category: item.category || null,
     topic: item.topic || null,
     pubDate: item.pubDate,
@@ -84,7 +102,7 @@ export function buildFeed(items, { dryRun = false, outputPath } = {}) {
       title: entry.title,
       id: entry.guid,
       link: entry.link,
-      content: applyStyles(entry.html, entry.imageUrl),
+      content: applyStyles(entry.html, entry.imageUrl, entry.sources),
       // Data publikacji w NASZYM feedzie — nie oryginalna data źródła,
       // inaczej czytniki rozsypują dzienny zestaw po wcześniejszych dniach.
       date: new Date(entry.publishedAt),
@@ -117,9 +135,10 @@ export function writePreview(archive, newGuids, path) {
         <span>wątek: ${entry.topic || '—'}</span>
         <span>${new Date(entry.publishedAt).toLocaleString('pl-PL')}</span>
         <span>${entry.html.replace(/<[^>]+>/g, '').length} znaków</span>
+        <span>${(entry.sources || []).length} źródeł</span>
       </div>
       <h2>${entry.title}</h2>
-      ${applyStyles(entry.html, entry.imageUrl)}
+      ${applyStyles(entry.html, entry.imageUrl, entry.sources)}
       <p class="src"><a href="${entry.link}">źródło</a></p>
     </article>`).join('\n');
 
