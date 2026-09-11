@@ -5,16 +5,37 @@
     "https://rss.dw.com/rdf/rss-pol-all",
     "https://feeds.bbci.co.uk/polska/rss.xml",
     "https://feeds.bbci.co.uk/news/world/rss.xml",
-    "https://www.economist.com/international/rss.xml"
+    "https://www.economist.com/international/rss.xml",
+    "https://www.economist.com/finance-and-economics/rss.xml",
+    "https://www.economist.com/science-and-technology/rss.xml",
+    "https://naukawpolsce.pl/rss.xml",
+    "https://www.aljazeera.com/xml/rss/all.xml",
+    "https://aeon.co/feed.rss"
   ],
   "maxAgeHours": 24,
   "maxHistorySize": 500,
   "maxItemsPerRun": 5,
-  "delayBetweenRequestsMs": 2500,
+  "delayBetweenRequestsMs": 0,
   "fetchTimeoutMs": 20000,
   "maxFeedItems": 50,
   "recentTopicsDays": 3,
   "maxPublishedHistory": 60,
   "filterModel": "gemini-3.5-flash",
-  "synthesisModel": "gemini-3.5-flash-lite"
+  "synthesisModel": "gemini-3.5-flash",
+  "usdPlnRate": 3.6,
+  "pricing": {
+    "gemini-3.5-flash": {
+      "inputUsdPerMTok": 1.5,
+      "outputUsdPerMTok": 9.0
+    },
+    "gemini-3.5-flash-lite": {
+      "inputUsdPerMTok": 0.3,
+      "outputUsdPerMTok": 2.5
+    }
+  },
+  "fallbackModel": "gemini-3.5-flash-lite",
+  "thinkingBudget": {
+    "filter": -1,
+    "synthesis": 0
+  }
 }

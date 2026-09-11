@@ -6,6 +6,7 @@ import { filterItems } from './filter.js';
 import { synthesizeItems } from './synthesizer.js';
 import { buildFeed, loadArchive, writePreview } from './feed-builder.js';
 import { log } from './logger.js';
+import { reportCosts } from './costs.js';
 import config from '../config.json' with { type: 'json' };
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -102,6 +103,7 @@ async function main() {
   }
 
   if (DRY_RUN) {
+    reportCosts();
     log.done('Gotowe (dry run)');
     return;
   }
@@ -110,6 +112,7 @@ async function main() {
   saveHistory(history, newGuids);
   log.info(`Historia zaktualizowana o ${newGuids.length} GUIDów`);
 
+  reportCosts();
   log.done('Gotowe');
 }
 

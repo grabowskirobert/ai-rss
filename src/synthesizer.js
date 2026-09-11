@@ -1,16 +1,26 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import config from '../config.json' with { type: 'json' };
 import { log } from './logger.js';
+import { record } from './costs.js';
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+
+// thinkingBudget 0 wyłącza tokeny myślenia — przy pisaniu tekstu nie wnoszą
+// jakości, a są rozliczane jak wyjście (najdroższa pozycja na rachunku).
+const thinking = config.thinkingBudget?.synthesis >= 0
+  ? { thinkingConfig: { thinkingBudget: config.thinkingBudget.synthesis } }
+  : {};
 
 const modelWithSearch = genAI.getGenerativeModel({
   model: config.synthesisModel,
   tools: [{ googleSearch: {} }],
+  generationConfig: thinking,
 });
 
-const modelFallback = genAI.getGenerativeModel({ model: config.synthesisModel });
-const titleModel = genAI.getGenerativeModel({ model: config.filterModel });
+const modelFallback = genAI.getGenerativeModel({
+  model: config.fallbackModel,
+  generationConfig: thinking,
+});
 
 const SYNTHESIS_PROMPT = (title, description) => `
 Jesteś dziennikarzem piszącym po polsku dla wydawnictwa typu "slow news" (w duchu Delayed Gratification albo Long Reads). Twój czytelnik czyta raz dziennie, nie śledził tej sprawy wcześniej i nie ma czasu na trzecią aktualizację tego samego wątku. Chce ZROZUMIEĆ, nie być na bieżąco.
@@ -20,6 +30,13 @@ Oryginalne streszczenie: ${description}
 
 Pierwsza linia odpowiedzi musi być tytułem artykułu ZAWSZE po polsku — przetłumacz, jeśli oryginał jest w innym języku; sprawdź poprawność gramatyczną i odmianę. Format:
 TITLE: Tutaj tytuł po polsku
+
+Zasady tytułu:
+- Poprawna, naturalna polszczyzna: sprawdź odmianę, składnię i zgodność rodzajów; nazwy własne i terminy obce zapisz poprawnie po polsku.
+- Konkret zamiast zapowiedzi: kto, co i gdzie — rzeczownikowo lub jednym zdaniem oznajmującym.
+- ZAKAZANE: publicystyczne metafory i idiomy prasowe ("szykuje bat", "wbija szpilę", "w ogniu", "przełom"), wykrzykniki, wielkie litery dla emfazy, słowa "szok", "pilne", "właśnie", "sensacja", pytania retoryczne, dwukropek dzielący tytuł na hasło i wyjaśnienie.
+- Bez ocen i emocji, maksymalnie 90 znaków.
+- Nie kopiuj tonu tytułu źródłowego — bywa tabloidowy. Tytuł pisz po napisaniu tekstu, na podstawie tego, co w nim faktycznie jest.
 
 Następnie wyszukaj temat w co najmniej 3 niezależnych źródłach i napisz tekst w czystym HTML, dokładnie według tej struktury:
 
@@ -54,24 +71,6 @@ Zasady:
 - Wypisz tylko HTML (albo SKIP), bez markdown, bez wyjaśnień.
 `;
 
-const TITLE_PROMPT = (draftTitle, body) => `
-Napisz tytuł polskiego artykułu prasowego typu slow news na podstawie tekstu poniżej.
-
-Wymagania:
-- Poprawna, naturalna polszczyzna: sprawdź odmianę, składnię i zgodność rodzajów. Nazwy własne i obce terminy zapisz poprawnie po polsku.
-- Konkret zamiast zapowiedzi: kto, co i gdzie. Najlepiej rzeczownikowo lub jednym zdaniem oznajmującym.
-- ZAKAZANE: publicystyczne metafory i idiomy prasowe ("szykuje bat", "wbija szpilę", "twarde stanowisko", "w ogniu", "przełom"), wykrzykniki, wielkie litery dla emfazy, słowa "szok", "pilne", "właśnie", "sensacja", pytania retoryczne, dwukropek dzielący tytuł na hasło i wyjaśnienie.
-- Bez ocen i emocji — czytelnik ma poznać fakt, nie nastrój.
-- Maksymalnie 90 znaków.
-
-Roboczy tytuł (może być tabloidowy — nie kopiuj jego tonu): ${draftTitle}
-
-Tekst artykułu:
-${body.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').slice(0, 2500)}
-
-Odpowiedz WYŁĄCZNIE samym tytułem, w jednej linii, bez cudzysłowów i bez żadnych prefiksów.
-`;
-
 function extractTitle(html, fallback) {
   const match = html.match(/^TITLE:\s*(.+)/m);
   if (!match) return { title: fallback, body: html };
@@ -89,7 +88,7 @@ export async function synthesizeItems(items) {
 
   for (let i = 0; i < items.length; i++) {
     const item = items[i];
-    if (i > 0) {
+    if (i > 0 && config.delayBetweenRequestsMs > 0) {
       log.info(`Czekam ${config.delayBetweenRequestsMs}ms przed kolejnym zapytaniem...`);
       await sleep(config.delayBetweenRequestsMs);
     }
@@ -116,10 +115,8 @@ export async function synthesizeItems(items) {
     }
 
     const { title, body } = extractTitle(html, item.title);
-    const finalTitle = await refineTitle(title, body);
-    if (finalTitle !== title) log.info(`  tytuł poprawiony: "${title}" → "${finalTitle}"`);
-    log.ok(`Zsyntezowano: ${finalTitle}${sources.length ? ` (${sources.length} źródeł)` : ' (bez źródeł!)'}`);
-    synthesized.push({ ...item, title: finalTitle, html: body, sources });
+    log.ok(`Zsyntezowano: ${title}${sources.length ? ` (${sources.length} źródeł)` : ' (bez źródeł!)'}`);
+    synthesized.push({ ...item, title, html: body, sources });
   }
 
   return synthesized;
@@ -145,6 +142,7 @@ async function tryWithSearch(item) {
     const result = await modelWithSearch.generateContent(
       SYNTHESIS_PROMPT(item.title, item.description)
     );
+    record(config.synthesisModel, result.response);
     return {
       text: result.response.text().trim(),
       sources: extractSources(result.response),
@@ -160,21 +158,10 @@ async function tryFallback(item) {
     const result = await modelFallback.generateContent(
       SYNTHESIS_PROMPT(item.title, item.description)
     );
+    record(config.fallbackModel, result.response);
     return { text: result.response.text().trim(), sources: [] };
   } catch (err) {
     log.error(`Fallback error: ${err.message.slice(0, 120)}`);
     return null;
-  }
-}
-
-async function refineTitle(draftTitle, body) {
-  try {
-    const result = await titleModel.generateContent(TITLE_PROMPT(draftTitle, body));
-    const title = result.response.text().trim().split('\n')[0].replace(/^["'„]|["'"]$/g, '').trim();
-    if (!title || title.length > 140) return draftTitle;
-    return title;
-  } catch (err) {
-    log.warn(`Poprawa tytułu nie udała się (${err.message.slice(0, 80)}) — zostawiam oryginał`);
-    return draftTitle;
   }
 }

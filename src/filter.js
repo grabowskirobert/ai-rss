@@ -1,18 +1,28 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import config from '../config.json' with { type: 'json' };
 import { log } from './logger.js';
+import { record } from './costs.js';
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-const model = genAI.getGenerativeModel({ model: config.filterModel });
-const fallbackModel = genAI.getGenerativeModel({ model: config.synthesisModel });
+const filterThinking = config.thinkingBudget?.filter >= 0
+  ? { thinkingConfig: { thinkingBudget: config.thinkingBudget.filter } }
+  : {};
+
+const model = genAI.getGenerativeModel({
+  model: config.filterModel,
+  generationConfig: filterThinking,
+});
+const fallbackModel = genAI.getGenerativeModel({ model: config.fallbackModel });
 
 async function generate(prompt) {
   try {
     const result = await model.generateContent(prompt);
+    record(config.filterModel, result.response);
     return result.response.text();
   } catch (err) {
-    log.warn(`Model ${config.filterModel} zawiódł (${err.message.slice(0, 120)}) — fallback na ${config.synthesisModel}`);
+    log.warn(`Model ${config.filterModel} zawiódł (${err.message.slice(0, 120)}) — fallback na ${config.fallbackModel}`);
     const result = await fallbackModel.generateContent(prompt);
+    record(config.fallbackModel, result.response);
     return result.response.text();
   }
 }

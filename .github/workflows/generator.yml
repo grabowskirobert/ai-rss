@@ -2,7 +2,9 @@ name: Generate AI RSS Feed
 
 on:
   schedule:
-    - cron: '0 6 * * *'
+    # GitHub opóźnia harmonogramy, zwłaszcza o pełnych godzinach — stąd
+    # nietypowa minuta i zapas czasowy przed docelową 8:00 rano.
+    - cron: '17 4 * * *'
   workflow_dispatch:
     inputs:
       dry_run:
