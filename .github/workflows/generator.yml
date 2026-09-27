@@ -50,6 +50,11 @@ jobs:
 
       - run: npm ci
 
+      # ffmpeg bywa preinstalowany na ubuntu-latest, ale to nie jest gwarancja
+      # kontraktu — bez niego odsłuch zostaje 6× większym WAV-em.
+      - name: Ensure ffmpeg
+        run: ffmpeg -version >/dev/null 2>&1 || (sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg)
+
       - name: Run generator
         id: run
         run: |
@@ -61,6 +66,23 @@ jobs:
           node src/index.js $FLAGS
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+
+      - name: Publish audio to Releases
+        if: inputs.dry_run != true && steps.run.outputs.audio_path != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG="${{ steps.run.outputs.audio_tag }}"
+          gh release create "$TAG" --title "$TAG" --notes "Odsłuch wydania" 2>/dev/null || true
+          gh release upload "$TAG" "${{ steps.run.outputs.audio_path }}" --clobber
+          # Retencja — releases starsze niż audio.retentionDays lecą razem z plikami.
+          KEEP=$(node -p "require('./config.json').audio.retentionDays")
+          CUTOFF=$(date -u -d "$KEEP days ago" +%Y-%m-%d)
+          gh release list --limit 100 --json tagName --jq '.[].tagName' \
+            | grep '^audio-' \
+            | while read -r t; do
+                [ "${t#audio-}" \< "$CUTOFF" ] && gh release delete "$t" --yes --cleanup-tag || true
+              done
 
       - name: Upload dry-run preview
         if: inputs.dry_run == true

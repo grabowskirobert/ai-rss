@@ -79,9 +79,13 @@ export function uniqueHosts(urls) {
 }
 
 // A/B/C/D — patrz feed-builder, każdy poziom ma inne oznaczenie dla czytelnika.
-export function trustLevel({ publisherCount, hasFullText }) {
+// Potwierdzenie znalezione w sieci mówi tylko "to wydarzenie miało miejsce",
+// więc nie jest równoważne pełnemu tekstowi kolejnej redakcji — może podnieść
+// najwyżej do B. Poziom A wymaga trzech niezależnych tekstów w korpusie.
+export function trustLevel({ corpusPublishers, confirmations = 0, hasFullText }) {
   if (!hasFullText) return 'D';
-  if (publisherCount >= 3) return 'A';
-  if (publisherCount === 2) return 'B';
+  if (corpusPublishers >= 3) return 'A';
+  if (corpusPublishers === 2) return 'B';
+  if (corpusPublishers === 1 && confirmations >= 2) return 'B';
   return 'C';
 }

@@ -83,7 +83,7 @@ Zasady:
 - Zero języka emocjonalnego, zero skrzywień politycznych, zero trybu "breaking news".
 - Wyjaśniaj skróty, instytucje i nazwiska przy pierwszym użyciu.
 - Twierdzenie relacjonowane ZACHOWUJE atrybucję. Jeśli źródło pisze "według portalu X" albo "rzecznik twierdzi", nigdy nie zamieniaj tego w goły fakt.
-- Jeśli korpus nie zawiera materiału na sensowny tekst — odpowiedz samym słowem SKIP.
+- SKIP jest ostatecznością. Odpowiedz samym słowem SKIP WYŁĄCZNIE wtedy, gdy korpus w ogóle nie dotyczy podanego tematu albo nie zawiera żadnej treści dziennikarskiej (strona błędu, sama zajawka, lista linków). Jeśli korpus zawiera choćby kilkaset znaków treści na temat — napisz tekst, choćby krótki. Trudny albo niepełny materiał to nie powód do SKIP-a, tylko powód, żeby napisać krócej i wprost zaznaczyć, czego brakuje.
 - Wypisz tylko HTML (albo SKIP), bez markdown, bez wyjaśnień.
 `;
 
@@ -338,7 +338,7 @@ async function synthesizeCluster(cluster) {
     log.info(`Tło: ${total} twierdzeń → ${accepted} przyjętych, ${t3} odrzuconych jako T3, ${rejectedThin} zbyt słabych`);
 
     const t3Ratio = total > 0 ? t3 / total : 0;
-    if (total >= 5 && t3Ratio >= config.background.t3RatioSkipThreshold) {
+    if (total >= config.background.t3MinClaimsForSkip && t3Ratio >= config.background.t3RatioSkipThreshold) {
       log.warn(
         `🚩 "${topic}": ${Math.round(t3Ratio * 100)}% materiału z serwisów bez redakcji — pomijam temat`
       );
@@ -364,8 +364,11 @@ async function synthesizeCluster(cluster) {
   const confirmations = vetted
     ? [...new Set(vetted.accepted.filter((c) => c.rodzaj === 'potwierdzenie').flatMap((c) => c.hosts))]
     : [];
-  const publisherCount = new Set([...publishers, ...confirmations]).size;
-  const level = trustLevel({ publisherCount, hasFullText: true });
+  const level = trustLevel({
+    corpusPublishers: publishers.length,
+    confirmations: confirmations.length,
+    hasFullText: true,
+  });
 
   const html = assemble(factsSections, backgroundSections);
   const factSources = articles.map((a) => ({ title: `${a.source} — ${a.title}`, uri: a.link }));

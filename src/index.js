@@ -1,3 +1,4 @@
+import { execFileSync } from 'child_process';
 import { appendFileSync, readFileSync, writeFileSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -6,6 +7,7 @@ import { clusterItems } from './cluster.js';
 import { filterClusters } from './filter.js';
 import { synthesizeClusters } from './synthesizer.js';
 import { buildFeed, loadArchive, writePreview } from './feed-builder.js';
+import { audioEntry, buildAudioDigest } from './audio.js';
 import { log } from './logger.js';
 import { reportCosts } from './costs.js';
 import config from '../config.json' with { type: 'json' };
@@ -22,6 +24,16 @@ const flagValue = (name) => {
 
 const DRY_RUN = hasFlag('--dry-run');
 const FORCE = hasFlag('--force');
+// Odsłuch to najdroższy etap, więc w dry-runie jest domyślnie wyłączony —
+// włączasz go świadomie flagą --audio.
+const WITH_AUDIO = config.audio?.enabled !== false
+  && !hasFlag('--no-audio')
+  && (!DRY_RUN || hasFlag('--audio'));
+// Odsłuch z tekstów, które już są w archiwum — przydaje się, gdy audycja
+// nie powstała (awaria TTS) albo gdy dokładamy ją do wcześniejszego wydania.
+const AUDIO_ONLY = hasFlag('--audio-only');
+const AUDIO_DIR = flagValue('--audio-dir')
+  || (DRY_RUN ? '/tmp/ai-rss-audio' : resolve(__dirname, '../public/audio'));
 const SKIP_SYNTHESIS = hasFlag('--skip-synthesis');
 const LIMIT = Number(flagValue('--limit')) || null;
 const FEED_OUT = flagValue('--out') || (hasFlag('--dry-run') ? '/tmp/feed-dry.xml' : null);
@@ -39,6 +51,26 @@ function saveHistory(history, newGuids) {
   const updated = [...history, ...newGuids];
   const trimmed = updated.slice(-config.maxHistorySize);
   writeFileSync(HISTORY_PATH, JSON.stringify(trimmed, null, 2), 'utf-8');
+}
+
+// Adres pliku w GitHub Releases — releases nie obciążają repozytorium,
+// a URL jest stabilny, więc nadaje się do <enclosure>.
+function repoSlug() {
+  if (process.env.GITHUB_REPOSITORY) return process.env.GITHUB_REPOSITORY;
+  try {
+    const remote = execFileSync('git', ['remote', 'get-url', 'origin'], { encoding: 'utf-8' }).trim();
+    return remote.match(/[:/]([^/:]+\/[^/]+?)(?:\.git)?$/)?.[1] || null;
+  } catch {
+    return null;
+  }
+}
+
+function audioUrl(fileName, dateStamp) {
+  const tag = `${config.audio.releaseTagPrefix}${dateStamp}`;
+  const base = config.audio?.baseUrl;
+  if (base) return `${base.replace(/\/$/, '')}/${tag}/${fileName}`;
+  const repo = repoSlug();
+  return repo ? `https://github.com/${repo}/releases/download/${tag}/${fileName}` : null;
 }
 
 function warsawDate(value = Date.now()) {
@@ -60,6 +92,54 @@ function recentTopics() {
     .map((entry) => entry.topic || entry.title);
 }
 
+async function buildAudio(articles) {
+  const dateStamp = warsawDate();
+  const digest = await buildAudioDigest(articles, { outputDir: AUDIO_DIR, dateStamp });
+  if (!digest) return null;
+
+  const url = audioUrl(digest.fileName, dateStamp);
+  if (!url) log.warn('Brak adresu publikacji audio — wpis powstanie bez odtwarzacza');
+  if (process.env.GITHUB_OUTPUT) {
+    appendFileSync(process.env.GITHUB_OUTPUT,
+      `audio_path=${digest.filePath}\naudio_tag=${config.audio.releaseTagPrefix}${dateStamp}\n`);
+  }
+  return audioEntry(digest, { articles, dateStamp, url });
+}
+
+async function audioOnlyRun() {
+  log.phase('Tryb --audio-only — odsłuch z tekstów w archiwum');
+
+  const count = Number(flagValue('--audio-only')) || config.maxItemsPerRun;
+  const articles = loadArchive()
+    .filter((entry) => entry.kind !== 'audio')
+    .slice(0, count);
+
+  if (articles.length === 0) {
+    log.error('Archiwum nie zawiera tekstów — nie ma z czego zrobić odsłuchu');
+    return;
+  }
+
+  log.info(`Biorę ${articles.length} najnowszych tekstów:`);
+  articles.forEach((a, i) => log.info(`  ${i + 1}. ${a.title}`));
+
+  // --no-audio (i dry-run bez --audio) = pokaż dobór tekstów, nie wydawaj na TTS.
+  if (!WITH_AUDIO) {
+    log.skip('Synteza mowy pominięta — to był tylko podgląd doboru tekstów');
+    return;
+  }
+
+  const entry = await buildAudio(articles);
+  if (!entry) {
+    log.error('Odsłuch nie powstał');
+    return;
+  }
+
+  const archive = buildFeed([entry], { dryRun: DRY_RUN, outputPath: FEED_OUT });
+  if (PREVIEW_OUT) writePreview(archive, [entry.guid], PREVIEW_OUT);
+  reportCosts(articles.length);
+  log.done(DRY_RUN ? 'Gotowe (dry run)' : 'Gotowe');
+}
+
 async function main() {
   if (!process.env.GEMINI_API_KEY) {
     log.error('GEMINI_API_KEY nie jest ustawiony');
@@ -68,6 +148,11 @@ async function main() {
 
   log.phase('AI RSS Synthesizer — start');
   if (DRY_RUN) log.warn('DRY RUN — history.json i archive.json nie zostaną zmienione');
+
+  if (AUDIO_ONLY) {
+    await audioOnlyRun();
+    return;
+  }
 
   if (!DRY_RUN && !FORCE && alreadyGeneratedToday()) {
     log.done(`Zestaw na ${warsawDate()} już istnieje — kończę bez kosztów (--force wymusza)`);
@@ -123,11 +208,26 @@ async function main() {
   }
 
   // Faza 5
-  log.phase('Faza 5 — budowanie feed.xml');
-  const archive = buildFeed(synthesized, { dryRun: DRY_RUN, outputPath: FEED_OUT });
+  const toPublish = [...synthesized];
+
+  if (WITH_AUDIO) {
+    log.phase('Faza 5 — odsłuch (scenariusz + TTS)');
+    try {
+      const entry = await buildAudio(synthesized);
+      if (entry) toPublish.push(entry);
+    } catch (err) {
+      log.error(`Odsłuch nie powstał: ${err.message.slice(0, 120)} — publikuję same teksty`);
+    }
+  } else {
+    log.skip('Odsłuch pominięty (--no-audio, wyłączony w config albo dry-run bez --audio)');
+  }
+
+  // Faza 6
+  log.phase('Faza 6 — budowanie feed.xml');
+  const archive = buildFeed(toPublish, { dryRun: DRY_RUN, outputPath: FEED_OUT });
 
   if (PREVIEW_OUT) {
-    writePreview(archive, synthesized.map((item) => item.guid), PREVIEW_OUT);
+    writePreview(archive, toPublish.map((item) => item.guid), PREVIEW_OUT);
   }
 
   if (DRY_RUN) {

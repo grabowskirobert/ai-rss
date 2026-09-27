@@ -64,7 +64,27 @@ function renderSources(entry) {
   );
 }
 
+const AUDIO_NOTE =
+  `<p style="font-family:system-ui,sans-serif;font-size:0.8em;line-height:1.5;margin:1.5em 0 0;` +
+  `padding:0.7em 0.9em;border-left:3px solid #2a6496;background:#f0f5fa;color:#4a4a4a">` +
+  `Nagranie powstało z dzisiejszych tekstów, przepisanych na mowę — nie jest czytaniem ich słowo w słowo. ` +
+  `Źródła każdego tematu znajdziesz przy odpowiednim wpisie tekstowym.</p>`;
+
+function renderAudio(entry) {
+  if (!entry.audio?.url) return '';
+  return `<p style="${STYLES.p}"><audio controls preload="none" src="${entry.audio.url}"></audio></p>` +
+    `<p style="${STYLES.p}"><a href="${entry.audio.url}">Pobierz nagranie (MP3)</a></p>`;
+}
+
 function applyStyles(entry) {
+  if (entry.kind === 'audio') {
+    return renderAudio(entry) + entry.html
+      .replace(/<h3>/g, `<h3 style="${STYLES.h3}">`)
+      .replace(/<p>/g, `<p style="${STYLES.p}">`)
+      .replace(/<ul>/g, `<ul style="${STYLES.ul}">`)
+      + AUDIO_NOTE;
+  }
+
   const img = entry.imageUrl
     ? `<img src="${entry.imageUrl}" alt="" style="${STYLES.img}">`
     : '';
@@ -100,6 +120,9 @@ function mergeArchive(archive, items) {
     publishers: item.publishers || [],
     corroborations: item.corroborations || [],
     trustLevel: item.trustLevel || null,
+    kind: item.kind || 'text',
+    audio: item.audio || null,
+    durationSec: item.durationSec || null,
     category: item.category || null,
     topic: item.topic || null,
     pubDate: item.pubDate,
@@ -139,6 +162,11 @@ export function buildFeed(items, { dryRun = false, outputPath } = {}) {
       id: entry.guid,
       link: entry.link,
       content: applyStyles(entry),
+      // Enclosure sprawia, że wpis jest odtwarzalny w czytniku i widoczny
+      // dla aplikacji podcastowych.
+      ...(entry.audio?.url
+        ? { audio: { url: entry.audio.url, type: entry.audio.type, length: entry.audio.length } }
+        : {}),
       // Data publikacji w NASZYM feedzie — nie oryginalna data źródła,
       // inaczej czytniki rozsypują dzienny zestaw po wcześniejszych dniach.
       date: new Date(entry.publishedAt),
@@ -171,7 +199,7 @@ export function writePreview(archive, newGuids, path) {
         <span>wątek: ${entry.topic || '—'}</span>
         <span>${new Date(entry.publishedAt).toLocaleString('pl-PL')}</span>
         <span>${entry.html.replace(/<[^>]+>/g, '').length} znaków</span>
-        <span>zaufanie: ${entry.trustLevel || '—'}</span>
+        <span>${entry.kind === 'audio' ? 'AUDIO' : `zaufanie: ${entry.trustLevel || '—'}`}</span>
         <span>${(entry.sources || []).length} źródeł faktów</span>
         <span>${(entry.backgroundSources || []).length} źródeł tła</span>
       </div>

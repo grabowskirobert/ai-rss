@@ -395,13 +395,22 @@
     "gemini-embedding-001": {
       "inputUsdPerMTok": 0.15,
       "outputUsdPerMTok": 0
+    },
+    "gemini-3.8-flash-tts": {
+      "inputUsdPerMTok": 0.5,
+      "outputUsdPerMTok": 9.0
+    },
+    "gemini-3.8-flash-lite-tts": {
+      "inputUsdPerMTok": 0.5,
+      "outputUsdPerMTok": 9.0
     }
   },
   "thinkingBudget": {
     "filter": 512,
     "facts": 0,
     "claims": 128,
-    "background": 128
+    "background": 128,
+    "script": 0
   },
   "cluster": {
     "similarityThreshold": 0.82,
@@ -424,7 +433,8 @@
     "enabled": true,
     "maxClaims": 14,
     "minTier2DomainsPerBackgroundClaim": 2,
-    "t3RatioSkipThreshold": 0.6
+    "t3RatioSkipThreshold": 0.6,
+    "t3MinClaimsForSkip": 8
   },
   "trust": {
     "tier2Domains": [
@@ -616,13 +626,25 @@
     ],
     "blockedDomains": []
   },
-  "monthlyBudgetPln": 15,
+  "monthlyBudgetPln": 30,
   "models": {
     "filter": "gemini-3.5-flash-lite",
     "facts": "gemini-3.5-flash",
     "claims": "gemini-3.5-flash-lite",
     "background": "gemini-3.5-flash-lite",
     "embedding": "gemini-embedding-001",
-    "fallback": "gemini-3.5-flash-lite"
+    "fallback": "gemini-3.5-flash-lite",
+    "script": "gemini-3.5-flash",
+    "tts": "gemini-3.8-flash-tts"
+  },
+  "audio": {
+    "enabled": true,
+    "voice": "Kore",
+    "stylePrompt": "Przeczytaj jak lektor porannego przeglądu prasy — spokojnie, rzeczowo, z naturalnymi pauzami między tematami.",
+    "maxCharsPerChunk": 3200,
+    "bitrateKbps": 64,
+    "retentionDays": 14,
+    "releaseTagPrefix": "audio-",
+    "baseUrl": ""
   }
 }
