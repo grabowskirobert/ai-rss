@@ -78,10 +78,13 @@ jobs:
           # Retencja — releases starsze niż audio.retentionDays lecą razem z plikami.
           KEEP=$(node -p "require('./config.json').audio.retentionDays")
           CUTOFF=$(date -u -d "$KEEP days ago" +%Y-%m-%d)
+          # grep bez trafień zwraca 1 i przy set -e wywaliłby cały krok.
           gh release list --limit 100 --json tagName --jq '.[].tagName' \
-            | grep '^audio-' \
+            | { grep '^audio-' || true; } \
             | while read -r t; do
-                [ "${t#audio-}" \< "$CUTOFF" ] && gh release delete "$t" --yes --cleanup-tag || true
+                if [[ "${t#audio-}" < "$CUTOFF" ]]; then
+                  gh release delete "$t" --yes --cleanup-tag || true
+                fi
               done
 
       - name: Upload dry-run preview

@@ -32,8 +32,11 @@ const WITH_AUDIO = config.audio?.enabled !== false
 // Odsłuch z tekstów, które już są w archiwum — przydaje się, gdy audycja
 // nie powstała (awaria TTS) albo gdy dokładamy ją do wcześniejszego wydania.
 const AUDIO_ONLY = hasFlag('--audio-only');
+// Celowo POZA public/ — ten katalog jest wypychany na GitHub Pages, a nagranie
+// żyje w Releases. Inaczej każda audycja zostawałaby na zawsze w historii
+// gałęzi gh-pages.
 const AUDIO_DIR = flagValue('--audio-dir')
-  || (DRY_RUN ? '/tmp/ai-rss-audio' : resolve(__dirname, '../public/audio'));
+  || (DRY_RUN ? '/tmp/ai-rss-audio' : resolve(__dirname, '../.audio'));
 const SKIP_SYNTHESIS = hasFlag('--skip-synthesis');
 const LIMIT = Number(flagValue('--limit')) || null;
 const FEED_OUT = flagValue('--out') || (hasFlag('--dry-run') ? '/tmp/feed-dry.xml' : null);
