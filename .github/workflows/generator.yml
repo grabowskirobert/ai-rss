@@ -2,9 +2,16 @@ name: Generate AI RSS Feed
 
 on:
   schedule:
-    # GitHub opóźnia harmonogramy, zwłaszcza o pełnych godzinach — stąd
-    # nietypowa minuta i zapas czasowy przed docelową 8:00 rano.
-    - cron: '17 4 * * *'
+    # GitHub opóźnia harmonogramy nawet o kilka godzin, więc zamiast jednej
+    # próby robimy cztery w ciągu nocy (23:15, 0:45, 2:15, 3:45 UTC = 1:15,
+    # 2:45, 4:15, 5:45 czasu polskiego latem). Pierwsza, która realnie
+    # wystartuje, buduje zestaw; pozostałe wychodzą na blokadzie w index.js,
+    # zanim wydadzą jeden token. Minuty przed pełną godziną — kolejka jest
+    # najdłuższa dokładnie o równych godzinach.
+    - cron: '15 23 * * *'
+    - cron: '45 0 * * *'
+    - cron: '15 2 * * *'
+    - cron: '45 3 * * *'
   workflow_dispatch:
     inputs:
       dry_run:
@@ -15,6 +22,16 @@ on:
         description: 'Ile artykułów zsyntezować (puste = wszystkie)'
         type: string
         default: ''
+      force:
+        description: 'Zbuduj zestaw nawet, jeśli dzisiejszy już istnieje'
+        type: boolean
+        default: false
+
+# Gdyby dwie opóźnione próby dogoniły się nawzajem — druga czeka na pierwszą
+# i wtedy widzi już zaktualizowane archive.json.
+concurrency:
+  group: generate-feed
+  cancel-in-progress: false
 
 jobs:
   generate:
@@ -34,10 +51,12 @@ jobs:
       - run: npm ci
 
       - name: Run generator
+        id: run
         run: |
           FLAGS=""
           if [ "${{ inputs.dry_run }}" = "true" ]; then FLAGS="$FLAGS --dry-run"; fi
           if [ -n "${{ inputs.limit }}" ]; then FLAGS="$FLAGS --limit ${{ inputs.limit }}"; fi
+          if [ "${{ inputs.force }}" = "true" ]; then FLAGS="$FLAGS --force"; fi
           echo "node src/index.js $FLAGS"
           node src/index.js $FLAGS
         env:
@@ -54,7 +73,7 @@ jobs:
           if-no-files-found: warn
 
       - name: Commit state
-        if: inputs.dry_run != true
+        if: inputs.dry_run != true && steps.run.outputs.skipped != 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -66,7 +85,7 @@ jobs:
           git push origin "HEAD:${GITHUB_REF_NAME}"
 
       - name: Deploy feed to GitHub Pages
-        if: inputs.dry_run != true
+        if: inputs.dry_run != true && steps.run.outputs.skipped != 'true'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

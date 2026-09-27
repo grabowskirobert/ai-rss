@@ -1,9 +1,10 @@
-import { readFileSync, writeFileSync } from 'fs';
+import { appendFileSync, readFileSync, writeFileSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { fetchAllItems } from './fetcher.js';
-import { filterItems } from './filter.js';
-import { synthesizeItems } from './synthesizer.js';
+import { clusterItems } from './cluster.js';
+import { filterClusters } from './filter.js';
+import { synthesizeClusters } from './synthesizer.js';
 import { buildFeed, loadArchive, writePreview } from './feed-builder.js';
 import { log } from './logger.js';
 import { reportCosts } from './costs.js';
@@ -20,6 +21,7 @@ const flagValue = (name) => {
 };
 
 const DRY_RUN = hasFlag('--dry-run');
+const FORCE = hasFlag('--force');
 const SKIP_SYNTHESIS = hasFlag('--skip-synthesis');
 const LIMIT = Number(flagValue('--limit')) || null;
 const FEED_OUT = flagValue('--out') || (hasFlag('--dry-run') ? '/tmp/feed-dry.xml' : null);
@@ -39,6 +41,18 @@ function saveHistory(history, newGuids) {
   writeFileSync(HISTORY_PATH, JSON.stringify(trimmed, null, 2), 'utf-8');
 }
 
+function warsawDate(value = Date.now()) {
+  return new Date(value).toLocaleDateString('en-CA', { timeZone: 'Europe/Warsaw' });
+}
+
+// GitHub potrafi opóźnić harmonogram o godziny, więc workflow odpala kilka prób
+// w ciągu nocy. Pierwsza, która faktycznie wystartuje, buduje zestaw; kolejne
+// wychodzą tutaj, zanim wydadzą choć jeden token.
+function alreadyGeneratedToday() {
+  const today = warsawDate();
+  return loadArchive().some((entry) => warsawDate(entry.publishedAt) === today);
+}
+
 function recentTopics() {
   const cutoff = Date.now() - config.recentTopicsDays * 24 * 60 * 60 * 1000;
   return loadArchive()
@@ -55,6 +69,15 @@ async function main() {
   log.phase('AI RSS Synthesizer — start');
   if (DRY_RUN) log.warn('DRY RUN — history.json i archive.json nie zostaną zmienione');
 
+  if (!DRY_RUN && !FORCE && alreadyGeneratedToday()) {
+    log.done(`Zestaw na ${warsawDate()} już istnieje — kończę bez kosztów (--force wymusza)`);
+    // Sygnał dla workflow, żeby pusty przebieg nie publikował feeda po raz drugi.
+    if (process.env.GITHUB_OUTPUT) {
+      appendFileSync(process.env.GITHUB_OUTPUT, 'skipped=true\n');
+    }
+    return;
+  }
+
   const history = loadHistory();
   log.info(`Historia: ${history.length} znanych GUIDów`);
 
@@ -69,11 +92,15 @@ async function main() {
   }
 
   // Faza 2
-  log.phase('Faza 2 — filtrowanie (Gemini)');
-  const filtered = await filterItems(fetched, recentTopics());
+  log.phase('Faza 2 — grupowanie w wątki');
+  const clusters = await clusterItems(fetched);
+
+  // Faza 3
+  log.phase('Faza 3 — filtrowanie (Gemini)');
+  const filtered = await filterClusters(clusters, recentTopics());
 
   if (filtered.length === 0) {
-    log.warn('Żaden artykuł nie przeszedł filtra — kończę bez zapisu feed.xml');
+    log.warn('Żaden wątek nie przeszedł filtra — kończę bez zapisu feed.xml');
     return;
   }
 
@@ -82,11 +109,12 @@ async function main() {
     return;
   }
 
-  // Faza 3
-  log.phase('Faza 3 — synteza (Gemini + web search)');
+
+  // Faza 4
+  log.phase('Faza 4 — synteza (pełne teksty → fakty → tło)');
   const toSynthesize = LIMIT ? filtered.slice(0, LIMIT) : filtered;
   if (LIMIT) log.warn(`--limit ${LIMIT}: syntezuję tylko ${toSynthesize.length} z ${filtered.length}`);
-  const synthesized = await synthesizeItems(toSynthesize);
+  const synthesized = await synthesizeClusters(toSynthesize);
   log.ok(`Zsyntezowano ${synthesized.length} artykułów`);
 
   if (synthesized.length === 0) {
@@ -94,8 +122,8 @@ async function main() {
     return;
   }
 
-  // Faza 4
-  log.phase('Faza 4 — budowanie feed.xml');
+  // Faza 5
+  log.phase('Faza 5 — budowanie feed.xml');
   const archive = buildFeed(synthesized, { dryRun: DRY_RUN, outputPath: FEED_OUT });
 
   if (PREVIEW_OUT) {
@@ -103,7 +131,7 @@ async function main() {
   }
 
   if (DRY_RUN) {
-    reportCosts();
+    reportCosts(synthesized.length);
     log.done('Gotowe (dry run)');
     return;
   }
@@ -112,7 +140,7 @@ async function main() {
   saveHistory(history, newGuids);
   log.info(`Historia zaktualizowana o ${newGuids.length} GUIDów`);
 
-  reportCosts();
+  reportCosts(synthesized.length);
   log.done('Gotowe');
 }
 

@@ -17,32 +17,64 @@ const STYLES = {
   sources: 'font-family:system-ui,sans-serif;font-size:0.8em;line-height:1.6;margin:1.5em 0 0;padding-left:1.4em;color:#666',
 };
 
-const UNVERIFIED_NOTE =
-  '<p style="font-family:system-ui,sans-serif;font-size:0.8em;line-height:1.5;margin:1.5em 0 0;' +
-  'padding:0.7em 0.9em;border-left:3px solid #b58900;background:#fdf6e3;color:#665c40">' +
-  'Uwaga: przy tym tekście wyszukiwarka nie zwróciła żadnych źródeł, ' +
-  'więc powstał na podstawie wiedzy modelu, a nie zweryfikowanych publikacji. ' +
-  'Traktuj liczby i szczegóły ostrożnie.</p>';
+const NOTE_STYLE = (color, bg) =>
+  `font-family:system-ui,sans-serif;font-size:0.8em;line-height:1.5;margin:1.5em 0 0;` +
+  `padding:0.7em 0.9em;border-left:3px solid ${color};background:${bg};color:#4a4a4a`;
 
-function renderSources(sources) {
-  if (!sources || sources.length === 0) return UNVERIFIED_NOTE;
+// Poziomy zaufania liczone w synthesizer.js:
+//   A ≥3 niezależnych wydawców · B 2 · C 1 · D brak pełnego tekstu
+const TRUST_NOTES = {
+  C: (publishers) =>
+    `<p style="${NOTE_STYLE('#b58900', '#fdf6e3')}">Tekst powstał na podstawie jednej publikacji` +
+    `${publishers?.length ? `: ${publishers[0]}` : ''}. Ustalenia nie zostały potwierdzone niezależnie ` +
+    `przez inną redakcję — traktuj je jako materiał własny tego wydawcy.</p>`,
+  D: () =>
+    `<p style="${NOTE_STYLE('#c0392b', '#fdf0ee')}">Uwaga: nie udało się pobrać pełnych tekstów źródłowych, ` +
+    `więc tekst powstał na podstawie samych zapowiedzi RSS i wiedzy modelu. ` +
+    `Traktuj liczby i szczegóły ostrożnie.</p>`,
+};
+
+function renderSourceList(label, sources) {
+  if (!sources || sources.length === 0) return '';
   const items = sources
-    .map((s) => `<li><a href="${s.uri}">${s.title}</a></li>`)
+    .map((s) => {
+      let host = '';
+      try {
+        host = new URL(s.uri).hostname.replace(/^www\./, '');
+      } catch { /* nieparsowalny URL — pokazujemy sam tytuł */ }
+      const suffix = host && !s.title.toLowerCase().includes(host.split('.')[0])
+        ? ` <span style="color:#999">(${host})</span>`
+        : '';
+      return `<li><a href="${s.uri}">${s.title}</a>${suffix}</li>`;
+    })
     .join('');
-  return `<h3 style="${STYLES.h3}">Źródła</h3><ul style="${STYLES.sources}">${items}</ul>`;
+  return `<h3 style="${STYLES.h3}">${label}</h3><ul style="${STYLES.sources}">${items}</ul>`;
 }
 
-function applyStyles(html, imageUrl, sources) {
-  const img = imageUrl
-    ? `<img src="${imageUrl}" alt="" style="${STYLES.img}">`
+function renderSources(entry) {
+  // Wpisy archiwalne sprzed tej zmiany nie mają poziomu — nie dorabiamy im etykiety.
+  const note = entry.trustLevel && TRUST_NOTES[entry.trustLevel]
+    ? TRUST_NOTES[entry.trustLevel](entry.publishers)
     : '';
 
-  return img + html
+  return (
+    renderSourceList('Źródła (fakty)', entry.sources) +
+    renderSourceList('Tło i stanowiska', entry.backgroundSources) +
+    note
+  );
+}
+
+function applyStyles(entry) {
+  const img = entry.imageUrl
+    ? `<img src="${entry.imageUrl}" alt="" style="${STYLES.img}">`
+    : '';
+
+  return img + entry.html
     .replace(/<h3>/g, `<h3 style="${STYLES.h3}">`)
     .replace(/<p>/g, `<p style="${STYLES.p}">`)
     .replace(/<ul>/g, `<ul style="${STYLES.ul}">`)
     .replace(/<li>/g, `<li style="${STYLES.li}">`)
-    + renderSources(sources);
+    + renderSources(entry);
 }
 
 export function loadArchive() {
@@ -64,6 +96,10 @@ function mergeArchive(archive, items) {
     imageUrl: item.imageUrl || null,
     source: item.source,
     sources: item.sources || [],
+    backgroundSources: item.backgroundSources || [],
+    publishers: item.publishers || [],
+    corroborations: item.corroborations || [],
+    trustLevel: item.trustLevel || null,
     category: item.category || null,
     topic: item.topic || null,
     pubDate: item.pubDate,
@@ -90,7 +126,7 @@ export function buildFeed(items, { dryRun = false, outputPath } = {}) {
     link: 'https://github.com/ai-rss',
     language: 'pl',
     updated: new Date(),
-    generator: `AI RSS (${config.synthesisModel})`,
+    generator: `AI RSS (${config.models.facts})`,
   });
 
   let withImages = 0;
@@ -102,7 +138,7 @@ export function buildFeed(items, { dryRun = false, outputPath } = {}) {
       title: entry.title,
       id: entry.guid,
       link: entry.link,
-      content: applyStyles(entry.html, entry.imageUrl, entry.sources),
+      content: applyStyles(entry),
       // Data publikacji w NASZYM feedzie — nie oryginalna data źródła,
       // inaczej czytniki rozsypują dzienny zestaw po wcześniejszych dniach.
       date: new Date(entry.publishedAt),
@@ -135,10 +171,12 @@ export function writePreview(archive, newGuids, path) {
         <span>wątek: ${entry.topic || '—'}</span>
         <span>${new Date(entry.publishedAt).toLocaleString('pl-PL')}</span>
         <span>${entry.html.replace(/<[^>]+>/g, '').length} znaków</span>
-        <span>${(entry.sources || []).length} źródeł</span>
+        <span>zaufanie: ${entry.trustLevel || '—'}</span>
+        <span>${(entry.sources || []).length} źródeł faktów</span>
+        <span>${(entry.backgroundSources || []).length} źródeł tła</span>
       </div>
       <h2>${entry.title}</h2>
-      ${applyStyles(entry.html, entry.imageUrl, entry.sources)}
+      ${applyStyles(entry)}
       <p class="src"><a href="${entry.link}">źródło</a></p>
     </article>`).join('\n');
 

@@ -4,25 +4,28 @@ import { log } from './logger.js';
 import { record } from './costs.js';
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const FILTER_MODEL = config.models.filter;
+const FALLBACK_MODEL = config.models.fallback;
+
 const filterThinking = config.thinkingBudget?.filter >= 0
   ? { thinkingConfig: { thinkingBudget: config.thinkingBudget.filter } }
   : {};
 
 const model = genAI.getGenerativeModel({
-  model: config.filterModel,
+  model: FILTER_MODEL,
   generationConfig: filterThinking,
 });
-const fallbackModel = genAI.getGenerativeModel({ model: config.fallbackModel });
+const fallbackModel = genAI.getGenerativeModel({ model: FALLBACK_MODEL });
 
 async function generate(prompt) {
   try {
     const result = await model.generateContent(prompt);
-    record(config.filterModel, result.response);
+    record(FILTER_MODEL, result.response, 'filtr');
     return result.response.text();
   } catch (err) {
-    log.warn(`Model ${config.filterModel} zawiódł (${err.message.slice(0, 120)}) — fallback na ${config.fallbackModel}`);
+    log.warn(`Model ${FILTER_MODEL} zawiódł (${err.message.slice(0, 120)}) — fallback na ${FALLBACK_MODEL}`);
     const result = await fallbackModel.generateContent(prompt);
-    record(config.fallbackModel, result.response);
+    record(FALLBACK_MODEL, result.response, 'filtr');
     return result.response.text();
   }
 }
@@ -38,17 +41,21 @@ const CATEGORIES = [
   'swiat-reportaz',
 ];
 
-export async function filterItems(items, recentTopics = []) {
-  if (items.length === 0) return [];
+export async function filterClusters(clusters, recentTopics = []) {
+  if (clusters.length === 0) return [];
 
-  log.info(`Wysyłam ${items.length} artykułów do Gemini (filtr, model: ${config.filterModel})...`);
+  const candidates = clusters.slice(0, config.cluster.maxClustersToFilter);
+  log.info(`Wysyłam ${candidates.length} wątków do Gemini (filtr, model: ${FILTER_MODEL})...`);
   if (recentTopics.length > 0) {
     log.info(`Unikam ${recentTopics.length} tematów opublikowanych w ostatnich dniach`);
   }
 
-  const numbered = items.map((item, idx) =>
-    `[${idx}] (${item.source}) ${item.title}\n${(item.description || '').slice(0, 400)}`
-  );
+  const numbered = candidates.map((cluster, idx) => {
+    const lead = cluster.members[0];
+    const publishers = cluster.publishers.join(', ');
+    return `[${idx}] (${cluster.publisherCount} wydawc${cluster.publisherCount === 1 ? 'a' : 'ów'}: ${publishers})\n` +
+      `${lead.title}\n${(lead.description || '').slice(0, config.cluster.filterDescriptionChars)}`;
+  });
 
   const recentBlock = recentTopics.length > 0
     ? `JUŻ OPUBLIKOWANE w ostatnich dniach — NIE wybieraj kolejnego artykułu o tym samym wątku, chyba że nastąpił istotny, nowy zwrot (a wtedy powiedz to w polu "temat"):
@@ -58,25 +65,32 @@ ${recentTopics.map((t) => `- ${t}`).join('\n')}
 
   const prompt = `Jesteś redaktorem prowadzącym dzienny przegląd typu "slow news" — dla czytelnika, który czyta RAZ dziennie ${config.maxItemsPerRun} tekstów i chce po nich rozumieć świat, a nie być zasypanym nagłówkami.
 
-Wybierz dokładnie ${config.maxItemsPerRun} artykułów z listy poniżej.
+Lista poniżej to WĄTKI, nie pojedyncze artykuły. Jeden wątek = jedno wydarzenie opisane przez jednego lub kilku wydawców; deduplikacja została już zrobiona. Przy każdym wątku podana jest liczba niezależnych wydawców, którzy go opisali.
+
+Wybierz dokładnie ${config.maxItemsPerRun} wątków.
 
 NAJWAŻNIEJSZA ZASADA — RÓŻNORODNOŚĆ:
-- Każdy z wybranych artykułów musi dotyczyć INNEGO wydarzenia i INNEGO wątku tematycznego.
-- Maksymalnie 2 artykuły z jednego dużego wątku (np. wojna Rosja–Ukraina, niemiecka polityka wewnętrzna, Bliski Wschód). Nigdy 3 i więcej.
+- Każdy wybrany wątek musi dotyczyć INNEGO wydarzenia i INNEGO obszaru tematycznego.
+- Maksymalnie 2 wątki z jednego dużego tematu (np. wojna Rosja–Ukraina, Bliski Wschód, polityka USA). Nigdy 3 i więcej.
 - Docelowo co najmniej 4 różne kategorie w zestawie.
-- Zestaw pięciu tekstów o tej samej wojnie to porażka, nawet jeśli każdy z nich osobno jest ważny.
+- Zestaw pięciu tekstów o tej samej wojnie to porażka, nawet jeśli każdy osobno jest ważny.
 
 PROPORCJE:
-- 2 artykuły dotyczące Polski
-- 2–3 artykuły dotyczące świata
-- Jeśli w materiale nie ma 2 sensownych polskich tematów, weź tyle, ile jest — nie dobieraj śmieci na siłę.
+- 2 wątki dotyczące Polski
+- 2–3 wątki dotyczące świata
+- Jeśli nie ma 2 sensownych polskich tematów, weź tyle, ile jest — nie dobieraj śmieci na siłę.
+
+LICZBA WYDAWCÓW — jak ją czytać:
+- 3+ wydawców: temat potwierdzony niezależnie. Bezpieczny wybór.
+- 1 wydawca to NIE jest wada sama w sobie. Materiał własny (śledztwo, reportaż, esej, analiza naukowa) z natury ma jednego wydawcę i bywa najcenniejszym tekstem dnia — wybieraj go śmiało.
+- 1 wydawca PRZY zwykłej, bieżącej informacji politycznej lub sensacyjnej, którą inne redakcje powinny były podchwycić, a nie podchwyciły — traktuj podejrzliwie i raczej pomiń.
 
 CO WARTO WYBIERAĆ:
 - Konkretne decyzje i zdarzenia o realnych konsekwencjach: rządy, sądy, banki centralne, konflikty, dyplomacja.
 - Gospodarka: inflacja, stopy, duże bankructwa, zmiany systemowe, rynek pracy, mieszkania, energia.
 - Nauka, technologia, AI, klimat, zdrowie publiczne — przełomy i zmiany reguł gry.
 - Sprawy społeczne: edukacja, migracja, wymiar sprawiedliwości, prawa obywatelskie.
-- Ciekawe, dobrze udokumentowane historie o innych krajach i społeczeństwach — nawet bez bezpośredniego wpływu na Polskę. Tekst może być po prostu wartościowy poznawczo: jak coś działa, dlaczego jakieś państwo podjęło nietypową decyzję, jak zmienia się jakieś zjawisko. Takie teksty są pożądane, nie są "mniej poważne".
+- Śledztwa dziennikarskie i dobrze udokumentowane reportaże o innych krajach — nawet bez bezpośredniego wpływu na Polskę. Tekst może być wartościowy poznawczo: jak coś działa, dlaczego jakieś państwo podjęło nietypową decyzję.
 - Kultura i idee, jeśli chodzi o coś więcej niż premiera lub plotka.
 
 CO ODRZUCAĆ:
@@ -85,15 +99,13 @@ CO ODRZUCAĆ:
 - Plotki i życie celebrytów.
 - Wypadki drogowe i lokalna kryminalka bez znaczenia ogólniejszego.
 - Sport, poza poważnym skandalem systemowym.
-- Pyskówki polityków, przepychanki słowne, "X odpowiedział Y" — bez konkretnego zdarzenia lub decyzji.
+- Pyskówki polityków, "X odpowiedział Y" — bez konkretnego zdarzenia lub decyzji.
 - Relacje "na żywo" i migawki bez zamkniętej treści.
-
-DEDUPLIKACJA W OBRĘBIE LISTY: kilka artykułów o tym samym wydarzeniu — nawet w różnych językach (polski, angielski, niemiecki) — to jeden temat. Wybierz jeden, z najlepszego źródła.
 
 ${recentBlock}
 Dostępne kategorie: ${CATEGORIES.join(', ')}
 
-Artykuły:
+Wątki:
 ${numbered.join('\n\n')}
 
 Odpowiedz WYŁĄCZNIE tablicą JSON, uporządkowaną od najważniejszego, w formacie:
@@ -112,20 +124,20 @@ Bez markdown, bez wyjaśnień, tylko JSON.`;
 
     for (const entry of parsed) {
       const idx = typeof entry === 'number' ? entry : entry?.index;
-      if (typeof idx !== 'number' || idx < 0 || idx >= items.length) continue;
+      if (typeof idx !== 'number' || idx < 0 || idx >= candidates.length) continue;
       if (seen.has(idx)) continue;
       seen.add(idx);
       selected.push({
-        ...items[idx],
+        ...candidates[idx],
         category: entry?.kategoria || 'nieokreslona',
-        topic: entry?.temat || items[idx].title,
+        topic: entry?.temat || candidates[idx].members[0].title,
       });
       if (selected.length >= config.maxItemsPerRun) break;
     }
 
-    log.ok(`Filtr wybrał ${selected.length} artykułów:`);
-    selected.forEach((item, i) =>
-      log.info(`  ${i + 1}. [${item.category}] ${item.title}  ← ${item.topic}`)
+    log.ok(`Filtr wybrał ${selected.length} wątków:`);
+    selected.forEach((cluster, i) =>
+      log.info(`  ${i + 1}. [${cluster.category}] ${cluster.publisherCount}× ${cluster.members[0].title}  ← ${cluster.topic}`)
     );
 
     const categories = new Set(selected.map((s) => s.category));

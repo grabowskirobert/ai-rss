@@ -1,27 +1,387 @@
 {
   "sources": [
-    "https://oko.press/feed/",
-    "https://www.polsatnews.pl/rss/polska.xml",
-    "https://rss.dw.com/rdf/rss-pol-all",
-    "https://feeds.bbci.co.uk/polska/rss.xml",
-    "https://feeds.bbci.co.uk/news/world/rss.xml",
-    "https://www.economist.com/international/rss.xml",
-    "https://www.economist.com/finance-and-economics/rss.xml",
-    "https://www.economist.com/science-and-technology/rss.xml",
-    "https://naukawpolsce.pl/rss.xml",
-    "https://www.aljazeera.com/xml/rss/all.xml",
-    "https://aeon.co/feed.rss"
+    {
+      "url": "https://oko.press/feed/",
+      "lang": "pl",
+      "axis": "polska"
+    },
+    {
+      "url": "https://www.polsatnews.pl/rss/polska.xml",
+      "lang": "pl",
+      "axis": "polska"
+    },
+    {
+      "url": "https://tvn24.pl/najnowsze.xml",
+      "lang": "pl",
+      "axis": "polska"
+    },
+    {
+      "url": "https://www.rmf24.pl/fakty/feed",
+      "lang": "pl",
+      "axis": "polska"
+    },
+    {
+      "url": "https://rss.dw.com/rdf/rss-pol-all",
+      "lang": "pl",
+      "axis": "polska"
+    },
+    {
+      "url": "https://feeds.bbci.co.uk/polska/rss.xml",
+      "lang": "pl",
+      "axis": "polska"
+    },
+    {
+      "url": "https://krytykapolityczna.pl/feed/",
+      "lang": "pl",
+      "axis": "polska"
+    },
+    {
+      "url": "https://klubjagiellonski.pl/feed/",
+      "lang": "pl",
+      "axis": "polska"
+    },
+    {
+      "url": "https://notesfrompoland.com/feed/",
+      "lang": "en",
+      "axis": "polska"
+    },
+    {
+      "url": "https://demagog.org.pl/feed/",
+      "lang": "pl",
+      "axis": "fact-checking"
+    },
+    {
+      "url": "https://konkret24.tvn24.pl/najnowsze.xml",
+      "lang": "pl",
+      "axis": "fact-checking"
+    },
+    {
+      "url": "https://fullfact.org/feed/all/",
+      "lang": "en",
+      "axis": "fact-checking"
+    },
+    {
+      "url": "https://www.money.pl/rss/wszystkie",
+      "lang": "pl",
+      "axis": "gospodarka"
+    },
+    {
+      "url": "https://www.bankier.pl/rss/wiadomosci.xml",
+      "lang": "pl",
+      "axis": "gospodarka"
+    },
+    {
+      "url": "https://300gospodarka.pl/feed",
+      "lang": "pl",
+      "axis": "gospodarka"
+    },
+    {
+      "url": "https://businessinsider.com.pl/.feed",
+      "lang": "pl",
+      "axis": "gospodarka"
+    },
+    {
+      "url": "https://www.economist.com/finance-and-economics/rss.xml",
+      "lang": "en",
+      "axis": "gospodarka",
+      "paywall": true
+    },
+    {
+      "url": "https://www.ft.com/world?format=rss",
+      "lang": "en",
+      "axis": "gospodarka",
+      "paywall": true
+    },
+    {
+      "url": "https://www.bruegel.org/rss.xml",
+      "lang": "en",
+      "axis": "gospodarka"
+    },
+    {
+      "url": "https://www.project-syndicate.org/rss",
+      "lang": "en",
+      "axis": "gospodarka",
+      "paywall": true
+    },
+    {
+      "url": "https://feeds.bbci.co.uk/news/world/rss.xml",
+      "lang": "en",
+      "axis": "anglosfera"
+    },
+    {
+      "url": "https://www.theguardian.com/world/rss",
+      "lang": "en",
+      "axis": "anglosfera"
+    },
+    {
+      "url": "https://rss.nytimes.com/services/xml/rss/nyt/World.xml",
+      "lang": "en",
+      "axis": "anglosfera",
+      "paywall": true
+    },
+    {
+      "url": "https://feeds.washingtonpost.com/rss/world",
+      "lang": "en",
+      "axis": "anglosfera",
+      "paywall": true
+    },
+    {
+      "url": "https://www.npr.org/rss/rss.php?id=1004",
+      "lang": "en",
+      "axis": "anglosfera"
+    },
+    {
+      "url": "https://www.economist.com/international/rss.xml",
+      "lang": "en",
+      "axis": "anglosfera",
+      "paywall": true
+    },
+    {
+      "url": "https://www.propublica.org/feeds/propublica/main",
+      "lang": "en",
+      "axis": "anglosfera"
+    },
+    {
+      "url": "https://www.lawfaremedia.org/feeds/articles",
+      "lang": "en",
+      "axis": "anglosfera"
+    },
+    {
+      "url": "https://foreignpolicy.com/feed/",
+      "lang": "en",
+      "axis": "anglosfera",
+      "paywall": true
+    },
+    {
+      "url": "https://theconversation.com/global/articles.atom",
+      "lang": "en",
+      "axis": "anglosfera"
+    },
+    {
+      "url": "https://www.spiegel.de/international/index.rss",
+      "lang": "en",
+      "axis": "europa"
+    },
+    {
+      "url": "https://rss.dw.com/rdf/rss-en-world",
+      "lang": "en",
+      "axis": "europa"
+    },
+    {
+      "url": "https://www.lemonde.fr/rss/une.xml",
+      "lang": "fr",
+      "axis": "europa"
+    },
+    {
+      "url": "https://www.france24.com/en/rss",
+      "lang": "en",
+      "axis": "europa"
+    },
+    {
+      "url": "https://www.politico.eu/feed/",
+      "lang": "en",
+      "axis": "europa"
+    },
+    {
+      "url": "https://novayagazeta.eu/feed/rss",
+      "lang": "en",
+      "axis": "europa"
+    },
+    {
+      "url": "https://www.crisisgroup.org/rss.xml",
+      "lang": "en",
+      "axis": "europa"
+    },
+    {
+      "url": "https://elpais.com/rss/elpais/inenglish.xml",
+      "lang": "en",
+      "axis": "europa"
+    },
+    {
+      "url": "https://balkaninsight.com/feed/",
+      "lang": "en",
+      "axis": "europa"
+    },
+    {
+      "url": "https://kyivindependent.com/feed/rss/",
+      "lang": "en",
+      "axis": "europa"
+    },
+    {
+      "url": "https://meduza.io/rss/en/all",
+      "lang": "en",
+      "axis": "europa"
+    },
+    {
+      "url": "https://carnegieendowment.org/rss/solr?fa=pubs",
+      "lang": "en",
+      "axis": "europa"
+    },
+    {
+      "url": "https://www.aljazeera.com/xml/rss/all.xml",
+      "lang": "en",
+      "axis": "poza-zachod"
+    },
+    {
+      "url": "https://www.scmp.com/rss/91/feed",
+      "lang": "en",
+      "axis": "poza-zachod",
+      "paywall": true
+    },
+    {
+      "url": "https://thediplomat.com/feed/",
+      "lang": "en",
+      "axis": "poza-zachod"
+    },
+    {
+      "url": "https://asia.nikkei.com/rss/feed/nar",
+      "lang": "en",
+      "axis": "poza-zachod",
+      "paywall": true
+    },
+    {
+      "url": "https://www.japantimes.co.jp/feed/",
+      "lang": "en",
+      "axis": "poza-zachod"
+    },
+    {
+      "url": "https://www.thehindu.com/news/international/feeder/default.rss",
+      "lang": "en",
+      "axis": "poza-zachod"
+    },
+    {
+      "url": "https://www.dailymaverick.co.za/dmrss/",
+      "lang": "en",
+      "axis": "poza-zachod"
+    },
+    {
+      "url": "https://www.theafricareport.com/feed/",
+      "lang": "en",
+      "axis": "poza-zachod"
+    },
+    {
+      "url": "https://www.batimes.com.ar/feed",
+      "lang": "en",
+      "axis": "poza-zachod"
+    },
+    {
+      "url": "https://restofworld.org/feed/latest",
+      "lang": "en",
+      "axis": "poza-zachod"
+    },
+    {
+      "url": "https://naukawpolsce.pl/rss.xml",
+      "lang": "pl",
+      "axis": "nauka"
+    },
+    {
+      "url": "https://www.economist.com/science-and-technology/rss.xml",
+      "lang": "en",
+      "axis": "nauka",
+      "paywall": true
+    },
+    {
+      "url": "https://www.nature.com/nature.rss",
+      "lang": "en",
+      "axis": "nauka"
+    },
+    {
+      "url": "https://www.science.org/rss/news_current.xml",
+      "lang": "en",
+      "axis": "nauka"
+    },
+    {
+      "url": "https://phys.org/rss-feed/",
+      "lang": "en",
+      "axis": "nauka"
+    },
+    {
+      "url": "https://www.quantamagazine.org/feed/",
+      "lang": "en",
+      "axis": "nauka"
+    },
+    {
+      "url": "https://www.newscientist.com/feed/home/",
+      "lang": "en",
+      "axis": "nauka",
+      "paywall": true
+    },
+    {
+      "url": "https://www.statnews.com/feed/",
+      "lang": "en",
+      "axis": "nauka"
+    },
+    {
+      "url": "https://www.carbonbrief.org/feed/",
+      "lang": "en",
+      "axis": "klimat"
+    },
+    {
+      "url": "https://feeds.bbci.co.uk/news/science_and_environment/rss.xml",
+      "lang": "en",
+      "axis": "klimat"
+    },
+    {
+      "url": "https://www.theguardian.com/environment/rss",
+      "lang": "en",
+      "axis": "klimat"
+    },
+    {
+      "url": "https://arstechnica.com/feed/",
+      "lang": "en",
+      "axis": "technologia"
+    },
+    {
+      "url": "https://www.wired.com/feed/rss",
+      "lang": "en",
+      "axis": "technologia",
+      "paywall": true
+    },
+    {
+      "url": "https://www.technologyreview.com/feed/",
+      "lang": "en",
+      "axis": "technologia",
+      "paywall": true
+    },
+    {
+      "url": "https://spectrum.ieee.org/rss/fulltext",
+      "lang": "en",
+      "axis": "technologia"
+    },
+    {
+      "url": "https://aeon.co/feed.rss",
+      "lang": "en",
+      "axis": "idee"
+    },
+    {
+      "url": "https://www.noemamag.com/feed/",
+      "lang": "en",
+      "axis": "idee"
+    },
+    {
+      "url": "https://longreads.com/feed/",
+      "lang": "en",
+      "axis": "idee"
+    },
+    {
+      "url": "https://thebaffler.com/feed",
+      "lang": "en",
+      "axis": "idee"
+    },
+    {
+      "url": "https://lithub.com/feed/",
+      "lang": "en",
+      "axis": "idee"
+    }
   ],
   "maxAgeHours": 24,
-  "maxHistorySize": 500,
+  "maxHistorySize": 2000,
   "maxItemsPerRun": 5,
   "delayBetweenRequestsMs": 0,
   "fetchTimeoutMs": 20000,
   "maxFeedItems": 50,
   "recentTopicsDays": 3,
   "maxPublishedHistory": 60,
-  "filterModel": "gemini-3.5-flash",
-  "synthesisModel": "gemini-3.5-flash",
   "usdPlnRate": 3.6,
   "pricing": {
     "gemini-3.5-flash": {
@@ -31,11 +391,238 @@
     "gemini-3.5-flash-lite": {
       "inputUsdPerMTok": 0.3,
       "outputUsdPerMTok": 2.5
+    },
+    "gemini-embedding-001": {
+      "inputUsdPerMTok": 0.15,
+      "outputUsdPerMTok": 0
     }
   },
-  "fallbackModel": "gemini-3.5-flash-lite",
   "thinkingBudget": {
-    "filter": -1,
-    "synthesis": 0
+    "filter": 512,
+    "facts": 0,
+    "claims": 128,
+    "background": 128
+  },
+  "cluster": {
+    "similarityThreshold": 0.82,
+    "windowHours": 36,
+    "maxClustersToFilter": 140,
+    "maxMembers": 6,
+    "filterDescriptionChars": 180,
+    "embeddingTextChars": 240
+  },
+  "extractor": {
+    "minChars": 800,
+    "maxChars": 14000,
+    "timeoutMs": 15000,
+    "concurrency": 4,
+    "maxArticlesPerCluster": 3,
+    "userAgent": "Mozilla/5.0 (compatible; ai-rss/1.0; +https://github.com/ai-rss)",
+    "maxCorpusChars": 26000
+  },
+  "background": {
+    "enabled": true,
+    "maxClaims": 14,
+    "minTier2DomainsPerBackgroundClaim": 2,
+    "t3RatioSkipThreshold": 0.6
+  },
+  "trust": {
+    "tier2Domains": [
+      "reuters.com",
+      "apnews.com",
+      "afp.com",
+      "pap.pl",
+      "bloomberg.com",
+      "wsj.com",
+      "bbc.com",
+      "bbc.co.uk",
+      "theguardian.com",
+      "nytimes.com",
+      "washingtonpost.com",
+      "ft.com",
+      "economist.com",
+      "npr.org",
+      "pbs.org",
+      "cnn.com",
+      "cbsnews.com",
+      "abcnews.go.com",
+      "nbcnews.com",
+      "time.com",
+      "theatlantic.com",
+      "newyorker.com",
+      "lemonde.fr",
+      "lefigaro.fr",
+      "liberation.fr",
+      "spiegel.de",
+      "faz.net",
+      "zeit.de",
+      "sueddeutsche.de",
+      "tagesschau.de",
+      "elpais.com",
+      "elmundo.es",
+      "corriere.it",
+      "repubblica.it",
+      "nrc.nl",
+      "dw.com",
+      "france24.com",
+      "rfi.fr",
+      "euronews.com",
+      "politico.eu",
+      "politico.com",
+      "euractiv.com",
+      "euobserver.com",
+      "balkaninsight.com",
+      "kyivindependent.com",
+      "pravda.com.ua",
+      "meduza.io",
+      "novayagazeta.eu",
+      "thebell.io",
+      "aljazeera.com",
+      "haaretz.com",
+      "timesofisrael.com",
+      "middleeasteye.net",
+      "scmp.com",
+      "nikkei.com",
+      "asia.nikkei.com",
+      "japantimes.co.jp",
+      "koreaherald.com",
+      "thehindu.com",
+      "indianexpress.com",
+      "thediplomat.com",
+      "channelnewsasia.com",
+      "mg.co.za",
+      "dailymaverick.co.za",
+      "premiumtimesng.com",
+      "theeastafrican.co.ke",
+      "batimes.com.ar",
+      "folha.uol.com.br",
+      "eltiempo.com",
+      "restofworld.org",
+      "propublica.org",
+      "lawfaremedia.org",
+      "foreignaffairs.com",
+      "foreignpolicy.com",
+      "csmonitor.com",
+      "theconversation.com",
+      "nature.com",
+      "science.org",
+      "thelancet.com",
+      "nejm.org",
+      "bmj.com",
+      "cell.com",
+      "pnas.org",
+      "arxiv.org",
+      "biorxiv.org",
+      "scientificamerican.com",
+      "newscientist.com",
+      "quantamagazine.org",
+      "statnews.com",
+      "carbonbrief.org",
+      "phys.org",
+      "spectrum.ieee.org",
+      "arstechnica.com",
+      "wired.com",
+      "technologyreview.com",
+      "noemamag.com",
+      "aeon.co",
+      "wikipedia.org",
+      "britannica.com",
+      "ourworldindata.org",
+      "oecd.org",
+      "imf.org",
+      "worldbank.org",
+      "un.org",
+      "who.int",
+      "nato.int",
+      "unhcr.org",
+      "iea.org",
+      "ipcc.ch",
+      "icc-cpi.int",
+      "icj-cij.org",
+      "echr.coe.int",
+      "coe.int",
+      "osce.org",
+      "wto.org",
+      "bis.org",
+      "ecb.europa.eu",
+      "amnesty.org",
+      "hrw.org",
+      "transparency.org",
+      "sipri.org",
+      "rsf.org",
+      "pewresearch.org",
+      "gallup.com",
+      "brookings.edu",
+      "carnegieendowment.org",
+      "csis.org",
+      "chathamhouse.org",
+      "ecfr.eu",
+      "bruegel.org",
+      "rand.org",
+      "crisisgroup.org",
+      "iiss.org",
+      "project-syndicate.org",
+      "fullfact.org",
+      "factcheck.org",
+      "snopes.com",
+      "correctiv.org",
+      "afpfactcheck.com",
+      "demagog.org.pl",
+      "konkret24.tvn24.pl",
+      "oko.press",
+      "wyborcza.pl",
+      "rp.pl",
+      "tvn24.pl",
+      "polsatnews.pl",
+      "rmf24.pl",
+      "onet.pl",
+      "wnp.pl",
+      "bankier.pl",
+      "money.pl",
+      "businessinsider.com.pl",
+      "300gospodarka.pl",
+      "obserwatorfinansowy.pl",
+      "naukawpolsce.pl",
+      "nbp.pl",
+      "stat.gov.pl",
+      "notesfrompoland.com",
+      "krytykapolityczna.pl",
+      "klubjagiellonski.pl",
+      "batory.org.pl",
+      "theafricareport.com",
+      "allafrica.com",
+      "intellinews.com"
+    ],
+    "tier2Suffixes": [
+      ".gov",
+      ".gov.pl",
+      ".gov.uk",
+      ".gov.au",
+      ".gov.ca",
+      ".edu",
+      ".ac.uk",
+      ".edu.pl",
+      ".int",
+      ".europa.eu",
+      ".un.org",
+      ".who.int",
+      ".gouv.fr",
+      ".bund.de",
+      ".gob.es",
+      ".gov.br",
+      ".gov.in",
+      ".go.jp",
+      ".gc.ca"
+    ],
+    "blockedDomains": []
+  },
+  "monthlyBudgetPln": 15,
+  "models": {
+    "filter": "gemini-3.5-flash-lite",
+    "facts": "gemini-3.5-flash",
+    "claims": "gemini-3.5-flash-lite",
+    "background": "gemini-3.5-flash-lite",
+    "embedding": "gemini-embedding-001",
+    "fallback": "gemini-3.5-flash-lite"
   }
 }
