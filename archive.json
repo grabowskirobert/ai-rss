@@ -1,5 +1,29 @@
 [
   {
+    "guid": "odsluch-2026-09-28",
+    "title": "ODSŁUCH — 2026-09-28 (11:27)",
+    "link": "https://grabowskirobert.github.io/ai-rss/audio/odsluch-2026-09-28.m4a",
+    "html": "<p>Całe dzisiejsze wydanie do odsłuchania — 4 tematy, 11:27.</p><h3>W tym odcinku</h3><ul><li style=\"margin-bottom:0.3em\">Łukasz Gibała i Monika Piątkowska zmierzą się w drugiej turze wyborów prezydenckich w Krakowie</li><li style=\"margin-bottom:0.3em\">Prezydent Serbii Aleksandar Vučić podał się do dymisji i wystartuje w wyborach na premiera</li><li style=\"margin-bottom:0.3em\">Pięciu mężczyzn zatrzymanych pod zarzutem terroryzmu w pobliżu brytyjsko-amerykańskiej bazy lotniczej</li><li style=\"margin-bottom:0.3em\">Unia Europejska dąży do ograniczenia zależności od importu w sektorze półprzewodników</li></ul>",
+    "imageUrl": null,
+    "source": "AI RSS",
+    "sources": [],
+    "backgroundSources": [],
+    "publishers": [],
+    "corroborations": [],
+    "trustLevel": null,
+    "kind": "audio",
+    "audio": {
+      "url": "https://grabowskirobert.github.io/ai-rss/audio/odsluch-2026-09-28.m4a",
+      "type": "audio/mp4",
+      "length": 5675476
+    },
+    "durationSec": 687.37,
+    "category": "odsluch",
+    "topic": "odsłuch wydania 2026-09-28",
+    "pubDate": "2026-09-28T09:02:33.563Z",
+    "publishedAt": "2026-09-28T09:02:33.566Z"
+  },
+  {
     "guid": "https://oko.press/na-zywo/na-zywo-relacja/oficjalnie-lukasz-gibala-wygrywa-i-ture-wyborow-w-krakowie",
     "title": "Łukasz Gibała i Monika Piątkowska zmierzą się w drugiej turze wyborów prezydenckich w Krakowie",
     "link": "https://oko.press/na-zywo/na-zywo-relacja/oficjalnie-lukasz-gibala-wygrywa-i-ture-wyborow-w-krakowie",
@@ -160,30 +184,6 @@
     "category": "gospodarka",
     "topic": "Unijne wyzwania i zależność w sektorze czipów",
     "pubDate": "2026-09-27T10:42:51.000Z",
-    "publishedAt": "2026-09-28T01:45:42.549Z"
-  },
-  {
-    "guid": "odsluch-2026-09-28",
-    "title": "ODSŁUCH — 2026-09-28 (9:27)",
-    "link": "https://github.com/grabowskirobert/ai-rss/releases/download/audio-2026-09-28/odsluch-2026-09-28.mp3",
-    "html": "<p>Całe dzisiejsze wydanie do odsłuchania — 4 tematy, 9:27.</p><h3>W tym odcinku</h3><ul><li style=\"margin-bottom:0.3em\">Łukasz Gibała i Monika Piątkowska zmierzą się w drugiej turze wyborów prezydenckich w Krakowie</li><li style=\"margin-bottom:0.3em\">Prezydent Serbii Aleksandar Vučić podał się do dymisji i wystartuje w wyborach na premiera</li><li style=\"margin-bottom:0.3em\">Pięciu mężczyzn zatrzymanych pod zarzutem terroryzmu w pobliżu brytyjsko-amerykańskiej bazy lotniczej</li><li style=\"margin-bottom:0.3em\">Unia Europejska dąży do ograniczenia zależności od importu w sektorze półprzewodników</li></ul>",
-    "imageUrl": null,
-    "source": "AI RSS",
-    "sources": [],
-    "backgroundSources": [],
-    "publishers": [],
-    "corroborations": [],
-    "trustLevel": null,
-    "kind": "audio",
-    "audio": {
-      "url": "https://github.com/grabowskirobert/ai-rss/releases/download/audio-2026-09-28/odsluch-2026-09-28.mp3",
-      "type": "audio/mpeg",
-      "length": 4536813
-    },
-    "durationSec": 567.0216666666666,
-    "category": "odsluch",
-    "topic": "odsłuch wydania 2026-09-28",
-    "pubDate": "2026-09-28T01:45:42.546Z",
     "publishedAt": "2026-09-28T01:45:42.549Z"
   },
   {
