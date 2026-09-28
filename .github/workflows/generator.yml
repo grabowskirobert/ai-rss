@@ -74,7 +74,7 @@ jobs:
         run: |
           TAG="${{ steps.run.outputs.audio_tag }}"
           gh release create "$TAG" --title "$TAG" --notes "Odsłuch wydania" 2>/dev/null || true
-          gh release upload "$TAG" "${{ steps.run.outputs.audio_path }}" --clobber
+          gh release upload "$TAG" "${{ steps.run.outputs.audio_path }}" "${{ steps.run.outputs.audio_script }}" --clobber
           # Retencja — releases starsze niż audio.retentionDays lecą razem z plikami.
           KEEP=$(node -p "require('./config.json').audio.retentionDays")
           CUTOFF=$(date -u -d "$KEEP days ago" +%Y-%m-%d)
@@ -109,9 +109,28 @@ jobs:
           git diff --staged --quiet || git commit -m "chore: update feed state"
           git push origin "HEAD:${GITHUB_REF_NAME}"
 
+      # Pages serwuje tylko to, co jest w publish_dir, a force_orphan kasuje
+      # historię gałęzi. Nagrania z poprzednich dni trzeba więc odtworzyć
+      # z Releases, które są trwałym magazynem.
+      - name: Restore recent audio from Releases
+        if: inputs.dry_run != true && steps.run.outputs.skipped != 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p public/audio
+          KEEP=$(node -p "require('./config.json').audio.retentionDays")
+          gh release list --limit 100 --json tagName --jq '.[].tagName' \
+            | { grep '^audio-' || true; } | head -n "$KEEP" \
+            | while read -r t; do
+                gh release download "$t" -D public/audio --clobber --pattern '*.mp3' --pattern '*.m4a' || true
+              done
+          ls -la public/audio | tail -n +2
+
       - name: Deploy feed to GitHub Pages
         if: inputs.dry_run != true && steps.run.outputs.skipped != 'true'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
+          # Bez tego każde nagranie zostawałoby na zawsze w historii gh-pages.
+          force_orphan: true

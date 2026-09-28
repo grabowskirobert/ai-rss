@@ -28,7 +28,9 @@ Zasady:
 - NIE GUB informacji: każdy fakt, liczba, nazwisko i wniosek z tekstów źródłowych ma się znaleźć w audycji. Skracasz formę, nie treść — mowa jest gęstsza niż wypunktowania, bo nie powtarzasz tego samego w kilku sekcjach.
 - Liczby zapisuj słownie, tak jak się je wymawia ("siedemdziesiąt procent", "siedem i cztery dziesiąte miliarda franków").
 - Skróty i nazwy obce rozwijaj przy pierwszym użyciu, zapisuj fonetycznie tam, gdzie lektor mógłby się pomylić.
-- Krótkie intro (2 zdania, bez daty), naturalne przejścia między tematami ("z Berna przenosimy się do Krakowa"), krótkie zakończenie.
+- Intro: JEDNO zdanie powitania i nic więcej. Nie zapowiadaj, ile będzie tematów, nie opisuj charakteru audycji ("spokojny przegląd", "przyjrzymy się decyzjom"), nie podawaj daty. Od razu przechodź do pierwszego tematu.
+- Przejścia między tematami rób przez treść, geografię albo wątek ("z Berna przenosimy się do Warszawy", "zostajemy przy pieniądzach, ale zmieniamy kontynent"). Nigdy nie numeruj ("temat drugi") i nigdy nie powtarzaj formuły otwierającej.
+- Zakończenie: jedno zdanie. Bez zapraszania na kolejne wydanie.
 - Oddzielaj tematy pustą linią — to punkty cięcia dla syntezatora mowy.
 - Zero nagłówków, zero punktorów, zero znaczników — czysty tekst do przeczytania.
 - Ton: spokojny, rzeczowy, ciekawy. Bez emocji i bez "breaking news".
@@ -52,6 +54,15 @@ export async function writeScript(articles) {
   const result = await scriptModel.generateContent(SCRIPT_PROMPT(articles));
   record(config.models.script, result.response, 'scenariusz');
   return result.response.text().trim();
+}
+
+// Scenariusz leci do release'u obok nagrania — inaczej nie da się sprawdzić,
+// czy audycja faktycznie pokryła wszystkie tematy.
+function saveScript(script, articles, outputDir, dateStamp) {
+  const path = `${outputDir}/odsluch-${dateStamp}.txt`;
+  const header = articles.map((a, i) => `${i + 1}. ${a.title}`).join('\n');
+  writeFileSync(path, `TEKSTY W TYM WYDANIU\n${header}\n\n${'='.repeat(60)}\n\n${script}\n`);
+  return path;
 }
 
 // Długiej audycji nie da się wygenerować jednym żądaniem — tniemy na akapitach,
@@ -100,7 +111,10 @@ async function speakChunk(text) {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        contents: [{ parts: [{ text: `${OPTS.stylePrompt}\n\n${text}` }] }],
+        // Model TTS nie przyjmuje systemInstruction, a styl oddzielony pustą
+        // linią bywa odczytywany na głos jako część audycji. Działa wyłącznie
+        // kanoniczna forma jednolinijkowa: "instrukcja: tekst".
+        contents: [{ parts: [{ text: `${OPTS.stylePrompt} ${text.replace(/\s*\n\s*/g, ' ')}` }] }],
         generationConfig: {
           responseModalities: ['AUDIO'],
           speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: OPTS.voice } } },
@@ -136,9 +150,63 @@ function wavHeader(pcmLength) {
   return h;
 }
 
+const WINDOW = SAMPLE_RATE / 100;          // 10 ms
+const SPEECH_FLOOR = 600;                  // poniżej tego to cisza
+const ARTIFACT_PEAK = 29000;               // mowa szczytuje ~20 000
+
+function windowPeaks(pcm) {
+  const count = Math.floor(pcm.length / 2 / WINDOW);
+  const peaks = new Int32Array(count);
+  for (let w = 0; w < count; w++) {
+    let peak = 0;
+    for (let i = w * WINDOW; i < (w + 1) * WINDOW; i++) {
+      const v = Math.abs(pcm.readInt16LE(i * 2));
+      if (v > peak) peak = v;
+    }
+    peaks[w] = peak;
+  }
+  return peaks;
+}
+
+// Każdy fragment kończy się ~150 ms szumu na pełnej skali — model dorzuca go
+// po ostatnim słowie. Bez tego przy każdym sklejeniu słychać trzask.
+function trimAndFade(wav) {
+  const pcm = Buffer.from(wav.subarray(WAV_HEADER));
+  const peaks = windowPeaks(pcm);
+
+  let last = -1;
+  let first = -1;
+  for (let w = 0; w < peaks.length; w++) {
+    const isSpeech = peaks[w] >= SPEECH_FLOOR && peaks[w] < ARTIFACT_PEAK;
+    if (!isSpeech) continue;
+    if (first === -1) first = w;
+    last = w;
+  }
+  if (first === -1) return pcm;
+
+  const from = Math.max(0, first - 5) * WINDOW;
+  const to = Math.min(peaks.length, last + 4) * WINDOW;
+  const cut = Buffer.from(pcm.subarray(from * 2, to * 2));
+
+  // Łagodne zbocza 25 ms, żeby sklejenie nie dawało skoku amplitudy.
+  const ramp = Math.min(SAMPLE_RATE * 0.025, cut.length / 4);
+  for (let i = 0; i < ramp; i++) {
+    const g = i / ramp;
+    cut.writeInt16LE(Math.round(cut.readInt16LE(i * 2) * g), i * 2);
+    const j = cut.length / 2 - 1 - i;
+    cut.writeInt16LE(Math.round(cut.readInt16LE(j * 2) * g), j * 2);
+  }
+  return cut;
+}
+
 function concatWav(wavBuffers) {
-  const pcm = wavBuffers.map((b) => b.subarray(WAV_HEADER));
-  const body = Buffer.concat(pcm);
+  const gap = Buffer.alloc(Math.round(SAMPLE_RATE * OPTS.gapSeconds) * 2);
+  const parts = [];
+  wavBuffers.forEach((wav, i) => {
+    if (i > 0) parts.push(gap);
+    parts.push(trimAndFade(wav));
+  });
+  const body = Buffer.concat(parts);
   return Buffer.concat([wavHeader(body.length), body]);
 }
 
@@ -204,6 +272,7 @@ export async function buildAudioDigest(articles, { outputDir, dateStamp }) {
   const durationSec = (wav.length - WAV_HEADER) / BYTES_PER_SEC;
 
   mkdirSync(outputDir, { recursive: true });
+  const scriptPath = saveScript(script, articles, outputDir, dateStamp);
   const wavPath = `${outputDir}/odsluch-${dateStamp}.wav`;
   writeFileSync(wavPath, wav);
   const filePath = compress(wavPath, `${outputDir}/odsluch-${dateStamp}`) || wavPath;
@@ -214,7 +283,7 @@ export async function buildAudioDigest(articles, { outputDir, dateStamp }) {
     `${(bytes / 1024 / 1024).toFixed(1)} MB → ${filePath}`
   );
 
-  return { script, filePath, fileName: filePath.split('/').pop(), bytes, durationSec };
+  return { script, scriptPath, filePath, fileName: filePath.split('/').pop(), bytes, durationSec };
 }
 
 // 1 temat · 2-4 tematy · 5+ tematów (i 12-14 tematów mimo końcówki 2-4)

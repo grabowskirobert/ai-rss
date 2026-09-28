@@ -640,11 +640,12 @@
   "audio": {
     "enabled": true,
     "voice": "Kore",
-    "stylePrompt": "Przeczytaj jak lektor porannego przeglądu prasy — spokojnie, rzeczowo, z naturalnymi pauzami między tematami.",
+    "stylePrompt": "Przeczytaj poniższy tekst jak lektor porannego przeglądu prasy — spokojnie, rzeczowo, w równym tempie:",
     "maxCharsPerChunk": 3200,
     "bitrateKbps": 64,
     "retentionDays": 14,
     "releaseTagPrefix": "audio-",
-    "baseUrl": ""
+    "baseUrl": "https://grabowskirobert.github.io/ai-rss/audio",
+    "gapSeconds": 0.35
   }
 }

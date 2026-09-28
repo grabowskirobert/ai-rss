@@ -32,11 +32,12 @@ const WITH_AUDIO = config.audio?.enabled !== false
 // Odsłuch z tekstów, które już są w archiwum — przydaje się, gdy audycja
 // nie powstała (awaria TTS) albo gdy dokładamy ją do wcześniejszego wydania.
 const AUDIO_ONLY = hasFlag('--audio-only');
-// Celowo POZA public/ — ten katalog jest wypychany na GitHub Pages, a nagranie
-// żyje w Releases. Inaczej każda audycja zostawałaby na zawsze w historii
-// gałęzi gh-pages.
+// Nagranie musi trafić na GitHub Pages: Releases serwuje pliki z nagłówkiem
+// "content-disposition: attachment", przez co odtwarzacz w czytniku odmawia
+// odtwarzania. Pages daje audio/mpeg i strumieniowanie. Historia gałęzi
+// gh-pages nie puchnie, bo deploy idzie z force_orphan.
 const AUDIO_DIR = flagValue('--audio-dir')
-  || (DRY_RUN ? '/tmp/ai-rss-audio' : resolve(__dirname, '../.audio'));
+  || (DRY_RUN ? '/tmp/ai-rss-audio' : resolve(__dirname, '../public/audio'));
 const SKIP_SYNTHESIS = hasFlag('--skip-synthesis');
 const LIMIT = Number(flagValue('--limit')) || null;
 const FEED_OUT = flagValue('--out') || (hasFlag('--dry-run') ? '/tmp/feed-dry.xml' : null);
@@ -68,12 +69,11 @@ function repoSlug() {
   }
 }
 
-function audioUrl(fileName, dateStamp) {
-  const tag = `${config.audio.releaseTagPrefix}${dateStamp}`;
+function audioUrl(fileName) {
   const base = config.audio?.baseUrl;
-  if (base) return `${base.replace(/\/$/, '')}/${tag}/${fileName}`;
+  if (base) return `${base.replace(/\/$/, '')}/${fileName}`;
   const repo = repoSlug();
-  return repo ? `https://github.com/${repo}/releases/download/${tag}/${fileName}` : null;
+  return repo ? `https://${repo.split('/')[0]}.github.io/${repo.split('/')[1]}/audio/${fileName}` : null;
 }
 
 function warsawDate(value = Date.now()) {
@@ -100,22 +100,39 @@ async function buildAudio(articles) {
   const digest = await buildAudioDigest(articles, { outputDir: AUDIO_DIR, dateStamp });
   if (!digest) return null;
 
-  const url = audioUrl(digest.fileName, dateStamp);
+  const url = audioUrl(digest.fileName);
   if (!url) log.warn('Brak adresu publikacji audio — wpis powstanie bez odtwarzacza');
   if (process.env.GITHUB_OUTPUT) {
     appendFileSync(process.env.GITHUB_OUTPUT,
-      `audio_path=${digest.filePath}\naudio_tag=${config.audio.releaseTagPrefix}${dateStamp}\n`);
+      `audio_path=${digest.filePath}\naudio_script=${digest.scriptPath}\n` +
+      `audio_tag=${config.audio.releaseTagPrefix}${dateStamp}\n`);
   }
   return audioEntry(digest, { articles, dateStamp, url });
+}
+
+// Regeneracja odsłuchu z lokalnego archiwum ma sens tylko wtedy, gdy to
+// archiwum jest aktualne — automat commituje własne wydania na origin.
+function warnIfStale() {
+  try {
+    const behind = execFileSync('git', ['rev-list', '--count', 'HEAD..@{u}'], { encoding: 'utf-8' }).trim();
+    if (Number(behind) > 0) {
+      log.warn(`Lokalna gałąź jest ${behind} commitów za origin — archiwum może być nieaktualne. Zrób git pull.`);
+    }
+  } catch { /* brak remote albo upstreamu — nie ma o czym ostrzegać */ }
 }
 
 async function audioOnlyRun() {
   log.phase('Tryb --audio-only — odsłuch z tekstów w archiwum');
 
+  warnIfStale();
+
+  // Bierzemy wyłącznie teksty z NAJNOWSZEGO wydania — inaczej przy niepełnym
+  // zestawie audycja dobrałaby artykuły z poprzedniego dnia i przeczytała je
+  // drugi raz pod dzisiejszą datą.
   const count = Number(flagValue('--audio-only')) || config.maxItemsPerRun;
-  const articles = loadArchive()
-    .filter((entry) => entry.kind !== 'audio')
-    .slice(0, count);
+  const texts = loadArchive().filter((entry) => entry.kind !== 'audio');
+  const newest = texts[0] && warsawDate(texts[0].publishedAt);
+  const articles = texts.filter((e) => warsawDate(e.publishedAt) === newest).slice(0, count);
 
   if (articles.length === 0) {
     log.error('Archiwum nie zawiera tekstów — nie ma z czego zrobić odsłuchu');

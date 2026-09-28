@@ -72,8 +72,7 @@ const AUDIO_NOTE =
 
 function renderAudio(entry) {
   if (!entry.audio?.url) return '';
-  return `<p style="${STYLES.p}"><audio controls preload="none" src="${entry.audio.url}"></audio></p>` +
-    `<p style="${STYLES.p}"><a href="${entry.audio.url}">Pobierz nagranie (MP3)</a></p>`;
+  return `<p style="${STYLES.p}"><audio controls preload="none" src="${entry.audio.url}"></audio></p>`;
 }
 
 function applyStyles(entry) {
