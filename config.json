@@ -640,7 +640,6 @@
   "audio": {
     "enabled": true,
     "voice": "Kore",
-    "stylePrompt": "Przeczytaj poniższy tekst jak lektor porannego przeglądu prasy — spokojnie, rzeczowo, w równym tempie:",
     "maxCharsPerChunk": 3200,
     "bitrateKbps": 64,
     "retentionDays": 14,

@@ -111,10 +111,12 @@ async function speakChunk(text) {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        // Model TTS nie przyjmuje systemInstruction, a styl oddzielony pustą
-        // linią bywa odczytywany na głos jako część audycji. Działa wyłącznie
-        // kanoniczna forma jednolinijkowa: "instrukcja: tekst".
-        contents: [{ parts: [{ text: `${OPTS.stylePrompt} ${text.replace(/\s*\n\s*/g, ' ')}` }] }],
+        // ŻADNEJ instrukcji stylu w treści. Model TTS nie przyjmuje
+        // systemInstruction, a każda instrukcja doklejona do tekstu — obojętne
+        // czy po pustej linii, czy po dwukropku w jednej linii — jest czytana
+        // na głos. Zmierzone: ten sam tekst 9,0 s bez instrukcji, 16,4 s z nią.
+        // Do wypowiedzi trafia wyłącznie sam tekst audycji.
+        contents: [{ parts: [{ text: text.replace(/\s*\n\s*/g, ' ') }] }],
         generationConfig: {
           responseModalities: ['AUDIO'],
           speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: OPTS.voice } } },
