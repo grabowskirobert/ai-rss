@@ -156,7 +156,7 @@ async function audioOnlyRun() {
 
   const archive = buildFeed([entry], { dryRun: DRY_RUN, outputPath: FEED_OUT });
   if (PREVIEW_OUT) writePreview(archive, [entry.guid], PREVIEW_OUT);
-  reportCosts(articles.length);
+  reportCosts(articles.length, { dryRun: DRY_RUN });
   log.done(DRY_RUN ? 'Gotowe (dry run)' : 'Gotowe');
 }
 
@@ -251,7 +251,7 @@ async function main() {
   }
 
   if (DRY_RUN) {
-    reportCosts(synthesized.length);
+    reportCosts(synthesized.length, { dryRun: DRY_RUN });
     log.done('Gotowe (dry run)');
     return;
   }
@@ -260,7 +260,7 @@ async function main() {
   saveHistory(history, newGuids);
   log.info(`Historia zaktualizowana o ${newGuids.length} GUIDów`);
 
-  reportCosts(synthesized.length);
+  reportCosts(synthesized.length, { dryRun: DRY_RUN });
   log.done('Gotowe');
 }
 

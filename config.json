@@ -385,24 +385,24 @@
   "usdPlnRate": 3.6,
   "pricing": {
     "gemini-3.5-flash": {
-      "inputUsdPerMTok": 1.5,
-      "outputUsdPerMTok": 9.0
+      "inputUsdPerMTok": 1.56,
+      "outputUsdPerMTok": 9.24
     },
     "gemini-3.5-flash-lite": {
-      "inputUsdPerMTok": 0.3,
-      "outputUsdPerMTok": 2.5
+      "inputUsdPerMTok": 0.34,
+      "outputUsdPerMTok": 2.54
     },
     "gemini-embedding-001": {
-      "inputUsdPerMTok": 0.15,
+      "inputUsdPerMTok": 0.18,
       "outputUsdPerMTok": 0
     },
     "gemini-3.8-flash-tts": {
-      "inputUsdPerMTok": 0.5,
-      "outputUsdPerMTok": 9.0
+      "inputUsdPerMTok": 0.57,
+      "outputUsdPerMTok": 9.29
     },
     "gemini-3.8-flash-lite-tts": {
-      "inputUsdPerMTok": 0.5,
-      "outputUsdPerMTok": 9.0
+      "inputUsdPerMTok": 0.38,
+      "outputUsdPerMTok": 6.21
     }
   },
   "thinkingBudget": {
@@ -410,7 +410,7 @@
     "facts": 0,
     "claims": 128,
     "background": 128,
-    "script": 0
+    "script": 128
   },
   "cluster": {
     "similarityThreshold": 0.82,
@@ -626,7 +626,7 @@
     ],
     "blockedDomains": []
   },
-  "monthlyBudgetPln": 30,
+  "monthlyBudgetPln": 40,
   "models": {
     "filter": "gemini-3.5-flash-lite",
     "facts": "gemini-3.5-flash",
@@ -634,12 +634,14 @@
     "background": "gemini-3.5-flash-lite",
     "embedding": "gemini-embedding-001",
     "fallback": "gemini-3.5-flash-lite",
-    "script": "gemini-3.5-flash",
-    "tts": "gemini-3.8-flash-tts"
+    "script": "gemini-3.5-flash-lite",
+    "tts": "gemini-3.8-flash-lite-tts"
   },
   "audio": {
     "enabled": true,
     "voice": "Kore",
+    "scriptCharsMin": 13100,
+    "scriptCharsMax": 14500,
     "maxCharsPerChunk": 3200,
     "bitrateKbps": 64,
     "retentionDays": 14,
@@ -649,11 +651,11 @@
   },
   "filterReserve": 3,
   "article": {
-    "factsCharsMin": 2800,
-    "factsCharsMax": 4200,
-    "backgroundCharsMin": 2600,
-    "backgroundCharsMax": 3800,
-    "bulletsMin": 7,
-    "bulletsMax": 11
+    "factsCharsMin": 2300,
+    "factsCharsMax": 3300,
+    "backgroundCharsMin": 2100,
+    "backgroundCharsMax": 3000,
+    "bulletsMin": 6,
+    "bulletsMax": 9
   }
 }

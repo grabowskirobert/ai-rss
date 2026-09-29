@@ -21,23 +21,35 @@ const scriptModel = genAI.getGenerativeModel({
     : {},
 });
 
-const SCRIPT_PROMPT = (articles) => `Jesteś autorem i prowadzącym codzienny przegląd "slow news" do odsłuchu. Dostajesz ${articles.length} gotowych tekstów z dzisiejszego wydania. Napisz z nich JEDEN ciągły scenariusz do przeczytania na głos.
-
-Zasady:
-- NIE CZYTAJ artykułów po kolei słowo w słowo i NIE wymieniaj nazw sekcji ("Sedno sprawy", "Kluczowe fakty"). Przepisz treść na żywą mowę.
-- NIE GUB informacji: każdy fakt, liczba, nazwisko i wniosek z tekstów źródłowych ma się znaleźć w audycji. Skracasz formę, nie treść — mowa jest gęstsza niż wypunktowania, bo nie powtarzasz tego samego w kilku sekcjach.
+// Jeden temat = jedno wywołanie. Powód: przy jednym wywołaniu na całe wydanie
+// model pisze tyle, ile uzna za stosowne, a podana liczba znaków nic nie robi —
+// zmierzone: cel 13 500 → 19 669 zn, cel 17 000 → 12 121 zn (ten sam materiał).
+// Cel rzędu 3 500 znaków na pojedynczy temat trafia w okolicę ±15%, więc
+// długość audycji staje się sterowalna, a przez to sterowalny jest koszt TTS.
+const SCRIPT_RULES = `- NIE CZYTAJ artykułu słowo w słowo i NIE wymieniaj nazw sekcji ("Sedno sprawy", "Kluczowe fakty"). Przepisz treść na żywą mowę.
+- NIE GUB informacji: każdy fakt, liczba, nazwisko i wniosek ma się znaleźć w tekście. Skracasz formę, nie treść.
 - Liczby zapisuj słownie, tak jak się je wymawia ("siedemdziesiąt procent", "siedem i cztery dziesiąte miliarda franków").
 - Skróty i nazwy obce rozwijaj przy pierwszym użyciu, zapisuj fonetycznie tam, gdzie lektor mógłby się pomylić.
-- Intro: JEDNO zdanie powitania i nic więcej. Nie zapowiadaj, ile będzie tematów, nie opisuj charakteru audycji ("spokojny przegląd", "przyjrzymy się decyzjom"), nie podawaj daty. Od razu przechodź do pierwszego tematu.
-- Przejścia między tematami rób przez treść, geografię albo wątek ("z Berna przenosimy się do Warszawy", "zostajemy przy pieniądzach, ale zmieniamy kontynent"). Nigdy nie numeruj ("temat drugi") i nigdy nie powtarzaj formuły otwierającej.
-- Zakończenie: jedno zdanie. Bez zapraszania na kolejne wydanie.
-- Oddzielaj tematy pustą linią — to punkty cięcia dla syntezatora mowy.
-- Zero nagłówków, zero punktorów, zero znaczników — czysty tekst do przeczytania.
-- Ton: spokojny, rzeczowy, ciekawy. Bez emocji i bez "breaking news".
+- Zero nagłówków, zero punktorów, zero znaczników, zero pustych linii — jeden ciągły akapit do przeczytania.
+- Ton: spokojny, rzeczowy, ciekawy. Bez emocji i bez "breaking news".`;
 
-Teksty źródłowe:
+const TOPIC_PROMPT = ({ article, budget, previous, previousTitle, used, isFirst, isLast }) => `Jesteś autorem i prowadzącym codzienny przegląd "slow news" do odsłuchu. Opracuj JEDEN temat audycji na podstawie poniższego tekstu.
 
-${articles.map((a, i) => `### TEKST ${i + 1}: ${a.title}\n${toPlainText(a.html)}`).join('\n\n')}`;
+DŁUGOŚĆ: dokładnie około ${budget} znaków. To wymóg — nie ${Math.round(budget * 0.6)}, nie ${Math.round(budget * 1.4)}. Jeśli kończysz poniżej budżetu, znaczy że pominąłeś fakty z tekstu źródłowego; jeśli powyżej — rozwlekle formułujesz.
+
+${SCRIPT_RULES}
+${isFirst
+  ? '- To PIERWSZY temat audycji. Zacznij od JEDNEGO zdania powitania i od razu przechodź do treści. Nie zapowiadaj, ile będzie tematów, nie opisuj charakteru audycji ("spokojny przegląd"), nie podawaj daty.'
+  : `- To KOLEJNY temat audycji. Zacznij od przejścia przez treść, geografię albo wątek ("z Berna przenosimy się do Warszawy", "zostajemy przy pieniądzach, ale zmieniamy kontynent"). Nigdy nie numeruj ("temat drugi") i nigdy nie powtarzaj formuły powitania.
+  Poprzedni temat dotyczył: "${previousTitle}" i skończył się tak: "${previous}"
+  Przejście ma wychodzić OD TEGO tematu — nie od miejsca czy wątku, którego w nim nie było.${used.length ? `
+  Wcześniejsze przejścia w tej audycji zaczynały się od: ${used.map((u) => `"${u}"`).join(', ')}. Twoje ma zaczynać się INACZEJ — ani tymi samymi słowami, ani tą samą konstrukcją gramatyczną (jeśli poprzednie zaczynały się od przyzwolenia "mimo że"/"choć", użyj innej figury).` : ''}`}
+${isLast ? '- To OSTATNI temat. Zakończ jednym zdaniem domknięcia. Bez zapraszania na kolejne wydanie.' : ''}
+
+Zwróć sam tekst tematu, bez komentarza.
+
+TEKST ŹRÓDŁOWY — ${article.title}:
+${toPlainText(article.html)}`;
 
 function toPlainText(html) {
   return html
@@ -50,10 +62,46 @@ function toPlainText(html) {
     .trim();
 }
 
+// Zmierzone na realnym nagraniu (odsluch-2026-09-28): 16,92 znaku na sekundę.
+const CHARS_PER_SECOND = 16.9;
+
+function estimate(script) {
+  const seconds = script.length / CHARS_PER_SECOND;
+  return `${script.length} zn ≈ ${Math.floor(seconds / 60)}:${String(Math.round(seconds % 60)).padStart(2, '0')}`;
+}
+
 export async function writeScript(articles) {
-  const result = await scriptModel.generateContent(SCRIPT_PROMPT(articles));
-  record(config.models.script, result.response, 'scenariusz');
-  return result.response.text().trim();
+  const total = Math.round((OPTS.scriptCharsMin + OPTS.scriptCharsMax) / 2);
+  const budget = Math.round(total / articles.length);
+  const parts = [];
+
+  // Sekwencyjnie, bo każdy temat potrzebuje końcówki poprzedniego, żeby zbudować
+  // przejście ("z Tallinna wracamy do Polski") zamiast zaczynać od zera.
+  for (const [i, article] of articles.entries()) {
+    const previous = parts.length ? parts[parts.length - 1].slice(-220) : '';
+    // Bez tego model otwiera niemal każde przejście tak samo ("Zostajemy przy…"),
+    // a powtarzana formułka przed każdym tematem była pierwszą rzeczą, która
+    // raziła w odsłuchu.
+    const used = parts.slice(1).map((t) => t.split(/\s+/).slice(0, 2).join(' '));
+    const result = await scriptModel.generateContent(TOPIC_PROMPT({
+      article,
+      budget,
+      previous,
+      previousTitle: i > 0 ? articles[i - 1].title : '',
+      used,
+      isFirst: i === 0,
+      isLast: i === articles.length - 1,
+    }));
+    record(config.models.script, result.response, 'scenariusz');
+    const text = result.response.text().trim().replace(/\s*\n\s*/g, ' ');
+    log.info(`  temat ${i + 1}/${articles.length}: ${text.length} zn (cel ${budget})`);
+    parts.push(text);
+  }
+
+  // Puste linie między tematami to punkty cięcia dla syntezatora mowy.
+  const script = parts.join('\n\n');
+  log.info(`Scenariusz: ${estimate(script)}`);
+  return script;
 }
 
 // Scenariusz leci do release'u obok nagrania — inaczej nie da się sprawdzić,
