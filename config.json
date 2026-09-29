@@ -646,5 +646,14 @@
     "releaseTagPrefix": "audio-",
     "baseUrl": "https://grabowskirobert.github.io/ai-rss/audio",
     "gapSeconds": 0.35
+  },
+  "filterReserve": 3,
+  "article": {
+    "factsCharsMin": 2800,
+    "factsCharsMax": 4200,
+    "backgroundCharsMin": 2600,
+    "backgroundCharsMax": 3800,
+    "bulletsMin": 7,
+    "bulletsMax": 11
   }
 }

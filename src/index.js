@@ -217,9 +217,9 @@ async function main() {
 
   // Faza 4
   log.phase('Faza 4 — synteza (pełne teksty → fakty → tło)');
-  const toSynthesize = LIMIT ? filtered.slice(0, LIMIT) : filtered;
-  if (LIMIT) log.warn(`--limit ${LIMIT}: syntezuję tylko ${toSynthesize.length} z ${filtered.length}`);
-  const synthesized = await synthesizeClusters(toSynthesize);
+  const target = LIMIT || config.maxItemsPerRun;
+  if (LIMIT) log.warn(`--limit ${LIMIT}: celuję w ${LIMIT} tekstów zamiast ${config.maxItemsPerRun}`);
+  const synthesized = await synthesizeClusters(filtered, { target, recentTopics: recentTopics() });
   log.ok(`Zsyntezowano ${synthesized.length} artykułów`);
 
   if (synthesized.length === 0) {

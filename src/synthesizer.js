@@ -50,11 +50,19 @@ Zasady tytułu:
 
 // ── Przebieg A: fakty. Kontekst zamknięty, zero wyszukiwarki. ────────────────
 
-const FACTS_PROMPT = (topic, corpus, publishers) => `
+const FACTS_PROMPT = (topic, corpus, publishers, recent) => `
 Jesteś dziennikarzem piszącym po polsku dla wydawnictwa typu "slow news". Twój czytelnik czyta raz dziennie, nie śledził tej sprawy wcześniej i chce ZROZUMIEĆ, nie być na bieżąco.
 
 Temat: ${topic}
+${recent.length === 0 ? '' : `
+UWAGA — TE TEMATY OPISYWALIŚMY JUŻ W OSTATNICH DNIACH:
+${recent.map((t) => `- ${t}`).join('\n')}
 
+Jeśli dzisiejszy temat jest kontynuacją któregoś z nich, to jest w porządku — ale MUSI to być widać:
+- Tytuł ma nazywać NOWY element (rozstrzygnięcie, kolejny krok, reakcję), nie punkt wyjścia opisany wcześniej.
+- Sekcja "Sedno sprawy" zaczyna się od tego, co się zmieniło od poprzedniego opisu, a dopiero potem przypomina kontekst w jednym zdaniu.
+- Nie przepisuj poprzedniego tekstu. Fakty znane wcześniej streść skrótowo, miejsce oddaj nowym ustaleniom.
+`}
 Poniżej pełne teksty ${publishers.length === 1 ? 'publikacji' : `${publishers.length} niezależnych publikacji`} o tym wydarzeniu. To JEDYNE dopuszczalne źródło faktów. Nie wolno ci dodać żadnej informacji spoza tych tekstów — ani z pamięci, ani z domysłu. Jeśli czegoś w nich nie ma, po prostu tego nie piszesz.
 
 === KORPUS ŹRÓDŁOWY ===
@@ -72,14 +80,15 @@ Następnie napisz w czystym HTML dokładnie te trzy sekcje:
 <ul>
   <li>Fakt z konkretną liczbą, datą, nazwiskiem lub instytucją</li>
 </ul>
-(5–7 bulletów — tylko twarde fakty obecne w korpusie, żadnych ogólników)
+(${config.article.bulletsMin}–${config.article.bulletsMax} bulletów — tylko twarde fakty obecne w korpusie, żadnych ogólników)
 
 <h3>Czego jeszcze nie wiemy</h3>
 <p>1–3 zdania: co pozostaje niepotwierdzone, które liczby są szacunkami, jakie rozstrzygnięcia dopiero przed nami. Jeśli źródła się różnią co do jakiejś liczby lub faktu — napisz o tej rozbieżności zamiast wybierać jedną wersję albo uśredniać.</p>
 
 Zasady:
 - Pisz wyłącznie po polsku, poprawną polszczyzną; sprawdź odmianę nazw własnych i form mnogich (np. "Szwajcarzy", nie "Szwajcari").
-- Te trzy sekcje mają łącznie 1800–2800 znaków. Wykorzystaj korpus — jeśli zawiera fakt istotny dla zrozumienia sprawy, ma trafić do tekstu.
+- Te trzy sekcje mają łącznie ${config.article.factsCharsMin}–${config.article.factsCharsMax} znaków. Korpus jest zwykle kilka razy dłuższy niż tekst, który piszesz — to znaczy, że masz z czego wybierać, a nie że masz streszczać do minimum. Każdy fakt istotny dla zrozumienia sprawy ma trafić do tekstu: konkretne liczby, nazwiska, stanowiska stron, wcześniejsze incydenty, mechanizmy prawne, koszty, terminy.
+- Nie zostawiaj na boku faktów tylko dlatego, że tekst już wygląda na kompletny. Pomijasz wyłącznie lokalny szum i powtórzenia.
 - Zero języka emocjonalnego, zero skrzywień politycznych, zero trybu "breaking news".
 - Wyjaśniaj skróty, instytucje i nazwiska przy pierwszym użyciu.
 - Twierdzenie relacjonowane ZACHOWUJE atrybucję. Jeśli źródło pisze "według portalu X" albo "rzecznik twierdzi", nigdy nie zamieniaj tego w goły fakt.
@@ -137,7 +146,7 @@ Napisz w czystym HTML dokładnie te trzy sekcje:
 <p>Konsekwencje i kolejne kroki: co realnie się zmieni, dla kogo, w jakim horyzoncie czasowym. Jeśli temat dotyczy innego kraju i nie wpływa bezpośrednio na Polskę, wyjaśnij, co ciekawego mówi o tym, jak działa świat — to pełnoprawna odpowiedź, nie brak odpowiedzi.</p>
 
 Zasady:
-- Te trzy sekcje mają łącznie 1800–2600 znaków. Nie rozciągaj na siłę, ale wykorzystaj cały dostępny materiał.
+- Te trzy sekcje mają łącznie ${config.article.backgroundCharsMin}–${config.article.backgroundCharsMax} znaków. Wykorzystaj cały dostępny materiał uzupełniający; nie rozciągaj pustych zdań, ale nie zostawiaj też nieużytych twierdzeń.
 - Nie powtarzaj faktów z sekcji powyżej — dokładasz kontekst, nie streszczasz drugi raz.
 - Poprawna polszczyzna: sprawdź odmianę nazw własnych i form mnogich.
 - NIE WOLNO ci wprowadzić żadnej nowej liczby, daty, nazwiska ani instytucji, których nie ma w materiale powyżej.
@@ -304,7 +313,7 @@ function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-async function synthesizeCluster(cluster) {
+async function synthesizeCluster(cluster, recentTopics) {
   const topic = cluster.topic || cluster.members[0].title;
   const { articles, publishers } = await buildCorpus(cluster);
 
@@ -316,7 +325,7 @@ async function synthesizeCluster(cluster) {
   // A — fakty
   const factsRaw = await runWriter(
     factsModel, MODELS.facts,
-    FACTS_PROMPT(topic, renderCorpus(articles), publishers),
+    FACTS_PROMPT(topic, renderCorpus(articles), publishers, recentTopics),
     'fakty'
   );
   if (!factsRaw) return null;
@@ -337,12 +346,26 @@ async function synthesizeCluster(cluster) {
     const { total, t3, accepted, rejectedThin } = vetted.stats;
     log.info(`Tło: ${total} twierdzeń → ${accepted} przyjętych, ${t3} odrzuconych jako T3, ${rejectedThin} zbyt słabych`);
 
+    // Wskaźnik T3 mówi o jakości WYSZUKIWANIA tła, nie o temacie. Jeśli korpus
+    // stoi na kilku redakcjach, temat jest w porządku — rezygnujemy wtedy
+    // z tła, a nie z tekstu. Odrzucamy tylko temat słabo udokumentowany
+    // u źródła i dodatkowo powielany głównie przez serwisy bez redakcji.
     const t3Ratio = total > 0 ? t3 / total : 0;
-    if (total >= config.background.t3MinClaimsForSkip && t3Ratio >= config.background.t3RatioSkipThreshold) {
+    const mostlyJunk = total >= config.background.t3MinClaimsForSkip
+      && t3Ratio >= config.background.t3RatioSkipThreshold;
+
+    if (mostlyJunk && publishers.length < 2) {
       log.warn(
-        `🚩 "${topic}": ${Math.round(t3Ratio * 100)}% materiału z serwisów bez redakcji — pomijam temat`
+        `🚩 "${topic}": jeden wydawca w korpusie i ${Math.round(t3Ratio * 100)}% tła z serwisów bez redakcji — pomijam temat`
       );
       return null;
+    }
+    if (mostlyJunk) {
+      log.warn(
+        `"${topic}": ${Math.round(t3Ratio * 100)}% tła z serwisów bez redakcji — piszę bez sekcji tła ` +
+        `(korpus: ${publishers.length} wydawców, więc same fakty są w porządku)`
+      );
+      vetted.accepted = [];
     }
   }
 
@@ -392,21 +415,27 @@ async function synthesizeCluster(cluster) {
   };
 }
 
-export async function synthesizeClusters(clusters) {
+export async function synthesizeClusters(clusters, { target, recentTopics = [] } = {}) {
+  const limit = target || clusters.length;
   const synthesized = [];
 
-  for (let i = 0; i < clusters.length; i++) {
+  for (let i = 0; i < clusters.length && synthesized.length < limit; i++) {
     if (i > 0 && config.delayBetweenRequestsMs > 0) await sleep(config.delayBetweenRequestsMs);
 
     const cluster = clusters[i];
-    log.info(`Synteza (${i + 1}/${clusters.length}): ${cluster.members[0].title}`);
+    const reserve = i >= limit ? ' (rezerwa)' : '';
+    log.info(`Synteza (${synthesized.length + 1}/${limit})${reserve}: ${cluster.members[0].title}`);
 
     try {
-      const result = await synthesizeCluster(cluster);
+      const result = await synthesizeCluster(cluster, recentTopics);
       if (result) synthesized.push(result);
     } catch (err) {
       log.error(`Synteza wywróciła się: ${err.message.slice(0, 120)}`);
     }
+  }
+
+  if (synthesized.length < limit) {
+    log.warn(`Udało się opracować ${synthesized.length} z ${limit} tematów — rezerwa wyczerpana`);
   }
 
   return synthesized;

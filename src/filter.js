@@ -44,6 +44,11 @@ const CATEGORIES = [
 export async function filterClusters(clusters, recentTopics = []) {
   if (clusters.length === 0) return [];
 
+  // Wybieramy z zapasem: temat bywa odrzucony dopiero na etapie syntezy
+  // (paywall, brak korpusu, materiał wyłącznie z serwisów bez redakcji),
+  // a wtedy bez rezerwy wydanie schodzi poniżej zakładanych pięciu tekstów.
+  const targetCount = config.maxItemsPerRun + (config.filterReserve || 0);
+
   const candidates = clusters.slice(0, config.cluster.maxClustersToFilter);
   log.info(`Wysyłam ${candidates.length} wątków do Gemini (filtr, model: ${FILTER_MODEL})...`);
   if (recentTopics.length > 0) {
@@ -67,7 +72,7 @@ ${recentTopics.map((t) => `- ${t}`).join('\n')}
 
 Lista poniżej to WĄTKI, nie pojedyncze artykuły. Jeden wątek = jedno wydarzenie opisane przez jednego lub kilku wydawców; deduplikacja została już zrobiona. Przy każdym wątku podana jest liczba niezależnych wydawców, którzy go opisali.
 
-Wybierz dokładnie ${config.maxItemsPerRun} wątków.
+Wybierz ${targetCount} wątków, uporządkowanych od najważniejszego. Pierwsze ${config.maxItemsPerRun} to zestaw właściwy, kolejne ${config.filterReserve} to rezerwa na wypadek, gdyby któregoś nie dało się opracować — dobierz je równie starannie.
 
 NAJWAŻNIEJSZA ZASADA — RÓŻNORODNOŚĆ:
 - Każdy wybrany wątek musi dotyczyć INNEGO wydarzenia i INNEGO obszaru tematycznego.
@@ -132,15 +137,15 @@ Bez markdown, bez wyjaśnień, tylko JSON.`;
         category: entry?.kategoria || 'nieokreslona',
         topic: entry?.temat || candidates[idx].members[0].title,
       });
-      if (selected.length >= config.maxItemsPerRun) break;
+      if (selected.length >= targetCount) break;
     }
 
-    log.ok(`Filtr wybrał ${selected.length} wątków:`);
+    log.ok(`Filtr wybrał ${selected.length} wątków (${config.maxItemsPerRun} + rezerwa):`);
     selected.forEach((cluster, i) =>
-      log.info(`  ${i + 1}. [${cluster.category}] ${cluster.publisherCount}× ${cluster.members[0].title}  ← ${cluster.topic}`)
+      log.info(`  ${i + 1}.${i >= config.maxItemsPerRun ? ' (rezerwa)' : ''} [${cluster.category}] ${cluster.publisherCount}× ${cluster.members[0].title}  ← ${cluster.topic}`)
     );
 
-    const categories = new Set(selected.map((s) => s.category));
+    const categories = new Set(selected.slice(0, config.maxItemsPerRun).map((s) => s.category));
     if (selected.length >= 4 && categories.size < 3) {
       log.warn(`Mała różnorodność: tylko ${categories.size} kategorie (${[...categories].join(', ')})`);
     }
