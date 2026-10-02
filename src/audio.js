@@ -27,24 +27,26 @@ const scriptModel = genAI.getGenerativeModel({
 // Cel rzędu 3 500 znaków na pojedynczy temat trafia w okolicę ±15%, więc
 // długość audycji staje się sterowalna, a przez to sterowalny jest koszt TTS.
 const SCRIPT_RULES = `- NIE CZYTAJ artykułu słowo w słowo i NIE wymieniaj nazw sekcji ("Sedno sprawy", "Kluczowe fakty"). Przepisz treść na żywą mowę.
-- NIE GUB informacji: każdy fakt, liczba, nazwisko i wniosek ma się znaleźć w tekście. Skracasz formę, nie treść.
-- Liczby zapisuj słownie, tak jak się je wymawia ("siedemdziesiąt procent", "siedem i cztery dziesiąte miliarda franków").
+- Co ZOSTAJE zawsze: co się stało, kto i dlaczego, najważniejsze konsekwencje, czego jeszcze nie wiadomo.
+- Stanowiska i opinie NAZWANYCH osób i instytucji (polityków, ekspertów, organizacji, firm) zostają zawsze — to one pokazują, o co toczy się spór. Przypisuj je wprost ("zdaniem ekonomistki banku ING…", "opozycja odpowiada, że…"), a jeśli strony się różnią, zestaw je ze sobą.
+- Co WYCINASZ: powtórzenia, poboczne szczegóły, drugorzędne daty i nazwy, ogólniki i zdania-wypełniacze. Skracasz formę i dygresje, nie sedno.
+- LICZBY: słuchacz nie zobaczy ich na ekranie, więc najwyżej jedna-dwie liczby w zdaniu i tylko te, które niosą sens. Zaokrąglaj ("prawie siedem i pół miliarda" zamiast "siedem miliardów czterysta trzydzieści milionów"), zamieniaj na proporcje i porównania ("co trzeci Polak", "dwa razy więcej niż rok temu", "mniej więcej tyle, ile wynosi roczny budżet Krakowa"). Ciąg kilku liczb pod rząd zastąp jedną najważniejszą i trendem.
+- Liczby zapisuj słownie, tak jak się je wymawia ("siedemdziesiąt procent").
 - Skróty i nazwy obce rozwijaj przy pierwszym użyciu, zapisuj fonetycznie tam, gdzie lektor mógłby się pomylić.
 - Zero nagłówków, zero punktorów, zero znaczników, zero pustych linii — jeden ciągły akapit do przeczytania.
-- Ton: spokojny, rzeczowy, ciekawy. Bez emocji i bez "breaking news".`;
+- Ton: jak dobry prowadzący radiowy, a nie lektor komunikatu. Mów z zaangażowaniem, podkreśl, co jest zaskakujące, ważne albo kontrowersyjne ("i tu robi się ciekawie", "to nie jest drobna zmiana"), zadaj czasem retoryczne pytanie. Ale bez sensacji, bez wykrzykników, bez "breaking news" i bez własnych ocen politycznych.
+- Nie nazywaj ani nie opisuj audycji (żadnego "slow news", "spokojny przegląd", "powolne wiadomości").`;
 
-const TOPIC_PROMPT = ({ article, budget, previous, previousTitle, used, isFirst, isLast }) => `Jesteś autorem i prowadzącym codzienny przegląd "slow news" do odsłuchu. Opracuj JEDEN temat audycji na podstawie poniższego tekstu.
+const TOPIC_PROMPT = ({ article, budget, isFirst, isLast }) => `Jesteś autorem i prowadzącym codzienny przegląd najważniejszych wiadomości do odsłuchu. Opracuj JEDEN temat audycji na podstawie poniższego tekstu.
 
-DŁUGOŚĆ: dokładnie około ${budget} znaków. To wymóg — nie ${Math.round(budget * 0.6)}, nie ${Math.round(budget * 1.4)}. Jeśli kończysz poniżej budżetu, znaczy że pominąłeś fakty z tekstu źródłowego; jeśli powyżej — rozwlekle formułujesz.
+DŁUGOŚĆ: około ${budget} znaków, nie więcej niż ${Math.round(budget * 1.15)}. Zmieść się, wycinając to, co nadmiarowe — nie fakty kluczowe ani stanowiska stron.
 
 ${SCRIPT_RULES}
+- Pierwsze zdanie tematu ma od razu powiedzieć, o czym on jest — słuchacz musi po nim wiedzieć, że zaczął się nowy temat i jaki.
 ${isFirst
-  ? '- To PIERWSZY temat audycji. Zacznij od JEDNEGO zdania powitania i od razu przechodź do treści. Nie zapowiadaj, ile będzie tematów, nie opisuj charakteru audycji ("spokojny przegląd"), nie podawaj daty.'
-  : `- To KOLEJNY temat audycji. Zacznij od przejścia przez treść, geografię albo wątek ("z Berna przenosimy się do Warszawy", "zostajemy przy pieniądzach, ale zmieniamy kontynent"). Nigdy nie numeruj ("temat drugi") i nigdy nie powtarzaj formuły powitania.
-  Poprzedni temat dotyczył: "${previousTitle}" i skończył się tak: "${previous}"
-  Przejście ma wychodzić OD TEGO tematu — nie od miejsca czy wątku, którego w nim nie było.${used.length ? `
-  Wcześniejsze przejścia w tej audycji zaczynały się od: ${used.map((u) => `"${u}"`).join(', ')}. Twoje ma zaczynać się INACZEJ — ani tymi samymi słowami, ani tą samą konstrukcją gramatyczną (jeśli poprzednie zaczynały się od przyzwolenia "mimo że"/"choć", użyj innej figury).` : ''}`}
-${isLast ? '- To OSTATNI temat. Zakończ jednym zdaniem domknięcia. Bez zapraszania na kolejne wydanie.' : ''}
+  ? '- To PIERWSZY temat audycji. Zacznij od JEDNEGO krótkiego zdania powitania i od razu przechodź do treści. Nie zapowiadaj, ile będzie tematów, nie podawaj daty.'
+  : '- To KOLEJNY temat audycji, przed nim jest wyraźna pauza. NIE rób żadnego przejścia od poprzedniego tematu ("z Berna przenosimy się…", "zostajemy przy…", "a teraz…"), nie numeruj tematów, nie witaj się ponownie. Zacznij wprost od sedna.'}
+${isLast ? '- To OSTATNI temat. Zakończ jednym krótkim zdaniem pożegnania. Bez zapraszania na kolejne wydanie.' : ''}
 
 Zwróć sam tekst tematu, bez komentarza.
 
@@ -73,81 +75,57 @@ function estimate(script) {
 export async function writeScript(articles) {
   const total = Math.round((OPTS.scriptCharsMin + OPTS.scriptCharsMax) / 2);
   const budget = Math.round(total / articles.length);
-  const parts = [];
 
-  // Sekwencyjnie, bo każdy temat potrzebuje końcówki poprzedniego, żeby zbudować
-  // przejście ("z Tallinna wracamy do Polski") zamiast zaczynać od zera.
-  for (const [i, article] of articles.entries()) {
-    const previous = parts.length ? parts[parts.length - 1].slice(-220) : '';
-    // Bez tego model otwiera niemal każde przejście tak samo ("Zostajemy przy…"),
-    // a powtarzana formułka przed każdym tematem była pierwszą rzeczą, która
-    // raziła w odsłuchu.
-    const used = parts.slice(1).map((t) => t.split(/\s+/).slice(0, 2).join(' '));
+  // Tematy są niezależne (bez przejść), więc mogą powstawać równolegle.
+  const parts = await Promise.all(articles.map(async (article, i) => {
     const result = await scriptModel.generateContent(TOPIC_PROMPT({
       article,
       budget,
-      previous,
-      previousTitle: i > 0 ? articles[i - 1].title : '',
-      used,
       isFirst: i === 0,
       isLast: i === articles.length - 1,
     }));
     record(config.models.script, result.response, 'scenariusz');
     const text = result.response.text().trim().replace(/\s*\n\s*/g, ' ');
     log.info(`  temat ${i + 1}/${articles.length}: ${text.length} zn (cel ${budget})`);
-    parts.push(text);
-  }
+    return text;
+  }));
 
-  // Puste linie między tematami to punkty cięcia dla syntezatora mowy.
-  const script = parts.join('\n\n');
-  log.info(`Scenariusz: ${estimate(script)}`);
-  return script;
+  log.info(`Scenariusz: ${estimate(parts.join(' '))}`);
+  return parts;
 }
 
 // Scenariusz leci do release'u obok nagrania — inaczej nie da się sprawdzić,
 // czy audycja faktycznie pokryła wszystkie tematy.
-function saveScript(script, articles, outputDir, dateStamp) {
+function saveScript(topics, articles, outputDir, dateStamp) {
   const path = `${outputDir}/odsluch-${dateStamp}.txt`;
   const header = articles.map((a, i) => `${i + 1}. ${a.title}`).join('\n');
-  writeFileSync(path, `TEKSTY W TYM WYDANIU\n${header}\n\n${'='.repeat(60)}\n\n${script}\n`);
+  writeFileSync(path, `TEKSTY W TYM WYDANIU\n${header}\n\n${'='.repeat(60)}\n\n${topics.join('\n\n')}\n`);
   return path;
 }
 
-// Długiej audycji nie da się wygenerować jednym żądaniem — tniemy na akapitach,
-// a gdy akapit sam jest za długi, na granicy zdań. Każde cięcie resetuje
-// intonację lektora, więc celujemy w jak najmniejszą liczbę możliwie równych
-// fragmentów zamiast pakować je zachłannie pod sam limit.
-export function chunkScript(script) {
+// Każdy temat syntezujemy osobno: cięcie na granicy tematów i tak jest
+// pożądane (pauza, nowa intonacja), a w środku tematu go unikamy. Tylko temat
+// dłuższy niż limit dzielimy na granicy zdań — na możliwie równe fragmenty,
+// bo każde cięcie resetuje intonację lektora.
+export function chunkTopic(text) {
   const limit = OPTS.maxCharsPerChunk;
+  if (text.length <= limit) return [text];
 
-  const pieces = [];
-  for (const paragraph of script.split(/\n\s*\n/)) {
-    if (!paragraph.trim()) continue;
-    if (paragraph.length <= limit) {
-      pieces.push(paragraph.trim());
-      continue;
-    }
-    const sentences = paragraph.match(new RegExp(`[\\s\\S]{1,${limit}}(?=[.!?]\\s|$)`, 'g'))
-      || [paragraph];
-    pieces.push(...sentences.map((x) => x.trim()));
-  }
-
-  const total = pieces.reduce((sum, p) => sum + p.length, 0);
-  const target = Math.ceil(total / Math.ceil(total / limit));
+  const sentences = text.match(/[^.!?]+[.!?]+(?:\s+|$)|[^.!?]+$/g) || [text];
+  const target = Math.ceil(text.length / Math.ceil(text.length / limit));
 
   const chunks = [];
   let current = '';
-  for (const piece of pieces) {
-    const joined = current ? `${current}\n\n${piece}` : piece;
+  for (const sentence of sentences) {
+    const joined = current + sentence;
     if (current && (joined.length > limit || current.length >= target)) {
-      chunks.push(current);
-      current = piece;
+      chunks.push(current.trim());
+      current = sentence;
     } else {
       current = joined;
     }
   }
-  if (current) chunks.push(current);
-
+  if (current.trim()) chunks.push(current.trim());
   return chunks;
 }
 
@@ -249,12 +227,21 @@ function trimAndFade(wav) {
   return cut;
 }
 
-function concatWav(wavBuffers) {
-  const gap = Buffer.alloc(Math.round(SAMPLE_RATE * OPTS.gapSeconds) * 2);
+// Krótka cisza między fragmentami jednego tematu, długa między tematami —
+// bez niej w odsłuchu trudno złapać, gdzie kończy się jeden temat, a zaczyna
+// drugi. Cisza jest doklejana lokalnie, więc nie kosztuje nic w TTS.
+function silence(seconds) {
+  return Buffer.alloc(Math.round(SAMPLE_RATE * seconds) * 2);
+}
+
+function concatWav(topics) {
   const parts = [];
-  wavBuffers.forEach((wav, i) => {
-    if (i > 0) parts.push(gap);
-    parts.push(trimAndFade(wav));
+  topics.forEach((wavs, t) => {
+    if (t > 0) parts.push(silence(OPTS.topicGapSeconds));
+    wavs.forEach((wav, i) => {
+      if (i > 0) parts.push(silence(OPTS.gapSeconds));
+      parts.push(trimAndFade(wav));
+    });
   });
   const body = Buffer.concat(parts);
   return Buffer.concat([wavHeader(body.length), body]);
@@ -302,27 +289,35 @@ export async function buildAudioDigest(articles, { outputDir, dateStamp }) {
   if (articles.length === 0) return null;
 
   log.info(`Piszę scenariusz odsłuchu z ${articles.length} tekstów (model: ${config.models.script})...`);
-  const script = await writeScript(articles);
-  const chunks = chunkScript(script);
-  log.info(`Scenariusz: ${script.length} znaków → ${chunks.length} fragmentów do syntezy`);
+  const topics = await writeScript(articles);
+  const chunked = topics.map(chunkTopic);
+  const count = chunked.flat().length;
+  const chars = topics.reduce((sum, t) => sum + t.length, 0);
+  log.info(`Scenariusz: ${chars} znaków → ${count} fragmentów do syntezy`);
 
   const buffers = [];
-  for (let i = 0; i < chunks.length; i++) {
-    try {
-      const wav = await speakChunk(chunks[i]);
-      buffers.push(wav);
-      log.info(`  TTS ${i + 1}/${chunks.length} → ${((wav.length - WAV_HEADER) / BYTES_PER_SEC).toFixed(1)} s`);
-    } catch (err) {
-      log.error(`  TTS ${i + 1}/${chunks.length} nie powiódł się: ${err.message.slice(0, 100)}`);
-      return null;
+  let n = 0;
+  for (const chunks of chunked) {
+    const wavs = [];
+    for (const chunk of chunks) {
+      n += 1;
+      try {
+        const wav = await speakChunk(chunk);
+        wavs.push(wav);
+        log.info(`  TTS ${n}/${count} → ${((wav.length - WAV_HEADER) / BYTES_PER_SEC).toFixed(1)} s`);
+      } catch (err) {
+        log.error(`  TTS ${n}/${count} nie powiódł się: ${err.message.slice(0, 100)}`);
+        return null;
+      }
     }
+    buffers.push(wavs);
   }
 
   const wav = concatWav(buffers);
   const durationSec = (wav.length - WAV_HEADER) / BYTES_PER_SEC;
 
   mkdirSync(outputDir, { recursive: true });
-  const scriptPath = saveScript(script, articles, outputDir, dateStamp);
+  const scriptPath = saveScript(topics, articles, outputDir, dateStamp);
   const wavPath = `${outputDir}/odsluch-${dateStamp}.wav`;
   writeFileSync(wavPath, wav);
   const filePath = compress(wavPath, `${outputDir}/odsluch-${dateStamp}`) || wavPath;
@@ -333,7 +328,7 @@ export async function buildAudioDigest(articles, { outputDir, dateStamp }) {
     `${(bytes / 1024 / 1024).toFixed(1)} MB → ${filePath}`
   );
 
-  return { script, scriptPath, filePath, fileName: filePath.split('/').pop(), bytes, durationSec };
+  return { script: topics.join('\n\n'), scriptPath, filePath, fileName: filePath.split('/').pop(), bytes, durationSec };
 }
 
 // 1 temat · 2-4 tematy · 5+ tematów (i 12-14 tematów mimo końcówki 2-4)

@@ -626,7 +626,7 @@
     ],
     "blockedDomains": []
   },
-  "monthlyBudgetPln": 40,
+  "monthlyBudgetPln": 30,
   "models": {
     "filter": "gemini-3.5-flash-lite",
     "facts": "gemini-3.5-flash",
@@ -640,14 +640,15 @@
   "audio": {
     "enabled": true,
     "voice": "Kore",
-    "scriptCharsMin": 13100,
-    "scriptCharsMax": 14500,
+    "scriptCharsMin": 7900,
+    "scriptCharsMax": 8900,
     "maxCharsPerChunk": 3200,
     "bitrateKbps": 64,
     "retentionDays": 14,
     "releaseTagPrefix": "audio-",
     "baseUrl": "https://grabowskirobert.github.io/ai-rss/audio",
-    "gapSeconds": 0.35
+    "gapSeconds": 0.35,
+    "topicGapSeconds": 2.5
   },
   "filterReserve": 3,
   "article": {
