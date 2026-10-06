@@ -647,7 +647,7 @@
     "enabled": true,
     "engine": "cloud",
     "cloudVoice": "pl-PL-Chirp3-HD-Kore",
-    "cloudOverflowVoice": "pl-PL-Wavenet-A",
+    "cloudOverflowVoice": "pl-PL-Wavenet-F",
     "voice": "Kore",
     "maxCharsPerChunk": 3200,
     "bitrateKbps": 64,
