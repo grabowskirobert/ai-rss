@@ -67,7 +67,7 @@ function renderSources(entry) {
 const AUDIO_NOTE =
   `<p style="font-family:system-ui,sans-serif;font-size:0.8em;line-height:1.5;margin:1.5em 0 0;` +
   `padding:0.7em 0.9em;border-left:3px solid #2a6496;background:#f0f5fa;color:#4a4a4a">` +
-  `Nagranie powstało z dzisiejszych tekstów, przepisanych na mowę — nie jest czytaniem ich słowo w słowo. ` +
+  `Nagranie to dzisiejsze teksty czytane w całości, bez nagłówków sekcji. ` +
   `Źródła każdego tematu znajdziesz przy odpowiednim wpisie tekstowym.</p>`;
 
 function renderAudio(entry) {

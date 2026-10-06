@@ -231,7 +231,7 @@ async function main() {
   const toPublish = [...synthesized];
 
   if (WITH_AUDIO) {
-    log.phase('Faza 5 — odsłuch (scenariusz + TTS)');
+    log.phase('Faza 5 — odsłuch (TTS)');
     try {
       const entry = await buildAudio(synthesized);
       if (entry) toPublish.push(entry);

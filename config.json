@@ -413,8 +413,7 @@
     "filter": 512,
     "facts": 0,
     "claims": 128,
-    "background": 128,
-    "script": 128
+    "background": 128
   },
   "cluster": {
     "similarityThreshold": 0.82,
@@ -638,7 +637,6 @@
     "background": "gemini-3.5-flash-lite",
     "embedding": "gemini-embedding-001",
     "fallback": "gemini-3.5-flash-lite",
-    "script": "gemini-3.5-flash-lite",
     "tts": "gemini-3.8-flash-lite-tts"
   },
   "audio": {
@@ -646,8 +644,6 @@
     "engine": "cloud",
     "cloudVoice": "pl-PL-Chirp3-HD-Kore",
     "voice": "Kore",
-    "scriptCharsMin": 7900,
-    "scriptCharsMax": 8900,
     "maxCharsPerChunk": 3200,
     "bitrateKbps": 64,
     "retentionDays": 14,

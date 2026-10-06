@@ -1,11 +1,9 @@
 import { execFileSync } from 'child_process';
 import { existsSync, mkdirSync, readFileSync, unlinkSync, writeFileSync } from 'fs';
-import { GoogleGenerativeAI } from '@google/generative-ai';
 import config from '../config.json' with { type: 'json' };
 import { log } from './logger.js';
 import { record } from './costs.js';
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 const OPTS = config.audio;
 
 // Gemini TTS zwraca WAV 24 kHz mono 16-bit; rozliczenie to stałe ~32 tokeny
@@ -14,54 +12,32 @@ const SAMPLE_RATE = 24000;
 const BYTES_PER_SEC = SAMPLE_RATE * 2;
 const WAV_HEADER = 44;
 
-const scriptModel = genAI.getGenerativeModel({
-  model: config.models.script,
-  generationConfig: config.thinkingBudget?.script >= 0
-    ? { thinkingConfig: { thinkingBudget: config.thinkingBudget.script } }
-    : {},
-});
+// Odsłuch to dosłowne czytanie artykułów: tytuł i treść sekcji, bez nagłówków
+// sekcji. Źródła nie siedzą w article.html (feed dokleja je osobno), więc tu
+// ich nie ma. Bez etapu przepisywania przez model — lektor czyta to, co jest
+// w feedzie.
+const ENTITIES = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ' };
 
-// Jeden temat = jedno wywołanie. Powód: przy jednym wywołaniu na całe wydanie
-// model pisze tyle, ile uzna za stosowne, a podana liczba znaków nic nie robi —
-// zmierzone: cel 13 500 → 19 669 zn, cel 17 000 → 12 121 zn (ten sam materiał).
-// Cel rzędu 3 500 znaków na pojedynczy temat trafia w okolicę ±15%, więc
-// długość audycji staje się sterowalna, a przez to sterowalny jest koszt TTS.
-const SCRIPT_RULES = `- NIE CZYTAJ artykułu słowo w słowo i NIE wymieniaj nazw sekcji ("Sedno sprawy", "Kluczowe fakty"). Przepisz treść na żywą mowę.
-- Co ZOSTAJE zawsze: co się stało, kto i dlaczego, najważniejsze konsekwencje, czego jeszcze nie wiadomo.
-- Stanowiska i opinie NAZWANYCH osób i instytucji (polityków, ekspertów, organizacji, firm) zostają zawsze — to one pokazują, o co toczy się spór. Przypisuj je wprost ("zdaniem ekonomistki banku ING…", "opozycja odpowiada, że…"), a jeśli strony się różnią, zestaw je ze sobą.
-- Co WYCINASZ: powtórzenia, poboczne szczegóły, drugorzędne daty i nazwy, ogólniki i zdania-wypełniacze. Skracasz formę i dygresje, nie sedno.
-- LICZBY: słuchacz nie zobaczy ich na ekranie, więc najwyżej jedna-dwie liczby w zdaniu i tylko te, które niosą sens. Zaokrąglaj ("prawie siedem i pół miliarda" zamiast "siedem miliardów czterysta trzydzieści milionów"), zamieniaj na proporcje i porównania ("co trzeci Polak", "dwa razy więcej niż rok temu", "mniej więcej tyle, ile wynosi roczny budżet Krakowa"). Ciąg kilku liczb pod rząd zastąp jedną najważniejszą i trendem.
-- Liczby zapisuj słownie, tak jak się je wymawia ("siedemdziesiąt procent").
-- Skróty i nazwy obce rozwijaj przy pierwszym użyciu, zapisuj fonetycznie tam, gdzie lektor mógłby się pomylić.
-- Zero nagłówków, zero punktorów, zero znaczników, zero pustych linii — jeden ciągły akapit do przeczytania.
-- Ton: jak dobry prowadzący radiowy, a nie lektor komunikatu. Mów z zaangażowaniem, podkreśl, co jest zaskakujące, ważne albo kontrowersyjne ("i tu robi się ciekawie", "to nie jest drobna zmiana"), zadaj czasem retoryczne pytanie. Ale bez sensacji, bez wykrzykników, bez "breaking news" i bez własnych ocen politycznych.
-- Nie nazywaj ani nie opisuj audycji (żadnego "slow news", "spokojny przegląd", "powolne wiadomości").`;
+function decode(text) {
+  return text
+    .replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(Number(n)))
+    .replace(/&([a-z]+);/gi, (m, name) => ENTITIES[name.toLowerCase()] ?? m);
+}
 
-const TOPIC_PROMPT = ({ article, budget, isFirst, isLast }) => `Jesteś autorem i prowadzącym codzienny przegląd najważniejszych wiadomości do odsłuchu. Opracuj JEDEN temat audycji na podstawie poniższego tekstu.
+// Punktor bez kropki na końcu zlewa się lektorowi z następnym w jedno zdanie.
+function sentence(text) {
+  const t = decode(text.replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ').trim();
+  if (!t) return '';
+  return /[.!?…:;]$/.test(t) ? t : `${t}.`;
+}
 
-DŁUGOŚĆ: około ${budget} znaków, nie więcej niż ${Math.round(budget * 1.15)}. Zmieść się, wycinając to, co nadmiarowe — nie fakty kluczowe ani stanowiska stron.
-
-${SCRIPT_RULES}
-- Pierwsze zdanie tematu ma od razu powiedzieć, o czym on jest — słuchacz musi po nim wiedzieć, że zaczął się nowy temat i jaki.
-${isFirst
-  ? '- To PIERWSZY temat audycji. Zacznij od JEDNEGO krótkiego zdania powitania i od razu przechodź do treści. Nie zapowiadaj, ile będzie tematów, nie podawaj daty.'
-  : '- To KOLEJNY temat audycji, przed nim jest wyraźna pauza. NIE rób żadnego przejścia od poprzedniego tematu ("z Berna przenosimy się…", "zostajemy przy…", "a teraz…"), nie numeruj tematów, nie witaj się ponownie. Zacznij wprost od sedna.'}
-${isLast ? '- To OSTATNI temat. Zakończ jednym krótkim zdaniem pożegnania. Bez zapraszania na kolejne wydanie.' : ''}
-
-Zwróć sam tekst tematu, bez komentarza.
-
-TEKST ŹRÓDŁOWY — ${article.title}:
-${toPlainText(article.html)}`;
-
-function toPlainText(html) {
-  return html
-    .replace(/<h3[^>]*>/g, '\n')
-    .replace(/<\/h3>/g, ': ')
-    .replace(/<li[^>]*>/g, '\n- ')
-    .replace(/<[^>]+>/g, ' ')
-    .replace(/[ \t]+/g, ' ')
-    .replace(/\n +/g, '\n')
-    .trim();
+export function articleToSpeech(article) {
+  const body = article.html
+    .replace(/<h3[^>]*>[\s\S]*?<\/h3>/gi, '')
+    .split(/<\/?(?:p|li|ul|ol|br)[^>]*>/i)
+    .map(sentence)
+    .filter(Boolean);
+  return [sentence(article.title), ...body].join(' ');
 }
 
 // Zmierzone na realnym nagraniu (odsluch-2026-09-28): 16,92 znaku na sekundę.
@@ -72,30 +48,7 @@ function estimate(script) {
   return `${script.length} zn ≈ ${Math.floor(seconds / 60)}:${String(Math.round(seconds % 60)).padStart(2, '0')}`;
 }
 
-export async function writeScript(articles) {
-  const total = Math.round((OPTS.scriptCharsMin + OPTS.scriptCharsMax) / 2);
-  const budget = Math.round(total / articles.length);
-
-  // Tematy są niezależne (bez przejść), więc mogą powstawać równolegle.
-  const parts = await Promise.all(articles.map(async (article, i) => {
-    const result = await scriptModel.generateContent(TOPIC_PROMPT({
-      article,
-      budget,
-      isFirst: i === 0,
-      isLast: i === articles.length - 1,
-    }));
-    record(config.models.script, result.response, 'scenariusz');
-    const text = result.response.text().trim().replace(/\s*\n\s*/g, ' ');
-    log.info(`  temat ${i + 1}/${articles.length}: ${text.length} zn (cel ${budget})`);
-    return text;
-  }));
-
-  log.info(`Scenariusz: ${estimate(parts.join(' '))}`);
-  return parts;
-}
-
-// Scenariusz leci do release'u obok nagrania — inaczej nie da się sprawdzić,
-// czy audycja faktycznie pokryła wszystkie tematy.
+// Czytany tekst leci do release'u obok nagrania — do porównania z odsłuchem.
 function saveScript(topics, articles, outputDir, dateStamp) {
   const path = `${outputDir}/odsluch-${dateStamp}.txt`;
   const header = articles.map((a, i) => `${i + 1}. ${a.title}`).join('\n');
@@ -344,12 +297,12 @@ function compress(wavPath, outBase) {
 export async function buildAudioDigest(articles, { outputDir, dateStamp }) {
   if (articles.length === 0) return null;
 
-  log.info(`Piszę scenariusz odsłuchu z ${articles.length} tekstów (model: ${config.models.script})...`);
-  const topics = await writeScript(articles);
+  const topics = articles.map(articleToSpeech);
+  log.info(`Odsłuch z ${articles.length} tekstów: ${estimate(topics.join(' '))}`);
   const chunked = topics.map(chunkTopic);
   const count = chunked.flat().length;
   const chars = topics.reduce((sum, t) => sum + t.length, 0);
-  log.info(`Scenariusz: ${chars} znaków → ${count} fragmentów do syntezy`);
+  log.info(`Tekst: ${chars} znaków → ${count} fragmentów do syntezy`);
 
   // Darmowy lektor może odmówić (wyłączone API, klucz bez uprawnień, zmiana
   // limitów) — wtedy całe nagranie powstaje płatnym Gemini, żeby w jednej
