@@ -129,7 +129,7 @@ export function chunkTopic(text) {
   return chunks;
 }
 
-async function speakChunk(text) {
+async function speakGemini(text) {
   const model = config.models.tts;
   const res = await fetch(
     `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${process.env.GEMINI_API_KEY}`,
@@ -158,6 +158,62 @@ async function speakChunk(text) {
 
   record(model, json, 'tts');
   return Buffer.from(inline.data, 'base64');
+}
+
+// Cloud Text-to-Speech (głosy Chirp 3 HD) ma miesięczny darmowy limit znaków,
+// a audycja zużywa go z dużym zapasem — w przeciwieństwie do Gemini TTS, które
+// jest rozliczane za każdą sekundę nagrania. Limit żądania to 5000 BAJTÓW,
+// a polskie znaki diakrytyczne mają po dwa, stąd maxCharsPerChunk z zapasem.
+const CLOUD_TTS_MODEL = 'cloud-tts-chirp3-hd';
+
+async function speakCloud(text) {
+  const key = process.env.GOOGLE_TTS_API_KEY || process.env.GEMINI_API_KEY;
+  const input = text.replace(/\s*\n\s*/g, ' ');
+  const res = await fetch(`https://texttospeech.googleapis.com/v1/text:synthesize?key=${key}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      input: { text: input },
+      voice: { languageCode: OPTS.cloudVoice.slice(0, 5), name: OPTS.cloudVoice },
+      audioConfig: { audioEncoding: 'LINEAR16', sampleRateHertz: SAMPLE_RATE },
+    }),
+  });
+
+  const json = await res.json();
+  if (json.error) throw new Error(json.error.message);
+  if (!json.audioContent) throw new Error('brak danych audio w odpowiedzi');
+
+  // Rozliczenie jest w znakach, nie w tokenach — rejestr kosztów dostaje je
+  // jako "input", żeby było widać, ile z darmowego limitu schodzi dziennie.
+  record(CLOUD_TTS_MODEL, { usageMetadata: { promptTokenCount: input.length } }, 'tts');
+
+  // LINEAR16 przychodzi jako WAV z nagłówkiem, którego długość nie jest
+  // gwarantowana — wyciągamy sam blok "data" i składamy nagłówek po swojemu,
+  // żeby dalsza obróbka mogła zakładać stałe 44 bajty jak przy Gemini.
+  const wav = Buffer.from(json.audioContent, 'base64');
+  const at = wav.indexOf('data', 12, 'ascii');
+  const pcm = at === -1 ? wav : wav.subarray(at + 8, at + 8 + wav.readUInt32LE(at + 4));
+  return Buffer.concat([wavHeader(pcm.length), pcm]);
+}
+
+const ENGINES = { cloud: speakCloud, gemini: speakGemini };
+
+async function synthesize(chunked, engine) {
+  const count = chunked.flat().length;
+  const speak = ENGINES[engine];
+  const topics = [];
+  let n = 0;
+  for (const chunks of chunked) {
+    const wavs = [];
+    for (const chunk of chunks) {
+      n += 1;
+      const wav = await speak(chunk);
+      wavs.push(wav);
+      log.info(`  TTS ${engine} ${n}/${count} → ${((wav.length - WAV_HEADER) / BYTES_PER_SEC).toFixed(1)} s`);
+    }
+    topics.push(wavs);
+  }
+  return topics;
 }
 
 function wavHeader(pcmLength) {
@@ -295,22 +351,23 @@ export async function buildAudioDigest(articles, { outputDir, dateStamp }) {
   const chars = topics.reduce((sum, t) => sum + t.length, 0);
   log.info(`Scenariusz: ${chars} znaków → ${count} fragmentów do syntezy`);
 
-  const buffers = [];
-  let n = 0;
-  for (const chunks of chunked) {
-    const wavs = [];
-    for (const chunk of chunks) {
-      n += 1;
-      try {
-        const wav = await speakChunk(chunk);
-        wavs.push(wav);
-        log.info(`  TTS ${n}/${count} → ${((wav.length - WAV_HEADER) / BYTES_PER_SEC).toFixed(1)} s`);
-      } catch (err) {
-        log.error(`  TTS ${n}/${count} nie powiódł się: ${err.message.slice(0, 100)}`);
-        return null;
-      }
+  // Darmowy lektor może odmówić (wyłączone API, klucz bez uprawnień, zmiana
+  // limitów) — wtedy całe nagranie powstaje płatnym Gemini, żeby w jednej
+  // audycji nie mieszać dwóch głosów.
+  const engine = OPTS.engine || 'gemini';
+  let buffers;
+  try {
+    buffers = await synthesize(chunked, engine);
+  } catch (err) {
+    log.error(`  TTS ${engine} nie powiódł się: ${err.message.slice(0, 160)}`);
+    if (engine === 'gemini') return null;
+    log.warn('  Przełączam odsłuch na Gemini TTS');
+    try {
+      buffers = await synthesize(chunked, 'gemini');
+    } catch (err2) {
+      log.error(`  TTS gemini nie powiódł się: ${err2.message.slice(0, 160)}`);
+      return null;
     }
-    buffers.push(wavs);
   }
 
   const wav = concatWav(buffers);

@@ -403,6 +403,10 @@
     "gemini-3.8-flash-lite-tts": {
       "inputUsdPerMTok": 0.38,
       "outputUsdPerMTok": 6.21
+    },
+    "cloud-tts-chirp3-hd": {
+      "inputUsdPerMTok": 0,
+      "outputUsdPerMTok": 0
     }
   },
   "thinkingBudget": {
@@ -639,6 +643,8 @@
   },
   "audio": {
     "enabled": true,
+    "engine": "cloud",
+    "cloudVoice": "pl-PL-Chirp3-HD-Kore",
     "voice": "Kore",
     "scriptCharsMin": 7900,
     "scriptCharsMax": 8900,

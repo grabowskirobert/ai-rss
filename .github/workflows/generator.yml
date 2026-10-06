@@ -66,6 +66,7 @@ jobs:
           node src/index.js $FLAGS
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GOOGLE_TTS_API_KEY: ${{ secrets.GOOGLE_TTS_API_KEY }}
 
       - name: Publish audio to Releases
         if: inputs.dry_run != true && steps.run.outputs.audio_path != ''
