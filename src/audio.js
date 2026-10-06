@@ -117,9 +117,49 @@ async function speakGemini(text) {
 // a audycja zużywa go z dużym zapasem — w przeciwieństwie do Gemini TTS, które
 // jest rozliczane za każdą sekundę nagrania. Limit żądania to 5000 BAJTÓW,
 // a polskie znaki diakrytyczne mają po dwa, stąd maxCharsPerChunk z zapasem.
-const CLOUD_TTS_MODEL = 'cloud-tts-chirp3-hd';
+// Cennik (cloud.google.com/text-to-speech/pricing, sprawdzony 2026-10-06):
+// Chirp 3 HD — 1 mln znaków/mies. za darmo, potem 30 USD/1 mln; WaveNet —
+// 4 mln za darmo, potem 4 USD/1 mln. Limity liczą się per konto
+// rozliczeniowe i obejmują też próby i lokalne przebiegi. Odsłuch to ~26 tys.
+// znaków dziennie (~780 tys./mies.), więc Chirp mieści się z niewielkim
+// zapasem — gdy limit się kończy, reszta miesiąca idzie głosem WaveNet,
+// który ma osobny, czterokrotnie większy limit.
+export const CLOUD_VOICES = {
+  chirp: { model: 'cloud-tts-chirp3-hd', voice: () => OPTS.cloudVoice, freeChars: 1_000_000 },
+  wavenet: { model: 'cloud-tts-wavenet', voice: () => OPTS.cloudOverflowVoice, freeChars: 4_000_000 },
+};
 
-async function speakCloud(text) {
+const LEDGER = 'costs.jsonl';
+
+// Ile znaków danego modelu zeszło w bieżącym miesiącu — z rejestru kosztów,
+// bo API nie podaje stanu darmowego limitu.
+export function cloudCharsThisMonth(model, ledger = LEDGER) {
+  if (!existsSync(ledger)) return 0;
+  const month = new Date().toISOString().slice(0, 7);
+  let sum = 0;
+  for (const line of readFileSync(ledger, 'utf8').split('\n')) {
+    if (!line.includes(model)) continue;
+    try {
+      const e = JSON.parse(line);
+      if (!e.date?.startsWith(month)) continue;
+      for (const st of e.stages || []) if (st.model === model) sum += st.input;
+    } catch { /* uszkodzona linia rejestru nie blokuje odsłuchu */ }
+  }
+  return sum;
+}
+
+// Zapas na przebiegi, które nie trafią do rejestru (np. przerwane w połowie).
+const FREE_MARGIN = 0.95;
+
+export function pickCloudVoice(chars) {
+  for (const v of Object.values(CLOUD_VOICES)) {
+    const used = cloudCharsThisMonth(v.model);
+    if (used + chars <= v.freeChars * FREE_MARGIN) return { ...v, used };
+  }
+  return null;
+}
+
+export async function speakCloud(text, { model, voice }) {
   const key = process.env.GOOGLE_TTS_API_KEY || process.env.GEMINI_API_KEY;
   const input = text.replace(/\s*\n\s*/g, ' ');
   const res = await fetch(`https://texttospeech.googleapis.com/v1/text:synthesize?key=${key}`, {
@@ -127,7 +167,7 @@ async function speakCloud(text) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       input: { text: input },
-      voice: { languageCode: OPTS.cloudVoice.slice(0, 5), name: OPTS.cloudVoice },
+      voice: { languageCode: voice.slice(0, 5), name: voice },
       audioConfig: { audioEncoding: 'LINEAR16', sampleRateHertz: SAMPLE_RATE },
     }),
   });
@@ -137,8 +177,8 @@ async function speakCloud(text) {
   if (!json.audioContent) throw new Error('brak danych audio w odpowiedzi');
 
   // Rozliczenie jest w znakach, nie w tokenach — rejestr kosztów dostaje je
-  // jako "input", żeby było widać, ile z darmowego limitu schodzi dziennie.
-  record(CLOUD_TTS_MODEL, { usageMetadata: { promptTokenCount: input.length } }, 'tts');
+  // jako "input"; z tej liczby liczony jest stan darmowego limitu.
+  record(model, { usageMetadata: { promptTokenCount: input.length } }, 'tts');
 
   // LINEAR16 przychodzi jako WAV z nagłówkiem, którego długość nie jest
   // gwarantowana — wyciągamy sam blok "data" i składamy nagłówek po swojemu,
@@ -149,11 +189,8 @@ async function speakCloud(text) {
   return Buffer.concat([wavHeader(pcm.length), pcm]);
 }
 
-const ENGINES = { cloud: speakCloud, gemini: speakGemini };
-
-async function synthesize(chunked, engine) {
+export async function synthesize(chunked, speak, label) {
   const count = chunked.flat().length;
-  const speak = ENGINES[engine];
   const topics = [];
   let n = 0;
   for (const chunks of chunked) {
@@ -162,7 +199,7 @@ async function synthesize(chunked, engine) {
       n += 1;
       const wav = await speak(chunk);
       wavs.push(wav);
-      log.info(`  TTS ${engine} ${n}/${count} → ${((wav.length - WAV_HEADER) / BYTES_PER_SEC).toFixed(1)} s`);
+      log.info(`  TTS ${label} ${n}/${count} → ${((wav.length - WAV_HEADER) / BYTES_PER_SEC).toFixed(1)} s`);
     }
     topics.push(wavs);
   }
@@ -304,21 +341,32 @@ export async function buildAudioDigest(articles, { outputDir, dateStamp }) {
   const chars = topics.reduce((sum, t) => sum + t.length, 0);
   log.info(`Tekst: ${chars} znaków → ${count} fragmentów do syntezy`);
 
-  // Darmowy lektor może odmówić (wyłączone API, klucz bez uprawnień, zmiana
-  // limitów) — wtedy całe nagranie powstaje płatnym Gemini, żeby w jednej
-  // audycji nie mieszać dwóch głosów.
-  const engine = OPTS.engine || 'gemini';
-  let buffers;
-  try {
-    buffers = await synthesize(chunked, engine);
-  } catch (err) {
-    log.error(`  TTS ${engine} nie powiódł się: ${err.message.slice(0, 160)}`);
-    if (engine === 'gemini') return null;
-    log.warn('  Przełączam odsłuch na Gemini TTS');
+  // Darmowy lektor może odmówić (wyłączone API, klucz bez uprawnień) albo
+  // oba darmowe limity mogą być wyczerpane — wtedy całe nagranie powstaje
+  // płatnym Gemini, żeby w jednej audycji nie mieszać głosów.
+  let buffers = null;
+  let engineUsed = 'gemini';
+  if ((OPTS.engine || 'gemini') === 'cloud') {
+    const pick = pickCloudVoice(chars);
+    if (!pick) {
+      log.warn('  Darmowe limity Cloud TTS w tym miesiącu wyczerpane');
+    } else {
+      const voice = pick.voice();
+      log.info(`  Cloud TTS: ${voice} · zużyte w tym miesiącu ${pick.used} + ${chars} z ${pick.freeChars} zn darmowych`);
+      try {
+        buffers = await synthesize(chunked, (t) => speakCloud(t, { model: pick.model, voice }), voice);
+        engineUsed = voice;
+      } catch (err) {
+        log.error(`  Cloud TTS nie powiódł się: ${err.message.slice(0, 160)}`);
+      }
+    }
+    if (!buffers) log.warn('  Przełączam odsłuch na Gemini TTS');
+  }
+  if (!buffers) {
     try {
-      buffers = await synthesize(chunked, 'gemini');
-    } catch (err2) {
-      log.error(`  TTS gemini nie powiódł się: ${err2.message.slice(0, 160)}`);
+      buffers = await synthesize(chunked, speakGemini, 'gemini');
+    } catch (err) {
+      log.error(`  TTS gemini nie powiódł się: ${err.message.slice(0, 160)}`);
       return null;
     }
   }
@@ -338,7 +386,7 @@ export async function buildAudioDigest(articles, { outputDir, dateStamp }) {
     `${(bytes / 1024 / 1024).toFixed(1)} MB → ${filePath}`
   );
 
-  return { script: topics.join('\n\n'), scriptPath, filePath, fileName: filePath.split('/').pop(), bytes, durationSec };
+  return { engine: engineUsed, script: topics.join('\n\n'), scriptPath, filePath, fileName: filePath.split('/').pop(), bytes, durationSec };
 }
 
 // 1 temat · 2-4 tematy · 5+ tematów (i 12-14 tematów mimo końcówki 2-4)

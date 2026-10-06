@@ -407,6 +407,10 @@
     "cloud-tts-chirp3-hd": {
       "inputUsdPerMTok": 0,
       "outputUsdPerMTok": 0
+    },
+    "cloud-tts-wavenet": {
+      "inputUsdPerMTok": 0,
+      "outputUsdPerMTok": 0
     }
   },
   "thinkingBudget": {
@@ -643,6 +647,7 @@
     "enabled": true,
     "engine": "cloud",
     "cloudVoice": "pl-PL-Chirp3-HD-Kore",
+    "cloudOverflowVoice": "pl-PL-Wavenet-A",
     "voice": "Kore",
     "maxCharsPerChunk": 3200,
     "bitrateKbps": 64,
