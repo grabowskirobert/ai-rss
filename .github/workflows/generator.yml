@@ -30,6 +30,10 @@ on:
         description: 'Tylko próba lektora Cloud TTS na jednym artykule (nic nie publikuje)'
         type: boolean
         default: false
+      deploy_only:
+        description: 'Tylko wdróż Pages z bieżącego feed.xml i nagrań z Releases (bez generowania, bez kosztów API)'
+        type: boolean
+        default: false
 
 # Gdyby dwie opóźnione próby dogoniły się nawzajem — druga czeka na pierwszą
 # i wtedy widzi już zaktualizowane archive.json.
@@ -79,14 +83,17 @@ jobs:
           node-version: '24'
 
       - run: npm ci
+        if: inputs.deploy_only != true
 
       # ffmpeg bywa preinstalowany na ubuntu-latest, ale to nie jest gwarancja
       # kontraktu — bez niego odsłuch zostaje 6× większym WAV-em.
       - name: Ensure ffmpeg
+        if: inputs.deploy_only != true
         run: ffmpeg -version >/dev/null 2>&1 || (sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg)
 
       - name: Run generator
         id: run
+        if: inputs.deploy_only != true
         run: |
           FLAGS=""
           if [ "${{ inputs.dry_run }}" = "true" ]; then FLAGS="$FLAGS --dry-run"; fi
@@ -129,7 +136,7 @@ jobs:
           if-no-files-found: warn
 
       - name: Commit state
-        if: inputs.dry_run != true && steps.run.outputs.skipped != 'true'
+        if: inputs.dry_run != true && inputs.deploy_only != true && steps.run.outputs.skipped != 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
