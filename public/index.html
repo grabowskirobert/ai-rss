@@ -5,122 +5,266 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Odsłuch">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="theme-color" content="#f6f5f2" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#121316" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#f3eee4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14120f" media="(prefers-color-scheme: dark)">
 <title>Odsłuch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f6f5f2;
-    --card: #ffffff;
-    --text: #1d1d1f;
-    --muted: #6e6e73;
-    --line: #e3e1dc;
-    --accent: #2a6496;
-    --accent-text: #ffffff;
-    --track: #dcdad5;
+    --bg: #f3eee4;
+    --bg-glow: #fbf3e3;
+    --card: #fffdf8;
+    --ink: #1b1a17;
+    --muted: #7a7366;
+    --line: #e4dccd;
+    --accent: #b4441f;
+    --accent-soft: rgba(180, 68, 31, .14);
+    --on-accent: #fffdf8;
+    --bar: #d9cfbd;
+    --shadow: 0 1px 2px rgba(60, 40, 10, .06), 0 12px 32px -12px rgba(60, 40, 10, .18);
+    --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+    --sans: 'Inter', -apple-system, system-ui, sans-serif;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #121316;
-      --card: #1c1d21;
-      --text: #f2f2f4;
-      --muted: #9a9aa1;
-      --line: #2c2d33;
-      --accent: #5b9bd5;
-      --accent-text: #0d1117;
-      --track: #34353c;
+      --bg: #14120f;
+      --bg-glow: #221a12;
+      --card: #1d1a16;
+      --ink: #f4eee3;
+      --muted: #9b9385;
+      --line: #2f2a23;
+      --accent: #f0875a;
+      --accent-soft: rgba(240, 135, 90, .16);
+      --on-accent: #1a1209;
+      --bar: #3a342b;
+      --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 16px 40px -16px rgba(0, 0, 0, .6);
     }
   }
+
   * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
   [hidden] { display: none !important; }
-  html, body { margin: 0; background: var(--bg); color: var(--text); }
+  html { background: var(--bg); }
   body {
-    font-family: -apple-system, system-ui, sans-serif;
-    padding: max(16px, env(safe-area-inset-top)) 16px max(24px, env(safe-area-inset-bottom));
-    max-width: 34rem; margin: 0 auto;
+    margin: 0 auto; max-width: 30rem; min-height: 100vh;
+    padding: max(20px, env(safe-area-inset-top)) 16px max(32px, env(safe-area-inset-bottom));
+    font-family: var(--sans); color: var(--ink);
+    background: radial-gradient(120% 60% at 50% -10%, var(--bg-glow), transparent 70%) no-repeat;
+    -webkit-font-smoothing: antialiased;
   }
-  h1 { font-size: .8rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 8px 0 16px; }
-  .player { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 22px 20px 20px; }
-  .ep-date { font-size: .8rem; color: var(--muted); margin: 0 0 4px; }
-  .ep-title { font-size: 1.35rem; font-weight: 700; line-height: 1.25; margin: 0 0 18px; }
-  input[type=range] {
-    -webkit-appearance: none; appearance: none; width: 100%; height: 28px; background: transparent; margin: 0;
-  }
-  input[type=range]::-webkit-slider-runnable-track {
-    height: 6px; border-radius: 3px;
-    background: linear-gradient(to right, var(--accent) var(--p, 0%), var(--track) var(--p, 0%));
-  }
-  input[type=range]::-moz-range-track { height: 6px; border-radius: 3px; background: var(--track); }
-  input[type=range]::-moz-range-progress { height: 6px; border-radius: 3px; background: var(--accent); }
-  input[type=range]::-webkit-slider-thumb {
-    -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: var(--accent); margin-top: -6px; border: 0;
-  }
-  input[type=range]::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: var(--accent); border: 0; }
-  .times { display: flex; justify-content: space-between; font-size: .78rem; color: var(--muted); font-variant-numeric: tabular-nums; margin-top: 2px; }
-  .controls { display: flex; align-items: center; justify-content: center; gap: 28px; margin: 18px 0 20px; }
   button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; padding: 0; }
-  .skip { width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; position: relative; color: var(--text); }
-  .skip:active { background: var(--line); }
-  .skip svg { width: 34px; height: 34px; }
-  .skip span { position: absolute; font-size: .62rem; font-weight: 700; top: 50%; left: 50%; transform: translate(-50%, -38%); }
-  .play { width: 76px; height: 76px; border-radius: 50%; background: var(--accent); color: var(--accent-text); display: grid; place-items: center; }
-  .play:active { transform: scale(.96); }
-  .play svg { width: 34px; height: 34px; }
-  .speeds { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; }
-  .speeds button { min-width: 52px; padding: 8px 10px; border-radius: 999px; border: 1px solid var(--line); font-size: .85rem; font-variant-numeric: tabular-nums; }
-  .speeds button[aria-pressed=true] { background: var(--text); color: var(--bg); border-color: var(--text); }
-  .topics { margin: 20px 0 0; padding: 16px 0 0; border-top: 1px solid var(--line); }
-  .topics h2, .list h2 { font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; }
-  .topics ol { margin: 0; padding-left: 1.3em; font-size: .92rem; line-height: 1.45; }
-  .topics li { margin-bottom: 6px; }
-  .list { margin-top: 28px; }
-  .list ul { list-style: none; margin: 0; padding: 0; background: var(--card); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
-  .list li + li { border-top: 1px solid var(--line); }
-  .list button { width: 100%; text-align: left; padding: 14px 16px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
-  .list button[aria-current=true] { color: var(--accent); font-weight: 600; }
-  .list .meta { font-size: .78rem; color: var(--muted); font-weight: 400; white-space: nowrap; font-variant-numeric: tabular-nums; }
-  .status { color: var(--muted); font-size: .9rem; text-align: center; padding: 40px 0; }
+  button:focus-visible, [role=slider]:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  /* Nagłówek */
+  .masthead { display: flex; align-items: center; justify-content: space-between; margin: 4px 2px 22px; }
+  .brand { font-family: var(--serif); font-weight: 700; font-size: 1.15rem; letter-spacing: -.01em; }
+  .brand small { font-family: var(--sans); font-weight: 500; font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-left: 6px; }
+  .onair {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: .64rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--muted); padding: 5px 10px; border: 1px solid var(--line); border-radius: 999px;
+    transition: color .3s, border-color .3s, background .3s;
+  }
+  .onair i { width: 7px; height: 7px; border-radius: 50%; background: var(--bar); transition: background .3s; }
+  body.playing .onair { color: var(--accent); border-color: var(--accent-soft); background: var(--accent-soft); }
+  body.playing .onair i { background: var(--accent); animation: blink 1.6s ease-in-out infinite; }
+  @keyframes blink { 50% { opacity: .25; } }
+
+  /* Karta odtwarzacza */
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow); }
+  .player { padding: 24px 20px 22px; }
+  .rise { animation: rise .6s cubic-bezier(.2, .8, .2, 1) both; }
+  .rise.d1 { animation-delay: .08s; } .rise.d2 { animation-delay: .16s; }
+  @keyframes rise { from { opacity: 0; transform: translateY(14px); } }
+
+  .kicker { font-size: .7rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin: 0 0 6px; }
+  .headline { font-family: var(--serif); font-weight: 500; font-size: 2.1rem; line-height: 1.05; letter-spacing: -.02em; margin: 0; }
+  .sub { color: var(--muted); font-size: .85rem; margin: 8px 0 0; }
+  .swap { animation: swap .45s ease both; }
+  @keyframes swap { from { opacity: 0; transform: translateY(6px); } }
+
+  /* Fala — jednocześnie pasek postępu i suwak */
+  .wave {
+    position: relative; height: 64px; margin: 26px 0 6px; touch-action: none; cursor: pointer;
+    --p: 0%;
+  }
+  .wave .bars { position: absolute; inset: 0; display: flex; align-items: center; gap: 2px; }
+  .wave .bars span { flex: 1; border-radius: 2px; background: var(--bar); transform-origin: center; }
+  .wave .bars.fill { clip-path: inset(0 calc(100% - var(--p)) 0 0); }
+  .wave .bars.fill span { background: var(--accent); }
+  .wave.grow .bars span { animation: grow .7s cubic-bezier(.2, .8, .2, 1) both; animation-delay: calc(var(--i) * 8ms); }
+  @keyframes grow { from { transform: scaleY(.05); } }
+  .wave .head {
+    position: absolute; top: 4px; bottom: 4px; left: var(--p); width: 2px; margin-left: -1px;
+    background: var(--ink); border-radius: 1px; opacity: .85; pointer-events: none;
+  }
+  .wave .head::after {
+    content: ''; position: absolute; top: -5px; left: 50%; width: 10px; height: 10px; margin-left: -5px;
+    border-radius: 50%; background: var(--ink);
+  }
+  .times { display: flex; justify-content: space-between; font-size: .75rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+  /* Sterowanie */
+  .controls { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; margin: 16px 0 22px; }
+  .skip {
+    justify-self: center; width: 58px; height: 58px; border-radius: 50%; position: relative;
+    display: grid; place-items: center; transition: background .2s, transform .15s;
+  }
+  .skip:hover { background: var(--accent-soft); }
+  .skip:active { transform: scale(.9); }
+  .skip svg { width: 32px; height: 32px; transition: transform .35s cubic-bezier(.3, 1.5, .5, 1); }
+  .skip.spin-l svg { transform: rotate(-40deg); } .skip.spin-r svg { transform: rotate(40deg); }
+  .skip b { position: absolute; font-size: .6rem; font-weight: 600; top: 50%; left: 50%; transform: translate(-50%, -36%); }
+
+  .play {
+    position: relative; width: 84px; height: 84px; border-radius: 50%;
+    background: var(--accent); color: var(--on-accent);
+    box-shadow: 0 10px 24px -8px var(--accent), inset 0 1px 0 rgba(255, 255, 255, .25);
+    transition: transform .2s cubic-bezier(.3, 1.6, .5, 1), box-shadow .3s;
+  }
+  .play:active { transform: scale(.92); }
+  .play::before, .play::after {
+    content: ''; position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--accent);
+    opacity: 0; pointer-events: none;
+  }
+  body.playing .play::before { animation: ripple 2.4s ease-out infinite; }
+  body.playing .play::after { animation: ripple 2.4s ease-out 1.2s infinite; }
+  @keyframes ripple { from { opacity: .45; transform: scale(1); } to { opacity: 0; transform: scale(1.6); } }
+  /* Ikona: dwie połówki, które z trójkąta składają się w dwie belki pauzy */
+  .icon { position: absolute; inset: 0; margin: auto; width: 30px; height: 32px; }
+  .icon i {
+    position: absolute; top: 0; height: 100%; width: 50%; background: currentColor;
+    transition: clip-path .32s cubic-bezier(.6, 0, .2, 1), transform .32s cubic-bezier(.6, 0, .2, 1);
+  }
+  .icon i:first-child { left: 0; clip-path: polygon(0 0, 100% 25%, 100% 75%, 0 100%); transform: translateX(3px); }
+  .icon i:last-child { right: 0; clip-path: polygon(0 25%, 100% 50%, 100% 50%, 0 75%); transform: translateX(2px); }
+  body.playing .icon i:first-child { clip-path: polygon(0 0, 66% 0, 66% 100%, 0 100%); transform: translateX(1px); }
+  body.playing .icon i:last-child { clip-path: polygon(34% 0, 100% 0, 100% 100%, 34% 100%); transform: translateX(-1px); }
+  .play.loading .icon { opacity: 0; }
+  .play .spinner {
+    position: absolute; inset: 26px; border-radius: 50%; border: 3px solid currentColor; border-right-color: transparent;
+    opacity: 0; animation: spin .8s linear infinite; transition: opacity .2s;
+  }
+  .play.loading .spinner { opacity: 1; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* Prędkość */
+  .speed-label { display: flex; justify-content: space-between; align-items: baseline; margin: 0 2px 8px; }
+  .speed-label span { font-size: .68rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .speed-label output { font-family: var(--serif); font-size: 1.1rem; font-variant-numeric: tabular-nums; }
+  .speeds {
+    position: relative; display: grid; grid-template-columns: repeat(var(--n), 1fr);
+    background: var(--bg); border: 1px solid var(--line); border-radius: 14px; padding: 4px;
+  }
+  .speeds .pill {
+    position: absolute; top: 4px; bottom: 4px; left: 4px; border-radius: 10px;
+    width: calc((100% - 8px) / var(--n)); transform: translateX(calc(100% * var(--k)));
+    background: var(--card); box-shadow: 0 1px 3px rgba(0, 0, 0, .12);
+    transition: transform .35s cubic-bezier(.3, 1.3, .5, 1);
+  }
+  .speeds button {
+    position: relative; padding: 9px 0; font-size: .82rem; font-weight: 500; color: var(--muted);
+    font-variant-numeric: tabular-nums; transition: color .2s;
+  }
+  .speeds button[aria-pressed=true] { color: var(--ink); font-weight: 600; }
+
+  /* Tematy */
+  .topics { margin-top: 22px; padding-top: 18px; border-top: 1px dashed var(--line); }
+  .section-title { font-size: .68rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; }
+  .topics ol { list-style: none; margin: 0; padding: 0; counter-reset: t; }
+  .topics li {
+    counter-increment: t; display: grid; grid-template-columns: 28px 1fr; gap: 4px;
+    font-size: .92rem; line-height: 1.45; margin-bottom: 10px;
+    animation: rise .5s cubic-bezier(.2, .8, .2, 1) both; animation-delay: calc(var(--i) * 60ms + .1s);
+  }
+  .topics li::before { content: counter(t, decimal-leading-zero); font-family: var(--serif); color: var(--accent); font-size: .85rem; padding-top: 1px; }
+
+  /* Lista wydań */
+  .archive { margin-top: 26px; }
+  .archive .section-title { margin-left: 4px; }
+  .archive ul { list-style: none; margin: 0; padding: 6px; }
+  .archive li + li { border-top: 1px solid var(--line); }
+  .ep {
+    width: 100%; display: grid; grid-template-columns: 22px 1fr auto; align-items: center; gap: 10px;
+    text-align: left; padding: 13px 10px; border-radius: 12px; transition: background .2s;
+  }
+  .ep:hover { background: var(--accent-soft); }
+  .ep .name { font-size: .95rem; }
+  .ep .name::first-letter { text-transform: uppercase; }
+  .ep .meta { font-size: .76rem; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .ep .mark { width: 22px; height: 22px; display: grid; place-items: center; color: var(--muted); }
+  .ep .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+  .ep .ring { width: 18px; height: 18px; }
+  .ep[aria-current=true] .name { color: var(--accent); font-weight: 600; }
+  .eq { display: flex; gap: 2px; align-items: flex-end; height: 14px; }
+  .eq i { width: 3px; height: 100%; background: var(--accent); border-radius: 1px; transform-origin: bottom; transform: scaleY(.3); }
+  body.playing .eq i { animation: eq 1s ease-in-out infinite; }
+  .eq i:nth-child(2) { animation-delay: -.4s !important; } .eq i:nth-child(3) { animation-delay: -.7s !important; }
+  @keyframes eq { 0%, 100% { transform: scaleY(.3); } 50% { transform: scaleY(1); } }
+
+  .status { text-align: center; color: var(--muted); padding: 60px 0; }
+  .status .eq { justify-content: center; height: 22px; margin-bottom: 14px; }
+  .status .eq i { width: 4px; animation: eq 1s ease-in-out infinite; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
 </style>
 </head>
 <body>
-<h1>Odsłuch · AI RSS</h1>
+<header class="masthead">
+  <div class="brand">Odsłuch<small>AI RSS</small></div>
+  <div class="onair"><i></i>Na antenie</div>
+</header>
 
-<p class="status" id="status">Wczytuję…</p>
+<div class="status" id="status">
+  <div class="eq"><i></i><i></i><i></i></div>
+  <span id="status-text">Stroję odbiornik…</span>
+</div>
 
-<section class="player" id="player" hidden>
-  <p class="ep-date" id="ep-date"></p>
-  <p class="ep-title" id="ep-title"></p>
+<section class="card player rise" id="player" hidden>
+  <div id="head">
+    <p class="kicker" id="kicker"></p>
+    <h1 class="headline" id="headline"></h1>
+    <p class="sub" id="sub"></p>
+  </div>
 
-  <input type="range" id="seek" min="0" max="0" step="1" value="0" aria-label="Pozycja">
-  <div class="times"><span id="cur">0:00</span><span id="left">-0:00</span></div>
+  <div class="wave" id="wave" role="slider" tabindex="0" aria-label="Pozycja w nagraniu" aria-valuemin="0">
+    <div class="bars" id="bars"></div>
+    <div class="bars fill" id="bars-fill"></div>
+    <div class="head"></div>
+  </div>
+  <div class="times"><span id="cur">0:00</span><span id="left">−0:00</span></div>
 
   <div class="controls">
     <button class="skip" id="back" aria-label="Cofnij 15 sekund">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v4.5h4.5"/></svg>
-      <span>15</span>
+      <b>15</b>
     </button>
     <button class="play" id="play" aria-label="Odtwórz">
-      <svg id="ico-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>
-      <svg id="ico-pause" viewBox="0 0 24 24" fill="currentColor" hidden><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+      <span class="icon"><i></i><i></i></span>
+      <span class="spinner"></span>
     </button>
     <button class="skip" id="fwd" aria-label="Przewiń 30 sekund">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.4-5.7"/><path d="M20 4v4.5h-4.5"/></svg>
-      <span>30</span>
+      <b>30</b>
     </button>
   </div>
 
-  <div class="speeds" id="speeds"></div>
+  <div class="speed-label"><span>Prędkość</span><output id="speed-out"></output></div>
+  <div class="speeds" id="speeds"><div class="pill"></div></div>
 
   <div class="topics" id="topics" hidden>
-    <h2>W tym odcinku</h2>
+    <p class="section-title">W tym wydaniu</p>
     <ol id="topic-list"></ol>
   </div>
 </section>
 
-<section class="list" id="list" hidden>
-  <h2>Wydania</h2>
-  <ul id="episodes"></ul>
+<section class="archive rise d2" id="archive" hidden>
+  <p class="section-title">Poprzednie wydania</p>
+  <div class="card"><ul id="episodes"></ul></div>
 </section>
 
 <audio id="audio" preload="metadata"></audio>
@@ -132,9 +276,10 @@ const FEED_URL = 'feed.xml';
 // Nagrania żyją na Pages tyle, ile audio.retentionDays w config.json;
 // starszych wpisów nie pokazujemy, bo ich MP3 już nie ma.
 const RETENTION_DAYS = 14;
-const SPEEDS = [1, 1.25, 1.5, 1.75, 2];
+const SPEEDS = [1, 1.15, 1.25, 1.5, 1.75, 2];
 const BACK_SEC = 15;
 const FWD_SEC = 30;
+const BAR_COUNT = 56;
 
 const $ = (id) => document.getElementById(id);
 const audio = $('audio');
@@ -145,8 +290,10 @@ const store = {
 
 let episodes = [];
 let current = null;
-let speed = store.get('speed', 1.5);
-let seeking = false;
+let speed = store.get('speed', 1.25);
+if (!SPEEDS.includes(speed)) speed = 1.25;
+let dragging = false;
+let dragPos = 0;
 
 function fmt(sec) {
   if (!isFinite(sec) || sec < 0) sec = 0;
@@ -154,6 +301,7 @@ function fmt(sec) {
   const h = Math.floor(sec / 3600), m = Math.floor((sec % 3600) / 60), s = sec % 60;
   return (h ? `${h}:${String(m).padStart(2, '0')}` : `${m}`) + `:${String(s).padStart(2, '0')}`;
 }
+const fmtSpeed = (s) => `${String(s).replace('.', ',')}×`;
 
 function parseFeed(xml) {
   const doc = new DOMParser().parseFromString(xml, 'application/xml');
@@ -171,15 +319,89 @@ function parseFeed(xml) {
     return [{
       id: item.querySelector('guid')?.textContent || enc.getAttribute('url'),
       url: enc.getAttribute('url'),
-      date,
-      duration,
-      topics,
+      date, duration, topics,
     }];
   }).sort((a, b) => b.date - a.date);
 }
 
-function dateLabel(d) {
-  return d.toLocaleDateString('pl-PL', { weekday: 'long', day: 'numeric', month: 'long' });
+const weekday = (d) => d.toLocaleDateString('pl-PL', { weekday: 'long' });
+const dayMonth = (d) => d.toLocaleDateString('pl-PL', { day: 'numeric', month: 'long' });
+function relDay(d) {
+  const days = Math.round((new Date().setHours(0, 0, 0, 0) - new Date(d).setHours(0, 0, 0, 0)) / 864e5);
+  return days === 0 ? 'Dzisiejsze wydanie' : days === 1 ? 'Wczorajsze wydanie' : `Wydanie sprzed ${days} dni`;
+}
+
+// Fala nie jest prawdziwą obwiednią nagrania (to wymagałoby dekodowania MP3
+// z innego originu) — to deterministyczny wzór z id wydania, żeby każde
+// wyglądało inaczej, ale zawsze tak samo.
+function waveShape(seed) {
+  let h = 2166136261;
+  for (const c of seed) h = Math.imul(h ^ c.charCodeAt(0), 16777619);
+  const rnd = () => ((h = Math.imul(h ^ (h >>> 15), 2246822507) ^ Math.imul(h ^ (h >>> 13), 3266489909)) >>> 0) / 4294967296;
+  const raw = Array.from({ length: BAR_COUNT }, rnd);
+  return raw.map((_, i) => {
+    const avg = (raw[i - 1] ?? raw[i]) * .25 + raw[i] * .5 + (raw[i + 1] ?? raw[i]) * .25;
+    const edge = Math.min(1, Math.min(i, BAR_COUNT - 1 - i) / 4 + .35);
+    return Math.max(.12, Math.min(1, (.25 + avg * .85) * edge));
+  });
+}
+
+function renderWave(ep) {
+  const shape = waveShape(ep.id);
+  for (const id of ['bars', 'bars-fill']) {
+    const box = $(id);
+    box.innerHTML = '';
+    shape.forEach((v, i) => {
+      const s = document.createElement('span');
+      s.style.height = `${v * 100}%`;
+      s.style.setProperty('--i', i);
+      box.append(s);
+    });
+  }
+  const wave = $('wave');
+  wave.classList.remove('grow'); void wave.offsetWidth; wave.classList.add('grow');
+}
+
+function renderSpeeds() {
+  const box = $('speeds');
+  box.style.setProperty('--n', SPEEDS.length);
+  box.querySelectorAll('button').forEach((b) => b.remove());
+  for (const s of SPEEDS) {
+    const b = document.createElement('button');
+    b.textContent = String(s).replace('.', ',');
+    b.setAttribute('aria-label', `Prędkość ${fmtSpeed(s)}`);
+    b.onclick = () => setSpeed(s);
+    box.append(b);
+  }
+  markSpeed();
+}
+
+function markSpeed() {
+  const k = SPEEDS.indexOf(speed);
+  $('speeds').style.setProperty('--k', k);
+  $('speeds').querySelectorAll('button').forEach((b, i) => b.setAttribute('aria-pressed', String(i === k)));
+  $('speed-out').textContent = fmtSpeed(speed);
+}
+
+function setSpeed(s) {
+  speed = s;
+  store.set('speed', s);
+  audio.playbackRate = s;
+  audio.defaultPlaybackRate = s;
+  markSpeed();
+  updateTime();
+}
+
+function ringIcon(frac) {
+  const r = 7, c = 2 * Math.PI * r;
+  return `<svg class="ring" viewBox="0 0 18 18"><circle cx="9" cy="9" r="${r}" fill="none" stroke="var(--line)" stroke-width="2.2"/>` +
+    `<circle cx="9" cy="9" r="${r}" fill="none" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round" ` +
+    `stroke-dasharray="${c}" stroke-dashoffset="${c * (1 - frac)}" transform="rotate(-90 9 9)"/></svg>`;
+}
+
+function durSec(ep) {
+  const p = ep.duration.split(':').map(Number);
+  return p.reduce((a, v) => a * 60 + v, 0) || 0;
 }
 
 function renderList() {
@@ -188,38 +410,31 @@ function renderList() {
   for (const ep of episodes) {
     const pos = store.get(`pos:${ep.id}`, 0);
     const done = store.get(`done:${ep.id}`, false);
+    const total = durSec(ep);
     const li = document.createElement('li');
     const b = document.createElement('button');
+    b.className = 'ep';
     b.setAttribute('aria-current', String(ep === current));
+
+    const mark = document.createElement('span');
+    mark.className = 'mark';
+    if (ep === current) mark.innerHTML = '<span class="eq"><i></i><i></i><i></i></span>';
+    else if (done) mark.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg>';
+    else if (pos > 5 && total) mark.innerHTML = ringIcon(Math.min(1, pos / total));
+    else mark.innerHTML = '<span class="dot"></span>';
+
     const name = document.createElement('span');
-    name.textContent = dateLabel(ep.date);
+    name.className = 'name';
+    name.textContent = `${weekday(ep.date)}, ${dayMonth(ep.date)}`;
     const meta = document.createElement('span');
     meta.className = 'meta';
-    meta.textContent = done ? '✓ odsłuchane' : pos > 5 ? `${fmt(pos)} / ${ep.duration}` : ep.duration;
-    b.append(name, meta);
-    b.onclick = () => { load(ep); play(); };
+    meta.textContent = done ? 'odsłuchane' : pos > 5 ? `zostało ${fmt(total - pos)}` : ep.duration;
+
+    b.append(mark, name, meta);
+    b.onclick = () => { load(ep); play(); window.scrollTo({ top: 0, behavior: 'smooth' }); };
     li.append(b);
     ul.append(li);
   }
-}
-
-function renderSpeeds() {
-  const box = $('speeds');
-  box.innerHTML = '';
-  for (const s of SPEEDS) {
-    const b = document.createElement('button');
-    b.textContent = `${s}×`;
-    b.setAttribute('aria-pressed', String(s === speed));
-    b.onclick = () => { setSpeed(s); renderSpeeds(); };
-    box.append(b);
-  }
-}
-
-function setSpeed(s) {
-  speed = s;
-  store.set('speed', s);
-  audio.playbackRate = s;
-  audio.defaultPlaybackRate = s;
 }
 
 function load(ep) {
@@ -236,18 +451,26 @@ function load(ep) {
     updateTime();
   }, { once: true });
 
-  $('ep-date').textContent = dateLabel(ep.date);
-  $('ep-title').textContent = `Wydanie z ${ep.date.toLocaleDateString('pl-PL')}` + (ep.duration ? ` · ${ep.duration}` : '');
+  const head = $('head');
+  $('kicker').textContent = relDay(ep.date);
+  $('headline').textContent = dayMonth(ep.date);
+  $('sub').textContent = [weekday(ep.date), ep.duration && `${ep.duration} min`, ep.topics.length && `${ep.topics.length} tematów`]
+    .filter(Boolean).join(' · ');
+  head.classList.remove('swap'); void head.offsetWidth; head.classList.add('swap');
+
   const tl = $('topic-list');
   tl.innerHTML = '';
-  for (const t of ep.topics) { const li = document.createElement('li'); li.textContent = t; tl.append(li); }
+  ep.topics.forEach((t, i) => { const li = document.createElement('li'); li.textContent = t; li.style.setProperty('--i', i); tl.append(li); });
   $('topics').hidden = ep.topics.length === 0;
+
+  renderWave(ep);
+  updateTime();
 
   if ('mediaSession' in navigator) {
     navigator.mediaSession.metadata = new MediaMetadata({
-      title: `Odsłuch — ${ep.date.toLocaleDateString('pl-PL')}`,
+      title: `Odsłuch — ${dayMonth(ep.date)}`,
       artist: 'AI RSS',
-      album: dateLabel(ep.date),
+      album: ep.topics[0] || weekday(ep.date),
     });
   }
   renderList();
@@ -256,21 +479,27 @@ function load(ep) {
 function play() { audio.play().catch(() => {}); }
 function toggle() { audio.paused ? play() : audio.pause(); }
 function skip(d) {
-  const t = Math.max(0, Math.min((audio.duration || 0) - 1, audio.currentTime + d));
-  audio.currentTime = t;
+  if (!audio.duration) return;
+  audio.currentTime = Math.max(0, Math.min(audio.duration - 1, audio.currentTime + d));
   updateTime();
+  const btn = $(d < 0 ? 'back' : 'fwd'), cls = d < 0 ? 'spin-l' : 'spin-r';
+  btn.classList.add(cls); setTimeout(() => btn.classList.remove(cls), 220);
 }
 
 function updateTime() {
-  const d = audio.duration || 0, t = audio.currentTime || 0;
-  const seek = $('seek');
-  if (!seeking) { seek.max = Math.floor(d); seek.value = Math.floor(t); }
-  seek.style.setProperty('--p', d ? `${(seek.value / d) * 100}%` : '0%');
-  $('cur').textContent = fmt(seeking ? +seek.value : t);
+  const d = audio.duration || durSec(current || { duration: '' }) || 0;
+  const t = dragging ? dragPos : (audio.currentTime || 0);
+  const pct = d ? Math.min(100, (t / d) * 100) : 0;
+  const wave = $('wave');
+  wave.style.setProperty('--p', `${pct}%`);
+  wave.setAttribute('aria-valuemax', String(Math.floor(d)));
+  wave.setAttribute('aria-valuenow', String(Math.floor(t)));
+  wave.setAttribute('aria-valuetext', `${fmt(t)} z ${fmt(d)}`);
+  $('cur').textContent = fmt(t);
   // Pozostały czas po uwzględnieniu prędkości — tyle realnie zostało słuchania.
-  $('left').textContent = '-' + fmt((d - (seeking ? +seek.value : t)) / (audio.playbackRate || 1));
-  if ('mediaSession' in navigator && d && navigator.mediaSession.setPositionState) {
-    try { navigator.mediaSession.setPositionState({ duration: d, position: Math.min(t, d), playbackRate: audio.playbackRate || 1 }); } catch {}
+  $('left').textContent = '−' + fmt((d - t) / (audio.playbackRate || speed || 1));
+  if ('mediaSession' in navigator && audio.duration && navigator.mediaSession.setPositionState) {
+    try { navigator.mediaSession.setPositionState({ duration: audio.duration, position: Math.min(audio.currentTime, audio.duration), playbackRate: audio.playbackRate || 1 }); } catch {}
   }
 }
 
@@ -286,14 +515,17 @@ function savePos(force) {
 audio.addEventListener('timeupdate', () => { updateTime(); savePos(false); });
 audio.addEventListener('durationchange', updateTime);
 audio.addEventListener('ratechange', updateTime);
+audio.addEventListener('waiting', () => $('play').classList.add('loading'));
+audio.addEventListener('playing', () => $('play').classList.remove('loading'));
 audio.addEventListener('play', () => {
   // Safari potrafi zresetować prędkość przy starcie po zmianie src.
   if (audio.playbackRate !== speed) audio.playbackRate = speed;
-  $('ico-play').hidden = true; $('ico-pause').hidden = false;
+  document.body.classList.add('playing');
   $('play').setAttribute('aria-label', 'Pauza');
 });
 audio.addEventListener('pause', () => {
-  $('ico-play').hidden = false; $('ico-pause').hidden = true;
+  document.body.classList.remove('playing');
+  $('play').classList.remove('loading');
   $('play').setAttribute('aria-label', 'Odtwórz');
   savePos(true);
   renderList();
@@ -305,22 +537,42 @@ audio.addEventListener('ended', () => {
   renderList();
 });
 audio.addEventListener('error', () => {
-  if (current) $('ep-title').textContent = 'Nie udało się wczytać nagrania';
+  if (current) $('sub').textContent = 'Nie udało się wczytać nagrania';
+  $('play').classList.remove('loading');
 });
 
-const seek = $('seek');
-seek.addEventListener('input', () => { seeking = true; updateTime(); });
-seek.addEventListener('change', () => { audio.currentTime = +seek.value; seeking = false; savePos(true); updateTime(); });
+// Przeciąganie po fali
+const wave = $('wave');
+function posFromEvent(e) {
+  const r = wave.getBoundingClientRect();
+  const d = audio.duration || durSec(current) || 0;
+  return Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)) * d;
+}
+wave.addEventListener('pointerdown', (e) => {
+  dragging = true; dragPos = posFromEvent(e);
+  wave.setPointerCapture(e.pointerId);
+  updateTime();
+});
+wave.addEventListener('pointermove', (e) => { if (dragging) { dragPos = posFromEvent(e); updateTime(); } });
+const endDrag = () => {
+  if (!dragging) return;
+  dragging = false;
+  if (audio.duration) audio.currentTime = dragPos;
+  savePos(true); updateTime();
+};
+wave.addEventListener('pointerup', endDrag);
+wave.addEventListener('pointercancel', endDrag);
+wave.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowLeft') { e.preventDefault(); skip(-BACK_SEC); }
+  if (e.key === 'ArrowRight') { e.preventDefault(); skip(FWD_SEC); }
+});
 
 $('play').onclick = toggle;
 $('back').onclick = () => skip(-BACK_SEC);
 $('fwd').onclick = () => skip(FWD_SEC);
 
 document.addEventListener('keydown', (e) => {
-  if (e.target.tagName === 'INPUT') return;
-  if (e.code === 'Space') { e.preventDefault(); toggle(); }
-  if (e.code === 'ArrowLeft') skip(-BACK_SEC);
-  if (e.code === 'ArrowRight') skip(FWD_SEC);
+  if (e.code === 'Space' && e.target.tagName !== 'BUTTON') { e.preventDefault(); toggle(); }
 });
 document.addEventListener('visibilitychange', () => { if (document.hidden) savePos(true); });
 
@@ -340,13 +592,13 @@ if ('mediaSession' in navigator) {
     if (!res.ok) throw new Error(res.status);
     episodes = parseFeed(await res.text());
   } catch {
-    $('status').textContent = 'Nie udało się pobrać feedu.';
+    $('status-text').textContent = 'Nie udało się pobrać feedu.';
     return;
   }
-  if (!episodes.length) { $('status').textContent = 'Brak nagrań z ostatnich dni.'; return; }
+  if (!episodes.length) { $('status-text').textContent = 'Brak nagrań z ostatnich dni.'; return; }
   $('status').hidden = true;
   $('player').hidden = false;
-  $('list').hidden = episodes.length < 2;
+  $('archive').hidden = episodes.length < 2;
   renderSpeeds();
   const lastId = store.get('last', null);
   const last = episodes.find((e) => e.id === lastId);
