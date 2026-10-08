@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Odsłuch">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#f6f5f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121316" media="(prefers-color-scheme: dark)">
+<title>Odsłuch</title>
+<style>
+  :root {
+    --bg: #f6f5f2;
+    --card: #ffffff;
+    --text: #1d1d1f;
+    --muted: #6e6e73;
+    --line: #e3e1dc;
+    --accent: #2a6496;
+    --accent-text: #ffffff;
+    --track: #dcdad5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121316;
+      --card: #1c1d21;
+      --text: #f2f2f4;
+      --muted: #9a9aa1;
+      --line: #2c2d33;
+      --accent: #5b9bd5;
+      --accent-text: #0d1117;
+      --track: #34353c;
+    }
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  [hidden] { display: none !important; }
+  html, body { margin: 0; background: var(--bg); color: var(--text); }
+  body {
+    font-family: -apple-system, system-ui, sans-serif;
+    padding: max(16px, env(safe-area-inset-top)) 16px max(24px, env(safe-area-inset-bottom));
+    max-width: 34rem; margin: 0 auto;
+  }
+  h1 { font-size: .8rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 8px 0 16px; }
+  .player { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 22px 20px 20px; }
+  .ep-date { font-size: .8rem; color: var(--muted); margin: 0 0 4px; }
+  .ep-title { font-size: 1.35rem; font-weight: 700; line-height: 1.25; margin: 0 0 18px; }
+  input[type=range] {
+    -webkit-appearance: none; appearance: none; width: 100%; height: 28px; background: transparent; margin: 0;
+  }
+  input[type=range]::-webkit-slider-runnable-track {
+    height: 6px; border-radius: 3px;
+    background: linear-gradient(to right, var(--accent) var(--p, 0%), var(--track) var(--p, 0%));
+  }
+  input[type=range]::-moz-range-track { height: 6px; border-radius: 3px; background: var(--track); }
+  input[type=range]::-moz-range-progress { height: 6px; border-radius: 3px; background: var(--accent); }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: var(--accent); margin-top: -6px; border: 0;
+  }
+  input[type=range]::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: var(--accent); border: 0; }
+  .times { display: flex; justify-content: space-between; font-size: .78rem; color: var(--muted); font-variant-numeric: tabular-nums; margin-top: 2px; }
+  .controls { display: flex; align-items: center; justify-content: center; gap: 28px; margin: 18px 0 20px; }
+  button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; padding: 0; }
+  .skip { width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; position: relative; color: var(--text); }
+  .skip:active { background: var(--line); }
+  .skip svg { width: 34px; height: 34px; }
+  .skip span { position: absolute; font-size: .62rem; font-weight: 700; top: 50%; left: 50%; transform: translate(-50%, -38%); }
+  .play { width: 76px; height: 76px; border-radius: 50%; background: var(--accent); color: var(--accent-text); display: grid; place-items: center; }
+  .play:active { transform: scale(.96); }
+  .play svg { width: 34px; height: 34px; }
+  .speeds { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; }
+  .speeds button { min-width: 52px; padding: 8px 10px; border-radius: 999px; border: 1px solid var(--line); font-size: .85rem; font-variant-numeric: tabular-nums; }
+  .speeds button[aria-pressed=true] { background: var(--text); color: var(--bg); border-color: var(--text); }
+  .topics { margin: 20px 0 0; padding: 16px 0 0; border-top: 1px solid var(--line); }
+  .topics h2, .list h2 { font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; }
+  .topics ol { margin: 0; padding-left: 1.3em; font-size: .92rem; line-height: 1.45; }
+  .topics li { margin-bottom: 6px; }
+  .list { margin-top: 28px; }
+  .list ul { list-style: none; margin: 0; padding: 0; background: var(--card); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+  .list li + li { border-top: 1px solid var(--line); }
+  .list button { width: 100%; text-align: left; padding: 14px 16px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .list button[aria-current=true] { color: var(--accent); font-weight: 600; }
+  .list .meta { font-size: .78rem; color: var(--muted); font-weight: 400; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .status { color: var(--muted); font-size: .9rem; text-align: center; padding: 40px 0; }
+</style>
+</head>
+<body>
+<h1>Odsłuch · AI RSS</h1>
+
+<p class="status" id="status">Wczytuję…</p>
+
+<section class="player" id="player" hidden>
+  <p class="ep-date" id="ep-date"></p>
+  <p class="ep-title" id="ep-title"></p>
+
+  <input type="range" id="seek" min="0" max="0" step="1" value="0" aria-label="Pozycja">
+  <div class="times"><span id="cur">0:00</span><span id="left">-0:00</span></div>
+
+  <div class="controls">
+    <button class="skip" id="back" aria-label="Cofnij 15 sekund">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v4.5h4.5"/></svg>
+      <span>15</span>
+    </button>
+    <button class="play" id="play" aria-label="Odtwórz">
+      <svg id="ico-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>
+      <svg id="ico-pause" viewBox="0 0 24 24" fill="currentColor" hidden><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+    </button>
+    <button class="skip" id="fwd" aria-label="Przewiń 30 sekund">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.4-5.7"/><path d="M20 4v4.5h-4.5"/></svg>
+      <span>30</span>
+    </button>
+  </div>
+
+  <div class="speeds" id="speeds"></div>
+
+  <div class="topics" id="topics" hidden>
+    <h2>W tym odcinku</h2>
+    <ol id="topic-list"></ol>
+  </div>
+</section>
+
+<section class="list" id="list" hidden>
+  <h2>Wydania</h2>
+  <ul id="episodes"></ul>
+</section>
+
+<audio id="audio" preload="metadata"></audio>
+
+<script>
+// Strona czyta feed.xml z tego samego Pages, więc nie wymaga żadnych zmian
+// w generatorze — każde nowe wydanie z enclosure pojawia się samo.
+const FEED_URL = 'feed.xml';
+// Nagrania żyją na Pages tyle, ile audio.retentionDays w config.json;
+// starszych wpisów nie pokazujemy, bo ich MP3 już nie ma.
+const RETENTION_DAYS = 14;
+const SPEEDS = [1, 1.25, 1.5, 1.75, 2];
+const BACK_SEC = 15;
+const FWD_SEC = 30;
+
+const $ = (id) => document.getElementById(id);
+const audio = $('audio');
+const store = {
+  get(k, d) { try { const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch { return d; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
+};
+
+let episodes = [];
+let current = null;
+let speed = store.get('speed', 1.5);
+let seeking = false;
+
+function fmt(sec) {
+  if (!isFinite(sec) || sec < 0) sec = 0;
+  sec = Math.floor(sec);
+  const h = Math.floor(sec / 3600), m = Math.floor((sec % 3600) / 60), s = sec % 60;
+  return (h ? `${h}:${String(m).padStart(2, '0')}` : `${m}`) + `:${String(s).padStart(2, '0')}`;
+}
+
+function parseFeed(xml) {
+  const doc = new DOMParser().parseFromString(xml, 'application/xml');
+  const cutoff = Date.now() - RETENTION_DAYS * 864e5;
+  return [...doc.querySelectorAll('item')].flatMap((item) => {
+    const enc = item.querySelector('enclosure');
+    if (!enc || !(enc.getAttribute('type') || '').startsWith('audio/')) return [];
+    const date = new Date(item.querySelector('pubDate')?.textContent || 0);
+    if (date.getTime() < cutoff) return [];
+    const rawTitle = item.querySelector('title')?.textContent || '';
+    const duration = (rawTitle.match(/\((\d+:\d{2}(?::\d{2})?)\)\s*$/) || [])[1] || '';
+    const encoded = item.getElementsByTagNameNS('http://purl.org/rss/1.0/modules/content/', 'encoded')[0];
+    const body = new DOMParser().parseFromString(encoded?.textContent || '', 'text/html');
+    const topics = [...body.querySelectorAll('ul li')].map((li) => li.textContent.trim()).filter(Boolean);
+    return [{
+      id: item.querySelector('guid')?.textContent || enc.getAttribute('url'),
+      url: enc.getAttribute('url'),
+      date,
+      duration,
+      topics,
+    }];
+  }).sort((a, b) => b.date - a.date);
+}
+
+function dateLabel(d) {
+  return d.toLocaleDateString('pl-PL', { weekday: 'long', day: 'numeric', month: 'long' });
+}
+
+function renderList() {
+  const ul = $('episodes');
+  ul.innerHTML = '';
+  for (const ep of episodes) {
+    const pos = store.get(`pos:${ep.id}`, 0);
+    const done = store.get(`done:${ep.id}`, false);
+    const li = document.createElement('li');
+    const b = document.createElement('button');
+    b.setAttribute('aria-current', String(ep === current));
+    const name = document.createElement('span');
+    name.textContent = dateLabel(ep.date);
+    const meta = document.createElement('span');
+    meta.className = 'meta';
+    meta.textContent = done ? '✓ odsłuchane' : pos > 5 ? `${fmt(pos)} / ${ep.duration}` : ep.duration;
+    b.append(name, meta);
+    b.onclick = () => { load(ep); play(); };
+    li.append(b);
+    ul.append(li);
+  }
+}
+
+function renderSpeeds() {
+  const box = $('speeds');
+  box.innerHTML = '';
+  for (const s of SPEEDS) {
+    const b = document.createElement('button');
+    b.textContent = `${s}×`;
+    b.setAttribute('aria-pressed', String(s === speed));
+    b.onclick = () => { setSpeed(s); renderSpeeds(); };
+    box.append(b);
+  }
+}
+
+function setSpeed(s) {
+  speed = s;
+  store.set('speed', s);
+  audio.playbackRate = s;
+  audio.defaultPlaybackRate = s;
+}
+
+function load(ep) {
+  if (current === ep) return;
+  current = ep;
+  store.set('last', ep.id);
+  audio.src = ep.url;
+  audio.playbackRate = speed;
+  audio.defaultPlaybackRate = speed;
+  const saved = store.get(`pos:${ep.id}`, 0);
+  audio.addEventListener('loadedmetadata', () => {
+    if (saved > 5 && saved < audio.duration - 10) audio.currentTime = saved;
+    audio.playbackRate = speed;
+    updateTime();
+  }, { once: true });
+
+  $('ep-date').textContent = dateLabel(ep.date);
+  $('ep-title').textContent = `Wydanie z ${ep.date.toLocaleDateString('pl-PL')}` + (ep.duration ? ` · ${ep.duration}` : '');
+  const tl = $('topic-list');
+  tl.innerHTML = '';
+  for (const t of ep.topics) { const li = document.createElement('li'); li.textContent = t; tl.append(li); }
+  $('topics').hidden = ep.topics.length === 0;
+
+  if ('mediaSession' in navigator) {
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: `Odsłuch — ${ep.date.toLocaleDateString('pl-PL')}`,
+      artist: 'AI RSS',
+      album: dateLabel(ep.date),
+    });
+  }
+  renderList();
+}
+
+function play() { audio.play().catch(() => {}); }
+function toggle() { audio.paused ? play() : audio.pause(); }
+function skip(d) {
+  const t = Math.max(0, Math.min((audio.duration || 0) - 1, audio.currentTime + d));
+  audio.currentTime = t;
+  updateTime();
+}
+
+function updateTime() {
+  const d = audio.duration || 0, t = audio.currentTime || 0;
+  const seek = $('seek');
+  if (!seeking) { seek.max = Math.floor(d); seek.value = Math.floor(t); }
+  seek.style.setProperty('--p', d ? `${(seek.value / d) * 100}%` : '0%');
+  $('cur').textContent = fmt(seeking ? +seek.value : t);
+  // Pozostały czas po uwzględnieniu prędkości — tyle realnie zostało słuchania.
+  $('left').textContent = '-' + fmt((d - (seeking ? +seek.value : t)) / (audio.playbackRate || 1));
+  if ('mediaSession' in navigator && d && navigator.mediaSession.setPositionState) {
+    try { navigator.mediaSession.setPositionState({ duration: d, position: Math.min(t, d), playbackRate: audio.playbackRate || 1 }); } catch {}
+  }
+}
+
+let lastSave = 0;
+function savePos(force) {
+  if (!current || !audio.duration) return;
+  const now = Date.now();
+  if (!force && now - lastSave < 4000) return;
+  lastSave = now;
+  store.set(`pos:${current.id}`, audio.currentTime);
+}
+
+audio.addEventListener('timeupdate', () => { updateTime(); savePos(false); });
+audio.addEventListener('durationchange', updateTime);
+audio.addEventListener('ratechange', updateTime);
+audio.addEventListener('play', () => {
+  // Safari potrafi zresetować prędkość przy starcie po zmianie src.
+  if (audio.playbackRate !== speed) audio.playbackRate = speed;
+  $('ico-play').hidden = true; $('ico-pause').hidden = false;
+  $('play').setAttribute('aria-label', 'Pauza');
+});
+audio.addEventListener('pause', () => {
+  $('ico-play').hidden = false; $('ico-pause').hidden = true;
+  $('play').setAttribute('aria-label', 'Odtwórz');
+  savePos(true);
+  renderList();
+});
+audio.addEventListener('ended', () => {
+  if (!current) return;
+  store.set(`done:${current.id}`, true);
+  store.set(`pos:${current.id}`, 0);
+  renderList();
+});
+audio.addEventListener('error', () => {
+  if (current) $('ep-title').textContent = 'Nie udało się wczytać nagrania';
+});
+
+const seek = $('seek');
+seek.addEventListener('input', () => { seeking = true; updateTime(); });
+seek.addEventListener('change', () => { audio.currentTime = +seek.value; seeking = false; savePos(true); updateTime(); });
+
+$('play').onclick = toggle;
+$('back').onclick = () => skip(-BACK_SEC);
+$('fwd').onclick = () => skip(FWD_SEC);
+
+document.addEventListener('keydown', (e) => {
+  if (e.target.tagName === 'INPUT') return;
+  if (e.code === 'Space') { e.preventDefault(); toggle(); }
+  if (e.code === 'ArrowLeft') skip(-BACK_SEC);
+  if (e.code === 'ArrowRight') skip(FWD_SEC);
+});
+document.addEventListener('visibilitychange', () => { if (document.hidden) savePos(true); });
+
+if ('mediaSession' in navigator) {
+  const ms = navigator.mediaSession;
+  const h = (a, f) => { try { ms.setActionHandler(a, f); } catch {} };
+  h('play', play);
+  h('pause', () => audio.pause());
+  h('seekbackward', (d) => skip(-(d.seekOffset || BACK_SEC)));
+  h('seekforward', (d) => skip(d.seekOffset || FWD_SEC));
+  h('seekto', (d) => { audio.currentTime = d.seekTime; updateTime(); });
+}
+
+(async () => {
+  try {
+    const res = await fetch(FEED_URL, { cache: 'no-cache' });
+    if (!res.ok) throw new Error(res.status);
+    episodes = parseFeed(await res.text());
+  } catch {
+    $('status').textContent = 'Nie udało się pobrać feedu.';
+    return;
+  }
+  if (!episodes.length) { $('status').textContent = 'Brak nagrań z ostatnich dni.'; return; }
+  $('status').hidden = true;
+  $('player').hidden = false;
+  $('list').hidden = episodes.length < 2;
+  renderSpeeds();
+  const lastId = store.get('last', null);
+  const last = episodes.find((e) => e.id === lastId);
+  // Najnowsze wydanie, chyba że poprzednie jest w trakcie słuchania.
+  const resume = last && !store.get(`done:${last.id}`, false) && store.get(`pos:${last.id}`, 0) > 5;
+  load(resume ? last : episodes[0]);
+})();
+</script>
+</body>
+</html>
