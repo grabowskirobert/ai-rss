@@ -9,6 +9,10 @@
 <meta name="theme-color" content="#f3eee4" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#14120f" media="(prefers-color-scheme: dark)">
 <title>Odsłuch</title>
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="icon" href="icons/icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -59,8 +63,10 @@
 
   /* Nagłówek */
   .masthead { display: flex; align-items: center; justify-content: space-between; margin: 4px 2px 22px; }
-  .brand { font-family: var(--serif); font-weight: 700; font-size: 1.15rem; letter-spacing: -.01em; }
-  .brand small { font-family: var(--sans); font-weight: 500; font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-left: 6px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-family: var(--serif); font-weight: 700; font-size: 1.15rem; letter-spacing: -.01em; }
+  .brand img { width: 34px; height: 34px; border-radius: 9px; box-shadow: 0 4px 12px -4px rgba(150, 47, 18, .55); transition: transform .4s cubic-bezier(.3, 1.6, .5, 1); }
+  body.playing .brand img { transform: rotate(-6deg) scale(1.05); }
+  .brand small { font-family: var(--sans); font-weight: 500; font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-left: -4px; }
   .onair {
     display: inline-flex; align-items: center; gap: 7px;
     font-size: .64rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
@@ -215,7 +221,7 @@
 </head>
 <body>
 <header class="masthead">
-  <div class="brand">Odsłuch<small>AI RSS</small></div>
+  <div class="brand"><img src="icons/icon.svg" alt="">Odsłuch<small>AI RSS</small></div>
   <div class="onair"><i></i>Na antenie</div>
 </header>
 
