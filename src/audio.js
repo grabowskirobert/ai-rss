@@ -280,8 +280,9 @@ function silence(seconds) {
   return Buffer.alloc(Math.round(SAMPLE_RATE * seconds) * 2);
 }
 
+// Cisza na początku nagrania — odtwarzacz nie ucina pierwszych sylab.
 function concatWav(topics) {
-  const parts = [];
+  const parts = [silence(OPTS.leadInSeconds ?? 0)];
   topics.forEach((wavs, t) => {
     if (t > 0) parts.push(silence(OPTS.topicGapSeconds));
     wavs.forEach((wav, i) => {
