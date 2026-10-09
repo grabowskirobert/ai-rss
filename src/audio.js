@@ -31,13 +31,41 @@ function sentence(text) {
   return /[.!?…:;]$/.test(t) ? t : `${t}.`;
 }
 
+// Sekcje tła (drugi przebieg modelu) często powtarzają zdania z „Kluczowych
+// faktów” innymi słowami — w tekście to się przelatuje wzrokiem, w odsłuchu
+// słychać dwa razy. Zdanie wypada, gdy co najmniej `dedupThreshold` jego słów
+// padło już w jednym wcześniejszym zdaniu. Słowa porównujemy po pierwszych
+// pięciu literach, żeby odmiana nie ukrywała powtórzeń; miara jest
+// asymetryczna, więc późniejsze zdanie z nowymi szczegółami zostaje.
+const MIN_WORDS = 5;
+
+function stems(text) {
+  const words = text.toLowerCase().match(/[\p{L}\d]+/gu) ?? [];
+  return new Set(words.filter((w) => w.length > 3).map((w) => w.slice(0, 5)));
+}
+
+function dropRepeats(sentences) {
+  const threshold = OPTS.dedupThreshold ?? 1;
+  const heard = [];
+  return sentences.filter((text) => {
+    const words = stems(text);
+    if (words.size >= MIN_WORDS) {
+      const list = [...words];
+      if (heard.some((prev) => list.filter((w) => prev.has(w)).length / list.length >= threshold)) return false;
+    }
+    heard.push(words);
+    return true;
+  });
+}
+
 export function articleToSpeech(article) {
   const body = article.html
     .replace(/<h3[^>]*>[\s\S]*?<\/h3>/gi, '')
     .split(/<\/?(?:p|li|ul|ol|br)[^>]*>/i)
     .map(sentence)
-    .filter(Boolean);
-  return [sentence(article.title), ...body].join(' ');
+    .filter(Boolean)
+    .flatMap((unit) => unit.split(/(?<=[.!?…])\s+(?=[\p{Lu}„"])/u));
+  return [sentence(article.title), ...dropRepeats(body)].join(' ');
 }
 
 // Zmierzone na realnym nagraniu (odsluch-2026-09-28): 16,92 znaku na sekundę.

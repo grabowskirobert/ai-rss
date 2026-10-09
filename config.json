@@ -655,6 +655,7 @@
     "releaseTagPrefix": "audio-",
     "baseUrl": "https://grabowskirobert.github.io/ai-rss/audio",
     "leadInSeconds": 1,
+    "dedupThreshold": 0.6,
     "gapSeconds": 0.35,
     "topicGapSeconds": 2.5
   },
