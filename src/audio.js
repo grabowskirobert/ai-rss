@@ -71,9 +71,14 @@ export function articleToSpeech(article) {
 // Zmierzone na realnym nagraniu (odsluch-2026-09-28): 16,92 znaku na sekundę.
 const CHARS_PER_SECOND = 16.9;
 
+// Zaokrąglamy do całych sekund przed podziałem na minuty — inaczej 27:59,6 daje "27:60".
+function mmss(seconds) {
+  const total = Math.round(seconds);
+  return `${Math.floor(total / 60)}:${String(total % 60).padStart(2, '0')}`;
+}
+
 function estimate(script) {
-  const seconds = script.length / CHARS_PER_SECOND;
-  return `${script.length} zn ≈ ${Math.floor(seconds / 60)}:${String(Math.round(seconds % 60)).padStart(2, '0')}`;
+  return `${script.length} zn ≈ ${mmss(script.length / CHARS_PER_SECOND)}`;
 }
 
 // Czytany tekst leci do release'u obok nagrania — do porównania z odsłuchem.
@@ -411,7 +416,7 @@ export async function buildAudioDigest(articles, { outputDir, dateStamp }) {
   const bytes = readFileSync(filePath).length;
 
   log.ok(
-    `Odsłuch gotowy: ${Math.floor(durationSec / 60)}:${String(Math.round(durationSec % 60)).padStart(2, '0')} · ` +
+    `Odsłuch gotowy: ${mmss(durationSec)} · ` +
     `${(bytes / 1024 / 1024).toFixed(1)} MB → ${filePath}`
   );
 
@@ -427,7 +432,7 @@ function tematy(n) {
 }
 
 export function audioEntry(digest, { articles, dateStamp, url }) {
-  const mmss = `${Math.floor(digest.durationSec / 60)}:${String(Math.round(digest.durationSec % 60)).padStart(2, '0')}`;
+  const duration = mmss(digest.durationSec);
   const list = articles
     .map((a) => `<li style="margin-bottom:0.3em">${a.title}</li>`)
     .join('');
@@ -435,7 +440,7 @@ export function audioEntry(digest, { articles, dateStamp, url }) {
   return {
     guid: `odsluch-${dateStamp}`,
     kind: 'audio',
-    title: `ODSŁUCH — ${dateStamp} (${mmss})`,
+    title: `ODSŁUCH — ${dateStamp} (${duration})`,
     link: url || '',
     pubDate: new Date().toISOString(),
     source: 'AI RSS',
@@ -443,7 +448,7 @@ export function audioEntry(digest, { articles, dateStamp, url }) {
     category: 'odsluch',
     topic: `odsłuch wydania ${dateStamp}`,
     html:
-      `<p>Całe dzisiejsze wydanie do odsłuchania — ${tematy(articles.length)}, ${mmss}.</p>` +
+      `<p>Całe dzisiejsze wydanie do odsłuchania — ${tematy(articles.length)}, ${duration}.</p>` +
       `<h3>W tym odcinku</h3><ul>${list}</ul>`,
     audio: url
       ? { url, type: AUDIO_MIME[digest.fileName.split('.').pop()] || 'audio/mpeg', length: digest.bytes }
