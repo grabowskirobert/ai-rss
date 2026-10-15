@@ -1,5 +1,269 @@
 [
   {
+    "guid": "7c5809b6-c7ce-11f1-b081-ab756fb80443",
+    "title": "SpaceX ogranicza działanie wojskowych terminali Starlink na ukraińskim froncie",
+    "link": "https://www.france24.com/en/video/20261014-ukraine-accuses-spacex-of-crippling-military-missions-as-ties-with-us-worsen",
+    "html": "<h3>Sedno sprawy</h3>\n<p>Należąca do Elona Muska firma SpaceX wprowadziła bez uprzedzenia ograniczenia w działaniu wojskowych terminali Starshield na Ukrainie, zrywając łączność urządzeń poruszających się z wyższymi prędkościami. Decyzja ta doprowadziła do zakłócenia i niepowodzenia części misji bojowych oraz ataków z użyciem ukraińskich dronów. Strona ukraińska wiąże te działania z narastającym napięciem politycznym oraz żądaniami władz USA dotyczącymi wstrzymania ataków na rosyjską infrastrukturę naftową.</p>\n<h3>Kluczowe fakty</h3>\n<ul>\n  <li>Ograniczenia w funkcjonowaniu systemu zostały wprowadzone bez wcześniejszego ostrzeżenia ukraińskich sił obronnych w nocy z wtorku na środę.</li>\n  <li>Zmiany objęły pakiet usług Starshield — szybszą, wojskową wersję systemu Starlink wykorzystywaną przez operatorów bezzałogowców; zwykłe terminale cywilne nadal działają.</li>\n  <li>Serhij Beskrestnow, doradca prezydenta Ukrainy ds. innowacji technologicznych w siłach zbrojnych, poinformował, że wojskowe urządzenia tracą połączenie przy przemieszczaniu się z prędkością przekraczającą około 160 km/h.</li>\n  <li>Ukraiński aktywista i wolontariusz Serhij Sternenko przekazał zgłoszenia od żołnierzy, z których wynika, że łączność zrywa się również przy mniejszych prędkościach, rzędu 60–70 km/h.</li>\n  <li>Ukraińska Prawda opublikowała nagranie wideo od jednego z dowódców, pokazujące dwa ukraińskie drony wznoszące się w powietrze, które po utracie łączności nie były w stanie kontynuować misji.</li>\n  <li>Problemy z działaniem łączności satelitarnej na południowo-wschodnim odcinku frontu potwerdziło źródło w 7. Korpusie Szybkiego Reagowania ukraińskiej armii.</li>\n  <li>Według relacji Financial Times z ubiegłego tygodnia, Stany Zjednoczone groziły Ukrainie wstrzymaniem wymiany danych wywiadowczych oraz blokadą dostaw broni, jeśli Kijów nie zaprzestanie ataków na rosyjskie rafinerie ropy naftowej.</li>\n  <li>10 października prezydent USA Donald Trump publicznie zarzucił prezydentowi Wołodymyrowi Zełenskiemu, że nie doprowadził do końca wojny, wezwał do wyboru nowego prezydenta Ukrainy i zażądał wstrzymania uderzeń w rafinerie.</li>\n  <li>Właściciel SpaceX Elon Musk napisał na platformie X, że Zełenski \"posunął się za daleko\", na co prezydent Ukrainy odpowiedział, że politycy obwiniają go o kontynuowanie konfliktu, ponieważ nie potrafią powstrzymać Władimira Putina.</li>\n</ul>\n<h3>Jak do tego doszło</h3>\n<p>Relacje pomiędzy Ukrainą a prywatnymi dostarczycielami nowoczesnych technologii wojskowych od początku rosyjskiej inwazji opierają się na skomplikowanej sieci zależności. Kluczową rolę w utrzymaniu ukraińskiej łączności polowej i koordynacji operacji bezzałogowych od lat odgrywa infrastruktura dostarczana przez amerykańskie przedsiębiorstwa prywatne. Z biegiem czasu, wraz z ewolucją konfliktu oraz intensyfikacją ukraińskich działań wymierzonych w strategiczne zaplecze energetyczne przeciwnika, na styku interesów technologicznych, wojskowych i dyplomatycznych zaczęły narastać poważne napięcia polityczne. Ostatnie wydarzenia są kulminacją procesu, w którym komercyjne zaplecze nowoczesnego pola walki coraz bezpośredniej zderza się z kalkulacjami geopolitycznymi mocarstw.</p>\n<h3>Różne perspektywy</h3>\n<p>Serhij Beskrestnov, doradca prezydenta Ukrainy ds. innowacji technologicznych w siłach zbrojnych, potwierdził, że firma SpaceX wprowadziła bez wcześniejszego ostrzeżenia restrykcje prędkości dla wojskowych terminali Starshield, co bezpośrednio zakłóciło przebieg misji dronów. Zupełnie inne źródło odpowiedzialności wskazuje strona amerykańska. Elon Musk, właściciel SpaceX, oświadczył, że systemy Starshield stanowią własność rządu Stanów Zjednoczonych, a wszelkie wprowadzone limity prędkości czy parametry użytkowania są wynikiem decyzji podejmowanych bezpośrednio przez amerykańskie wojsko oraz prezydenta.</p>\n<h3>Dlaczego to ma znaczenie</h3>\n<p>Opisana sytuacja obnaża fundamentalną wrażliwość współczesnych konfliktów zbrojnych, w których armie polegają na prywatnej, transnarodowej infrastrukturze technologicznej. Pokazuje ona, jak szybko komercyjne decyzje biznesowe lub polityczne naciski mocarstw mogą sparaliżować operacje wojskowe suwerennego państwa prowadzącego obronę. W szerszej perspektywie ukazuje to nowy wymiar zależności strategicznych, w którym tradycyjne sojusze państwowe krzyżują się z interesami i kontrolą prywatnych gigantów technologicznych, zmieniając układ sił na współczesnym polu walki.</p>\n<h3>Czego jeszcze nie wiemy</h3>\n<p>Oficjalny motyw polityczny oraz sugerowany przez ukraińskich aktywistów udział administracji Donalda Trumpa w decyzji SpaceX nie zostały niezależnie potwierdzone. Istnieje również rozbieżność w relacjach wojskowych co do progu prędkości, przy którym dochodzi do rozłączenia systemu — weryfikacji wymaga, czy blokada następuje przy prędkości 160 km/h, czy już przy 60–70 km/h.</p>",
+    "imageUrl": "https://s.france24.com/media/display/775fbc9c-c7ce-11f1-aa9c-3774aeac812a/w:1024/p:16x9/EN-20261014-140439-140826-CS.jpg",
+    "source": "France 24 - International breaking news, top stories and headlines",
+    "sources": [
+      {
+        "title": "Polsat News - Wiadomości - Polska — Nagła decyzja SpaceX w Ukrainie. \"To nie może być zbieg okoliczności\"",
+        "uri": "https://www.polsatnews.pl/wiadomosc/2026-10-14/nagla-decyzja-spacex-w-ukrainie-to-nie-moze-byc-zbieg-okolicznosci/"
+      },
+      {
+        "title": "Meduza.io — Ukrainian military says SpaceX restricted Starlink terminals without warning",
+        "uri": "https://meduza.io/en/news/2026/10/14/ukrainian-military-says-spacex-restricted-starlink-terminals-without-warning"
+      }
+    ],
+    "backgroundSources": [
+      {
+        "title": "washingtonpost.com",
+        "uri": "https://www.washingtonpost.com/world/2026/10/14/us-warnings-intelligence-starlink-ukraine/"
+      },
+      {
+        "title": "bbc.com",
+        "uri": "https://www.bbc.com/news/articles/c4gz7e244nyo"
+      }
+    ],
+    "publishers": [
+      "Polsat News - Wiadomości - Polska",
+      "Meduza.io"
+    ],
+    "corroborations": [
+      "washingtonpost.com",
+      "bbc.com"
+    ],
+    "trustLevel": "B",
+    "kind": "text",
+    "audio": null,
+    "durationSec": null,
+    "category": "wojna-i-bezpieczenstwo",
+    "topic": "Ukraina oskarża SpaceX o ograniczenie działania Starlinka",
+    "pubDate": "2026-10-14T13:57:22.000Z",
+    "publishedAt": "2026-10-15T01:35:50.713Z"
+  },
+  {
+    "guid": "https://www.theguardian.com/world/2026/oct/14/container-ship-sinks-strait-of-hormuz-surge-iranian-attacks-iran-us-midterm-elections",
+    "title": "Eskalacja w Cieśninie Ormuz: w ciągu doby zatonęły dwa statki handlowe",
+    "link": "https://www.theguardian.com/world/2026/oct/14/container-ship-sinks-strait-of-hormuz-surge-iranian-attacks-iran-us-midterm-elections",
+    "html": "<h3>Sedno sprawy</h3>\n<p>W pobliżu strategicznej Cieśniny Ormuz w ciągu jednej doby zatonęły dwa statki handlowe – pływający pod banderą Singapuru kontenerowiec GFS Pride oraz masowiec Cape Dao z Antigui i Barbudy. Do zdarzeń dochodzi w tle trwającej wojny USA i Izraela z Iranem oraz amerykańskiej blokady irańskich portów. Przedstawiciele władz w Teheranie anonimowo przyznają, że celem nowej fali ataków jest paraliż dostaw, utrzymanie wysokich cen ropy naftowej i wywarcie wpływu na nadchodzące wybory do amerykańskiego Kongresu.</p>\n<h3>Kluczowe fakty</h3>\n<ul>\n  <li>W środę po południu zatonął kontenerowiec GFS Pride pod banderą Singapuru, przewożący 2 500 kontenerów; na pokładzie wybuchł pożar po trafieniu pociskiem, a cała 21-osobowa załoga została uratowana bez obrażeń.</li>\n  <li>Kilka godzin po zatonięciu pierwszej jednostki na dno poszedł masowiec Cape Dao pod banderą Antigui i Barbudy, należący do zarejestrowanej w Zjednoczonych Emiratach Arabskich firmy Peonies Shipmanagement FZE, który został trafiony pociskiem 23 września.</li>\n  <li>Odosobniony komunikat państwowej telewizji Iranu i Korpusu Strażników Rewolucji Islamskiej (IRGC) sugeruje, że przynajmniej jeden ze statków wszedł na minę po wyznaczeniu nielegalnej trasy, co zostało zakwestionowane przez brytyjską agencję UK Maritime Trade Operations (UKMTO).</li>\n  <li>Z danych UKMTO wynika, że w ciągu 48 godzin przed środowymi zdarzeniami w rejonie cieśniny doszło do co najmniej pięciu incydentów z użyciem dronów i pocisków, a tylko w niedzielę zaatakowano sześć statków.</li>\n  <li>Według analizy \"Financial Times\" w ciągu dwóch tygodni do 11 października w regionie zaatakowano 24 statki, w tym trzy tankowce przewożące rafinowane produkty naftowe oraz dwa tankowce z ropą naftową.</li>\n  <li>Ceny paliw w Stanach Zjednoczonych wzrosły o niemal 70% od momentu rozpoczęcia wojny z Iranem przez prezydenta Donalda Trumpa, co stawia Partię Republikańską w trudnej sytuacji przed wyborami zaplanowanymi na 3 listopada.</li>\n  <li>Dwaj wysokiej rangi irańscy urzędnicy potwierdzili agencji Reuters, że nowa taktyka ataków została zatwierdzona na najwyższych szczeblach władzy w Teheranie, aby uniemożliwić USA obniżenie światowych cen ropy.</li>\n  <li>Przedstawiciel wojsk USA ujawnił, że po zniszczeniu irańskich radarów IRGC zaczęło używać małych cywilnych łodzi (dhow) z nieuzbrojonymi obserwatorami do naprowadzania ataków; amerykańskie siły niedawno zniszczyły jedną z takich jednostek po nakazaniu załodze jej opuszczenia.</li>\n</ul>\n<h3>Jak do tego doszło</h3>\n<p>Eskalacja napięć wokół Cieśniny Ormuz to pokłosie trwającej wojny USA i Izraela z Iranem oraz wprowadzonej przez Stany Zjednoczone amerykańskiej blokady irańskich portów. Sytuacja ta doprowadziła do radykalnej zmiany warunków żeglugi na jednym z najważniejszych szlaków handlowych świata. W ciągu zaledwie dwóch tygodni poprzedzających połowę października w regionie zaatakowano łącznie 24 statki, w tym trzy tankowce z rafinowanymi produktami naftowymi, dwa tankowce z ropą oraz jednostki handlowe, takie jak zatopiony masowiec Cape Dao, trafiony pociskiem już 23 września.</p>\n<p>W obliczu zniszczenia irańskich radarów, Korpus Strażników Rewolucji Islamskiej (IRGC) zmodyfikował taktykę, sięgając po małe cywilne łodzie typu dhow z nieuzbrojonymi obserwatorami do naprowadzania uderzeń. Amerykańskie siły zbrojne odpowiedziały na te działania m.in. zniszczeniem jednej z takich jednostek po wcześniejszym nakazaniu załodze jej opuszczenia. Z danych brytyjskiej agencji UK Maritime Trade Operations (UKMTO) wynika, że presja militarna w regionie rosła gwałtownie z dnia na dzień – w ciągu 48 godzin poprzedzających środowe zatopienia odnotowano co najmniej pięć incydentów z użyciem dronów i pocisków, a w samą niedzielę zaatakowano aż sześć statków.</p>\n<h3>Różne perspektywy</h3>\n<p>Strony konfliktu przedstawiają skrajnie odmienne wersje wydarzeń dotyczących bezpieczeństwa żeglugi. Państwowa telewizja Iranu oraz Korpus Strażników Rewolucji Islamskiej (IRGC) w odosobnionym komunikacie zasugerowały, że przynajmniej jeden ze statków wszedł na minę po wyznaczeniu nielegalnej trasy. Te twierdzenia są jednak aktywnie kwestionowane przez brytyjską agencję UK Maritime Trade Operations (UKMTO). Brytyjskie służby morskie wskazują na użycie nieznanych pocisków, podczas gdy strona irańska pozostaje przy alternatywnej wersji zdarzeń, co sprawia, że brakuje jednoznacznego potwierdzenia rodzaju broni użytej do zatopienia kontenerowca GFS Pride oraz masowca Cape Dao.</p>\n<p>Odmiennie motywy działania oceniają sami sprawcy oraz obserwatorzy zewnętrzni. Anonimowe źródła wśród przedstawiciel władz w Teheranie przyznają, że celem nowej fali ataków jest paraliż dostaw, utrzymanie wysokich cen ropy naftowej oraz wywarcie wpływu na nadchodzące wybory do amerykańskiego Kongresu. Taktyka ta, zatwierdzona na najwyższych szczeblach władzy w Teheranie i potwierdzona agencji Reuters przez dwóch wysokiej rangi irańskich urzędników, ma uniemożliwić USA obniżenie światowych cen surowca.</p>\n<h3>Dlaczego to ma znaczenie</h3>\n<p>Kryzys w Cieśninie Ormuz wywołuje potężne tąpnięcie gospodarcze w Stanach Zjednoczonych. Ceny paliw wzrosły tam o niemal 70% od momentu rozpoczęcia wojny z Iranem przez prezydenta Donalda Trumpa. Taki stan rzeczy stawia Partię Republikańską w niezwykle trudnej sytuacji politycznej przed wyborami zaplanowanymi na 3 listopada. Wydarzenia te pokazują, jak lokalny konflikt w Zatoce Perskiej potrafi bezpośrednio przełożyć się na nastroje wyborcze i sytuację ekonomiczną konsumentów w odległym mocarstwie, udowadniając, że globalny rynek energetyczny pozostaje zakładnikiem bezpieczeństwa kluczowych morskich szlaków handlowych.</p>\n<h3>Czego jeszcze nie wiemy</h3>\n<p>Nadal brakuje jednoznacznego potwierdzenia rodzaju broni użytej do zatopienia obu jednostek – brytyjskie służby morskie wskazują na nieznane pociski, podczas gdy strona irańska twierdzi, że przyczyną było wejście na minę morską. Nie jest również jasne, na ile amerykańskie osłony wojskowe u wybrzeży Omanu zdołają zabezpieczyć ciągłość dostaw surowców przez całkowicie sparaliżowany szlak żeglugowy.</p>",
+    "imageUrl": "https://i.guim.co.uk/img/media/4fc21fa63e93fbaaaa809cd27026e9f36a66b115/371_63_3749_3001/master/3749.jpg?width=140&quality=85&auto=format&fit=max&s=9adc78c48312b707797cb410ed682ff7",
+    "source": "World news | The Guardian",
+    "sources": [
+      {
+        "title": "World news | The Guardian — Two container ships sink near strait of Hormuz amid surge in Iranian attacks",
+        "uri": "https://www.theguardian.com/world/2026/oct/14/container-ship-sinks-strait-of-hormuz-surge-iranian-attacks-iran-us-midterm-elections"
+      },
+      {
+        "title": "Najnowsze wiadomości - TVN24 — Ataki w pobliżu cieśniny Ormuz. Kolejna jednostka poszła na dno",
+        "uri": "https://tvn24.pl/biznes/ze-swiata/ataki-w-poblizu-ciesniny-ormuz-zatonely-dwa-statki-handlowe-st9287237?source=rss"
+      },
+      {
+        "title": "Bankier.pl - Wiadomości — Teheran eskaluje w Ormuzie. Dwa tankowce poszły na dno",
+        "uri": "https://www.bankier.pl/wiadomosc/Teheran-eskaluje-w-Ormuzie-Tankowiec-poszedl-na-dno-drugi-statek-tonie-9212687.html?utm_source=RSS&utm_medium=RSS&utm_campaign=Wiadomosci"
+      }
+    ],
+    "backgroundSources": [
+      {
+        "title": "theguardian.com",
+        "uri": "https://www.theguardian.com/world/2026/oct/14/two-container-ships-sink-near-strait-of-hormuz-amid-surge-in-iranian-attacks"
+      }
+    ],
+    "publishers": [
+      "World news | The Guardian",
+      "Najnowsze wiadomości - TVN24",
+      "Bankier.pl - Wiadomości"
+    ],
+    "corroborations": [
+      "theguardian.com"
+    ],
+    "trustLevel": "A",
+    "kind": "text",
+    "audio": null,
+    "durationSec": null,
+    "category": "geopolityka-i-dyplomacja",
+    "topic": "Ataki w Cieśninie Ormuz i zatopienie kontenerowców",
+    "pubDate": "2026-10-14T17:05:42.000Z",
+    "publishedAt": "2026-10-15T01:35:50.713Z"
+  },
+  {
+    "guid": "https://oko.press/berek-zlozyl-slubowanieale-pat-w-trybunale-konstytucyjnym-trwa",
+    "title": "Maciej Berek złożył ślubowanie sędziego TK bez udziału prezydenta",
+    "link": "https://oko.press/berek-zlozyl-slubowanieale-pat-w-trybunale-konstytucyjnym-trwa",
+    "html": "<h3>Sedno sprawy</h3>\n<p>Maciej Berek złożył w Sejmie ślubowanie sędziego Trybunału Konstytucyjnego bez obecności prezydenta Karola Nawrockiego, powołując się na wydaną dzień wcześniej opinię Komisji Weneckiej. Kancelaria Prezydenta oraz prezes Trybunału Konstytucyjnego Bogdan Święczkowski nie uznają tego aktu, a przed budynkiem instytucji doszło do protestów i prób blokady z udziałem polityków PiS oraz działaczy prawicowych. Wydarzenie to jest kolejną odsłoną trwającego od kwietnia sporu o obsadę i funkcjonowanie Trybunału Konstytucyjnego.</p>\n<h3>Kluczowe fakty</h3>\n<ul>\n  <li>Sejm wybrał Macieja Berka na sędziego Trybunału Konstytucyjnego 4 września, a jego kadencja powinna rozpocząć się 16 września, jednak prezydent Karol Nawrocki nie zaprosił go do złożenia ślubowania.</li>\n  <li>Ślubowanie odbyło się w środę w Sejmie w obecności marszałka Włodzimierza Czarzastego, Prezydium Sejmu i notariusza; Berek użył formuły, że składa je „wobec prezydenta” i przekazał pisemną rotę.</li>\n  <li>Złożenie ślubowania nastąpiło dzień po opublikowaniu opinii Komisji Weneckiej (organu doradczego Rady Europy), która uznała, że taki akt bez fizycznego udziału prezydenta jest dopuszczalny pod warunkiem zachowania jego formy i przekazania go głowie państwa.</li>\n  <li>Rzecznik prezydenta Rafał Leśkiewicz oświadczył, że opinia Komisji Weneckiej nie ma mocy prawnej, wskazując, że źródłami prawa w Polsce są konstytucja i ustawy.</li>\n  <li>Maciej Berek nie został dopuszczony do orzekania przez prezesa TK Bogdana Święczkowskiego, podobnie jak czworo sędziów wybranych w marcu (Krystian Markiewicz, Marcin Dziurda, Anna Korwin-Piotrowska i Maciej Taborowski), którzy złożyli ślubowanie w Sejmie 9 kwietnia.</li>\n  <li>Przed siedzibą TK doszło w środę do manifestacji i przepychanek z policją z udziałem m.in. Roberta Bąkiewicza (lidera Ruchu Obrony Granic), Tomasza Sakiewicza oraz polityków PiS, w tym Antoniego Macierewicza i Jarosława Kaczyńskiego, którzy próbowali zablokować wjazd Berkowi.</li>\n  <li>Policja zatrzymała trzy osoby podejrzane o naruszenie nietykalności funkcjonariuszy, a minister sprawiedliwości i prokurator generalny Waldemar Żurek polecił Prokuratorowi Krajowemu Dariuszowi Kornelukowi bezzwłoczne podjęcie czynności procesowych z urzędu.</li>\n  <li>Wiceszef MSWiA Czesław Mroczek poinformował, że w związku z kierowanymi groźbami część sędziów TK otrzymała czasową ochronę Służby Ochrony Państwa (SOP).</li>\n  <li>Wynagrodzenie zasadnicze sędziego TK wynosi ponad 43 tys. zł brutto miesięcznie plus ewentualny dodatek za długoletnią pracę, ale nieuznawani sędziowie nie otrzymują pensji.</li>\n  <li>Maciej Berek bezpośrednio przed wyborem do TK był ministrem ds. nadzoru nad wdrażaniem polityki rządu w gabinecie Donalda Tuska, a wcześniej szefem Komitetu Stałego Rady Ministrów i szefem rządowego zespołu ds. deregulacji.</li>\n</ul>\n<h3>Jak do tego doszło</h3>\n<p>Trwający od kwietnia spór o obsadę i funkcjonowanie Trybunału Konstytucyjnego ma swoje źródło w głębokim klinczu konstytucyjnym dotyczącym relacji pomiędzy Sejmem a głową państwa. Sejm wybrał Macieja Berka na sędziego Trybunału Konstytucyjnego 4 września, a jego kadencja powinna rozpocząć się 16 września. Prezydent Karol Nawrocki nie zaprosił go jednak do złożenia ślubowania i odmówił podjęcia tego aktu, co uniemożliwiło normalne objęcie urzędu w standardowym trybie. Sytuacja ta jest bezpośrednią kontynuacją wcześniejszych napięć z marca, kiedy to Sejm wybrał czworo innych sędziów – Krystiana Markiewicza, Marcina Dziurdę, Annę Korwin-Piotrowską i Macieja Taborowskiego – którzy złożyli ślubowanie w Sejmie 9 kwietnia, a następnie również nie zostali dopuszczeni do orzekania przez prezesa TK Bogdana Święczkowskiego.</p>\n<p>W obliczu odmowy ze strony prezydenta, poszukiwano rozwiązań instytucjonalnych, co doprowadziło do opublikowania opinii Komisji Weneckiej dzień przed środowym ślubowaniem Macieja Berka w Sejmie, które odbyło się w obecności marszałka Włodzimierza Czarzastego, Prezydium Sejmu i notariusza. Wydarzenia te wywołały natychmiastową eskalację napięć politycznych i społecznych, prowadząc do fizycznych blokad przed siedzibą Trybunału Konstytucyjnego oraz zaangażowania organów ścigania.</p>\n<h3>Różne perspektywy</h3>\n<p>Strony sporu interpretują zaistniałą sytuację w skrajnie odmienny sposób, powołując się na różne źródła autorytetu i przepisy. Premier Donald Tusk oświadczył, że sędziowie TK zostali wybrani zgodnie z prawem, a prezydent Karol Nawrocki, odmawiając przyjęcia ślubowania, abdykuje z obowiązków nałożonych na niego w konstytucji. Podobne stanowisko zajęła pełnomocniczka rządu ds. równości Katarzyna Kotula, która oceniła, że rola prezydenta w procesie odebrania ślubowania ma charakter techniczny, a nie decyzyjny. Argumentację tę wspiera opinia Komisji Weneckiej, która uznała, że złożenie ślubowania przez sędziego TK bez fizycznego udziału prezydenta jest dopuszczalne pod warunkiem zachowania formy i przekazania aktu głowie państwa.</p>\n<p>Zupełnie inaczej sprawę widzą przedstawiciele Kancelarii Prezydenta oraz prezes Trybunału Konstytucyjnego Bogdan Święczkowski, którzy nie uznają aktu złożenia ślubowania przez Macieja Berka. Rzecznik prezydenta Rafał Leśkiewicz oświadczył, że opinia Komisji Weneckiej nie ma mocy prawnej, wskazując, że źródłami prawa w Polsce są konstytucja i ustawy. W rezultacie prezes Bogdan Święczkowski nie dopuścił Macieja Berka do orzekania, podobnie jak wcześniej czworo sędziów wybranych w marcu.</p>\n<h3>Dlaczego to ma znaczenie</h3>\n<p>Konsekwencje trwającego konfliktu instytucjonalnego przekładają się bezpośrednio na funkcjonowanie państwa, wymiar sprawiedliwości oraz bezpieczeństwo osób zaangażowanych w sprawę. Minister sprawiedliwości i prokurator generalny Waldemar Żurek poinformował, że polecił bezzwłoczne podjęcie czynności procesowych z urzędu w związku z awanturą przed siedzibą Trybunału Konstytucyjnego, gdzie doszło do manifestacji, przepychanek z policją oraz zatrzymania trzech osób podejrzanych o naruszenie nietykalności funkcjonariuszy. Z kolei wiceszef MSWiA Czesław Mroczek poinformował, że w związku z kierowanymi groźbami część sędziów TK otrzymała czasową ochronę Służby Ochrony Państwa (SOP).</p>\n<p>Wymiar finansowy i pracowniczy sporu dotyka samych sędziów: choć wynagrodzenie zasadnicze sędziego TK wynosi ponad 43 tys. zł brutto miesięcznie plus ewentualny dodatek za długoletnią pracę, nieuznawani sędziowie nie otrzymują pensji. Sytuacja ta pogłębia kryzys konstytucyjny, paraliżując stabilność kluczowych instytucji państwowych i prowadząc do trwałych podziałów w sferze publicznej.</p>\n<h3>Czego jeszcze nie wiemy</h3>\n<p>Nie wiadomo, jak dokładnie prokuratura i służby zakwalifikują działania osób blokujących dostęp do budynku Trybunału Konstytucyjnego oraz czy doprowadzi to do postawienia zarzutów karnych manifestantom i obecnym na miejscu politykom. Niewyjaśniona pozostaje kwestia rozstrzygnięcia patu prawnego wokół pięciorga nieuznawanych przez Kancelarię Prezydenta sędziów oraz tego, czy Maciej Berek podejmie formalne próby dochodzenia prawa do orzekania i wypłaty wynagrodzenia.</p>",
+    "imageUrl": null,
+    "source": "oko.press",
+    "sources": [
+      {
+        "title": "oko.press — Berek złożył ślubowanie zgodnie z opinią Komisji Weneckiej, ale pat w Trybunale Konstytucyjnym trwa",
+        "uri": "https://oko.press/berek-zlozyl-slubowanieale-pat-w-trybunale-konstytucyjnym-trwa"
+      },
+      {
+        "title": "Money.pl — Maciej Berek już po ślubowaniu. Oto ile może zarabiać w TK",
+        "uri": "https://www.money.pl/finanse/maciej-berek-juz-po-slubowaniu-oto-ile-moze-zarabiac-w-tk-7339907488111072a.html"
+      },
+      {
+        "title": "Najnowsze wiadomości - TVN24 — Wiceszef MSWiA: sędziowie otrzymali ochronę ",
+        "uri": "https://tvn24.pl/tvnwarszawa/srodmiescie/wiceszef-mswia-o-probie-blokowania-trybunalu-konstytucyjnego-i-dzialaniach-sluzb-st9287409?source=rss"
+      }
+    ],
+    "backgroundSources": [
+      {
+        "title": "tvn24.pl",
+        "uri": "https://tvn24.pl/polska/maciej-berek-zlozy-dzis-slubowanie-st9285511"
+      },
+      {
+        "title": "pap.pl",
+        "uri": "https://www.pap.pl"
+      },
+      {
+        "title": "wiadomosci.onet.pl",
+        "uri": "https://wiadomosci.onet.pl/kraj/maciej-berek-zlozy-slubowanie-na-sedziego-tk-zakonczmy-ten-cyrk/p2nd642"
+      }
+    ],
+    "publishers": [
+      "oko.press",
+      "Money.pl",
+      "Najnowsze wiadomości - TVN24"
+    ],
+    "corroborations": [
+      "tvn24.pl",
+      "wiadomosci.onet.pl",
+      "pap.pl"
+    ],
+    "trustLevel": "A",
+    "kind": "text",
+    "audio": null,
+    "durationSec": null,
+    "category": "polska-polityka",
+    "topic": "Maciej Berek złożył ślubowanie sędziego Trybunału Konstytucyjnego",
+    "pubDate": "2026-10-14T12:13:24.000Z",
+    "publishedAt": "2026-10-15T01:35:50.713Z"
+  },
+  {
+    "guid": "https://www.bbc.co.uk/news/articles/cwy8lx3pg4k2o#0",
+    "title": "Inflacja w USA wzrosła w ciągu roku do 3,7 procent z powodu wzrostu cen paliw",
+    "link": "https://www.bbc.co.uk/news/articles/cwy8lx3pg4k2o?at_medium=RSS&at_campaign=rss",
+    "html": "<h3>Sedno sprawy</h3>\n<p>Roczny wskaźnik inflacji w Stanach Zjednoczonych wzrósł w okresie do września do poziomu 3,7 procent, co okazało się wynikiem wyższym od wcześniejszych prognoz. Główną przyczyną tego wzrostu były rosnące ceny paliw do pojazdów oraz ogólny wzrost kosztów energii. Rezerwa Federalna USA szczegółowo analizuje sytuację, aby ocenić, czy wyższe koszty nośników energii zaczną wpływać na inne sektory gospodarki, w tym na ceny żywności.</p>\n<h3>Kluczowe fakty</h3>\n<ul>\n  <li>Amerykański wskaźnik inflacji mierzony w skali roku do września osiągnął poziom 3,7 procent.</li>\n  <li>Ceny paliw do pojazdów wzrosły o 34,2 procent w ciągu ostatnich 12 miesięcy, a w samym wrześniu ich skok wyniósł 9,1 procent.</li>\n  <li>Według danych agencji rządowej Bureau of Labor Statistics, wrzesień i sam wzrost cen paliw odpowiadały za ponad połowę łącznego wzrostu inflacji.</li>\n  <li>Całkowita inflacja w sektorze energii wzrosła w ujęciu rocznym o 20,4 procent z powodu drożejącej energii elektrycznej, usług energetycznych oraz oleju opałowego.</li>\n  <li>Cena oleju opałowego, stosowanego do ogrzewania domów w USA, wzrosła w ciągu roku o 74,2 procent.</li>\n  <li>Inflacja bazowa, która wyklucza zmienne ceny energii oraz żywności, ukształtowała się na poziomie 2,6 procent.</li>\n  <li>Ceny żywności pozostały stabilne – w samym wrześniu nie uległy zmianie, natomiast w skali całego roku ich wzrost wyniósł 2,5 procent.</li>\n  <li>Na światowych rynkach cena węgla używanego do produkcji energii elektrycznej wzrosła od początku roku o około 40 procent z powodu wysokich cen gazu skroplonego (LNG).</li>\n  <li>Eksport węgla z Indonezji uległ stagnacji w wyniku zaostrzenia kontroli rządowych nad wydobyciem oraz wprowadzenia obowiązku zaspokajania potrzeb rynku wewnętrznego.</li>\n</ul>\n<h3>Czego jeszcze nie wiemy</h3>\n<p>Eksperci nie określili jeszcze, w jakim stopniu i kiedy wysokie koszty energii przełożą się na wzrost cen w pozostałych gałęziach gospodarki, w tym na dotychczas stabilne ceny żywności. Nie jest również znany dokładny wpływ niepewności wokół eksportu surowców z Australii oraz Indonezji na dalsze kształtowanie się globalnych cen węgla i paliw.</p>",
+    "imageUrl": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/bd50/live/e1cf6860-c7cf-11f1-9e10-4dcbd31d4273.jpg",
+    "source": "BBC News",
+    "sources": [
+      {
+        "title": "BBC News — US inflation rises more than expected - here's what is happening with prices",
+        "uri": "https://www.bbc.co.uk/news/articles/cwy8lx3pg4k2o?at_medium=RSS&at_campaign=rss"
+      },
+      {
+        "title": "Nikkei Asia — Coal prices up 40% this year on LNG replacement demand, supply uncertainty",
+        "uri": "https://asia.nikkei.com/business/energy/coal-prices-up-40-this-year-on-lng-replacement-demand-supply-uncertainty"
+      }
+    ],
+    "backgroundSources": [
+      {
+        "title": "theguardian.com",
+        "uri": "https://www.theguardian.com/business/live/2026/oct/14/imf-rising-government-borrowing-costs-inflation-oil-stock-markets-latest-news-updates"
+      },
+      {
+        "title": "bls.gov",
+        "uri": "https://www.bls.gov/news.release/pdf/cpi.pdf"
+      }
+    ],
+    "publishers": [
+      "BBC News",
+      "Nikkei Asia"
+    ],
+    "corroborations": [],
+    "trustLevel": "B",
+    "kind": "text",
+    "audio": null,
+    "durationSec": null,
+    "category": "gospodarka",
+    "topic": "Inflacja w USA wzrosła mocniej od prognoz",
+    "pubDate": "2026-10-14T15:26:14.000Z",
+    "publishedAt": "2026-10-15T01:35:50.713Z"
+  },
+  {
+    "guid": "https://www.theguardian.com/environment/2026/oct/14/mont-blanc-loses-metre-height",
+    "title": "Nowe pomiary wysokości Mont Blanc pokazały zmianę poziomu pokrywy lodowej",
+    "link": "https://www.theguardian.com/environment/2026/oct/14/mont-blanc-loses-metre-height",
+    "html": "<h3>Sedno sprawy</h3>\n<p>Francuscy geodeci przedstawili najnowsze pomiary wysokości Mont Blanc, które wykazały, że najwyższy szczyt Europy ma obecnie 4807,47 m n.p.m. W porównaniu z rokiem 2025 wierzchołek jest niższy o 1,29 metra, jednak w zestawieniu z pomiarem z 2023 roku jego wysokość wzrosła o 1,88 metra. Eksperci zaznaczają, że wahań wysokości czapy lodowej na najwyższym punkcie góry nie należy bezpośrednio utożsamiać z ogólnym stanem masy lodowców w Alpach, ponieważ wpływ na nie mają przede wszystkim bieżące warunki atmosferyczne.</p>\n<h3>Kluczowe fakty</h3>\n<ul>\n  <li>Eksperci z francuskich organizacji geodezyjnych Union Nationale des Géomètres-Experts (UNGE) oraz Ordre des Géomètres-Experts prowadzą regularne pomiary szczytu Mont Blanc od 2001 roku.</li>\n  <li>Podczas wrześniowej ekspedycji geodeci zmierzyli wysokość szczytu za pomocą precyzyjnej technologii satelitarnej, użyli dronów do stworzenia modelu czapy śnieżno-lodowej oraz zastosowali radar penetrujący grunt do zmapowania pokrywy lodu i leżącego pod nią skalistego wierzchołka.</li>\n  <li>Właściwa część skalna Mont Blanc sięga około 4792 metrów, natomiast o ostatecznej wysokości wierzchołka decyduje grubość śniegu i lodu, zmienna pod wpływem temperatury, wiatru oraz opadów.</li>\n  <li>W 2007 roku pomiary wykazały najwyższą w historii odczytów wartość 4810,90 m n.p.m., co oznacza, że od tamtego momentu szczyt obniżył się o 3,43 metra.</li>\n  <li>Przedstawiciel UNGE wyregulował, że wzrost wysokości samego wierzchołka nie musi oznaczać przyrostu całkowitej masy lodu i nie zaprzecza udokumentowanemu procesowi topnienia alpejskich lodowców.</li>\n  <li>W tym roku w Europie Zachodniej zanotowano najgorętsze lato w historii pomiarów, co przełożyło się na intensywne topnienie lodu w niższych partiach Alp.</li>\n  <li>Szwajcarscy glacjolodzy poinformowali w tym miesiącu, że w ciągu ostatnich pięciu lat ich kraj stracił jedną piątą całkowitej masy lodu, z czego 5,5% objętości stopniało na przełomie lat 2025 i 2026.</li>\n  <li>Jean des Garets, szef ekspedycji oraz przewodniczący izby geodetów w departamencie Górna Sabaudia, zauważył, że o ile ocieplenie klimatu widać gołym okiem poniżej 4000 m n.p.m. — gdzie lodowiec Tête-Rousse ustępuje miejsca strumieniom — o tyle powyżej tej granicy zmiany nie są jeszcze tak widoczne.</li>\n  <li>Wypowiedź geodety Mathieu Dragona z Górnej Sabaudii wskazuje, że tegoroczny wzrost wysokości w stosunku do 2023 roku nastąpił mimo wyjątkowo suchego sezonu.</li>\n</ul>\n<h3>Jak do tego doszło</h3>\n<p>Francuskie organizacje geodezyjne Union Nationale des Géomètres-Experts oraz Ordre des Géomètres-Experts prowadzą regularne pomiary najwyższego szczytu Europy od 2001 roku. W 2007 roku odnotowano najwyższy w historii oficjalnych pomiarów wynik wysokości Mont Blanc, który wyniósł 4810,90 m n.p.m. Od tamtego momentu trwają cykliczne badania, podczas których eksperci wykorzystują zaawansowaną technologię satelitarną, drony oraz radar penetrujący grunt do zmapowania pokrywy lodu i leżącego pod nią skalistego wierzchołka sięgającego około 4792 metrów.</p>\n<h3>Różne perspektywy</h3>\n<p>Jean des Garets, szef ekspedycji geodezyjnej oraz przewodniczący izby geodetów w departamencie Górna Sabaudia, zaznaczył, że wahań wysokości czapy lodowej na szczycie nie należy bezpośrednio utożsamiać z ogólnym stanem masy lodowców w Alpach ani traktować pojedynczego pomiaru jako ostatecznego dowodu na zmiany klimatyczne. Wyjaśnił on również, że o ile ocieplenie klimatu widać gołym okiem poniżej 4000 m n.p.m., gdzie lodowiec Tête-Rousse ustępuje miejsca strumieniom, o tyle powyżej tej granice zmiany nie są jeszcze tak widoczne.</p>\n<h3>Dlaczego to ma znaczenie</h3>\n<p>Wysokość czapy śnieżno-lodowej na szczycie pozostaje zmienna pod wpływem temperatury, wiatru oraz opadów, co sprawia, że długoterminowe implikacje dla pokrywy powyżej 4000 metrów wymagają dalszych obserwacji. Jednocześnie szwajcarscy glacjolodzy poinformowali o znaczącym spadku całkowitej masy lodu w ich kraju w ciągu ostatnich lat, co pokazuje szerszy kontekst przemian alpejskich środowisk, niezależnie od lokalnych wahań samego wierzchołka.</p>\n<h3>Czego jeszcze nie wiemy</h3>\n<p>Nadal nie określono jednoznacznie, w jakim stopniu długoterminowe zmiany klimatyczne wpłyną na pokrywę lodową góry położoną na wysokości powyżej 4000 metrów. Dokładniejsze wnioski dotyczące struktury i zachowania lodowca pod najwyższym punktem góry będą możliwe do wyciągnięcia po analizie zestawu danych zebranych po raz pierwszy przy użyciu radaru penetrującego grunt.</p>",
+    "imageUrl": "https://i.guim.co.uk/img/media/6052299a2ea98c73a944118da1d60fb665b7dd0e/617_35_4656_3725/master/4656.jpg?width=140&quality=85&auto=format&fit=max&s=de91485a6e9c2aff3e2910e876b97d67",
+    "source": "World news | The Guardian",
+    "sources": [
+      {
+        "title": "World news | The Guardian — Mont Blanc, the ‘roof of Europe’, loses more than a metre of height in a year",
+        "uri": "https://www.theguardian.com/environment/2026/oct/14/mont-blanc-loses-metre-height"
+      },
+      {
+        "title": "Environment | The Guardian — Mont Blanc, the ‘roof of Europe’, loses more than a metre of height in a year",
+        "uri": "https://www.theguardian.com/environment/2026/oct/14/mont-blanc-loses-metre-height"
+      },
+      {
+        "title": "FAKTY - FAKTY w RMF24 — Najwyższy szczyt Europy urósł o dwa metry. Geodeta wyjaśnia dlaczego",
+        "uri": "https://www.rmf24.pl/fakty/swiat/news-najwyzszy-szczyt-europy-urosl-o-dwa-metry-geodeta-wyjasnia-d,nIdn,1021907"
+      }
+    ],
+    "backgroundSources": [
+      {
+        "title": "pap.pl",
+        "uri": "https://www.pap.pl"
+      },
+      {
+        "title": "rp.pl",
+        "uri": "https://www.rp.pl"
+      },
+      {
+        "title": "rmf24.pl",
+        "uri": "https://www.rmf24.pl"
+      },
+      {
+        "title": "theguardian.com",
+        "uri": "https://www.theguardian.com"
+      }
+    ],
+    "publishers": [
+      "World news | The Guardian",
+      "Environment | The Guardian",
+      "FAKTY - FAKTY w RMF24"
+    ],
+    "corroborations": [
+      "rmf24.pl",
+      "theguardian.com"
+    ],
+    "trustLevel": "A",
+    "kind": "text",
+    "audio": null,
+    "durationSec": null,
+    "category": "nauka-technologia-klimat",
+    "topic": "Mont Blanc skurczył się o ponad metr",
+    "pubDate": "2026-10-14T15:33:52.000Z",
+    "publishedAt": "2026-10-15T01:35:50.713Z"
+  },
+  {
+    "guid": "odsluch-2026-10-15",
+    "title": "ODSŁUCH — 2026-10-15 (21:50)",
+    "link": "https://grabowskirobert.github.io/ai-rss/audio/odsluch-2026-10-15.mp3",
+    "html": "<p>Całe dzisiejsze wydanie do odsłuchania — 5 tematów, 21:50.</p><h3>W tym odcinku</h3><ul><li style=\"margin-bottom:0.3em\">SpaceX ogranicza działanie wojskowych terminali Starlink na ukraińskim froncie</li><li style=\"margin-bottom:0.3em\">Eskalacja w Cieśninie Ormuz: w ciągu doby zatonęły dwa statki handlowe</li><li style=\"margin-bottom:0.3em\">Maciej Berek złożył ślubowanie sędziego TK bez udziału prezydenta</li><li style=\"margin-bottom:0.3em\">Inflacja w USA wzrosła w ciągu roku do 3,7 procent z powodu wzrostu cen paliw</li><li style=\"margin-bottom:0.3em\">Nowe pomiary wysokości Mont Blanc pokazały zmianę poziomu pokrywy lodowej</li></ul>",
+    "imageUrl": null,
+    "source": "AI RSS",
+    "sources": [],
+    "backgroundSources": [],
+    "publishers": [],
+    "corroborations": [],
+    "trustLevel": null,
+    "kind": "audio",
+    "audio": {
+      "url": "https://grabowskirobert.github.io/ai-rss/audio/odsluch-2026-10-15.mp3",
+      "type": "audio/mpeg",
+      "length": 10477101
+    },
+    "durationSec": 1309.55,
+    "category": "odsluch",
+    "topic": "odsłuch wydania 2026-10-15",
+    "pubDate": "2026-10-15T01:35:50.711Z",
+    "publishedAt": "2026-10-15T01:35:50.713Z"
+  },
+  {
     "guid": "https://novayagazeta.eu/articles/2026/10/13/ssha-i-es-gotoviat-mirnoe-predlozhenie-kotoroe-predostavit-garantii-bezopasnosti-ukraine-i-vernet-neft-i-gaz-iz-rf-na-mirovoi-rynok-news",
     "title": "USA i Europa tworzą plan pokojowy dla Ukrainy z zamrożeniem frontu i umową paliwową",
     "link": "https://novayagazeta.eu/articles/2026/10/13/ssha-i-es-gotoviat-mirnoe-predlozhenie-kotoroe-predostavit-garantii-bezopasnosti-ukraine-i-vernet-neft-i-gaz-iz-rf-na-mirovoi-rynok-news",
@@ -1803,228 +2067,5 @@
     "topic": "Aresztowanie byłego szefa niemieckiego wywiadu pod zarzutem szpiegostwa",
     "pubDate": "2026-10-06T10:58:50.000Z",
     "publishedAt": "2026-10-07T02:31:56.276Z"
-  },
-  {
-    "guid": "https://novayagazeta.eu/articles/2026/10/06/nobelevskuiu-premiiu-po-fizike-prisudili-za-issledovaniia-neitrino-news",
-    "title": "Francis Halzen otrzymał Nagrodę Nobla z fizyki za badania nad neutrinami",
-    "link": "https://novayagazeta.eu/articles/2026/10/06/nobelevskuiu-premiiu-po-fizike-prisudili-za-issledovaniia-neitrino-news",
-    "html": "<h3>Sedno sprawy</h3>\n<p>Belgijski fizyk Francis Halzen został laureatem Nagrody Nobla w dziedzinie fizyki za rok 2026 za swój przełomowy wkład w budowę Obserwatorium Neutrin IceCube na Antarktydzie oraz odkrycie wysokoenergetycznych neutrin pochodzenia astrofizycznego. Badania te zapoczątkowały nową erę w astronomii, umożliwiając wykrywanie i analizę niezwykle rzadkich i trudnych do uchwycenia cząstek elementarnych, które przemieszczają się przez wszechświat, niemal nie wchodząc w interakcje z materią. Dzięki pracy naukowca i jego międzynarodowego zespołu badacze mogą lepiej zrozumieć procesy powstawania tych cząstek oraz badać nieznane dotąd zjawiska kosmiczne.</p>\n<h3>Kluczowe fakty</h3>\n<ul>\n  <li>Królewska Szwedzka Akademia Nauk przyznała tegoroczną Nagrodę Nobla z fizyki Francisowi Halzenowi, przyznając mu nagrodę pieniężną w wysokości 12 milionów koron szwedzkich, co stanowi równowartość około 1,27 miliona dolarów.</li>\n  <li>Laureat nagrody, Francis Halzen, jest Belgiem, który obecnie prowadzi pracę naukową na University of Wisconsin w Stanach Zjednoczonych.</li>\n  <li>Halzen jest uznawany za jednego z głównych pionierów i prekursorów współczesnej astrofizyki cząstek elementarnych, ze szczególnym uwzględnieniem astronomii neutrinowej wysokich energii.</li>\n  <li>Neutrina, nazywane potocznie „cząstkami duchami”, charakteryzują się tym, że poruszają się przez Ziemię oraz ludzkie ciała bez pozostawiania śladów i niezwykle rzadko wchodzą w jakiekolwiek interakcje z materią.</li>\n  <li>Kosmiczne neutrina o ekstremalnie wysokich energiach pojawiają się bardzo rzadko, co wymusiło stworzenie detektora o ogromnej objętości lodu, zdolnego do rejestrowania wystarczającej liczby zderzeń tych cząstek.</li>\n  <li>Obserwatorium IceCube, zaprojektowane z inicjatywy Halzena i wybudowane na Antarktydzie przy współpracy międzynarodowego zespołu badaczy oraz inżynierów, zajmuje objętość jednego kilometra sześciennego.</li>\n  <li>Budowa antarktycznego obserwatorium IceCube została sfinalizowana w 2011 roku, a po dwóch latach działania, w 2013 roku, naukowcy po raz pierwszy zaobserwowali wysokoenergetyczne neutrino pochodzące z nieznanych źródeł pozagalaktycznych.</li>\n  <li>W 2014 roku amerykański magazyn „Smithsonian” przyznał Francisowi Halzenowi nagrodę za pomysłowość, określając go mianem „Neutrinowego Człowieka”, a o jego naukowej wyprawie na Antarktydę stworzono nawet dedykowany komiks.</li>\n  <li>Dla porównania, w 2025 roku Nagrodę Nobla z fizyki otrzymali amerykańscy naukowcy John Clarke, Michel Devoret i John Martinis za eksperymenty demonstrujące działanie zasad fizyki kwantowej, które mają pomóc w rozwoju komputerów nowej generacji.</li>\n</ul>\n<h3>Czego jeszcze nie wiemy</h3>\n<p>Choć badania w Obserwatorium IceCube pozwalają na rejestrowanie wysokoenergetycznych neutrin, dokładne źródła pozagalaktyczne, z których pochodzą pierwsze zaobserwowane w 2013 roku cząstki, wciąż pozostają nieznane. Naukowcy liczą na to, że dalsze analizy interakcji tych cząstek ujawnią nieodkryte dotąd zjawiska kosmiczne, jednak na obecnym etapie precyzyjne mechanizmy powstawania neutrin o tak wysokich energiach nadal wymagają szczegółowego zbadania.</p>",
-    "imageUrl": null,
-    "source": "Новая Газета. Европа",
-    "sources": [
-      {
-        "title": "oko.press — Nobel z fizyki dla Belga, który szuka „cząstek duchów”",
-        "uri": "https://oko.press/na-zywo/na-zywo-relacja/nobel-z-fizyki-dla-belga-ktory-szuka-czastek-duchow"
-      }
-    ],
-    "backgroundSources": [],
-    "publishers": [
-      "oko.press"
-    ],
-    "corroborations": [],
-    "trustLevel": "C",
-    "kind": "text",
-    "audio": null,
-    "durationSec": null,
-    "category": "nauka-technologia-klimat",
-    "topic": "Francis Halzen z Nagrodą Nobla z fizyki za neutrina",
-    "pubDate": "2026-10-06T10:33:53.000Z",
-    "publishedAt": "2026-10-07T02:31:56.276Z"
-  },
-  {
-    "guid": "https://tvn24.pl/polska/paramount-skydance-i-wbd-lacza-sie-powstaje-skydance-st9273271",
-    "title": "Fuzja Paramount i Warner Bros. Discovery stała się faktem",
-    "link": "https://tvn24.pl/polska/paramount-skydance-i-wbd-lacza-sie-powstaje-skydance-st9273271?source=rss",
-    "html": "<h3>Sedno sprawy</h3>\n<p>Dwa legendarne i jedne z najstarszych studiów filmowych w Hollywood, Paramount Pictures oraz Warner Bros. Pictures, połączyły się w jeden gigantyczny koncern medialno-rozrywkowy o nazwie Skydance. Transakcja, która opiewa na dziesiątki miliardów dolarów, kończy trwający miesiącami i pełen przeszkód proces wrogiego przejęcia Warner Bros. Discovery przez miliardera Davida Ellisona. Fuzja ta fundamentalnie zmienia układ sił w światowym przemyśle rozrywkowym, konsolidując pod jednym szyldem nie tylko produkcję filmową, ale także wpływowe stacje informacyjne oraz globalne platformy streamingowe.</p>\n<h3>Kluczowe fakty</h3>\n<ul>\n  <li>Przejęcie Warner Bros. Discovery (WBD) przez Paramount Skydance zostało sfinalizowane we wtorek, w wyniku czego powstała nowa spółka o nazwie Skydance (oficjalnie Skydance Corporation).</li>\n  <li>Całkowity koszt przejęcia wyniósł około 81 miliardów dolarów (około 72 miliardy euro), a po uwzględnieniu długu Warner Bros. przejętego w ramach umowy, wartość transakcji sięga niemal 111 miliardów dolarów.</li>\n  <li>Wraz z finalizacją transakcji we wtorek zakończono obrót akcjami WBD oraz dotychczasowego Paramount Skydance (PSKY), a na Nowojorskiej Giełdzie Papierów Wartościowych zadebiutowały akcje nowej spółki pod symbolem SKYD.</li>\n  <li>Akcjonariusze Warner Bros. Discovery otrzymają w ramach rozliczenia około 31 dolarów za każdą posiadaną akcję, natomiast jedynymi posiadaczami akcji nowej spółki z prawem głosu pozostają rodzina Ellisonów oraz firma RedBird Capital Partners.</li>\n  <li>Na czele nowego giganta jako prezes i dyrektor generalny (CEO) stanął David Ellison, którego rodzina ma powiązania z prezydentem USA Donaldem Trumpem, a funkcję współ-CEO odpowiedzialnego za bieżącą działalność operacyjną objął Ynon Kreiz, były szef firmy Mattel.</li>\n  <li>Transakcja doszła do skutku po tym, jak niespełna tydzień wcześniej sędzia federalny w Kalifornii zatwierdził ugodę między Paramount a 12 amerykańskimi stanami, które wniosły pozew o zablokowanie fuzji z powołaniem się na przepisy antymonopolowe.</li>\n  <li>Nowy koncern skupia w swoim portfolio m.in. kanały telewizyjne i marki HBO, CBS, Paramount, WBD, a także dwie kluczowe stacje informacyjne: CNN i CBS News; częścią przejętego Warner Bros. Discovery jest również polska stacja TVN.</li>\n  <li>Skydance planuje połączyć dotychczasowe konkurencyjne serwisy streamingowe Paramount+ i HBO Max w jedną globalną platformę subskrypcyjną.</li>\n  <li>Połączone podmioty zamierzają zwiększyć skalę produkcji do co najmniej 30 filmów kinowych rocznie oraz ponad 180 programów i seriali telewizyjnych, dążąc jednocześnie do osiągnięcia oszczędności (synergii) na poziomie co najmniej 6 miliardów dolarów rocznie w ciągu najbliższych trzech lat.</li>\n</ul>\n<h3>Czego jeszcze nie wiemy</h3>\n<p>Choć przedstawiciele Skydance zadeklarowali plan wypracowania co najmniej 6 miliardów dolarów synergii rocznie w ciągu trzech lat, nie ujawniono jeszcze szczegółowego planu restrukturyzacji ani tego, czy i jak duże redukcje zatrudnienia będą konieczne do osiągnięcia tego celu. Nie podano również dokładnej daty ani nowej nazwy dla planowanej wspólnej platformy streamingowej, która ma powstać z połączenia Paramount+ i HBO Max. Brak też szczegółowych informacji na temat ewentualnych zmian strukturalnych i personalnych w lokalnych oddziałach przejętych spółek, w tym w należącej do holdingu polskiej stacji TVN.</p>",
-    "imageUrl": null,
-    "source": "Najnowsze wiadomości - TVN24",
-    "sources": [
-      {
-        "title": "Najnowsze wiadomości - TVN24 — Paramount Skydance i WBD łączą się. Powstaje Skydance",
-        "uri": "https://tvn24.pl/polska/paramount-skydance-i-wbd-lacza-sie-powstaje-skydance-st9273271?source=rss"
-      },
-      {
-        "title": "World news | The Guardian — Democrats now favored in key midterm races that could give them control of US Senate, new projections find – as it happened",
-        "uri": "https://www.theguardian.com/us-news/live/2026/oct/06/donald-trump-ads-diesel-baltimore-midterms-media-latest-news-updates"
-      },
-      {
-        "title": "World | Deutsche Welle — Paramount and Warner Bros merge into one Hollywood giant",
-        "uri": "https://www.dw.com/en/paramount-and-warner-bros-merge-into-one-hollywood-giant/a-79565762?maca=en-rss-en-world-4025-rdf"
-      }
-    ],
-    "backgroundSources": [],
-    "publishers": [
-      "Najnowsze wiadomości - TVN24",
-      "World news | The Guardian",
-      "World | Deutsche Welle"
-    ],
-    "corroborations": [],
-    "trustLevel": "A",
-    "kind": "text",
-    "audio": null,
-    "durationSec": null,
-    "category": "gospodarka",
-    "topic": "Paramount i Warner Bros. Discovery łączą się w Skydance",
-    "pubDate": "2026-10-06T21:15:50.000Z",
-    "publishedAt": "2026-10-07T02:31:56.276Z"
-  },
-  {
-    "guid": "https://oko.press/na-zywo/na-zywo-relacja/atak-dronow-u-wybrzezy-bulgarii-trwa-akcja-ratunkowa",
-    "title": "Atak dronów na dwa statki handlowe w bułgarskiej strefie ekonomicznej na Morzu Czarnym",
-    "link": "https://oko.press/na-zywo/na-zywo-relacja/atak-dronow-u-wybrzezy-bulgarii-trwa-akcja-ratunkowa",
-    "html": "<h3>Sedno sprawy</h3>\n<p>Na Morzu Czarnym doszło do bezprecedensowego ataku dronów na dwa statki handlowe znajdujące się w wyłącznej strefie ekonomicznej Bułgarii, będącej państwem członkowskim NATO. Jeden ze statków zatonął, a na drugim wybuchł pożar, co zmusiło bułgarskie władze do zwołania pilnego posiedzenia bezpieczeństwa narodowego. Incydent ten wpisuje się w niepokojącą serię ataków na cywilną żeglugę w regionie, co drastycznie zwiększa ryzyko dla transportu morskiego i podnosi koszty ubezpieczeń na kluczowych szlakach handlowych.</p>\n<h3>Kluczowe fakty</h3>\n<ul>\n  <li>We wtorek 6 października 2026 roku, około 80 mil morskich (około 112–128 kilometrów) od wybrzeży Bułgarii, drony zaatakowały dwa cywilne statki handlowe na wschód od Świętego Atanazego i miasta Biała.</li>\n  <li>Pierwsza z zaatakowanych jednostek, ALFA WATAN, pływająca pod banderą Togo, doznała poważnych uszkodzeń konstrukcyjnych i zatonęła bezpośrednio na miejscu zdarzenia.</li>\n  <li>Drugi statek, ABLE, pływający pod banderą Palau, stanął w ogniu w wyniku uderzenia dronów, a jego 18-osobową załogę, składającą się z obywateli Indii i Turcji, ewakuował bułgarski prom pasażerski.</li>\n  <li>W wyniku zdarzenia rannych zostało kilku marynarzy ze statku ABLE – dwaj z nich odnieśli ciężkie obrażenia (jeden ma poważne poparzenia, drugi uraz głowy) i zostali przetransportowani drogą lotniczą do szpitala w portowym mieście Warna.</li>\n  <li>Premier Bułgarii Rumen Radew zwołał nadzwyczajne spotkanie z przedstawicielami kluczowych ministerstw i służb bezpieczeństwa, po którym nazwał atak „rażącym naruszeniem prawa międzynarodowego”.</li>\n  <li>Prezydent Ukrainy Wołodymyr Zełenski oświadczył, że ukraińskie wojsko nie prowadziło operacji w tym rejonie, a po weryfikacji danych z Bułgarią Kijów uznał incydent za połączony atak rosyjskich dronów powietrznych i morskich.</li>\n  <li>Dzień wcześniej, 5 października, doszedł do skutku podobny atak w rumuńskiej wyłącznej strefie ekonomicznej w rejonie platformy wiertniczej Pescăruș, gdzie rosyjski dron uderzył w należący do Turcji statek transportujący kukurydzę (początkowo identyfikowany przez rumuńskie media jako Royad Mammadov), zabijając dwie osoby, w tym kapitana.</li>\n  <li>Również 6 października gubernator obwodu odeskiego Oleh Kiper poinformował o osobnym rosyjskim ataku drona na statku handlowym pod banderą Wysp Marshalla przewożącym olej rzepakowy, w wyniku którego zginął steward, a siedem innych osób zostało rannych.</li>\n</ul>\n<h3>Jak do tego doszło</h3>\n<p>Morze Czarne od dłuższego czasu pozostaje jednym z najbardziej zapalnych obszarów dla międzynarodowej żeglugi handlowej. Eskalacja napięć w regionie to proces trwający od miesięcy, w trakcie którego szlaki transportowe u wybrzeży państw Europy Wschodniej stopniowo przekształcały się w strefę regularnych incydentów z użyciem bezzałogowych statków powietrznych i morskich. Sytuacja ta systematycznie podważała bezpieczeństwo cywilnych załóg oraz stabilność dostaw surowców i żywności.</p>\n<p>Narastające zagrożenie doprowadziło do sytuacji, w której u wybrzeży Bułgarii doszło do połączonego ataku dronów na statki handlowe. Wcześniejsze incydenty w regionie, w tym te notowane w rumuńskiej strefie ekonomicznej oraz w obwodzie odeskim, pokazały, że żegluga cywilna jest narażona na działania zbrojne o charakterze hybrydowym, co ostatecznie zmusiło władze państw regionu do reagowania na nowe, niespotykane dotąd wyzwania bezpieczeństwa morskiego.</p>\n<h3>Różne perspektywy</h3>\n<p>Premier Bułgarii Rumen Radew oświadczył po posiedzeniu rządowym, że atak dronów w wyłącznej strefie ekonomicznej kraju jest rażącym naruszeniem prawa międzynarodowego i morskiego. Z kolei prezydent Ukrainy Wołodymyr Zełenski stwierdził, że ukraińskie siły nie prowadziły operacji w rejonie incydentu, a po weryfikacji danych Kijów uznał atak za połączoną operację rosyjskich dronów.</p>\n<h3>Dlaczego to ma znaczenie</h3>\n<p>Zdarzenie to drastycznie zwiększa ryzyko dla transportu morskiego oraz podnosi koszty ubezpieczeń na kluczowych szlakach handlowych, wpisując się w niepokojącą serię ataków na cywilną żeglugę w regionie. Incydent ten zmusza państwa członkowskie NATO do ponownej oceny bezpieczeństwa w basenie Morza Czarnego oraz pokazuje, jak bezzałogowe technologie morske i powietrzne przekształcają współczesne konflikty, bezpośrednio zagrażając globalnym łańcuchom dostaw i infrastrukturze krytycznej poza bezpośrednimi polami bitew.</p>\n<h3>Czego jeszcze nie wiemy</h3>\n<p>Wokół ataku u wybrzeży Bułgarii wciąż pozostaje wiele niewiadomych, w tym dokładna liczba ofiar i los załogi zatopionego statku ALFA WATAN. Podczas gdy bułgarskie media donosiły początkowo o dwóch potwierdzonych ofiarach śmiertelnych i 11 uratowanych osobach, premier Rumen Radew oraz doniesienia telewizji NOVA wskazywały, że los całej załogi pozostaje nieznany, a ratownicy odnaleźli w pobliżu miejsca zatonięcia jedynie kamizelki ratunkowe. Ponadto oficjalne władze Bułgarii oraz biuro prezydent Iliany Iotovej nie potwierdziły jeszcze jednoznacznie tożsamości sprawców ataku, w przeciwieństwie do strony ukraińskiej, która wprost oskarża o ten czyn Federację Rosyjską.</p>",
-    "imageUrl": null,
-    "source": "oko.press",
-    "sources": [
-      {
-        "title": "oko.press — Atak dronów u wybrzeży Bułgarii. Trwa akcja ratunkowa",
-        "uri": "https://oko.press/na-zywo/na-zywo-relacja/atak-dronow-u-wybrzezy-bulgarii-trwa-akcja-ratunkowa"
-      },
-      {
-        "title": "The Kyiv Independent - News from Ukraine, Eastern Europe —  Drones strike merchant vessels in Black Sea off Bulgaria, Ukraine, killing at least 1 ",
-        "uri": "https://kyivindependent.com/drones-strike-merchant-vessels-in-black-sea-off-bulgaria-and-ukraine-killing-at-least-one/"
-      },
-      {
-        "title": "World News Today: International News Headlines - The Hindu | The Hindu — Bulgarian Prime Minister says two commercial vessels hit by drones in economic zone",
-        "uri": "https://www.thehindu.com/news/international/bulgarian-prime-minister-says-two-commercial-vessels-hit-by-drones-in-economic-zone/article71550965.ece"
-      }
-    ],
-    "backgroundSources": [
-      {
-        "title": "washingtonpost.com",
-        "uri": "https://www.washingtonpost.com/world/2026/10/06/bulgaria-drone-attack-black-sea-commercial-vessels/"
-      }
-    ],
-    "publishers": [
-      "oko.press",
-      "The Kyiv Independent - News from Ukraine, Eastern Europe",
-      "World News Today: International News Headlines - The Hindu | The Hindu"
-    ],
-    "corroborations": [
-      "washingtonpost.com"
-    ],
-    "trustLevel": "A",
-    "kind": "text",
-    "audio": null,
-    "durationSec": null,
-    "category": "wojna-i-bezpieczeństwo",
-    "topic": "Atak dronów na statki handlowe u wybrzeży Bułgarii",
-    "pubDate": "2026-10-06T08:43:13.000Z",
-    "publishedAt": "2026-10-07T02:31:56.276Z"
-  },
-  {
-    "guid": "odsluch-2026-10-07",
-    "title": "ODSŁUCH — 2026-10-07 (25:32)",
-    "link": "https://grabowskirobert.github.io/ai-rss/audio/odsluch-2026-10-07.mp3",
-    "html": "<p>Całe dzisiejsze wydanie do odsłuchania — 5 tematów, 25:32.</p><h3>W tym odcinku</h3><ul><li style=\"margin-bottom:0.3em\">Szwedzkie systemy Patriot i żołnierze zastąpią Holendrów w ochronie Jasionki</li><li style=\"margin-bottom:0.3em\">Aresztowanie byłego szefa niemieckiego wywiadu Augusta Hanninga pod zarzutem szpiegostwa</li><li style=\"margin-bottom:0.3em\">Francis Halzen otrzymał Nagrodę Nobla z fizyki za badania nad neutrinami</li><li style=\"margin-bottom:0.3em\">Fuzja Paramount i Warner Bros. Discovery stała się faktem</li><li style=\"margin-bottom:0.3em\">Atak dronów na dwa statki handlowe w bułgarskiej strefie ekonomicznej na Morzu Czarnym</li></ul>",
-    "imageUrl": null,
-    "source": "AI RSS",
-    "sources": [],
-    "backgroundSources": [],
-    "publishers": [],
-    "corroborations": [],
-    "trustLevel": null,
-    "kind": "audio",
-    "audio": {
-      "url": "https://grabowskirobert.github.io/ai-rss/audio/odsluch-2026-10-07.mp3",
-      "type": "audio/mpeg",
-      "length": 12256557
-    },
-    "durationSec": 1531.99,
-    "category": "odsluch",
-    "topic": "odsłuch wydania 2026-10-07",
-    "pubDate": "2026-10-07T02:31:56.274Z",
-    "publishedAt": "2026-10-07T02:31:56.276Z"
-  },
-  {
-    "guid": "https://www.theguardian.com/world/2026/oct/05/flavio-bolsonaro-brazilian-presidency-election-shock-first-round-victory",
-    "title": "Flavio Bolsonaro wygrywa pierwszą turę wyborów prezydenckich w Brazylii",
-    "link": "https://www.theguardian.com/world/2026/oct/05/flavio-bolsonaro-brazilian-presidency-election-shock-first-round-victory",
-    "html": "<h3>Sedno sprawy</h3>\n<p>Flavio Bolsonaro, reprezentujący skrajną prawicę kandydat Partii Liberalnej, odniósł niespodziewane zwycięstwo w pierwszej turze wyborów prezydenckich w Brazylii, pokonując urzędującego lewicowego prezydenta Luiza Inacio Lulę da Silva. Wynik ten, poparty jednoczesnym zdobyciem przez środowiska prawicowe większości w Senacie oraz sukcesami wyborczymi innych członków rodziny Bolsonaro, stawia 45-letniego kandydata w roli faworyta przed decydującym starciem w drugiej turze. Wygrana ta wpisuje się w szerszy trend polityczny w obu Amerykach, gdzie po ubiegłorocznym powrocie Donalda Trumpa do władzy w USA kolejny duży kraj regionu przesuwa się na prawą stronę sceny politycznej.</p>\n<h3>Kluczowe fakty</h3>\n<ul>\n  <li>W niedzielnym głosowaniu Flavio Bolsonaro zdobył 56,1 miliona głosów (47,03%), natomiast urzędujący prezydent Luiz Inacio Lula da Silva uzyskał poparcie 53,8 miliona wyborców (45,16%).</li>\n  <li>Druga tura wyborów prezydenckich, w której zmierzą się obaj kandydaci, została zaplanowana na 25 października 2026 roku.</li>\n  <li>Od powrotu demokracji w Brazylii w 1985 roku żaden kandydat, który zajął drugie miejsce w pierwszej turze wyborów prezydenckich, nie zdołał odwrócić wyniku i wygrać w ostatecznym głosowaniu.</li>\n  <li>Partia Liberalna (PL) byłego prezydenta Jaira Bolsonaro zdobyła 28 z 81 mandatów w Senacie, co wraz z koalicjantami z innych partii prawicowych daje tej formacji większość na poziomie 43 mandatów w wyższej izbie parlamentu.</li>\n  <li>Członkowie rodziny Bolsonaro odnieśli spektakularne sukcesy wyborcze: żona byłego prezydenta Michelle Bolsonaro oraz jego syn Carlos zdobyli mandaty w Senacie, natomiast najmłodszy syn Jair Renan oraz brat Renato wywalczyli miejsca w izbie niższej kongresu.</li>\n  <li>Ojciec kandydata, 71-letni były prezydent Jair Bolsonaro, odsiaduje obecnie wyrok 27 lat pozbawienia wolności za planowanie zamachu stanu po przegranych wyborach w 2022 roku i przebywa w areszcie domowym w rezydencji w Brasilii.</li>\n  <li>Prawicowi radykałowie Nikolas Ferreira i Lucas Pavanato zostali posłami z rekordowym w historii Brazylii poparciem, zdobywając łącznie ponad 3 miliony głosów.</li>\n  <li>Kandydaci powiązani z obecnym prezydentem Lulą, w tym była minister środowiska Marina Silva, Benedita da Silva oraz była minister planowania Simone Tebet, ponieśli porażki w swoich wyścigach do Senatu.</li>\n  <li>Zwycięstwo Flavio Bolsonaro publicznie skomentowali zagraniczni przywódcy: prezydent USA Donald Trump nazwał wygraną wielkim sukcesem, prezydent Argentyny Javier Milei pogratulował historycznego zwycięstwa nad „komunistą Lulą”, a premier Izraela Benjamin Netanjahu wyraził nadzieję na odbudowę relacji z Brazylią.</li>\n</ul>\n<h3>Jak do tego doszło</h3>\n<p>Brazylijska scena polityczna przez długi czas zmagała się z głębokimi podziałami po wyborach w 2022 roku. Wieloletnie napięcia wokół obozu konserwatywnego stworzyły grunt pod systematyczną odbudowę struktur prawicowych. Partia Liberalna wykorzystała ten okres na konsolidację swoich wpływów, budując szeroką koalicję i przygotowując powrót do władzy w oparciu o silny sprzeciw wobec dotychczasowej polityki rządzącej lewicy. Zjawisko to rozwijało się w cieniu regionalnych przemian politycznych w obu Amerykach.</p>\n<h3>Różne perspektywy</h3>\n<p>Reakcje na rozstrzygnięcie pierwszej tury odzwierciedlają odmienne kalkulacje polityczne poszczególnych aktorów. Prezydent USA Donald Trump określił wynik pierwszej tury wyborów w Brazylii mianem wielkiego i zaskakującego sukcesu prawicy. Zgoła odmienną strategię przyjmuje obóz dotychczasowej władzy: przewodniczący Partii Pracujących Edinho Silva zapowiedział intensyfikację działań kampanijnych oraz mobilizację sił demokratycznych przed drugą turą wyborów. Z perspektywy eksperckiej sytuacja wygląda jednak niezwykle trudno dla obozu rządzącego – politolog Miguel Lago wyraził opinię, że szanse urzędującego prezydenta na odwrócenie trendu i wygraną w drugiej turze są znikome, co kontrastuje z determinacją struktur partyjnych zapowiadających walkę do końca.</p>\n<h3>Dlaczego to ma znaczenie</h3>\n<p>Uzyskany wynik fundamentalnie przebudowuje układ sił politycznych w Brazylii, dając prawicowej koalicji większość w Senacie oraz wprowadzając do parlamentu kluczowych przedstawicieli środowisk prawicowych. Sukces ten ma wymiar symboliczny i praktyczny dla całego regionu, wpisując się w falę zmian po ubiegłorocznym powrocie Donalda Trumpa do władzy w USA. Zagraniczne reakcje pokazują, że zmiana w największym kraju Ameryki Południowej może trwale przeorganizować dotychczasowe relacje międzynarodowe. Ostateczny rozstrzygający pojedynek w drugiej turze zadecyduje, czy historyczna statystyka od powrotu demokracji w 1985 roku zostanie po raz pierwszy złamana.</p>\n<h3>Czego jeszcze nie wiemy</h3>\n<p>Niewiadomą pozostaje, jak przełożą się głosy pozostałych kandydatów prawicowych – Romeu Zemy, Ronaldo Caiado i Renana Santosa, którzy zdobyli łącznie ponad 5,5 miliona głosów – na wynik drugiej tury; Santos określił obu głównych rywali mianem oszustów, Zema zapowiedział walkę przeciwko partii Luli, a Caiado nie ogłosił jeszcze swojej decyzji. Nie ma również pewności, czy sztabowi Luli uda się zmobilizować rekordowe 33 miliony uprawnionych do głosowania Brazylijczyków, którzy w minioną niedzielę nie wzięli udziału w wyborach.</p>",
-    "imageUrl": "https://i.guim.co.uk/img/media/175a1d663fb76a83c574989ba7c17c5ff510eaa0/0_0_4129_3305/master/4129.jpg?width=140&quality=85&auto=format&fit=max&s=8bf1977fb95e5fdeb40b56596dd4c6f6",
-    "source": "World news | The Guardian",
-    "sources": [
-      {
-        "title": "World news | The Guardian — Flávio Bolsonaro poised to win Brazilian presidency after shock first-round victory",
-        "uri": "https://www.theguardian.com/world/2026/oct/05/flavio-bolsonaro-brazilian-presidency-election-shock-first-round-victory"
-      },
-      {
-        "title": "The Kyiv Independent - News from Ukraine, Eastern Europe —  Trump's Ukraine-Russia peace gambit begins to unravel. Again ",
-        "uri": "https://kyivindependent.com/trumps-ukraine-russia-peace-gambit-begins-to-unravel-again/"
-      },
-      {
-        "title": "France 24 - International breaking news, top stories and headlines — Return of the Bolsonaros: Why the far-right surge in Brazilian elections?",
-        "uri": "https://www.france24.com/en/tv-shows/the-debate/20261005-return-of-the-bolsonaros-why-the-far-right-surge-in-brazilian-elections"
-      }
-    ],
-    "backgroundSources": [
-      {
-        "title": "theguardian.com",
-        "uri": "https://www.theguardian.com/world/2026/oct/05/flavio-bolsonaro-brazilian-presidency-election-shock-first-round-victory"
-      },
-      {
-        "title": "pbs.org",
-        "uri": "https://www.pbs.org/newshour/world/lula-shake-ups-campaign-as-flavio-bolsonaro-reaches-for-more-support-ahead-of-brazils-runoff"
-      },
-      {
-        "title": "thehindu.com",
-        "uri": "https://www.thehindu.com/news/international/brazil-election-results-updated-flavio-bolsonaro-luiz-inacio-lula-da-silva/article71545022.ece"
-      }
-    ],
-    "publishers": [
-      "World news | The Guardian",
-      "The Kyiv Independent - News from Ukraine, Eastern Europe",
-      "France 24 - International breaking news, top stories and headlines"
-    ],
-    "corroborations": [
-      "thehindu.com"
-    ],
-    "trustLevel": "A",
-    "kind": "text",
-    "audio": null,
-    "durationSec": null,
-    "category": "geopolityka-i-dyplomacja",
-    "topic": "Flavio Bolsonaro wygrywa pierwszą turę wyborów w Brazylii",
-    "pubDate": "2026-10-05T20:06:18.000Z",
-    "publishedAt": "2026-10-06T03:07:15.214Z"
-  },
-  {
-    "guid": "https://www.scmp.com/news/china/diplomacy/article/3369828/france-germany-call-new-weapon-allowing-immediate-cut-china-eu-market?utm_source=rss_feed",
-    "title": "Francja i Niemcy chcą szybkiego blokowania dostępu do unijnego rynku dla nieuczciwych partnerów",
-    "link": "https://www.scmp.com/news/china/diplomacy/article/3369828/france-germany-call-new-weapon-allowing-immediate-cut-china-eu-market?utm_source=rss_feed",
-    "html": "<h3>Sedno sprawy</h3>\n<p>Francja i Niemcy wspólnie wzywają Komisję Europejską do stworzenia nowego, rygorystycznego narzędzia prawnego, które pozwoliłoby na błyskawiczne odcinanie zewnętrznych partnerów handlowych od wspólnego rynku w przypadku agresji gospodarczej lub nieuczciwych praktyk. Propozycja ta, choć nie wymienia wprost żadnego kraju, ma na celu przede wszystkim ochronę europejskiego przemysłu przed dominacją Chin oraz uniezależnienie Unii Europejskiej od tamtejszych surowców i dostawców. Inicjatywa liderów dwóch największych unijnych gospodarek ma na celu radykalne skrócenie czasu reakcji Brukseli na zjawiska destabilizujące europejski rynek, co obecnie wymaga długich i skomplikowanych uzgodnień między wszystkimi państwami członkowskimi.</p>\n<h3>Kluczowe fakty</h3>\n<ul>\n  <li>Prezydent Francji Emmanuel Macron oraz kanclerz Niemiec Friedrich Merz skierowali w poniedziałek wspólny list (tzw. non-paper, czyli niewiążący dokument dyskusyjny) do przewodniczącej Komisji Europejskiej Ursuli von der Leyen.</li>\n  <li>Autorzy listu postulują wyposażenie Komisji Europejskiej w uprawnienia do samodzielnego i natychmiastowego blokowania dostępu do wspólnego rynku krajom trzecim, które celowo dążą do naruszenia zasad uczciwej konkurencji metodami politycznymi lub gospodarczymi.</li>\n  <li>Zgodnie z francusko-niemiecką propozycją, decyzja Komisji Europejskiej o odcięciu dostępu do rynku nie wymagałaby uprzedniej zgody 27 państw członkowskich, a kraje Unii Europejskiej mogłyby ją zablokować jedynie większością kwalifikowaną.</li>\n  <li>Większość kwalifikowana w unijnym systemie głosowania jest obecnie definiowana jako poparcie minimum 55% państw członkowskich reprezentujących co najmniej 65% całkowitej ludności Unii Europejskiej.</li>\n  <li>Nowy mechanizm obronny miałby służyć m.in. przeciwdziałaniu nagłemu odcięciu dostaw kluczowych surowców, umożliwiając Unii Europejskiej odwet gospodarczy o skali porównywalnej do wyrządzonych jej szkód w ciągu zaledwie kilku dni.</li>\n  <li>Europejskie przedsiębiorstwa zmagają się z silną presją cenową ze strony chińskich konkurentów w kluczowych sektorach technologii i przemysłu ciężkiego, takich jak produkcja półprzewodników, baterii oraz stali wykorzystywanej w turbinach wiatrowych.</li>\n  <li>Komisja Europejska pracuje równolegle nad własnymi rozwiązaniami ochronnymi, w tym nad europejskim odpowiednikiem amerykańskiej „Sekcji 301”, która pozwala Waszyngtonowi badać dyskryminacyjne praktyki innych państw i nakładać karne cła.</li>\n  <li>Wspólna inicjatywa dyplomatyczna Paryża i Berlina została upubliczniona na kilka dni przed planowaną wizytą unijnego komisarza ds. handlu Marosa Sefcovica w Pekinie oraz na tydzień przed unijnym szczytem w Brukseli zaplanowanym na 15–16 października.</li>\n</ul>\n<h3>Jak do tego doszło</h3>\n<p>Przez lata europejskie przedsiębiorstwa znalazły się w trudnym położeniu, zmagając się z silną presją cenową ze strony chińskich konkurentów w kluczowych sektorach technologii i przemysłu ciężkiego. Dotyczy to m.in. produkcji półprzewodników, baterii oraz stali wykorzystywanej w turbinach wiatrowych. Dotychczasowe mechanizmy obronne Unii Europejskiej okazywały się jednak zbyt powolne, gdyż reagowanie na zjawiska destabilizujące rynek wymagało długich i skomplikowanych uzgodnień między wszystkimi państwami członkowskimi.</p>\n<p>W odpowiedzi na tę sytuację prezydent Francji Emmanuel Macron oraz kanclerz Niemiec Friedrich Merz postanowili przyspieszyć procesy decyzyjne. W poniedziałek skierowali wspólny list, czyli tzw. non-paper, do przewodniczącej Komisji Europejskiej Ursuli von der Leyen, domagając się stworzenia nowego, rygorystycznego narzędzia prawnego pozwalającego na błyskawiczne odcinanie partnerów handlowych od wspólnego rynku.</p>\n<h3>Różne perspektywy</h3>\n<p>Prezydent Francji Emmanuel Macron oraz kanclerz Niemiec Friedrich Merz uważają, że konieczne jest drastyczne skrócenie czasu reakcji Brukseli oraz wyposażenie Komisji Europejskiej w uprawnienia do samodzielnego i natychmiastowego blokowania dostępu do wspólnego rynku krajom trzecim, które celowo dążą do naruszenia zasad uczciwej konkurencji. Według ich propozycji decyzja Komisji nie wymagałaby uprzedniej zgody 27 państw członkowskich.</p>\n<p>Państwa członkowskie Unii Europejskiej mogłyby powstrzymać taką decyzję jedynie większością kwalifikowaną, definiowaną jako poparcie minimum 55% krajów reprezentujących co najmniej 65% całkowitej ludności Unii Europejskiej.</p>\n<p>Komisja Europejska pracuje równolegle nad własnymi rozwiązaniami ochronnymi, w tym nad europejskim odpowiednikiem amerykańskiej „Sekcji 301”, która pozwala na badanie dyskryminacyjnych praktyk innych państw i nakładanie karnych ceł.</p>\n<h3>Dlaczego to ma znaczenie</h3>\n<p>Nowy mechanizm obronny ma służyć przede wszystkim ochronie europejskiego przemysłowego rynku przed dominacją Chin oraz uniezależnieniu Unii Europejskiej od tamtejszych surowców i dostawców. Narzędzie to pozwoli na przeciwdziałanie nagłemu odcięciu dostaw kluczowych surowców oraz umożliwi Unii Europejskiej odwet gospodarczy o skali porównywalnej do wyrządzonych jej szkód w ciągu zaledwie kilku dni.</p>\n<p>Inicjatywa liderów dwóch największych unijnych gospodarek została upubliczniona na kilka dni przed planowaną wizytą unijnego komisarza ds. handlu Marosa Sefcovica w Pekinie oraz na tydzień przed unijnym szczytem, co nadaje jej kluczowe znaczenie dla przyszłej polityki handlowej wspólnoty.</p>\n<h3>Czego jeszcze nie wiemy</h3>\n<p>Nie ma pewności, czy propozycja Francji i Niemiec zyska poparcie pozostałych państw członkowskich podczas nadchodzącego szczytu w Brukseli, ani czy Chiny zdecydują się na zapowiadane kroki odwetowe w reakcji na te plany. Ponadto oficjalne statystyki Unii Europejskiej i Chin różnią się w ocenie ubiegłorocznego deficytu handlowego w obrocie towarami – Bruksela szacuje go na około 360 miliardów euro (około 400 miliardów dolarów) za rok 2025, podczas gdy chińskie źródła rządowe podają niższą kwotę 292 miliardów dolarów.</p>",
-    "imageUrl": "https://cdn.i-scmp.com/sites/default/files/styles/1280x720/public/d8/images/canvas/2026/10/06/fdcb982e-b77f-4977-af25-f76e69a6d42c_3d1eae65.jpg?itok=6Z4iyLE-&v=1791218844",
-    "source": "News - South China Morning Post",
-    "sources": [
-      {
-        "title": "France 24 - International breaking news, top stories and headlines — France, Germany seek new EU rapid response tool against trade threats",
-        "uri": "https://www.france24.com/en/europe/20261005-france-germany-seek-new-eu-rapid-response-tool-against-trade-threats"
-      },
-      {
-        "title": "World | Deutsche Welle — Merz, Macron seek tougher EU measures against unfair trade",
-        "uri": "https://www.dw.com/en/merz-macron-seek-tougher-eu-measures-against-unfair-trade/a-79554905?maca=en-rss-en-world-4025-rdf"
-      }
-    ],
-    "backgroundSources": [
-      {
-        "title": "reuters.com",
-        "uri": "https://www.reuters.com/world/europe/france-germany-push-eu-rapid-response-trade-tool-with-likely-focus-on-china-2026-10-05/"
-      }
-    ],
-    "publishers": [
-      "France 24 - International breaking news, top stories and headlines",
-      "World | Deutsche Welle"
-    ],
-    "corroborations": [
-      "reuters.com"
-    ],
-    "trustLevel": "B",
-    "kind": "text",
-    "audio": null,
-    "durationSec": null,
-    "category": "geopolityka-i-dyplomacja",
-    "topic": "Francja i Niemcy żądają nowego narzędzia handlowego przeciw Chinom",
-    "pubDate": "2026-10-05T14:08:31.000Z",
-    "publishedAt": "2026-10-06T03:07:15.214Z"
   }
 ]
