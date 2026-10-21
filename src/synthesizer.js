@@ -60,7 +60,7 @@ ${recent.map((t) => `- ${t}`).join('\n')}
 
 Jeśli dzisiejszy temat jest kontynuacją któregoś z nich, to jest w porządku — ale MUSI to być widać:
 - Tytuł ma nazywać NOWY element (rozstrzygnięcie, kolejny krok, reakcję), nie punkt wyjścia opisany wcześniej.
-- Sekcja "Sedno sprawy" zaczyna się od tego, co się zmieniło od poprzedniego opisu, a dopiero potem przypomina kontekst w jednym zdaniu.
+- Pierwszy punkt "Kluczowych faktów" mówi, co się zmieniło od poprzedniego opisu.
 - Nie przepisuj poprzedniego tekstu. Fakty znane wcześniej streść skrótowo, miejsce oddaj nowym ustaleniom.
 `}
 Poniżej pełne teksty ${publishers.length === 1 ? 'publikacji' : `${publishers.length} niezależnych publikacji`} o tym wydarzeniu. To JEDYNE dopuszczalne źródło faktów. Nie wolno ci dodać żadnej informacji spoza tych tekstów — ani z pamięci, ani z domysłu. Jeśli czegoś w nich nie ma, po prostu tego nie piszesz.
@@ -71,24 +71,22 @@ ${corpus}
 
 ${TITLE_RULES}
 
-Następnie napisz w czystym HTML dokładnie te trzy sekcje:
-
-<h3>Sedno sprawy</h3>
-<p>2–3 zdania: co się stało i dlaczego to ma znaczenie. Pisz tak, jakby czytelnik nie znał sprawy w ogóle — bez odsyłania do "wczorajszych doniesień".</p>
+Następnie napisz w czystym HTML dokładnie te dwie sekcje — bez wstępu i bez podsumowania:
 
 <h3>Kluczowe fakty</h3>
 <ul>
   <li>Fakt z konkretną liczbą, datą, nazwiskiem lub instytucją</li>
 </ul>
-(${config.article.bulletsMin}–${config.article.bulletsMax} bulletów — tylko twarde fakty obecne w korpusie, żadnych ogólników)
+(${config.article.bulletsMin}–${config.article.bulletsMax} bulletów — tylko twarde fakty obecne w korpusie, żadnych ogólników. Pierwszy bullet mówi, co się stało. Każda liczba, nazwa i fakt pada w tekście DOKŁADNIE RAZ — tytuł się nie liczy, ale nie powtarzaj w bulletach zdania tytułu.)
 
 <h3>Czego jeszcze nie wiemy</h3>
 <p>1–3 zdania: co pozostaje niepotwierdzone, które liczby są szacunkami, jakie rozstrzygnięcia dopiero przed nami. Jeśli źródła się różnią co do jakiejś liczby lub faktu — napisz o tej rozbieżności zamiast wybierać jedną wersję albo uśredniać.</p>
 
 Zasady:
 - Pisz wyłącznie po polsku, poprawną polszczyzną; sprawdź odmianę nazw własnych i form mnogich (np. "Szwajcarzy", nie "Szwajcari").
-- Te trzy sekcje mają łącznie ${config.article.factsCharsMin}–${config.article.factsCharsMax} znaków. Korpus jest zwykle kilka razy dłuższy niż tekst, który piszesz — to znaczy, że masz z czego wybierać, a nie że masz streszczać do minimum. Każdy fakt istotny dla zrozumienia sprawy ma trafić do tekstu: konkretne liczby, nazwiska, stanowiska stron, wcześniejsze incydenty, mechanizmy prawne, koszty, terminy.
+- Obie sekcje mają łącznie ${config.article.factsCharsMin}–${config.article.factsCharsMax} znaków. Korpus jest zwykle kilka razy dłuższy niż tekst, który piszesz — to znaczy, że masz z czego wybierać, a nie że masz streszczać do minimum. Każdy fakt istotny dla zrozumienia sprawy ma trafić do tekstu: konkretne liczby, nazwiska, stanowiska stron, wcześniejsze incydenty, mechanizmy prawne, koszty, terminy.
 - Nie zostawiaj na boku faktów tylko dlatego, że tekst już wygląda na kompletny. Pomijasz wyłącznie lokalny szum i powtórzenia.
+- Tekst będzie też czytany na głos, więc powtórzenia są wyjątkowo uciążliwe: żadnego streszczania, zapowiadania ani podsumowywania tego, co już padło.
 - Zero języka emocjonalnego, zero skrzywień politycznych, zero trybu "breaking news".
 - Wyjaśniaj skróty, instytucje i nazwiska przy pierwszym użyciu.
 - Twierdzenie relacjonowane ZACHOWUJE atrybucję. Jeśli źródło pisze "według portalu X" albo "rzecznik twierdzi", nigdy nie zamieniaj tego w goły fakt.
@@ -134,7 +132,7 @@ ${factsText}
 Zweryfikowany materiał uzupełniający — wyłącznie z niego wolno ci korzystać:
 ${claimsBlock}
 
-Napisz w czystym HTML dokładnie te trzy sekcje:
+Napisz w czystym HTML dokładnie te dwie sekcje — bez wstępu i bez podsumowania:
 
 <h3>Jak do tego doszło</h3>
 <p>1–2 akapity tła: co doprowadziło do tej sytuacji. Cofnij się na tyle, żeby wydarzenie stało się zrozumiałe samo z siebie — miesiące lub lata, nie ostatnie 24 godziny.</p>
@@ -142,12 +140,10 @@ Napisz w czystym HTML dokładnie te trzy sekcje:
 <h3>Różne perspektywy</h3>
 <p>Jak poszczególne strony interpretują sprawę: gdzie się rozchodzą, kto ma jaki interes, które twierdzenia są sporne. Każde stanowisko przypisz nazwanemu aktorowi — "Komisja Europejska uważa", a nie "krytycy twierdzą".</p>
 
-<h3>Dlaczego to ma znaczenie</h3>
-<p>Konsekwencje i kolejne kroki: co realnie się zmieni, dla kogo, w jakim horyzoncie czasowym. Jeśli temat dotyczy innego kraju i nie wpływa bezpośrednio na Polskę, wyjaśnij, co ciekawego mówi o tym, jak działa świat — to pełnoprawna odpowiedź, nie brak odpowiedzi.</p>
-
 Zasady:
-- Te trzy sekcje mają łącznie ${config.article.backgroundCharsMin}–${config.article.backgroundCharsMax} znaków. Wykorzystaj cały dostępny materiał uzupełniający; nie rozciągaj pustych zdań, ale nie zostawiaj też nieużytych twierdzeń.
-- Nie powtarzaj faktów z sekcji powyżej — dokładasz kontekst, nie streszczasz drugi raz.
+- Obie sekcje mają łącznie ${config.article.backgroundCharsMin}–${config.article.backgroundCharsMax} znaków. Wykorzystaj cały dostępny materiał uzupełniający; nie rozciągaj pustych zdań, ale nie zostawiaj też nieużytych twierdzeń.
+- Czytelnik zna już ustalone fakty — NIE wolno ci powtórzyć żadnego z nich, nawet innymi słowami. Żadna liczba, kwota ani wydarzenie z ustalonych faktów nie może pojawić się w twoim tekście. Dokładasz wyłącznie nowy kontekst.
+- Ostatnie zdanie nie podsumowuje sprawy ani nie ocenia jej znaczenia. Gdy skończy się materiał, kończysz tekst.
 - Poprawna polszczyzna: sprawdź odmianę nazw własnych i form mnogich.
 - NIE WOLNO ci wprowadzić żadnej nowej liczby, daty, nazwiska ani instytucji, których nie ma w materiale powyżej.
 - NIE WOLNO ci zaprzeczyć ustalonym faktom. Jeśli materiał uzupełniający jest z nimi sprzeczny — napisz wprost, że źródła się rozchodzą.
@@ -157,12 +153,12 @@ Zasady:
 - Wypisz tylko HTML, bez markdown, bez wyjaśnień.
 `;
 
+// Sekcje spoza listy (np. "Sedno sprawy" dopisane mimo promptu) wypadają
+// przy składaniu — streszczenia powtarzały te same liczby w odsłuchu.
 const SECTION_ORDER = [
-  'Sedno sprawy',
   'Kluczowe fakty',
   'Jak do tego doszło',
   'Różne perspektywy',
-  'Dlaczego to ma znaczenie',
   'Czego jeszcze nie wiemy',
 ];
 

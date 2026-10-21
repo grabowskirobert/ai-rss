@@ -661,10 +661,10 @@
   },
   "filterReserve": 3,
   "article": {
-    "factsCharsMin": 2300,
-    "factsCharsMax": 3300,
-    "backgroundCharsMin": 2100,
-    "backgroundCharsMax": 3000,
+    "factsCharsMin": 2000,
+    "factsCharsMax": 3000,
+    "backgroundCharsMin": 1500,
+    "backgroundCharsMax": 2300,
     "bulletsMin": 6,
     "bulletsMax": 9
   }
