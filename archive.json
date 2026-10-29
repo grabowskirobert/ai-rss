@@ -1,5 +1,261 @@
 [
   {
+    "guid": "https://novayagazeta.eu/articles/2026/10/28/minimum-46-chelovek-pogibli-pri-stolknovenii-skorostnykh-poezdov-v-ispanii-news",
+    "title": "Zderzenie pociągów wysokich prędkości w hiszpańskim Urdzie i decyzja o żałobie",
+    "link": "https://novayagazeta.eu/articles/2026/10/28/minimum-46-chelovek-pogibli-pri-stolknovenii-skorostnykh-poezdov-v-ispanii-news",
+    "html": "<h3>Kluczowe fakty</h3>\n<ul>\n  <li>28 października 2026 roku o godzinie 8:54 w pobliżu miejscowości Urda w prowincji Toledo doszło do zderzenia dwóch pociągów dużych prędkości kursujących na trasie Madryt–Sewilla.</li>\n  <li>Premier Hiszpanii Pedro Sánchez oraz szef władz autonomicznych Kastylia-La Mancha Emiliano García-Page przekazali, że w katastrofie zginęło co najmniej 68 osób: 44 pasażerów pociągu Iryo oraz 24 podróżnych ze składu AVE.</li>\n  <li>Do szpitali, głównie w Toledo, Alcázar de San Juan i Ciudad Real, trafiło 53 rannych, z których 15 odniosło poważne obrażenia.</li>\n  <li>Pociąg Iryo 6076, na pokładzie którego znajdowało się 146 pasażerów i niemowlę, zatrzymał się lub znacząco zwolnił z powodu problemów z ruchem, po czym najechał na niego od tyłu skład AVE 2080 z 397 pasażerami.</li>\n  <li>Hiszpański minister transportu Óscar Puente poinformował, że po awarii systemu informatycznego o 8:30 centrum kontroli o 8:36 omyłkowo zezwoliło pociągowi operatora Renfe na wznowienie jazdy w trybie na widoczność z prędkością 40 km/h mimo czerwonego sygnału.</li>\n  <li>Pociąg uderzył w poprzedzający skład po przejechaniu 25 km od momentu wznowienia ruchu, a zdaniem ministra jego prędkość w chwili zderzenia mogła sięgać nawet 200 km/h.</li>\n  <li>Służby Guardia Civil rozpoczęły przesłuchanie operatora z centrum kontroli ruchu kolejowego, a premier ogłosił trzydniową żałobę narodową i zapowiedział wyciągnięcie konsekwencji.</li>\n  <li>W reakcji na tragedię hiszpańskie ugrupowania polityczne, z wyjątkiem partii Vox, odwołały wydarzenia w ramach kampanii przed wyborami parlamentarnymi zaplanowanymi na 29 listopada.</li>\n  <li>Operatorzy Renfe i Iryo oraz służby ratunkowe uruchomili specjalne infolinie i punkty wsparcia psychologicznego na dworcach Atocha w Madrycie i Justa w Sewilli, a ruch kolejowy na linii łączącej stolicę z Andaluzją został całkowicie wstrzymany.</li>\n</ul>\n<h3>Jak do tego doszło</h3>\n<p>Nowoczesna infrastruktura kolejowa dużych prędkości w Europie od lat opiera się na skomplikowanych systemach informatycznych, które mają za zadanie koordynować gęsty ruch na kluczowych magistralach transportowych. Współczesne linie wysokich przepustowości wymagają jednak ciągłego nadzoru technicznego, a nagłe awarie oprogramowania sterującego potrafią sparaliżować procedury bezpieczeństwa wypracowane przez lata przez zarządców infrastruktury. W takich warunkach nawet pojedyncze usterki cyfrowe stawiają pod znakiem zapytania stabilność całego systemu zarządzania ruchem.</p>\n<h3>Różne perspektywy</h3>\n<p>Premier Hiszpanii Pedro Sánchez oświadczył podczas wizyty na miejscu tragicznego wypadku, że cały kraj pogrążony jest w żałobie i zapowiedział ogłoszenie trzydniowej żałoby narodowej. Z kolei minister transportu Óscar Puente poinformował, że do zderzenia doszło wskutek niefortunnego splotu awarii systemu informatycznego oraz błędnej komendy wydanej przez centralę ruchu.</p>\n<h3>Czego jeszcze nie wiemy</h3>\n<p>Ostateczna liczba ofiar śmiertelnych i rannych pozostaje nieznana ze względu na skalę zniszczeń oraz wciąż trwającą akcję ratunkową i proces wydobywania ciał z wraku. W pierwszych komunikatach media i przedstawiciele władz podawali rozbieżne dane: serwis ABC informował o co co najmniej 46 zabitych, El País pisał o minimum 30 ofiarach, z kolei wpis agencji NEXTA wspominał o 39 zabitych. Śledczy nie ustalili jeszcze dokładnej prędkości, z jaką poruszał się pociąg AVE w momencie uderzenia, ani dokładnych przyczyn, dla których centrum kontroli nie skorygowało błędnego polecenia wydanego maszyniście.</p>",
+    "imageUrl": null,
+    "source": "Новая Газета. Европа",
+    "sources": [
+      {
+        "title": "Новая Газета. Европа — Минимум 46 человек погибли при столкновении скоростных поездов в Испании",
+        "uri": "https://novayagazeta.eu/articles/2026/10/28/minimum-46-chelovek-pogibli-pri-stolknovenii-skorostnykh-poezdov-v-ispanii-news"
+      },
+      {
+        "title": "Bankier.pl - Wiadomości — Tragedia w Hiszpanii: zderzyły się dwa pociągi. Premier ogłasza żałobę narodową",
+        "uri": "https://www.bankier.pl/wiadomosc/Tragedia-w-Hiszpanii-zderzyly-sie-dla-pociagi-wagony-runely-ze-skarpy-9219557.html?utm_source=RSS&utm_medium=RSS&utm_campaign=Wiadomosci"
+      },
+      {
+        "title": "oko.press — Katastrofa kolejowa w Hiszpanii. Dziesiątki ofiar",
+        "uri": "https://oko.press/na-zywo/na-zywo-relacja/katastrofa-kolejowa-w-hiszpanii-dziesiatki-ofiar"
+      }
+    ],
+    "backgroundSources": [
+      {
+        "title": "aljazeera.com",
+        "uri": "https://www.aljazeera.com/news/2026/10/28/train-crash-in-spain-kills-at-least-68-people"
+      },
+      {
+        "title": "edition.cnn.com",
+        "uri": "https://edition.cnn.com/2026/10/28/europe/spain-train-crash-toledo-intl/index.html"
+      },
+      {
+        "title": "elpais.com",
+        "uri": "https://elpais.com/espana/2026-10-28/ultima-hora-del-accidente-de-trenes-en-toledo-en-directo.html"
+      }
+    ],
+    "publishers": [
+      "Новая Газета. Европа",
+      "Bankier.pl - Wiadomości",
+      "oko.press"
+    ],
+    "corroborations": [
+      "aljazeera.com",
+      "elpais.com"
+    ],
+    "trustLevel": "A",
+    "kind": "text",
+    "audio": null,
+    "durationSec": null,
+    "category": "wojna-i-bezpieczenstvo",
+    "topic": "Katastrofa kolejowa w Hiszpanii z dziesiątkami ofiar",
+    "pubDate": "2026-10-28T10:12:13.000Z",
+    "publishedAt": "2026-10-29T02:31:58.312Z"
+  },
+  {
+    "guid": "https://novayagazeta.eu/articles/2026/10/28/zdes-net-pobedy-netaniakhu",
+    "title": "Wybory w Izraelu bez większości. Benjamin Netanjahu zarzuca fałszerstwa partiom arabskim",
+    "link": "https://novayagazeta.eu/articles/2026/10/28/zdes-net-pobedy-netaniakhu",
+    "html": "<h3>Kluczowe fakty</h3>\n<ul>\n  <li>Wybory do Knesetu z 27 października 2026 roku nie przyniosły rozstrzygnięcia, ponieważ żaden ze sprzeczniających się bloków nie zdobył większości 61 mandatów w 120-osobowym parlamencie.</li>\n  <li>Prawicowy blok urzędującego premiera Benjamina Netanjahu uzyskał od 50 do 54 mandatów, natomiast ugrupowania opozycyjne pod wodzą byłego szefa sztabu armii Gadiego Ajzenkota zdobędą około 50 miejsc.</li>\n  <li>Dwa ugrupowania reprezentujące Palestyńczyków z izraelskim obywatelstwem — zjednoczona prawica obyczajowa Raam oraz lewicowa Zjednoczona Lista — zwiększyły swój stan posiadania z 10 do 17–19 mandatów po przeliczeniu 85 procent głosów.</li>\n  <li>Rządząca partia Likud oskarżyła ugrupowania arabskie o sfałszowanie wyborów poprzez kupowanie głosów gotówką, groźby, zastraszanie komisji oraz podszywanie się pod innych wyborców, nazywając głosowanie „skradzionym”.</li>\n  <li>Szef służby bezpieczeństwa wewnętrznego Szin Bet Dawid Zini oraz służby wyborcze oświadczyli, że głosowanie przebiegło prawidłowo, skutecznie neutralizując nieliczne próby zakłóceń.</li>\n  <li>Opozycyjna Partia Demokratyczna kierowana przez Yaira Golana zaapelowała o utworzenie koalicji z reprezentacją arabską, podczas gdy ugrupowania Likud i Yashar dotychczas wykluczały oficjalny sojusz z Palestyńczykami.</li>\n  <li>Frekwencja wyborcza wyniosła ponad 77 procent i była najwyższa od ponad dwóch dekad, do czego przyczynił się masowy przyjazd dziesiątek tysięcy obywateli mieszkających na co dzień za granicą.</li>\n  <li>Prezydent Isaac Herzog zapowiedział, że po otrzymaniu oficjalnych wyników w przyszłym tygodniu da zwycięskiemu ugrupowaniu sześć tygodni na sformowanie rządu, przestrzegając przed ryzykiem ponownych wyborów.</li>\n</ul>\n<h3>Jak do tego doszło</h3>\n<p>Izraelską scenę polityczną od dłuższego czasu charakteryzuje głęboka polaryzacja, w której tradycyjne podziały ideowe nakładają się na kryzysy instytucjonalne oraz spory wokół kształtu państwa. Stabilność gabinetów bywa krucha, a system proporcjonalny regularnie wymusza skomplikowane układanki koalicyjne z udziałem licznych, często skrajnych ugrupowań. Zależność od mniejszych partnerów sprawia, że rządzenie wymaga ciągłych kompromisów, a napięcia wokół roli mniejszości narodowych oraz relacji na linii władza wykonawcza a sądownictwo stale eskalują.</p>\n<h3>Różne perspektywy</h3>\n<p>Brak zweryfikowanego materiału uzupełniającego uniemożliwia przedstawienie odrębnych stanowisk poszczególnych aktorów politycznych w oparciu o zweryfikowane źródła zewnętrzne.</p>\n<h3>Czego jeszcze nie wiemy</h3>\n<p>Ostateczny podział mandatów zależy od podliczenia setek tysięcy głosów oddanych przez żołnierzy, co nastąpi w czwartek. Likud zapowiedział przekazanie policji i komisji wyborczej dowodów na nieprawidłowości, jednak na razie ich nie upublicznił. Wciąż nie wiadomo, czy opozycja zdoła przełamać polityczne tabu i utworzyć rząd z udziałem partii arabskich, czy też brak większości zmusi Benjamina Netanjahu do tymczasowego kierowania rządem aż do kolejnych wyborów.</p>",
+    "imageUrl": null,
+    "source": "Новая Газета. Европа",
+    "sources": [
+      {
+        "title": "Новая Газета. Европа — «Здесь нет победы Нетаньяху»",
+        "uri": "https://novayagazeta.eu/articles/2026/10/28/zdes-net-pobedy-netaniakhu"
+      },
+      {
+        "title": "Bankier.pl - Wiadomości — Netanjahu oskarża o fałszerstwa wyborcze. Nie przedstawił dowodów",
+        "uri": "https://www.bankier.pl/wiadomosc/Netanjahu-oskarza-o-falszerstwa-wyborcze-Nie-przedstawil-dowodow-9219879.html?utm_source=RSS&utm_medium=RSS&utm_campaign=Wiadomosci"
+      },
+      {
+        "title": "NPR Topics: World — Partial results from Israel's contentious election show no clear winner",
+        "uri": "https://www.npr.org/2026/10/28/nx-s1-6019423/israel-election-results"
+      }
+    ],
+    "backgroundSources": [
+      {
+        "title": "washingtonpost.com",
+        "uri": "https://www.washingtonpost.com/world/2026/10/28/israel-election-results-netanyahu/"
+      }
+    ],
+    "publishers": [
+      "Новая Газета. Европа",
+      "Bankier.pl - Wiadomości",
+      "NPR Topics: World"
+    ],
+    "corroborations": [
+      "washingtonpost.com"
+    ],
+    "trustLevel": "A",
+    "kind": "text",
+    "audio": null,
+    "durationSec": null,
+    "category": "geopolityka-i-dyplomacja",
+    "topic": "Wybory parlamentarne w Izraelu bez wyraźnego zwycięzcy",
+    "pubDate": "2026-10-28T16:14:52.000Z",
+    "publishedAt": "2026-10-29T02:31:58.312Z"
+  },
+  {
+    "guid": "https://tvn24.pl/biznes/ze-swiata/usa-fed-zdecydowal-w-sprawie-stop-procentowych-st9310728",
+    "title": "Amerykański Fed utrzymał stopy procentowe bez zmian w przedziale 3,75-4,00 procent",
+    "link": "https://tvn24.pl/biznes/ze-swiata/usa-fed-zdecydowal-w-sprawie-stop-procentowych-st9310728?source=rss",
+    "html": "<h3>Kluczowe fakty</h3>\n<ul>\n  <li>Federalny Komitet Otwartego Rynku (FOMC), organ amerykańskiego banku centralnego (Fed) decydujący o kosztach pieniądza, zdecydował o pozostawieniu stóp procentowych w USA w przedziale 3,75–4,00 proc.</li>\n  <li>Decyzja podjęta na środowym posiedzeniu zapadła większością głosów 10 do 2; przeciwne były Lisa Cook z Rady Gubernatorów Fed oraz Beth Hammack, szefowa Fed z Cleveland, które opowiadały się za podwyżką o 0,25 punktu procentowego.</li>\n  <li>Była to pierwsza przerwa w zmianach stóp od września 2026 roku, kiedy to bank centralny podniósł stopy o 25 punktów bazowych po raz pierwszy od lipca 2023 roku.</li>\n  <li>Przewodniczący Rezerwy Federalnej Kevin Warsh oraz komunikat FOMC uzasadnili pauzę koniecznością zgromadzenia pełniejszych danych, wskazując jednocześnie, że inflacja przekracza cel na poziomie 2 proc. od niemal sześciu lat.</li>\n  <li>Przedstawiciele Fedu podnieśli ocenę wzrostu gospodarczego USA z \"solidnego\" na \"silny\", wskazując na wysokie wydatki kapitałowe, niskie bezrobocie oraz dynamiczny przyrost miejsc pracy.</li>\n  <li>Według notowań kontraktów terminowych rynki szacują na 86 proc. prawdopodobieństwo kolejnej podwyżki stóp o 25 punktów bazowych na kolejnym posiedzeniu zaplanowanym na 8-9 grudnia 2026 roku.</li>\n  <li>Decyzję podjęto na kilka dni przed zaplanowanymi na 3 listopada amerykańskimi wyborami połówkowymi (midterms), w których ważą się losy kontroli nad Kongresem przez Partię Republikańską Donalda Trumpa lub Partię Demokratyczną.</li>\n  <li>Po ogłoszeniu postanowienia banku centralnego kurs dolara umocnił się o 0,02 proc. do 102,34 pkt., a rentowność 10-letnich amerykańskich obligacji skarbowych wzrosła o 3 punkty bazowe do 5,02 proc.</li>\n</ul>\n<h3>Jak do tego doszło</h3>\n<p>Długofalowa dynamika cen w Stanach Zjednoczonych od dłuższego czasu utrzymuje się powyżej oficjalnego wskaźnika referencyjnego ustalanego przez władze monetarie. Sytuacja ta skłoniła instytucję finansową do rewizji dotychczasowego podejścia, w ramach którego koszty pieniądza pozostawały na niezmienionym poziomie przez dłuższą serię posiedzeń, aż do momentu wznowienia cyklicznych dostosowań.</p>\n<h3>Różne perspektywy</h3>\n<p>W ramach gremium decyzyjnego ujawniły się odmienne zapatrywania na bieżącą kondycję gospodarki oraz właściwy kierunek działań. Lisa Cook oraz Beth Hammack reprezentowały stanowisko zakładające konieczność natychmiastowego zacieśnienia polityki kredytowej poprzez podniesienie kosztów kapitału. Z kolei przewodniczący Kevin Warsh wraz z większością współdecydujących opowiedzieli się za wstrzymaniem natychmiastowych kroków, motywując to potrzebą wnikliwej analizy napływających wskaźników statystycznych.</p>\n<h3>Czego jeszcze nie wiemy</h3>\n<p>Niejasny pozostaje długoterminowy horyzont polityki monetarnej Fedu po ewentualnym ruchu w grudniu – protokoły sugerują jedynie krótką \"kalibrację\" stóp zamiast pełnego cyklu podwyżek, jednak oficjalny rozkład oczekiwań członków komitetu na lata 2027–2028 poznamy dopiero podczas ostatniego posiedzenia w tym roku. Otwarta pozostaje również kwestia przełożenia wyższych kosztów energii i paliw na szersze oczekiwania inflacyjne konsumentów oraz ostatecznego wyniku wyborów parlamentarnych, które mogą zmienić stopień politycznej kontroli nad Rezerwą Federalną.</p>",
+    "imageUrl": null,
+    "source": "Najnowsze wiadomości - TVN24",
+    "sources": [
+      {
+        "title": "Najnowsze wiadomości - TVN24 — Fed zdecydował w sprawie stóp procentowych w USA",
+        "uri": "https://tvn24.pl/biznes/ze-swiata/usa-fed-zdecydowal-w-sprawie-stop-procentowych-st9310728?source=rss"
+      },
+      {
+        "title": "Bankier.pl - Wiadomości — „Jastrzębia pauza” w wykonaniu Fedu? Dwa głosy za podwyżką",
+        "uri": "https://www.bankier.pl/wiadomosc/Jastrzebia-pauza-w-wykonaniu-Fedu-Stopy-maja-pojsc-w-gore-jeszcze-w-tym-roku-9219550.html?utm_source=RSS&utm_medium=RSS&utm_campaign=Wiadomosci"
+      },
+      {
+        "title": "Business Insider businessinsider.com.pl — Fed zdecydował w sprawie stóp procentowych. Na te informacje czekały rynki",
+        "uri": "https://businessinsider.com.pl/gospodarka/stopy-procentowe-w-usa-oto-decyzja-fed-przed-wyborami/bwhgpwf"
+      }
+    ],
+    "backgroundSources": [
+      {
+        "title": "cnn.com",
+        "uri": "https://www.cnn.com/2026/10/28/business/live-news/federal-reserve-interest-rate-october"
+      }
+    ],
+    "publishers": [
+      "Najnowsze wiadomości - TVN24",
+      "Bankier.pl - Wiadomości",
+      "Business Insider businessinsider.com.pl"
+    ],
+    "corroborations": [
+      "cnn.com"
+    ],
+    "trustLevel": "A",
+    "kind": "text",
+    "audio": null,
+    "durationSec": null,
+    "category": "gospodarka",
+    "topic": "Fed utrzymuje stopy procentowe w USA bez zmian",
+    "pubDate": "2026-10-28T18:01:59.000Z",
+    "publishedAt": "2026-10-29T02:31:58.312Z"
+  },
+  {
+    "guid": "https://oko.press/neosedzia-zakazala-komosie-sugerowania-ze-lech-kaczynski-przyczynil-sie-do-katastrofy-smolenskiej",
+    "title": "Sąd zakazał Zbigniewowi Komosie twierdzeń o wpływie Lecha Kaczyńskiego na katastrofę",
+    "link": "https://oko.press/neosedzia-zakazala-komosie-sugerowania-ze-lech-kaczynski-przyczynil-sie-do-katastrofy-smolenskiej",
+    "html": "<h3>Kluczowe fakty</h3>\n<ul>\n  <li>Sąd Okręgowy w Warszawie wydał nieprawomocny wyrok w sprawie z powództwa prezesa Prawa i Sprawiedliwości Jarosława Kaczyńskiego przeciwko warszawskiemu przedsiębiorcy Zbigniewowi Komosie.</li>\n  <li>O wyroku poinformował w serwisie X rzecznik Prawa i Sprawiedliwości Rafał Bochenek.</li>\n  <li>Sąd I instancji zakazał pozwanemu publicznej prezentacji treści – w tym twierdzeń, przypuszczeń, spekulacji, sugestii i pytań – że prezydent Lech Kaczyński w jakikolwiek sposób przyczynił się do tragedii smoleńskiej lub wywierał wpływ na decyzje o lądowaniu 10 kwietnia 2010 roku.</li>\n  <li>Orzeczenie nakazuje Zbigniewowi Komosie zapłatę 30 tysięcy złotych na rzecz \"Stowarzyszenia na rzecz wspierania hospicjum im. Jana Pawła II w Ostrowcu Świętokrzyskim\".</li>\n  <li>Wyrok nakłada na pozwanego obowiązek zamieszczenia oświadczenia z przeprosinami w formie wpisu na platformie X oraz listu skierowanego bezpośrednio do Jarosława Kaczyńskiego w terminie 3 dni od uprawomocnienia się orzeczenia.</li>\n  <li>Zbigniew Komosa od kwietnia 2018 roku w każdą miesięcznicę katastrofy składa przed pomnikiem na placu Józefa Piłsudskiego w Warszawie wieniec z tabliczką przypisującą Lechowi Kaczyńskiemu wydanie polecenia lądowania w skrajnie trudnych warunkach i obarczającą go winą za śmierć 95 ofiar.</li>\n  <li>Pozwany przedsiębiorca zapowiedział złożenie apelacji, argumentując, że nie zgadza się na dławienie debaty publicznej, oraz zadeklarował obecność na kolejnej miesięcznicy 10 listopada.</li>\n  <li>Zbigniew Komosa w swoim wpisie internetowym oraz w rozmowie z portalem Onet wskazał, że rozprawę prowadziła sędzia wybrana w nowej procedurze (tzw. neosędzia), której nie udało się wyłączyć z procesu, i zapowiedział dalsze przynoszenie wieńca ze spornym napisem.</li>\n</ul>\n<h3>Jak do tego doszło</h3>\n<p>Wszystko zaczęło się w kwietniu 2018 roku, kiedy to publiczne manifestowanie pamięci o dramatycznych wydarzeniach z przeszłości zyskało nową, stałą formę. Od tamtego momentu co trzydzieści dni w przestrzeni publicznej pojawiały się specyficzne gesty upamiętniające, którym towarzyszyły inskrypcje jednoznacznie wskazujące winnych i obarczające odpowiedzialnością za śmierć dziesiątek osób konkretną postać historyczną. Praktyka ta stała się elementem stałego krajobrazu politycznego stolicy, powtarzanym cyklicznie bez względu na okoliczności polityczne czy społeczne.</p>\n<h3>Różne perspektywy</h3>\n<p>Prawo i Sprawiedliwość reprezentowane przez rzecznika Rafała Bochenka oceniło wyrok w ostrych słowach, uznając, że w przestrzeni publicznej nie ma żadnej zgody na kłamliwą, ruską propagandę. Zupełnie inaczej tę samą sytuację widzi Zbigniew Komosa, który zapowiedział złożenie formalnej apelacji. Pozwany przedsiębiorca argumentuje, że nie zgadza się na dławienie debaty publicznej i w związku ze swoim stanowiskiem planuje pojawić się na kolejnej miesięcznicy.</p>\n<h3>Czego jeszcze nie wiemy</h3>\n<p>Nie jest znana treść pisemnego uzasadnienia wyroku, o które redakcja TVN24 zwróciła się do Sądu Okręgowego w Warszawie. Nie zapadły jeszcze żadne prawomocne rozstrzygnięcia, ponieważ strona pozwana formalnie zapowiedziała zaskarżenie orzeczenia do sądu drugiej instancji.</p>",
+    "imageUrl": null,
+    "source": "oko.press",
+    "sources": [
+      {
+        "title": "Polsat News - Wiadomości - Polska — Zbigniew Ziobro triumfuje w sądzie. Może żądać odszkodowania",
+        "uri": "https://www.polsatnews.pl/wiadomosc/2026-10-28/zbigniew-ziobro-triumfuje-w-sadzie-moze-zadac-odszkodowania/"
+      },
+      {
+        "title": "Najnowsze wiadomości - TVN24 — Komosa przegrał w sądzie z Kaczyńskim. Zapowiedział apelację i obecność na miesięcznicy",
+        "uri": "https://tvn24.pl/tvnwarszawa/srodmiescie/komosa-przegral-w-sadzie-z-kaczynskim-zapowiedzial-apelacje-i-obecnosc-na-miesiecznicy-st9310810?source=rss"
+      }
+    ],
+    "backgroundSources": [
+      {
+        "title": "polsatnews.pl",
+        "uri": "https://polsatnews.pl/wiadomosc/2026-10-28/kaczynski-wygral-w-sazdzie-ze-znanym-aktywistom-w-tle-katastrofa-smolenska/"
+      },
+      {
+        "title": "wiadomosci.onet.pl",
+        "uri": "https://wiadomosci.onet.pl/kraj/zbigniew-komosa-przegral-w-sazdzie-z-jaroslawem-kaczynskim-nadal-bede-skladal-wieniec/w5q8899"
+      }
+    ],
+    "publishers": [
+      "Polsat News - Wiadomości - Polska",
+      "Najnowsze wiadomości - TVN24"
+    ],
+    "corroborations": [
+      "wiadomosci.onet.pl"
+    ],
+    "trustLevel": "B",
+    "kind": "text",
+    "audio": null,
+    "durationSec": null,
+    "category": "polska-polityka",
+    "topic": "Kontrowersyjny wyrok sądu w sprawie wypowiedzi o katastrofie",
+    "pubDate": "2026-10-28T17:29:15.000Z",
+    "publishedAt": "2026-10-29T02:31:58.312Z"
+  },
+  {
+    "guid": "https://300gospodarka.pl/?p=747673",
+    "title": "Przemysł i usługi w Polsce potrzebują kompetencji cyfrowych u pracowników technicznych",
+    "link": "https://300gospodarka.pl/news/ai-zmienia-nawet-zawody-manualne-polska-ma-tu-konkretny-problem",
+    "html": "<h3>Kluczowe fakty</h3>\n<ul>\n  <li>Praktyczne kompetencje techniczne związane z budowaniem, wytwarzaniem, obsługą i naprawą produktów (tzw. maker skills) stanowią 45,6 proc. globalnego zatrudnienia, będąc filarem przemysłu, budownictwa oraz transportu.</li>\n  <li>Według Polskiego Instytutu Ekonomicznego (PIE) rozwój sztucznej inteligencji i zaawansowanej produkcji nie wyeliminuje zapotrzebowania na pracowników technicznych, ale wymusi na nich połączenie wiedzy praktycznej z diagnostyką cyfrową i analizą danych.</li>\n  <li>Z danych bazy OECD Skills for Jobs wynika, że w Polsce występuje większy niż średnio w Unii Europejskiej niedobór pracowników z wiedzą o komputerach i elektronice, przy jednoczesnym mniejszym niedoborze kompetencji mechanicznych i produkcyjnych.</li>\n  <li>W polskim sektorze prac manualnych brakuje umiejętności miękkich i cyfrowych; notuje się znaczny deficyt w zakresie czytania ze zrozumieniem, aktywnego słuchania oraz krytycznego myślenia.</li>\n  <li>Na polskim rynku pracy występuje nadwyżka robotników obróbki metali i mechaników maszyn, natomiast liczba operatorów maszyn odpowiada popytowi, a duży niedobór dotyczy specjalistów i techników ICT.</li>\n  <li>Około połowa pracowników w Unii Europejskiej nie brała udziału w żadnym szkoleniu zorganizowanym przez pracodawcę w ciągu ostatnich dwunastu miesięcy, jak podaje Europejskie Centrum Rozwoju Kształcenia Zawodowego (CEDEFOP).</li>\n  <li>Instytut Badań Edukacyjnych wdraża w Polsce pilotażowo mikropoświadczenia, czyli cyfrowe dokumenty poświadczające opanowanie konkretnych, praktycznych umiejętności wymaganych przez pracodawców.</li>\n  <li>Jako jedną z metod podnoszenia kwalifikacji w miejscu pracy PIE wskazuje odwrócony mentoring, w którym młodsi lub krópsi stażem pracownicy uczą starszą kadrę obsługi nowych technologii.</li>\n</ul>\n<h3>Jak do tego doszło</h3>\n<p>Transformacja polskiego przemysłu nie odbywa się w próżni, lecz stanowi odpowiedź na szersze trendy globalne i technologiczne. Wprowadzenie zaawansowanej produkcji oraz sztucznej inteligencji sprawiło, że tradycyjne podejście do rzemiosła i pracy rąk przestało wystarczać. Z perspektywy instytucji analitycznych, ewolucja ta narzuca całkowicie nowe standardy wykonywania codziennych obowiązków. Polski Instytut Ekonomiczny zwraca uwagę, że rozwój sztucznej inteligencji i zaawansowanej produkcji wymusi na pracownikach technicznych połączenie wiedzy praktycznej z diagnostyką cyfrową i analizą danych.</p>\n<h3>Różne perspektywy</h3>\n<p>Różne podmioty zaangażowane w rynek edukacji i pracy odmiennie podchodzą do kwestii niwelowania luk kompetencyjnych. Polski Instytut Ekonomiczny wskazuje, że odwrócony mentoring, w którym młodsi stażem pracownicy uczą starszą kadrę obsługi nowych technologii, stanowi jedną z metod podnoszenia kwalifikacji w miejscu pracy. Z kolei Instytut Badań Edukacyjnych wdraża w Polsce pilotażowo mikropoświadczenia, czyli cyfrowe dokumenty poświadczające opanowanie konkretnych, praktycznych umiejętności wymaganych przez pracodawców.</p>\n<h3>Czego jeszcze nie wiemy</h3>\n<p>Nie wiemy, w jakim stopniu ogólne dane rynkowe maskują niedobory kadrowe w konkretnych lokalizacjach i wąskich specjalizacjach technicznych. Nie jest również znany ostateczny harmonogram ani powszechność wdrożenia systemu cyfrowych mikropoświadczeń w polskich przedsiębiorstwach.</p>",
+    "imageUrl": null,
+    "source": "300Gospodarka.pl",
+    "sources": [
+      {
+        "title": "300Gospodarka.pl — AI zmienia nawet zawody „manualne”. Polska ma tu konkretny problem",
+        "uri": "https://300gospodarka.pl/news/ai-zmienia-nawet-zawody-manualne-polska-ma-tu-konkretny-problem"
+      },
+      {
+        "title": "Business Insider businessinsider.com.pl — AI ocenia prace szkolne. Część nauczycieli nawet tego nie sprawdza",
+        "uri": "https://businessinsider.com.pl/technologie/nowe-technologie/ocenianie-przez-ai-budzi-kontrowersje-co-piaty-nauczyciel-korzysta-z-algorytmow/76p71n8"
+      },
+      {
+        "title": "DW.com´s Polish Homepage — Media w Niemczech czeka głęboka zmiana. Oto powód",
+        "uri": "https://www.dw.com/pl/media-w-niemczech-czeka-głęboka-zmiana-oto-powód/a-79731136?maca=pol-rss-pol-all-1492-rdf"
+      }
+    ],
+    "backgroundSources": [
+      {
+        "title": "300gospodarka.pl",
+        "uri": "https://300gospodarka.pl"
+      },
+      {
+        "title": "ibe.edu.pl",
+        "uri": "https://ibe.edu.pl"
+      }
+    ],
+    "publishers": [
+      "300Gospodarka.pl",
+      "Business Insider businessinsider.com.pl",
+      "DW.com´s Polish Homepage"
+    ],
+    "corroborations": [
+      "300gospodarka.pl"
+    ],
+    "trustLevel": "A",
+    "kind": "text",
+    "audio": null,
+    "durationSec": null,
+    "category": "nauka-technologia-klimat",
+    "topic": "Wpływ sztucznej inteligencji na zawody manualne w Polsce",
+    "pubDate": "2026-10-28T22:29:30.000Z",
+    "publishedAt": "2026-10-29T02:31:58.312Z"
+  },
+  {
+    "guid": "odsluch-2026-10-29",
+    "title": "ODSŁUCH — 2026-10-29 (16:21)",
+    "link": "https://grabowskirobert.github.io/ai-rss/audio/odsluch-2026-10-29.mp3",
+    "html": "<p>Całe dzisiejsze wydanie do odsłuchania — 5 tematów, 16:21.</p><h3>W tym odcinku</h3><ul><li style=\"margin-bottom:0.3em\">Zderzenie pociągów wysokich prędkości w hiszpańskim Urdzie i decyzja o żałobie</li><li style=\"margin-bottom:0.3em\">Wybory w Izraelu bez większości. Benjamin Netanjahu zarzuca fałszerstwa partiom arabskim</li><li style=\"margin-bottom:0.3em\">Amerykański Fed utrzymał stopy procentowe bez zmian w przedziale 3,75-4,00 procent</li><li style=\"margin-bottom:0.3em\">Sąd zakazał Zbigniewowi Komosie twierdzeń o wpływie Lecha Kaczyńskiego na katastrofę</li><li style=\"margin-bottom:0.3em\">Przemysł i usługi w Polsce potrzebują kompetencji cyfrowych u pracowników technicznych</li></ul>",
+    "imageUrl": null,
+    "source": "AI RSS",
+    "sources": [],
+    "backgroundSources": [],
+    "publishers": [],
+    "corroborations": [],
+    "trustLevel": null,
+    "kind": "audio",
+    "audio": {
+      "url": "https://grabowskirobert.github.io/ai-rss/audio/odsluch-2026-10-29.mp3",
+      "type": "audio/mpeg",
+      "length": 7850733
+    },
+    "durationSec": 981.25,
+    "category": "odsluch",
+    "topic": "odsłuch wydania 2026-10-29",
+    "pubDate": "2026-10-29T02:31:58.310Z",
+    "publishedAt": "2026-10-29T02:31:58.312Z"
+  },
+  {
     "guid": "https://www.bankier.pl/wiadomosc/Tylko-USA-i-Polska-MON-potwierdza-centrum-serwisowe-pociskow-do-Patriotow-9219115.html?utm_source=RSS&utm_medium=RSS&utm_campaign=Wiadomosci",
     "title": "Polska wygrała rywalizację o europejskie centrum serwisowania pocisków PAC-3",
     "link": "https://www.bankier.pl/wiadomosc/Tylko-USA-i-Polska-MON-potwierdza-centrum-serwisowe-pociskow-do-Patriotow-9219115.html?utm_source=RSS&utm_medium=RSS&utm_campaign=Wiadomosci",
@@ -1797,243 +2053,5 @@
     "topic": "Amerykańscy wysłannicy po rozmowach z Zełenskim udają się do Petersburga",
     "pubDate": "2026-10-20T17:23:37.000Z",
     "publishedAt": "2026-10-21T01:44:02.335Z"
-  },
-  {
-    "guid": "https://www.scmp.com/news/world/united-states-canada/article/3371564/musk-says-spacex-and-tesla-are-exploring-blockbuster-merger-deal",
-    "title": "Elon Musk naciska na fuzję Tesli i SpaceX, których wartość sięga 3,5 biliona dolarów",
-    "link": "https://www.scmp.com/news/world/united-states-canada/article/3371564/musk-says-spacex-and-tesla-are-exploring-blockbuster-merger-deal",
-    "html": "<h3>Sedno sprawy</h3>\n<p>Dyrektor generalny Elon Musk wykorzystał silne wyniki finansowe spółki kosmicznej SpaceX, aby publicznie promować pomysł jej połączenia z producentem samochodów elektrycznych Tesla. Powstały w ten sposób podmiot stałby się największą fuzją w historii, łącząc przedsiębiorstwa o łącznej rynkowej wartości niemal 3,5 biliona dolarów. W tym samym czasie wokół Musk’a narastają kontrowersje związane z jednostronnym ograniczeniem ukraińskiemu wojsku dostępu do satelitarnego systemu łączności Starshield.</p>\n<h3>Kluczowe fakty</h3>\n<ul>\n  <li>Elon Musk odniósł się do kwestii połączenia Tesli i SpaceX pod koniec rozmowy na temat wyników finansowych SpaceX, które znacznie przewyższyły oczekiwania.</li>\n  <li>Łączna rynkowa wartość spółek Tesla i SpaceX wynosi obecnie prawie 3,5 biliona dolarów.</li>\n  <li>Zapytany o perspektywę fuzji Elon Musk stwierdził, że tańczy na polu minowym i musi ostrożnie dobierać słowa.</li>\n  <li>Ukraińskie siły zbrojne zgłosiły 14 października ograniczenia w działaniu terminali łączności satelitarnej Starshield, będącej wojskową wersją systemu Starlink, co zakłóciło ich misje bojowe.</li>\n  <li>Decyzja o ograniczeniu usługi Starshield wywołała panikę w Kijowie oraz dezorientację wewnątrz administracji prezydenta Donalda Trumpa.</li>\n  <li>Przedstawiciele SpaceX skontaktowali się z Białym Domem, aby uzgodnić wspólne oświadczenie potwierdzające, że działania firmy i administracji Trumpa były skoordynowane.</li>\n  <li>Donald Trump oświadczył 16 października, że nie nakazał nałożenia ograniczeń na system Starshield na Ukrainie i nie wie, kto mógł to zrobić.</li>\n  <li>Według dziennika The Telegraph Musk miał wystąpić do Trumpa z propozycją ograniczenia prędkości systemu Starlink na Ukrainie, na co amerykański prezydent wyraził zgodę.</li>\n</ul>\n<h3>Jak do tego doszło</h3>\n<p>W ostatnich latach relacje między technologiami kosmicznymi a globalną geopolityką stały się nierozerwalnie ze sobą splecione. Systemy łączności satelitarnej, pierwotnie projektowane z myślą o komercyjnym dostępie do internetu, zaczęły pełnić kluczową rolę w nowoczesnych konfliktach zbrojnych. W tym samym czasie rynkowa wartość przedsiębiorstw kierowanych przez Elona Muska rosła w imponującym tempie, co doprowadziło do sytuacji, w której prywatna korporacja stała się faktycznym dysponentem infrastruktury o znaczeniu strategicznym dla bezpieczeństwa międzynarodowego.</p>\n<p>Zależność ukraińskich sił zbrojnych od prywatnych systemów łączności trwała od dłuższego czasu, jednak brak formalnych regulacji i jasnych ram prawnych dotyczących wykorzystania technologii takich jak Starlink i jej wojskowej wersji Starshield sprawił, że decyzje o kluczowym znaczeniu operacyjnym znalazły się w rękach zarządu prywatnej spółki oraz amerykańskiej administracji rządowej.</p>\n<h3>Różne perspektywy</h3>\n<p>Prezydent Ukrainy Wołodymyr Zełenski oskarżył SpaceX o nagłe ograniczenie dostępu do wojskowego systemu internetowego, co bezpośrednio zagroziło ukraińskim misjom bojowym i wywołało panika w Kijowie. Zupełnie inaczej sprawę przedstawia Elon Musk, który stwierdził na platformie X, że wszelkie ograniczenia prędkości lub użytkowania systemów SpaceX są decydowane przez amerykańskie wojsko oraz prezydenta USA. Warto zauważyć, że stanowiska te częściowo się rozchodzą z oficjalnymi deklaracjami politycznymi w Waszyngtonie, ponieważ sekretarz obrony USA Pete Hegseth oświadczył, że Pentagon nie manipulował działaniem systemu Starshield i nie wydawał w tej sprawie żadnych dyrektyw, podczas gdy Donald Trump twierdzi, że nie nakazał nałożenia ograniczeń i nie wie, kto mógł to zrobić.</p>\n<h3>Dlaczego to ma znaczenie</h3>\n<p>Sprawa ta obnaża głęboki kryzys w relacjach między państwami a prywatnymi gigantami technologicznymi, którzy przejmują kontrolę nad infrastrukturą krytyczną. Fakt, że Elon Musk jednocześnie promuje historyczną fuzję Tesli i SpaceX o wartości blisko 3,5 biliona dolarów oraz decyduje o ograniczeniach w systemie Starshield, pokazuje, jak potężnym narzędziem politycznym stał się kapitał prywatny. W nadchodzącym czasie rynek będzie obserwował, czy gigantyczna konsolidacja dojdzie do skutku, co ostatecznie zmieni układ sił w globalnej gospodarce i relacjach z amerykańską administracją.</p>\n<h3>Czego jeszcze nie wiemy</h3>\n<p>Nadal nie jest jasne, czy Donald Trump wiedział z góry o planowanym wyłączeniu systemu Starshield ukraińskim wojskowym. Część urzędników twierdzi, że Elon Musk zadziałał jednostronnie bez konkretnego polecenia ze strony prezydenta USA, podczas gdy inne źródła informują, że szef SpaceX rozmawiał o tym z kilkoma przedstawicielami administracji oraz z samym Trumpem jeszcze przed podjęciem decyzji.</p>",
-    "imageUrl": "https://cdn.i-scmp.com/sites/default/files/styles/1280x720/public/d8/images/canvas/2026/10/21/36a778e0-478a-4b35-b73c-63d4b8cc3961_d97b2d51.jpg?itok=ZVReDHHp&v=1792539315",
-    "source": "News - South China Morning Post",
-    "sources": [
-      {
-        "title": "Meduza.io — Did Trump know Musk was about to restrict Ukraine’s military Starlink service? WSJ reports they discussed the decision afterward. Some sources say they also spoke beforehand.",
-        "uri": "https://meduza.io/en/news/2026/10/21/did-trump-know-musk-was-about-to-restrict-ukraine-s-military-starlink-service-wsj-reports-they-discussed-the-decision-afterward-some-sources-say-they-also-spoke-beforehand"
-      },
-      {
-        "title": "Latest articles - The Japan Times —  Musk seizes on SpaceX momentum with push toward Tesla merger ",
-        "uri": "https://www.japantimes.co.jp/business/2026/10/21/musk-tesla-spacex-merger/"
-      }
-    ],
-    "backgroundSources": [
-      {
-        "title": "thehindu.com",
-        "uri": "https://www.thehindu.com/news/international/musk-ordered-reduction-in-starshield-services-for-ukraine-report/article71606040.ece"
-      },
-      {
-        "title": "theguardian.com",
-        "uri": "https://www.theguardian.com/technology/2026/oct/20/tesla-and-spacex-explore-merger-as-elon-musk-gives-backing"
-      },
-      {
-        "title": "meduza.io",
-        "uri": "https://meduza.io/en/news/2026/10/20/did-trump-know-musk-was-about-to-restrict-ukraine-s-military-starlink-service-wsj-reports-they-discussed-the-decision-afterward-some-sources-say-they-also-spoke-beforehand"
-      },
-      {
-        "title": "cbsnews.com",
-        "uri": "https://www.cbsnews.com/news/elon-musk-restrict-ukraine-spacex-satellite-network-starlink-starshield/"
-      }
-    ],
-    "publishers": [
-      "Meduza.io",
-      "Latest articles - The Japan Times"
-    ],
-    "corroborations": [
-      "thehindu.com",
-      "theguardian.com",
-      "meduza.io"
-    ],
-    "trustLevel": "B",
-    "kind": "text",
-    "audio": null,
-    "durationSec": null,
-    "category": "gospodarka",
-    "topic": "SpaceX i Tesla rozważają fuzję obu spółek",
-    "pubDate": "2026-10-20T23:35:28.000Z",
-    "publishedAt": "2026-10-21T01:44:02.335Z"
-  },
-  {
-    "guid": "https://www.theguardian.com/world/2026/oct/21/nigeria-first-ebola-case-africa-outbreak-latest",
-    "title": "W stolicy Nigerii potwierdzono pierwszy przypadek zakażenia wirusem Ebola",
-    "link": "https://www.theguardian.com/world/2026/oct/21/nigeria-first-ebola-case-africa-outbreak-latest",
-    "html": "<h3>Sedno sprawy</h3>\n<p>Ministerstwo Zdrowia Nigerii poinformowało o wykryciu pierwszego przypadku eboli w stolicy kraju, Abudży, u kobiety, która przyleciała z Ugandy. Zakażenie dotyczy szczepu Bundibugyo i jest częścią najszybciej rozprzestrzeniającej się epidemii tego typu w historii, która rozpoczęła się w połowie maja w Demokratycznej Republice Konga. Pojawienie się wirusa w Nigerii, będącej najludniejszym państwem Afryki, budzi poważne obawy władz medycznych przed dalszą transmisją choroby w regionie.</p>\n<h3>Kluczowe fakty</h3>\n<ul>\n  <li>Zakażona pacjentka to Nigeryjka, która odbyła podróż służbową do wschodniej części Demokratycznej Republiki Konga i wracała przez Ugandę; pierwsze objawy wystąpiły u niej 7 października, a 11 października trafiła do prywatnego szpitala w Abudży.</li>\n  <li>Nigeryjski minister zdrowia Muhammad Ali Pate przekazał, że służby medyczne rozpoczęły już procedurę śledzenia 44 osób, które miały bezpośredni kontakt z zainfekowaną kobietą.</li>\n  <li>Nigeryjskie Centrum Kontroli Chorób (NCDC) zwiększyło nadzór i gotowość na wypadek epidemii dwa tygodnie wcześniej, po wykryciu pierwszych przypadków eboli w Kenii.</li>\n  <li>Władze Nigerii utworzyły specjalny zespół zadaniowy (taskforce) ds. eboli już w czerwcu, aby zapobiec niekontrolowanemu rozprzestrzenianiu się wirusa na wzór poprzednich epidemii, co podkreślał szef personelu prezydenta Boli Tinuby, Femi Gbajabiamila.</li>\n  <li>Obecna epidemia wywołana rzadkim szczepem Bundibugyo objęła dotychczas ponad 9500 osób i doprowadziła do śmierci od 4300 do ponad 4600 zakażonych, co oznacza śmiertelność na poziomie bliskim 50%.</li>\n  <li>Dyrektor generalny Africa CDC dr Jean Kaseya oświadczył, że jest to najbardziej rozległa geograficznie epidemia szczepu Bundibugyo w historii, dotykająca kilka państw w trzech regionach Afryki.</li>\n  <li>W Kenii potwierdzono dotąd 9 przypadków zakażenia (pierwszy pacjent zmarł), zaś w Ugandzie wcześniej odnotowano 20 przypadków i 2 zgony, jednak pod koniec sierpnia Światowa Organizacja Zdrowia (WHO) uznała Ugandę za wolną od eboli po 42 dniach bez nowych zachorowań.</li>\n  <li>Ministerstwo Zdrowia Ugandy zastrzegło, że sam tranzyt pacjentki przez jej terytorium nie oznacza, iż do zakażenia doszło w tym kraju, i zapewniło, że nie ma tam obecnie żadnych potwierdzonych aktywnych przypadków eboli.</li>\n  <li>Mimo że ognisko epidemii pozostaje we wschodnich prowincjach Demokratycznej Republiki Konga (m.in. w prowincji Ituri), według WHO obecna fala zachorowań rozprzestrzenia się najszybciej w historii i może przekroczyć bilans tragicznej epidemii w Afryce Zachodniej z lat 2014–2016, w której zmarło ponad 11 tysięcy osób.</li>\n</ul>\n<h3>Jak do tego doszło</h3>\n<p>W połowie maja w Demokratycznej Republice Konga rozpoczęła się epidemia eboli wywołana rzadkim szczepem Bundibugyo, której ognisko znajduje się we wschodnich prowincjach tego kraju, m.in. w prowincji Ituri. Z czasem wirus zaczął przemieszczać się poza pierwotne granice, stając się najszybciej rozprzestrzeniającą się epidemią tego typu w historii, zdolną dorównać bilansowi tragicznego kryzysu w Afryce Zachodniej z lat 2014–2016. W ramach tego szerszego procesu zakażona Nigeryjka odbyła podróż służbową do wschodniej części Demokratycznej Republiki Konga i wracała stamtąd przez Ugandę do ojczyzny. Choć dokładna data jej przybycia pozostaje nieznana, pierwsze objawy wystąpiły u niej 7 października, a 11 października została przyjęta do prywatnego szpitala w Abudży, stolicy Nigerii.</p>\n<p>Reagując na narastające zagrożenie w regionie, władze w Abudży podjęły kroki wyprzedzające. Już w czerwcu utworzono specjalny zespół zadaniowy ds. eboli, co miało na celu zapobieżenie niekontrolowanemu rozprzestrzenianiu się wirusa na wzór wcześniejszych doświadczeń historycznych, na co zwracał uwagę Femi Gbajabiamila. Z kolei Nigeryjskie Centrum Kontroli Chorób zwiększyło nadzór i gotowość na wypadek epidemii dwa tygodnie przed potwierdzeniem stołecznego przypadku, co nastąpiło po wcześniejszym wykryciu chorych w Kenii.</p>\n<h3>Różne perspektywy</h3>\n<p>Wokół dróg transmisji wirusa pojawiają się odmienne akcenty narracyjne ze strony państw regionu. Ministerstwo Zdrowia Ugandy zastrzegło, że sam tranzyt pacjentki przez jej terytorium nie oznacza, iż do zakażenia doszło w tym kraju, zapewniając jednocześnie, że obecnie nie ma tam żadnych potwierdzonych aktywnych przypadków eboli (wcześniej odnotowano tam 20 zachorowań i 2 zgony, jednak pod koniec sierpnia WHO uznała Ugandę za wolną od choroby po 42 dniach bez nowych chorych). Z kolei Ministerstwo Zdrowia Nigerii potwierdziło wykrycie pierwszego przypadku w stolicy oraz fakt, że służby natychmiast rozpoczęły procedurę śledzenia 44 osób mających bezpośredni kontakt z zainfekowaną kobietą.</p>\n<p>W szerszym wymiarze międzynarodowym dr Jean Kaseya wskazuje na unikalny i groźny charakter obecnej sytuacji. Dyrektor generalny Africa CDC stwierdził, że epidemia szczepu Bundibugyo stanowi niezwykle poważne zagrożenie o śmiertelności bliskiej 50% (która w skali całej epidemii dotychczasowej o ponad 9500 chorych pochłonęła od 4300 do ponad 4600 istnień) i jest zarazem najszersza geograficznie w historii, obejmując kilka państw w trzech regionach Afryki.</p>\n<h3>Dlaczego to ma znaczenie</h3>\n<p>Pojawienie się wirusa w Abudży u kobiety, która przyleciała z Ugandy, ma wymiar krytyczny ze względu na demografię – Nigeria jest najludniejszym państwem Afryki, co budzi poważne obawy władz medycznych przed dalszą, niekontrolowaną transmisją choroby w tym kluczowym regionie kontynentu. Dotychczasowa skala zakażeń przekraczająca 9500 przypadków oraz bilans ofwał śmiertelnych sięgający ponad 4600 osób pokazują, że wirus rozprzestrzenia się najszybciej w historii i dotyka wiele państw w trzech regionach Afryki. Wdrożona w Nigerii procedura śledzenia 44 osób bezpośrednio narażonych na kontakt z chorą ma kluczowe znaczenie dla powstrzymania łańcucha zakażeń w najludniejszym kraju regionu, gdzie Kenia potwierdziła wcześniej 9 przypadków, a Uganda zmagała się z wcześniejszymi ogniskami choroby.</p>\n<h3>Czego jeszcze nie wiemy</h3>\n<p>Dokładna data przybycia zakażonej kobiety do Nigerii oraz precyzyjne miejsce, w którym doszło do kontaktu z wirusem, pozostają przedmiotem śledztwa służb medycznych. Nie jest również jasne, czy przypadek ten doprowadzi do formalnej rewizji statusu Ugandy jako kraju wolnego od eboli przez Światową Organizację Zdrowia. W oficjalnych raportach występują ponadto niewielkie rozbieżności dotyczące łącznej liczby śmiertelnych ofiar obecnej epidemii – źródła szacują ją na ponad 4300 lub ponad 4600 zmarłych.</p>",
-    "imageUrl": "https://i.guim.co.uk/img/media/cc9a6ec270dac6b02b8ff0b829657c9fed193c1b/671_0_4033_3227/master/4033.jpg?width=140&quality=85&auto=format&fit=max&s=16352e02a522e9bb6270cae4acc5a411",
-    "source": "World news | The Guardian",
-    "sources": [
-      {
-        "title": "World news | The Guardian — Nigeria confirms Ebola case as outbreak spreads into western Africa",
-        "uri": "https://www.theguardian.com/world/2026/oct/21/nigeria-first-ebola-case-africa-outbreak-latest"
-      },
-      {
-        "title": "France 24 - International breaking news, top stories and headlines — Nigeria confirms first Ebola case",
-        "uri": "https://www.france24.com/en/nigeria-confirms-first-ebola-case"
-      },
-      {
-        "title": "World | Deutsche Welle — Nigeria records its first Ebola case, in capital Abuja",
-        "uri": "https://www.dw.com/en/nigeria-records-its-first-ebola-case-in-capital-abuja/a-79717377?maca=en-rss-en-world-4025-rdf"
-      }
-    ],
-    "backgroundSources": [
-      {
-        "title": "theguardian.com",
-        "uri": "https://www.theguardian.com/world/2026/oct/21/nigeria-confirms-ebola-case-as-outbreak-spreads-into-western-africa"
-      },
-      {
-        "title": "premiumtimesng.com",
-        "uri": "https://www.premiumtimesng.com/news/headlines/759247-updated-nigeria-confirms-ebola-case-in-abulja-begins-contact-tracing.html"
-      }
-    ],
-    "publishers": [
-      "World news | The Guardian",
-      "France 24 - International breaking news, top stories and headlines",
-      "World | Deutsche Welle"
-    ],
-    "corroborations": [
-      "theguardian.com",
-      "premiumtimesng.com"
-    ],
-    "trustLevel": "A",
-    "kind": "text",
-    "audio": null,
-    "durationSec": null,
-    "category": "nauka-technologia-klimat",
-    "topic": "Nigeria potwierdza przypadek eboli w stolicy kraju",
-    "pubDate": "2026-10-21T00:14:55.000Z",
-    "publishedAt": "2026-10-21T01:44:02.335Z"
-  },
-  {
-    "guid": "https://www.theguardian.com/society/2026/oct/21/australian-researchers-identify-new-subtype-of-depression-linked-to-body-clock-disruptions",
-    "title": "Australijscy naukowcy odkryli podtyp depresji powiązany z zegarem biologicznym",
-    "link": "https://www.theguardian.com/society/2026/oct/21/australian-researchers-identify-new-subtype-of-depression-linked-to-body-clock-disruptions",
-    "html": "<h3>Sedno sprawy</h3>\n<p>Australijscy badacze zidentyfikowali nowy podtyp depresji, nazywany depresją cyrkadialną, który dotyka blisko jednej czwartej pacjentów z ciężkimi i nawracającymi objawami. Schorzenie to wynika z zaburzeń wewnętrznego zegara biologicznego organizmu i charakteryzuje się gorszą odpowiedzią na standardowe leki farmakologiczne. Odkrycie powiązania objawów z konkretnym profilem genetycznym i biologicznym pozwala na trafniejsze diagnozowanie pacjentów oraz stosowanie wobec nich bardziej dopasowanych metod terapeutycznych.</p>\n<h3>Kluczowe fakty</h3>\n<ul>\n  <li>Badanie opublikowane w „British Journal of Psychiatry” objęło dane kliniczne i genetyczne pochodzące od 11 380 Australijczyków cierpiących głównie na ciężką i nawracającą postać depresji.</li>\n  <li>Depresję cyrkadialną zidentyfikowano u 23 procent badanych uczestników.</li>\n  <li>Zdaniem dr Emiliany Tonini z Brain and Mind Centre na Uniwersytecie w Sydney, podtyp cyrkadialny rozpoznawano u osób wykazujących co najmniej trzy z sześciu cech: sezonowość objawów, opóźnioną porę zasypiania, dłuższy sen w okresie depresji, chronotyp wieczorny (tzw. nocny chowaniec), poczucie silnego zmęczenia po wybudzeniu oraz tzw. społeczny jetlag, czyli znaczące różnice w porach snu między dniami roboczymi a wolnymi.</li>\n  <li>Osoby z podtypem cyrkadialnym doświadczają cięższych objawów, choroba zaczyna się u nich w młodszym wieku, przechodzą więcej epizodów, a także częściej występują u nich tendencje samobójcze oraz objawy hipomaniakalne i psychotyczne.</li>\n  <li>Analizy wykazały u pacjentów wyższe ryzyko genetyczne ADHD i zaburzeń nastroju, a także obecność specyficznych markerów metabolicznych i zapalnych, co potwierdza odrębne podłoże biologiczne tej odmiany choroby.</li>\n  <li>Profesor Ian Hickie z Brain and Mind Centre wskazał, że standardowe leki pierwszego wyboru, takie jak SSRI i SNRI, są mniej skuteczne u tych pacjentów i wywołują u nich więcej skutków ubocznych.</li>\n  <li>Wśród zalecanych metod leczenia depresji cyrkadialnej wymieniono terapie chronobiologiczne, w tym ekspozycję na poranne światło słoneczne, terapię światłem, stosowanie melatoniny, aktywność w ciągu dnia oraz dbanie o regularność cyklu snu i posiłków.</li>\n  <li>Profesor Jayashri Kulkarni, dyrektorka Monash Alfred Psychiatry Research Centre, oceniła badanie jako bardzo dobrze przeprowadzone ze względu na udane powiązanie typów depresji z określonym profilem genetycznym (tzw. wskaźnikiem ryzyka poligenowego).</li>\n  <li>Profesor Andrew Coogan, neurobiolog behawioralny z Maynooth University w Irlandii, zaznaczył, że powiązanie depresji ze zmianami w zegarze biologicznym jest znane od dawna, a wyniki pracy należy traktować jako wstępne ustalenia wymagające dalszych badań.</li>\n</ul>\n<h3>Jak do tego doszło</h3>\n<p>Przez lata nauka traktowała depresję jako jednorodne zaburzenie nastroju, co często prowadziło do sytuacji, w której pacjenci latami przetestowali kolejne grupy farmaceutyków bez oczekiwanej poprawy. Przełom, o którym poinformowano na łamach „British Journal of Psychiatry”, wyrasta z wieloletnich poszukiwań biologicznych fundamentów chorób psychicznych. Zespół badawczy postanowił przyjrzeć się bliżej danym klinicznym i genetycznym ponad jedenastu tysięcy mieszkańców Australii, koncentrując się na osobach zmagających się z ciężkimi i nawracającymi postaciami schorzenia.</p>\n<p>Kluczem okazało się powiązanie objawów z wewnętrznym zegarem biologicznym człowieka. Nauczeni doświadczeniem wcześniejszych lat, podczas których neurobiolog behawioralny Andrew Coogan z Maynooth University przypominał, że związek depresji ze zmianami w rytmie biologicznym jest obserwowany od dawna, badacze postanowili pójść krok dalej. Wykorzystując wskaźnik ryzyka poligenowego, co doceniła dyrektorka Monash Alfred Psychiatry Research Centre, profesor Jayashri Kulkarni, udało się połączyć konkretne profile genetyczne z powtarzalnym zestawem objawów u blisko jednej czwartej badanych.</p>\n<h3>Różne perspektywy</h3>\n<p>Choć samo odkrycie spotkało się z uznaniem za precyzyjne powiązanie typów depresji z profilem genetycznym, poszczególni ekspertów akcentują różne aspekty tej sytuacji. Profesor Ian Hickie z Brain and Mind Centre zwraca uwagę na wymiar czysto kliniczny i farmakologiczny: w jego ocenie standardowe leki pierwszego wyboru, takie jak inhibitory wychwytu zwrotnego serotoniny (SSRI) oraz serotoniny i noradrenaliny (SNRI), nie tylko okazują się mniej skuteczne u tej grupy pacjentów, but wywołują u nich również znacznie więcej uciążliwych skutków ubocznych.</p>\n<p>Z kolei dr Emiliana Tonini, również z Brain and Mind Centre Uniwersytetu w Sydney, kładzie nacisk na głębsze, biologiczne podłoże wyodrębnionego podtypu cyrkadialnego. Wskazuje ona, że pacjenci ci charakteryzują się nie tylko specyficznymi markerami metabolicznymi i zapalnymi, lecz także wyższym ryzykiem genetycznym wystąpienia ADHD, co nadaje schorzeniu zupełnie nowy kontekst diagnostyczny. Odmienne stanowisko w debacie reprezentuje profesor Andrew Coogan. Neurobiolog z Irlandii tonuje zbytni optymizm, zaznaczając, że powiązanie depresji ze zmianami w zegarze biologicznym jest znane od dawna, dlatego całościowe wyniki omawianej pracy należy traktować przede wszystkim jako ustalenia wstępne.</p>\n<h3>Dlaczego to ma znaczenie</h3>\n<p>Zidentyfikowanie nowego podtypu depresji fundamentalnie zmienia sposób patrzenia na diagnozowanie i leczenie pacjentów, u których dotychczasowe metody zawodziły. Dzięki powiązaniu objawów z konkretnym profilem biologicznym i genetycznym lekarze zyskują narzędzia do trafniejszego rozpoznawania schorzenia u osób wykazujących m.in. sezonowość objawów, opóźnioną porę zasypiania, chronotyp wieczorny czy silne zmęczenie po wybudzeniu.</p>\n<p>W perspektywie praktycznej oznacza to odejście od nieskutecznej w tym przypadku farmakoterapii na rzecz celowanych metod terapeutycznych. Zamiast standardowych leków, u pacjentów z podtypem cyrkadialnym rekomenduje się wdrażanie terapii chronobiologicznych. Wśród nich wymienia się regularną ekspozycję na poranne światło słoneczne, dedykowaną terapię światłem, kontrolowane stosowanie melatoniny, odpowiednią aktywność w ciągu dnia oraz dbanie o stałą regularność cyklu snu i spożywanych posiłków.</p>\n<h3>Czego jeszcze nie wiemy</h3>\n<p>Nadal nie zbadano, jaki wpływ na zaburzenia snu i depresję cyrkadialną mają zmiany hormonalne związane z menopauzą u kobiet, gdyż czynnik ten nie został uwzględniony w badaniu. Wyniki wymagają weryfikacji na bardziej zróżnicowanych grupach pacjentów, ponieważ próba była ograniczona do osób o pochodzeniu europejskim opisanym genetycznie. Cząstkowe pozostają także szczegóły dotyczące sposobu, w jaki badacze ustalili kryteria diagnostyczne dla proponowanego podtypu.</p>",
-    "imageUrl": "https://i.guim.co.uk/img/media/76709b5781c9150b1cdc82c58daf2819e3478f94/995_0_5021_4016/master/5021.jpg?width=140&quality=85&auto=format&fit=max&s=8156b582aa1567789c5fef073d05a31a",
-    "source": "World news | The Guardian",
-    "sources": [
-      {
-        "title": "World news | The Guardian — Australian researchers identify new subtype of depression linked to body clock disruptions",
-        "uri": "https://www.theguardian.com/society/2026/oct/21/australian-researchers-identify-new-subtype-of-depression-linked-to-body-clock-disruptions"
-      }
-    ],
-    "backgroundSources": [
-      {
-        "title": "theguardian.com",
-        "uri": "https://www.theguardian.com/society/2026/oct/20/australian-researchers-identify-new-subtype-of-depression-linked-to-body-clock-disruptions"
-      }
-    ],
-    "publishers": [
-      "World news | The Guardian"
-    ],
-    "corroborations": [
-      "theguardian.com"
-    ],
-    "trustLevel": "C",
-    "kind": "text",
-    "audio": null,
-    "durationSec": null,
-    "category": "nauka-technologia-klimat",
-    "topic": "Odkryto nowy podtyp depresji powiązany z zegarem biologicznym",
-    "pubDate": "2026-10-20T23:00:48.000Z",
-    "publishedAt": "2026-10-21T01:44:02.335Z"
-  },
-  {
-    "guid": "odsluch-2026-10-21",
-    "title": "ODSŁUCH — 2026-10-21 (27:15)",
-    "link": "https://grabowskirobert.github.io/ai-rss/audio/odsluch-2026-10-21.mp3",
-    "html": "<p>Całe dzisiejsze wydanie do odsłuchania — 5 tematów, 27:15.</p><h3>W tym odcinku</h3><ul><li style=\"margin-bottom:0.3em\">Sejm uchwalił częściową dekryminalizację aborcji i zrezygnował z kar za pomoc</li><li style=\"margin-bottom:0.3em\">Wysłannicy USA udają się do Petersburga po rozmowach z Zełenskim w Oslo</li><li style=\"margin-bottom:0.3em\">Elon Musk naciska na fuzję Tesli i SpaceX, których wartość sięga 3,5 biliona dolarów</li><li style=\"margin-bottom:0.3em\">W stolicy Nigerii potwierdzono pierwszy przypadek zakażenia wirusem Ebola</li><li style=\"margin-bottom:0.3em\">Australijscy naukowcy odkryli podtyp depresji powiązany z zegarem biologicznym</li></ul>",
-    "imageUrl": null,
-    "source": "AI RSS",
-    "sources": [],
-    "backgroundSources": [],
-    "publishers": [],
-    "corroborations": [],
-    "trustLevel": null,
-    "kind": "audio",
-    "audio": {
-      "url": "https://grabowskirobert.github.io/ai-rss/audio/odsluch-2026-10-21.mp3",
-      "type": "audio/mpeg",
-      "length": 13081581
-    },
-    "durationSec": 1635.12,
-    "category": "odsluch",
-    "topic": "odsłuch wydania 2026-10-21",
-    "pubDate": "2026-10-21T01:44:02.332Z",
-    "publishedAt": "2026-10-21T01:44:02.335Z"
-  },
-  {
-    "guid": "https://www.scmp.com/news/world/russia-central-asia/article/3371432/zelensky-should-get-somebody-else-negotiate-end-ukraine-war-trump-says?utm_source=rss_feed",
-    "title": "Donald Trump sugeruje powierzenie negocjacji z Rosją innemu przedstawicielowi Ukrainy",
-    "link": "https://www.scmp.com/news/world/russia-central-asia/article/3371432/zelensky-should-get-somebody-else-negotiate-end-ukraine-war-trump-says?utm_source=rss_feed",
-    "html": "<h3>Sedno sprawy</h3>\n<p>Prezydent USA Donald Trump zasugerował, że prezydent Ukrainy Wołodymyr Zełenski powinien przekazać prowadzenie rozmów pokojowych innej osobie, zarzucając mu blokowanie porozumienia na warunkach amerykańsko-rosyjskich. W odpowiedzi na narastające napięcia Zełenski ostrzegł przed możliwą zdradą ze strony Stanów Zjednoczonych, jednocześnie proponując przeniesienie rozmów z amerykańskimi wysłannikami do Norwegii. Sprawa ta bezpośrednio wpływa na przyszłość wsparcia militarnego oraz bezpieczeństwo w Europie.</p>\n<h3>Kluczowe fakty</h3>\n<ul>\n  <li>Donald Trump publicznie oświadczył, że „być może nadszedł czas, aby Zełenski przekazał negocjacje komuś innemu”, zarzucając mu niechęć do zawarcia umowy z prezydentem Rosji Władimirem Putinem.</li>\n  <li>Amerykański prezydent stwierdził, że Rosja oraz prezydent Chin Xi Jinping byli „bardzo sprawiedliwi wobec Ukrainy”, ponieważ nie zrobili tam „prawie wszystkiego, co mogli”.</li>\n  <li>Donald Trump zadeklarował chęć rozmów z Xi Jinpingiem i Władimirem Putinem na temat Ukrainy, uzależniając je jednak od postępów w negocjacjach dotyczących denuklearyzacji.</li>\n  <li>Prezydent USA zaznaczył, że ma prawo natychmiastowo i w każdej chwili przerwać prowadzone rozmowy z Rosją.</li>\n  <li>Mimo napięć Wołodymyr Zełenski kontynuuje rozmowy z wysłannikami Trumpa – Jaredem Kushnerem i Stevenem Witkoffem – proponując spotkanie w Norwegii, gdzie amerykański delegat Witkoff już udał się wraz z Kushnerem.</li>\n  <li>Wołodymyr Zełenski ostrzegł, że wycofanie wsparcia przez USA oznacza dla Ukrainy prawdopodobną klęskę, a dla Europy konieczność przyjęcia 20 milionów uchodźców uciekających przed rosyjską okupacją.</li>\n  <li>Ostatniej nocy doszło do ataku rakietowego na Kijów bez ostrzeżenia, ponieważ Stany Zjednoczone nie przekazały Ukrainie odpowiednich informacji wywiadowczych.</li>\n  <li>Łączność satelitarna Starlink dostarczana przez firmę Elona Muska, z której korzysta ukraińskie wojsko, nadal działa z ograniczeniem prędkości do 160 km/h, co uniemożliwia skuteczne strącanie szybszych rosyjskich rakiet i dronów.</li>\n  <li>W kontekście wcześniejszych ustaleń gospodarczych z 9 października umowa Trumpa z Putinem na dostawy rosyjskiego diesla nie obniży cen paliw przed wyborami połówkowymi w USA 3 listopada, gdyż pierwsze transporty ruszą najwcześniej za trzy tygodnie, a wiążące umowy nie zostały jeszcze podpisane.</li>\n  <li>16 października Donald Trump wstrzymał wdrożenie zaostrzonych sankcji na Rosję przewidzianych w ustawie senatora Lindseya Grahama, a sekretarz stanu Marco Rubio zapowiedział 60-dniowy okres oceny sytuacji.</li>\n</ul>\n<h3>Jak do tego doszło</h3>\n<p>W połowie września 2026 roku Kongres uchwalił, a prezydent Donald Trump podpisał ustawę o sankcjach na Rosję i Iran imienia senatora Lindseya Grahama. Zapisy te miały na celu zaostrzenie presji gospodarczej, jednak 16 października Donald Trump wstrzymał wdrożenie tych sankcji, a sekretarz stanu Marco Rubio zapowiedział 60-dniowy okres oceny sytuacji. Decyzja ta stała się elementem szerszego procesu kształtowania relacji wokół trwającego konfliktu, w którym amerykańska administracja podejmuje kroki wpływające bezpośrednio na dynamikę dyplomatyczną oraz pozycję poszczególnych państw.</p>\n<h3>Różne perspektywy</h3>\n<p>Minister spraw zagranicznych Ukrainy Andrij Sybiha skrytykował wstrzymanie amerykańskich sankcji przez administrację USA, stwierdzając, że zwlekanie wysyła niewłaściwy sygnał agresorowi i przedłuża wojnę. Odmienne podejście prezentuje strona amerykańska – w kontekście wcześniejszych ustaleń gospodarczych z 9 października umowa Trumpa z Putinem na dostawy rosyjskiego diesla nie obniży cen paliw przed wyborami połówkowymi w USA 3 listopada, gdyż pierwsze transporty ruszą najwcześniej za trzy tygodnie, a wiążące umowy nie zostały jeszcze podpisane.</p>\n<h3>Dlaczego to ma znaczenie</h3>\n<p>Wstrzymanie sankcji oraz opóźnienia w realizacji umów gospodarczych pokazują, jak skomplikowane są powiązania między krajową polityką amerykańską a globalnym bezpieczeństwem. Decyzje podejmowane w Waszyngtonie bezpośrednio rzutują na perspektywy zakończenia konfliktu i stabilność w Europie, wywołując krytykę ze strony ukraińskich władz i rzucając nowe światło na priorytety amerykańskiej dyplomacji.</p>\n<h3>Czego jeszcze nie wiemy</h3>\n<p>Nie wskazano, kogo konkretnie Donald Trump widziałby w roli nowego ukraińskiego negocjatora zamiast Wołodymyra Zełenskiego. Nie wiadomo również, czy Stany Zjednoczone całkowicie zerwą rozmowy z Rosją, ani jakie będą ostateczne rezultaty spotkań amerykańskich wysłanników z ukraińską delegacją w Norwegii.</p>",
-    "imageUrl": "https://cdn.i-scmp.com/sites/default/files/styles/1280x720/public/d8/images/canvas/2026/10/20/ac46290f-caba-4d2b-98db-6d98c10ba731_1beb4852.jpg?itok=nv8enggT&v=1792446581",
-    "source": "News - South China Morning Post",
-    "sources": [
-      {
-        "title": "oko.press — Trump: Niech Zełenski znajdzie kogoś innego do negocjacji",
-        "uri": "https://oko.press/na-zywo/na-zywo-relacja/trump-niech-zelenski-znajdzie-kogos-innego-do-negocjacji"
-      }
-    ],
-    "backgroundSources": [
-      {
-        "title": "cbsnews.com",
-        "uri": "https://www.cbsnews.com/news/trump-russia-sanctions-waiver-lindsey-graham-congress/"
-      },
-      {
-        "title": "pbs.org",
-        "uri": "https://www.pbs.org/newshour/world/trumps-diesel-deal-with-putin-draws-bipartisan-criticism-from-a-frustrated-congress"
-      }
-    ],
-    "publishers": [
-      "oko.press"
-    ],
-    "corroborations": [],
-    "trustLevel": "C",
-    "kind": "text",
-    "audio": null,
-    "durationSec": null,
-    "category": "geopolityka-i-dyplomacja",
-    "topic": "Trump sugeruje zmianę negocjatora w sprawie Ukrainy",
-    "pubDate": "2026-10-19T21:52:33.000Z",
-    "publishedAt": "2026-10-20T01:56:46.408Z"
-  },
-  {
-    "guid": "https://www.scmp.com/news/world/europe/article/3371411/frances-pm-calls-curfews-nation-grapples-unrest?utm_source=rss_feed",
-    "title": "Gospodarcze i polityczne skutki zamieszek we Francji oraz problem z budżetem",
-    "link": "https://www.scmp.com/news/world/europe/article/3371411/frances-pm-calls-curfews-nation-grapples-unrest?utm_source=rss_feed",
-    "html": "<h3>Sedno sprawy</h3>\n<p>Niedawne zamieszki we Francji, wywołane wzrostem kosztów życia i sprzeciwem wobec planowanych cięć budżetowych, ustąpiły miejsca debacie parlamentarnej oraz oszacowaniom strat rynkowych i gospodarczych. W reakcji na przemoc i plądrowanie sklepów prezydent Emmanuel Macron zapowiedział możliwość zakazania niektórych zgromadzeń, podkreślając potrzebę przywrócenia porządku. Wydarzenia te dodatkowo osłabiły francuski rynek finansowy i zbiegły się w czasie z kluczowym głosowaniem nad projektami oszczędnościowymi w mniejszościowym rządzie.</p>\n<h3>Kluczowe fakty</h3>\n<ul>\n  <li>Weekendowe rozruchy (17–18 października 2026 r.) w Paryżu, Lyonie i Lille doprowadziły do zatrzymania niemal 2400 osób, a obrażenia odniosło ponad 500 funkcjonariuszy policji, żandarmerii oraz straży pożarnej.</li>\n  <li>Straty materialne wyrządzone w około 1500 przedsiębiorstwach są szacowane na setki milionów euro, co potwierdzili m.in. Alexandre Bompard z sieci Carrefour oraz Thierry Guibert z marki Lacoste.</li>\n  <li>Na rynkach finansowych paryski indeks CAC 40 spadł o prawie 1,5 proc., rentowność 10-letnich obligacji skarbowych (OAT) wzrosła do 4,90 proc., a w październiku sięgała chwilowo 5 proc., czyli najwięcej od 2002 roku.</li>\n  <li>Przedstawiony przez mniejszościowy rząd projekt budżetu zakłada \"redukcję deficytu\" do 5 proc. PKB, podczas gdy pierwotny cel wyznaczony na 2026 rok wynosił 4,6 proc. PKB.</li>\n  <li>Rząd planuje skorzystać z art. 49.3 francuskiej konstytucji, umożliwiającego uchwalenie ustawy bez większości parlamentarnej, co daje opozycji 24 godziny na złożenie wniosku o wotum nieufności (do odwołania rządu potrzeba 289 głosów).</li>\n  <li>Pięć związków zawodowych ogłosiło wezwanie do ogólnokrajowego strajku na 5 listopada 2026 r., domagając się wyższych płac oraz dofinansowania usług publicznych.</li>\n  <li>Prawie 25 proc. państwowych wydatków Francji przeznaczane jest na emerytury przy stopie zastąpienia na poziomie około 75 proc., przy jednoczesnej stagnacji gospodarczej z prognozą wzrostu PKB na poziomie ok. 0,5 proc.</li>\n  <li>Zgromadzone dane GUS wskazują, że Francja jest trzecim odbiorcą polskiego eksportu (95,2 mld zł w 2025 r., czyli 6,1 proc. całości), z czego niemal połowę stanowi przemysł maszynowy i motoryzacyjny.</li>\n</ul>\n<h3>Jak do tego doszło</h3>\n<p>Zanim doszło do październikowych rozruchów, Francja mierzyła się z głębokimi napięciami o charakterze strukturalnym. Prawie 25 procent państwowych wydatków w kraju przeznaczane jest na emerytury przy stopie zastąpienia na poziomie około 75 procent, czemu towarzyszyła długotrwała stagnacja gospodarcza z prognozą wzrostu PKB na poziomie około 0,5 procent. Zmagający się z tymi wyzwaniami mniejszościowy rząd przedstawił projekt budżetu zakładający redukcję deficytu do 5 procent PKB, podczas gdy pierwotny cel wyznaczony na 2026 rok wynosił 4,6 procent PKB.</p>\n<p>Zimowe i jesienne napięcia nie wybuchły jednak nagle w parlamencie. Protesty wywołane niezadowoleniem z warunków w publicznych szkołach rozpoczęły się już w połowie września 2026 roku w Créteil i z czasem przerodziły się w ogólnokrajowy ruch społeczny, obejmując coraz szersze grupy obywateli i przygotowując grunt pod późniejszy sprzeciw wobec planowanych cięć budżetowych.</p>\n<h3>Różne perspektywy</h3>\n<p>W obliczu kryzysu poszczególne podmioty odmiennie oceniają skalę i naturę francuskich problemów. Eksperci banku inwestycyjnego Goldman Sachs wskazali, że wyzwania fiskalne Francji są obecnie trudniejsze niż w latach 2011–2015, co na nowo skupia uwagę rynków na europejskim ryzyku suwerennym. Z kolei Alexandre Bompard, dyrektor generalny sieci Carrefour, poinformował, że około 50 sklepów tej marki zostało ograbionych, a straty materialne i koszty napraw przekroczą 10 milionów euro, co ilustruje wymiar strat dotykających sektor handlowy. Równocześnie pięć związków zawodowych ogłosiło wezwanie do ogólnokrajowego strajku, domagając się wyższych płac oraz dofinansowania usług publicznych.</p>\n<h3>Dlaczego to ma znaczenie</h3>\n<p>Wydarzenia we Francji niosą ze sobą natychmiastowe skutki gospodarcze i polityczne. Paryski indeks CAC 40 spadł o prawie 1,5 proc., a rentowność 10-letnich obligacji skarbowych wzrosła do 4,90 proc., sięgając w październiku chwilowo 5 proc., czyli najwięcej od 2002 roku. Dalsza wysokość rentowności tych obligacji zależy m.in. od zaplanowanego na najbliższy piątek przeglądu ratingu kredytowego agencji Moody’s, która obecnie utrzymuje ocenę Aa3 z perspektywą negatywną. Sytuacja ta ma bezpośrednie znaczenie dla Polski, ponieważ zgromadzone dane GUS wskazują, że Francja jest trzecim odbiorcą polskiego eksportu, który w 2025 roku wyniósł 95,2 mld zł, czyli 6,1 proc. całości, z czego niemal połowę stanowi przemysł maszynowy i motoryzacyjny. Na poziomie politycznym mniejszościowy rząd planuje skorzystać z art. 49.3 francuskiej konstytucji, co daje opozycji 24 godziny na złożenie wniosku o wotum nieufności, do którego odwołania potrzeba 289 głosów.</p>\n<h3>Czego jeszcze nie wiemy</h3>\n<p>Nie ustalono jeszcze ostatecznej kwoty strat materialnych, które branża handlowa określa na razie ogólnie jako \"setki milionów euro\". Nie jest również znany wynik zaplanowanego na najbliższy piątek przeglądu ratingu kredytowego Francji przez agencję Moody’s (obecnie Aa3 z perspektywą negatywną), od którego zależy dalsza wysokość rentowności francuskich obligacji.</p>",
-    "imageUrl": "https://cdn.i-scmp.com/sites/default/files/styles/1280x720/public/d8/images/canvas/2026/10/20/51730a76-c7e1-4f09-b938-b4c064dbe8c7_765e064d.jpg?itok=v6MixVPL&v=1792457100",
-    "source": "News - South China Morning Post",
-    "sources": [
-      {
-        "title": "Business Insider businessinsider.com.pl — Francja liczy straty po zamieszkach. Kluczowe dni dla gospodarki i budżetu",
-        "uri": "https://businessinsider.com.pl/gospodarka/francuskie-zamieszki-uderzaja-w-gielde-i-obligacje-co-to-oznacza-dla-polski/p38dbsp"
-      }
-    ],
-    "backgroundSources": [
-      {
-        "title": "theguardian.com",
-        "uri": "https://www.theguardian.com/world/2026/oct/19/france-hit-by-debt-sell-off-as-violent-protests-unnerve-investors"
-      },
-      {
-        "title": "globalnews.northeastern.edu",
-        "uri": "https://globalnews.northeastern.edu/news/frances-student-protests-have-spiraled-into-broader-crisis/"
-      },
-      {
-        "title": "wsj.com",
-        "uri": "https://www.wsj.com/business/retail/carrefour-boss-demands-protection-after-dozens-of-stores-loot-during-france-protests-70966ee4"
-      }
-    ],
-    "publishers": [
-      "Business Insider businessinsider.com.pl"
-    ],
-    "corroborations": [
-      "theguardian.com"
-    ],
-    "trustLevel": "C",
-    "kind": "text",
-    "audio": null,
-    "durationSec": null,
-    "category": "swiat-reportaz",
-    "topic": "Zamieszki i częściowe godziny policyjne we Francji",
-    "pubDate": "2026-10-19T12:57:19.000Z",
-    "publishedAt": "2026-10-20T01:56:46.408Z"
   }
 ]
