@@ -417,7 +417,8 @@
     "filter": 512,
     "facts": 0,
     "claims": 128,
-    "background": 128
+    "background": 128,
+    "editor": 256
   },
   "cluster": {
     "similarityThreshold": 0.82,
@@ -432,16 +433,17 @@
     "maxChars": 14000,
     "timeoutMs": 15000,
     "concurrency": 4,
-    "maxArticlesPerCluster": 3,
+    "maxArticlesPerCluster": 4,
     "userAgent": "Mozilla/5.0 (compatible; ai-rss/1.0; +https://github.com/ai-rss)",
-    "maxCorpusChars": 26000
+    "maxCorpusChars": 32000
   },
   "background": {
     "enabled": true,
-    "maxClaims": 14,
+    "maxClaims": 18,
     "minTier2DomainsPerBackgroundClaim": 2,
     "t3RatioSkipThreshold": 0.6,
-    "t3MinClaimsForSkip": 8
+    "t3MinClaimsForSkip": 8,
+    "claimFactOverlap": 0.5
   },
   "trust": {
     "tier2Domains": [
@@ -641,7 +643,8 @@
     "background": "gemini-3.5-flash-lite",
     "embedding": "gemini-embedding-001",
     "fallback": "gemini-3.5-flash-lite",
-    "tts": "gemini-3.8-flash-lite-tts"
+    "tts": "gemini-3.8-flash-lite-tts",
+    "editor": "gemini-3.5-flash-lite"
   },
   "audio": {
     "enabled": true,
@@ -657,15 +660,22 @@
     "leadInSeconds": 1,
     "dedupThreshold": 0.6,
     "gapSeconds": 0.35,
-    "topicGapSeconds": 2.5
+    "topicGapSeconds": 4.5,
+    "dropYearWithinDays": 120
   },
   "filterReserve": 3,
   "article": {
-    "factsCharsMin": 2000,
-    "factsCharsMax": 3000,
-    "backgroundCharsMin": 1500,
-    "backgroundCharsMax": 2300,
-    "bulletsMin": 6,
-    "bulletsMax": 9
+    "factsCharsMin": 2500,
+    "factsCharsMax": 3800,
+    "backgroundCharsMin": 700,
+    "backgroundCharsMax": 2900,
+    "backgroundCharsPerClaim": 260,
+    "bulletsMin": 7,
+    "bulletsMax": 11
+  },
+  "editor": {
+    "enabled": true,
+    "maxDropShare": 0.35,
+    "earlierChars": 12000
   }
 }

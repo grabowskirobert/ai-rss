@@ -58,14 +58,37 @@ function dropRepeats(sentences) {
   });
 }
 
+// „30 października 2026 r.” w odsłuchu o wczorajszym wydarzeniu to szum —
+// rok niczego nie wnosi. Wycinamy go z dat leżących blisko dnia wydania
+// (także na przełomie roku: „30 grudnia 2026” czytane 2 stycznia), datę
+// odległą zostawiamy z rokiem.
+const MONTHS = ['stycznia', 'lutego', 'marca', 'kwietnia', 'maja', 'czerwca', 'lipca',
+  'sierpnia', 'września', 'października', 'listopada', 'grudnia'];
+const DATE_WITH_YEAR = new RegExp(
+  `(\\d{1,2})\\s+(${MONTHS.join('|')})\\s+(\\d{4})(\\s*(?:roku|r\\.))?`,
+  'gu'
+);
+
+export function dropNearYears(text, now = new Date()) {
+  const window = (OPTS.dropYearWithinDays ?? 120) * 86_400_000;
+  return text.replace(DATE_WITH_YEAR, (all, day, month, year, suffix, offset, whole) => {
+    const date = Date.UTC(Number(year), MONTHS.indexOf(month), Number(day));
+    if (Math.abs(date - now.getTime()) > window) return all;
+    // „…2026 r. Policja” — kropka skrótu kończyła też zdanie; nie może zniknąć.
+    const rest = whole.slice(offset + all.length);
+    const endsSentence = suffix?.endsWith('.') && /^\s*(?:$|<|[\p{Lu}„"])/u.test(rest);
+    return `${day} ${month}${endsSentence ? '.' : ''}`;
+  });
+}
+
 export function articleToSpeech(article) {
-  const body = article.html
+  const body = dropNearYears(article.html)
     .replace(/<h3[^>]*>[\s\S]*?<\/h3>/gi, '')
     .split(/<\/?(?:p|li|ul|ol|br)[^>]*>/i)
     .map(sentence)
     .filter(Boolean)
     .flatMap((unit) => unit.split(/(?<=[.!?…])\s+(?=[\p{Lu}„"])/u));
-  return [sentence(article.title), ...dropRepeats(body)].join(' ');
+  return [sentence(dropNearYears(article.title)), ...dropRepeats(body)].join(' ');
 }
 
 // Zmierzone na realnym nagraniu (odsluch-2026-09-28): 16,92 znaku na sekundę.
@@ -153,9 +176,9 @@ async function speakGemini(text) {
 // Cennik (cloud.google.com/text-to-speech/pricing, sprawdzony 2026-10-06):
 // Chirp 3 HD — 1 mln znaków/mies. za darmo, potem 30 USD/1 mln; WaveNet —
 // 4 mln za darmo, potem 4 USD/1 mln. Limity liczą się per konto
-// rozliczeniowe i obejmują też próby i lokalne przebiegi. Odsłuch to ~26 tys.
-// znaków dziennie (~780 tys./mies.), więc Chirp mieści się z niewielkim
-// zapasem — gdy limit się kończy, reszta miesiąca idzie głosem WaveNet,
+// rozliczeniowe i obejmują też próby i lokalne przebiegi. Odsłuch to ~30–33 tys.
+// znaków dziennie (~0,9–1 mln/mies.), więc Chirp mieści się na styk
+// — gdy limit się kończy, reszta miesiąca idzie głosem WaveNet,
 // który ma osobny, czterokrotnie większy limit.
 export const CLOUD_VOICES = {
   chirp: { model: 'cloud-tts-chirp3-hd', voice: () => OPTS.cloudVoice, freeChars: 1_000_000 },

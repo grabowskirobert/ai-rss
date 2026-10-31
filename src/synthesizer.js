@@ -33,6 +33,14 @@ const claimsModel = genAI.getGenerativeModel({
   generationConfig: thinkingFor('claims'),
 });
 
+// Redakcja tylko wskazuje zdania do skreślenia — nie pisze ani słowa, więc
+// nie może wprowadzić nowej treści. Odpowiedź w JSON, żeby dało się ją
+// zastosować mechanicznie.
+const editorModel = genAI.getGenerativeModel({
+  model: MODELS.editor || MODELS.fallback,
+  generationConfig: { ...thinkingFor('editor'), responseMimeType: 'application/json' },
+});
+
 const fallbackWriter = genAI.getGenerativeModel({
   model: MODELS.fallback,
   generationConfig: thinkingFor('facts'),
@@ -47,6 +55,12 @@ Zasady tytułu:
 - ZAKAZANE: publicystyczne metafory i idiomy prasowe ("szykuje bat", "wbija szpilę", "w ogniu", "przełom"), wykrzykniki, wielkie litery dla emfazy, słowa "szok", "pilne", "właśnie", "sensacja", pytania retoryczne, dwukropek dzielący tytuł na hasło i wyjaśnienie.
 - Bez ocen i emocji, maksymalnie 90 znaków.
 - Nie kopiuj tonu tytułu źródłowego — bywa tabloidowy.`;
+
+// Wydanie jest dziś praktycznie wyłącznie słuchane — lektor czyta tekst
+// dosłownie, więc zasady piszemy pod ucho, nie pod oko.
+const LISTENING_RULES = `- Ten tekst jest przede wszystkim SŁUCHANY: lektor czyta go dosłownie, od tytułu do ostatniego zdania. Słuchacz nie może wrócić wzrokiem, więc każda informacja pada DOKŁADNIE RAZ, w jednym miejscu. Nie wracaj do tego, co już padło — ani innymi słowami, ani jako przypomnienie, ani jako podsumowanie lub zapowiedź.
+- Jedna sprawa = jedno miejsce w tekście. Nie rozbijaj tego samego wątku na kilka punktów ani sekcji.
+- Daty: dzień i miesiąc bez roku, gdy chodzi o bieżący rok ("30 października", nie "30 października 2026 r."). Rok podaj tylko wtedy, gdy wydarzenie dotyczy innego roku niż bieżący. Unikaj nawiasów i skrótów, których nie da się naturalnie przeczytać na głos.`;
 
 // ── Przebieg A: fakty. Kontekst zamknięty, zero wyszukiwarki. ────────────────
 
@@ -86,7 +100,8 @@ Zasady:
 - Pisz wyłącznie po polsku, poprawną polszczyzną; sprawdź odmianę nazw własnych i form mnogich (np. "Szwajcarzy", nie "Szwajcari").
 - Obie sekcje mają łącznie ${config.article.factsCharsMin}–${config.article.factsCharsMax} znaków. Korpus jest zwykle kilka razy dłuższy niż tekst, który piszesz — to znaczy, że masz z czego wybierać, a nie że masz streszczać do minimum. Każdy fakt istotny dla zrozumienia sprawy ma trafić do tekstu: konkretne liczby, nazwiska, stanowiska stron, wcześniejsze incydenty, mechanizmy prawne, koszty, terminy.
 - Nie zostawiaj na boku faktów tylko dlatego, że tekst już wygląda na kompletny. Pomijasz wyłącznie lokalny szum i powtórzenia.
-- Tekst będzie też czytany na głos, więc powtórzenia są wyjątkowo uciążliwe: żadnego streszczania, zapowiadania ani podsumowywania tego, co już padło.
+${LISTENING_RULES}
+- Dłuższy tekst jest pożądany, o ile każde zdanie wnosi nowy fakt albo coś wyjaśnia: mechanizm, przyczynę, kontekst instytucji, znaczenie liczby. Gdy materiał się kończy, kończysz — nie dopisuj zdań bez treści.
 - Zero języka emocjonalnego, zero skrzywień politycznych, zero trybu "breaking news".
 - Wyjaśniaj skróty, instytucje i nazwiska przy pierwszym użyciu.
 - Twierdzenie relacjonowane ZACHOWUJE atrybucję. Jeśli źródło pisze "według portalu X" albo "rzecznik twierdzi", nigdy nie zamieniaj tego w goły fakt.
@@ -121,7 +136,7 @@ Nie zmyślaj URL-i. Jeśli nie znalazłeś nic sensownego, zwróć [].
 
 // ── Przebieg B2: pisanie tła. Znów bez wyszukiwarki. ────────────────────────
 
-const BACKGROUND_PROMPT = (topic, factsText, claimsBlock) => `
+const BACKGROUND_PROMPT = (topic, factsText, claimsBlock, maxChars) => `
 Jesteś dziennikarzem piszącym po polsku dla wydawnictwa typu "slow news".
 
 Temat: ${topic}
@@ -141,8 +156,10 @@ Napisz w czystym HTML dokładnie te dwie sekcje — bez wstępu i bez podsumowan
 <p>Jak poszczególne strony interpretują sprawę: gdzie się rozchodzą, kto ma jaki interes, które twierdzenia są sporne. Każde stanowisko przypisz nazwanemu aktorowi — "Komisja Europejska uważa", a nie "krytycy twierdzą".</p>
 
 Zasady:
-- Obie sekcje mają łącznie ${config.article.backgroundCharsMin}–${config.article.backgroundCharsMax} znaków. Wykorzystaj cały dostępny materiał uzupełniający; nie rozciągaj pustych zdań, ale nie zostawiaj też nieużytych twierdzeń.
-- Czytelnik zna już ustalone fakty — NIE wolno ci powtórzyć żadnego z nich, nawet innymi słowami. Żadna liczba, kwota ani wydarzenie z ustalonych faktów nie może pojawić się w twoim tekście. Dokładasz wyłącznie nowy kontekst.
+- Obie sekcje mają łącznie NAJWYŻEJ ${maxChars} znaków. To górna granica, nie cel: wykorzystaj materiał uzupełniający, a gdy się skończy — kończ, nawet jeśli tekst wyjdzie krótki.
+- Słuchacz usłyszał już ustalone fakty — NIE wolno ci powtórzyć żadnego z nich, nawet innymi słowami ani jako "stanowiska" strony. Jeśli twierdzenie z materiału uzupełniającego mówi to samo co ustalone fakty (np. że ktoś coś poparł, przerwał, ogłosił), POMIŃ je. Dokładasz wyłącznie nowy kontekst.
+- ZAKAZANE zdania-wypełniacze bez faktu: "serwis X zwraca uwagę na uwarunkowania", "sytuacja dzieli ośrodki władzy", "co stanowi istotne tło", "media szczegółowo odnotowują". Każde zdanie musi zawierać konkretną informację.
+${LISTENING_RULES}
 - Ostatnie zdanie nie podsumowuje sprawy ani nie ocenia jej znaczenia. Gdy skończy się materiał, kończysz tekst.
 - Poprawna polszczyzna: sprawdź odmianę nazw własnych i form mnogich.
 - NIE WOLNO ci wprowadzić żadnej nowej liczby, daty, nazwiska ani instytucji, których nie ma w materiale powyżej.
@@ -275,6 +292,119 @@ function renderClaims(claims) {
     || '(brak zweryfikowanego materiału uzupełniającego)';
 }
 
+// Słowa porównujemy po pierwszych pięciu literach — odmiana nie ukrywa wtedy
+// powtórzeń (ta sama miara co w odsłuchu).
+function stems(text) {
+  const words = text.toLowerCase().match(/[\p{L}\d]+/gu) ?? [];
+  return new Set(words.filter((w) => w.length > 3).map((w) => w.slice(0, 5)));
+}
+
+// Model wyszukujący często zwraca jako "stanowisko" to, co już jest
+// w faktach (np. "premier poparł…"). Pisarz tła przepisuje to potem
+// rozwlekle i w odsłuchu ta sama informacja pada dwa razy — odsiewamy
+// takie twierdzenia, zanim trafią do B2.
+function dropClaimsRepeatingFacts(claims, factsText) {
+  const facts = factsText.split(/(?<=[.!?…])\s+/).map(stems).filter((s) => s.size > 0);
+  const threshold = config.background.claimFactOverlap ?? 0.5;
+  return claims.filter((claim) => {
+    const words = [...stems(claim.twierdzenie)];
+    if (words.length < 4) return true;
+    return !facts.some((f) => words.filter((w) => f.has(w)).length / words.length >= threshold);
+  });
+}
+
+// ── Redakcja: skreślanie powtórzeń i wypełniaczy ────────────────────────────
+// Przebiegi A i B2 piszą niezależnie, więc mimo zakazów tło potrafi
+// opowiedzieć fakt drugi raz innymi słowami — porównanie słów tego nie łapie.
+// Model dostaje ponumerowane zdania i zwraca wyłącznie numery do skreślenia;
+// nic nie przepisuje, więc nie może dodać treści.
+
+const SENTENCE_SPLIT = /(?<=[.!?…])\s+(?=[\p{Lu}„"])/u;
+const BLOCK = /(<(li|p)\b[^>]*>)([\s\S]*?)(<\/\2>)/gi;
+
+// Zdanie to jednostka skreślenia; blok z wewnętrznymi znacznikami (np. <em>
+// przez granicę zdań) traktujemy jako jedną jednostkę, żeby nie rozbić HTML.
+function blockUnits(inner) {
+  if (inner.includes('<')) return [inner.trim()];
+  return inner.trim().split(SENTENCE_SPLIT).filter(Boolean);
+}
+
+export function listUnits(html) {
+  const units = [];
+  for (const part of html.split(/(?=<h3>)/i)) {
+    const section = stripHtml(part.match(/<h3>([\s\S]*?)<\/h3>/i)?.[1] ?? '');
+    for (const m of part.matchAll(BLOCK)) {
+      for (const text of blockUnits(m[3])) units.push({ section, text: stripHtml(text) });
+    }
+  }
+  return units;
+}
+
+export function removeUnits(html, drop) {
+  let n = 0;
+  const out = html.replace(BLOCK, (all, open, _tag, inner, close) => {
+    const kept = blockUnits(inner).filter(() => !drop.has(n++));
+    return kept.length === 0 ? '' : `${open}${kept.join(' ')}${close}`;
+  });
+  // Puste listy i sekcje, z których wszystko wypadło, znikają w całości.
+  return out
+    .replace(/<ul>\s*<\/ul>/gi, '')
+    .replace(/<h3>[^<]*<\/h3>\s*(?=<h3>|$)/gi, '')
+    .replace(/\n{2,}/g, '\n')
+    .trim();
+}
+
+const EDITOR_PROMPT = (title, units, earlier) => `
+Jesteś redaktorem audycji informacyjnej czytanej przez lektora. Słuchacz słyszy każde zdanie po kolei i nie może wrócić wzrokiem, więc każda informacja ma paść DOKŁADNIE RAZ.
+${earlier ? `
+Przed tym tekstem w tej samej audycji słuchacz usłyszał już:
+=== WCZEŚNIEJ W AUDYCJI ===
+${earlier}
+=== KONIEC ===
+` : ''}
+Tytuł (czytany jako pierwszy): ${title}
+
+Zdania tekstu, w kolejności czytania:
+${units.map((u, i) => `[${i}] (${u.section}) ${u.text}`).join('\n')}
+
+Wskaż zdania do SKREŚLENIA. Skreśl zdanie, jeśli:
+1. Powtarza informację, która padła już wcześniej — w tytule, w zdaniu o niższym numerze${earlier ? ' albo wcześniej w audycji' : ''} — nawet innymi słowami, z innej perspektywy albo z atrybucją do innego źródła ("według rmf24.pl prezydent przerwał podróż", gdy wcześniej padło, że przerwał podróż).
+2. Jest wypełniaczem bez żadnego konkretu: zapowiada, podsumowuje, ocenia znaczenie sprawy albo mówi, że ktoś "zwraca uwagę na uwarunkowania", nie mówiąc jakie.
+
+NIE skreślaj zdania, które obok powtórzenia wnosi nowy konkret (liczbę, nazwisko, datę, przyczynę, mechanizm) — wtedy zostaje. Nie skreślaj zdania [0]. W razie wątpliwości zostaw.
+
+Odpowiedz wyłącznie JSON-em: {"skresl": [numery zdań]}
+`;
+
+async function editOut(title, html, earlier) {
+  if (config.editor?.enabled === false) return html;
+  const units = listUnits(html);
+  if (units.length < 3) return html;
+
+  let drop;
+  try {
+    const result = await editorModel.generateContent(EDITOR_PROMPT(title, units, earlier));
+    record(MODELS.editor || MODELS.fallback, result.response, 'redakcja');
+    const parsed = JSON.parse(result.response.text().replace(/```json|```/g, '').trim());
+    drop = new Set((parsed.skresl || []).map(Number).filter((n) => Number.isInteger(n) && n > 0 && n < units.length));
+  } catch (err) {
+    log.warn(`Redakcja nie powiodła się (${err.message.slice(0, 90)}) — tekst bez zmian`);
+    return html;
+  }
+
+  // Bezpiecznik: model, który chce skreślić pół tekstu, źle zrozumiał zadanie.
+  const maxShare = config.editor?.maxDropShare ?? 0.35;
+  if (drop.size > units.length * maxShare) {
+    log.warn(`Redakcja chciała skreślić ${drop.size}/${units.length} zdań — ignoruję`);
+    return html;
+  }
+  if (drop.size === 0) return html;
+
+  log.info(`Redakcja: skreślono ${drop.size}/${units.length} zdań (powtórzenia, wypełniacze)`);
+  for (const n of [...drop].sort((a, b) => a - b)) log.info(`  ✂ [${units[n].section}] ${units[n].text.slice(0, 110)}`);
+  return removeUnits(html, drop);
+}
+
 async function runWriter(model, modelName, prompt, stage) {
   try {
     const result = await model.generateContent(prompt);
@@ -309,7 +439,7 @@ function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-async function synthesizeCluster(cluster, recentTopics) {
+async function synthesizeCluster(cluster, recentTopics, earlier) {
   const topic = cluster.topic || cluster.members[0].title;
   const { articles, publishers } = await buildCorpus(cluster);
 
@@ -332,7 +462,7 @@ async function synthesizeCluster(cluster, recentTopics) {
 
   const { title, body: factsHtml } = extractTitle(factsRaw, cluster.members[0].title);
   const factsSections = splitSections(factsHtml);
-  const factsText = stripHtml(factsHtml).slice(0, 2600);
+  const factsText = stripHtml(factsHtml).slice(0, 5000);
 
   // B1 — zbieranie twierdzeń z internetu + odsiew po poziomach zaufania
   const rawClaims = await gatherClaims(topic, factsText);
@@ -367,10 +497,22 @@ async function synthesizeCluster(cluster, recentTopics) {
 
   // B2 — pisanie tła wyłącznie z przefiltrowanego materiału
   let backgroundSections = new Map();
-  if (vetted && vetted.accepted.length > 0) {
+  const usable = vetted ? dropClaimsRepeatingFacts(vetted.accepted, factsText) : [];
+  if (vetted && usable.length < vetted.accepted.length) {
+    log.info(`Tło: ${vetted.accepted.length - usable.length} twierdzeń powtarza fakty — pomijam je`);
+  }
+  const forWriter = usable.filter((c) => c.rodzaj !== 'potwierdzenie');
+  if (forWriter.length > 0) {
+    // Długość tła rośnie z ilością materiału — sztywne minimum kazało
+    // modelowi rozwlekać jedno twierdzenie w akapit wypełniaczy.
+    const { backgroundCharsMin, backgroundCharsMax, backgroundCharsPerClaim } = config.article;
+    const maxChars = Math.max(
+      backgroundCharsMin,
+      Math.min(backgroundCharsMax, forWriter.length * (backgroundCharsPerClaim ?? 260))
+    );
     const backgroundRaw = await runWriter(
       backgroundModel, MODELS.background,
-      BACKGROUND_PROMPT(topic, factsText, renderClaims(vetted.accepted)),
+      BACKGROUND_PROMPT(topic, factsText, renderClaims(forWriter), maxChars),
       'tlo'
     );
     if (backgroundRaw && !backgroundRaw.startsWith('SKIP')) {
@@ -389,7 +531,7 @@ async function synthesizeCluster(cluster, recentTopics) {
     hasFullText: true,
   });
 
-  const html = assemble(factsSections, backgroundSections);
+  const html = await editOut(title, assemble(factsSections, backgroundSections), earlier);
   const factSources = articles.map((a) => ({ title: `${a.source} — ${a.title}`, uri: a.link }));
 
   log.ok(
@@ -423,7 +565,13 @@ export async function synthesizeClusters(clusters, { target, recentTopics = [] }
     log.info(`Synteza (${synthesized.length + 1}/${limit})${reserve}: ${cluster.members[0].title}`);
 
     try {
-      const result = await synthesizeCluster(cluster, recentTopics);
+      // Redakcja widzi teksty, które w audycji padną wcześniej — ta sama
+      // informacja nie wraca wtedy w kolejnym temacie.
+      const earlier = synthesized
+        .map((a) => `${a.title}: ${stripHtml(a.html)}`)
+        .join('\n')
+        .slice(-(config.editor?.earlierChars ?? 12000));
+      const result = await synthesizeCluster(cluster, recentTopics, earlier);
       if (result) synthesized.push(result);
     } catch (err) {
       log.error(`Synteza wywróciła się: ${err.message.slice(0, 120)}`);

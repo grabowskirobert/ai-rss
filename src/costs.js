@@ -131,4 +131,4 @@ export function reportCosts(articleCount = 0, { dryRun = false } = {}) {
 
 // Etapy, których koszt rośnie z liczbą tekstów — scenariusz i TTS też,
 // bo audycja jest proporcjonalnie dłuższa.
-const PER_ARTICLE_STAGES = new Set(['fakty', 'twierdzenia', 'tlo', 'scenariusz', 'tts']);
+const PER_ARTICLE_STAGES = new Set(['fakty', 'twierdzenia', 'tlo', 'redakcja', 'scenariusz', 'tts']);
