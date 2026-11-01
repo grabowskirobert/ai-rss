@@ -39,7 +39,13 @@ const CATEGORIES = [
   'nauka-technologia-klimat',
   'kultura-i-idee',
   'swiat-reportaz',
+  'katastrofy-i-kleski',
 ];
+
+// Katastrofa ma trafić do wydania, ale nie może wypierać tematów, które coś
+// tłumaczą — w zestawie właściwym i w rezerwie najwyżej jedna.
+const DISASTER = 'katastrofy-i-kleski';
+const MAX_DISASTERS = config.maxDisastersPerRun ?? 1;
 
 export async function filterClusters(clusters, recentTopics = []) {
   if (clusters.length === 0) return [];
@@ -97,12 +103,16 @@ CO WARTO WYBIERAĆ:
 - Sprawy społeczne: edukacja, migracja, wymiar sprawiedliwości, prawa obywatelskie.
 - Śledztwa dziennikarskie i dobrze udokumentowane reportaże o innych krajach — nawet bez bezpośredniego wpływu na Polskę. Tekst może być wartościowy poznawczo: jak coś działa, dlaczego jakieś państwo podjęło nietypową decyzję.
 - Kultura i idee, jeśli chodzi o coś więcej niż premiera lub plotka.
+- POWAŻNE katastrofy i klęski żywiołowe (kategoria "${DISASTER}") — czytelnik ma o nich wiedzieć, nawet jeśli nie stoi za nimi żadna decyzja polityczna. Próg: ofiary śmiertelne albo wielu rannych, masowe ewakuacje, paraliż infrastruktury krytycznej (kolej, prąd, woda, mosty, lotniska), ogłoszony stan klęski lub alarm powodziowy. Przykłady: zderzenie pociągów, powódź, duże trzęsienie ziemi, pożar z wieloma ofiarami, katastrofa lotnicza, awaria przemysłowa.
+  - Polska i kraje sąsiednie: próg niższy — liczy się już kilka ofiar albo realny paraliż regionu.
+  - Reszta świata: tylko zdarzenia dużej skali (dziesiątki ofiar, setki tysięcy poszkodowanych lub ewakuowanych).
+  - Najwyżej ${MAX_DISASTERS} taki wątek w całym zestawie (razem z rezerwą). Nie liczy się do limitu tematów polskich ani światowych — zastępuje najsłabszy z nich.
 
 CO ODRZUCAĆ:
 - Clickbait i sensacja bez treści; nagłówki bez faktu w środku.
 - Lifestyle, dieta, moda, horoskopy, quizy, rankingi, loterie.
 - Plotki i życie celebrytów.
-- Wypadki drogowe i lokalna kryminalka bez znaczenia ogólniejszego.
+- Pojedyncze wypadki drogowe i lokalna kryminalka bez znaczenia ogólniejszego. WYJĄTEK: katastrofy powyżej progu opisanego wyżej — tych nie odrzucaj.
 - Sport, poza poważnym skandalem systemowym.
 - Pyskówki polityków, "X odpowiedział Y" — bez konkretnego zdarzenia lub decyzji.
 - Relacje "na żywo" i migawki bez zamkniętej treści.
@@ -126,12 +136,20 @@ Bez markdown, bez wyjaśnień, tylko JSON.`;
 
     const seen = new Set();
     const selected = [];
+    let disasters = 0;
 
     for (const entry of parsed) {
       const idx = typeof entry === 'number' ? entry : entry?.index;
       if (typeof idx !== 'number' || idx < 0 || idx >= candidates.length) continue;
       if (seen.has(idx)) continue;
       seen.add(idx);
+      if (entry?.kategoria === DISASTER) {
+        if (disasters >= MAX_DISASTERS) {
+          log.info(`  pomijam kolejną katastrofę (limit ${MAX_DISASTERS}): ${candidates[idx].members[0].title}`);
+          continue;
+        }
+        disasters++;
+      }
       selected.push({
         ...candidates[idx],
         category: entry?.kategoria || 'nieokreslona',

@@ -664,6 +664,7 @@
     "dropYearWithinDays": 120
   },
   "filterReserve": 3,
+  "maxDisastersPerRun": 1,
   "article": {
     "factsCharsMin": 2500,
     "factsCharsMax": 3800,
