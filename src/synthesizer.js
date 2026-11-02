@@ -553,8 +553,10 @@ async function synthesizeCluster(cluster, recentTopics, earlier) {
   };
 }
 
-export async function synthesizeClusters(clusters, { target, recentTopics = [] } = {}) {
-  const limit = target || clusters.length;
+// `before` — teksty, które w audycji padną wcześniej (np. zestaw właściwy
+// przed dodatkową katastrofą); redakcja nie pozwoli ich powtórzyć.
+export async function synthesizeClusters(clusters, { target, recentTopics = [], before = [] } = {}) {
+  const limit = target ?? clusters.length;
   const synthesized = [];
 
   for (let i = 0; i < clusters.length && synthesized.length < limit; i++) {
@@ -567,7 +569,7 @@ export async function synthesizeClusters(clusters, { target, recentTopics = [] }
     try {
       // Redakcja widzi teksty, które w audycji padną wcześniej — ta sama
       // informacja nie wraca wtedy w kolejnym temacie.
-      const earlier = synthesized
+      const earlier = [...before, ...synthesized]
         .map((a) => `${a.title}: ${stripHtml(a.html)}`)
         .join('\n')
         .slice(-(config.editor?.earlierChars ?? 12000));

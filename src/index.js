@@ -129,7 +129,7 @@ async function audioOnlyRun() {
   // Bierzemy wyłącznie teksty z NAJNOWSZEGO wydania — inaczej przy niepełnym
   // zestawie audycja dobrałaby artykuły z poprzedniego dnia i przeczytała je
   // drugi raz pod dzisiejszą datą.
-  const count = Number(flagValue('--audio-only')) || config.maxItemsPerRun;
+  const count = Number(flagValue('--audio-only')) || config.maxItemsPerRun + (config.maxDisastersPerRun ?? 1);
   const texts = loadArchive().filter((entry) => entry.kind !== 'audio');
   const newest = texts[0] && warsawDate(texts[0].publishedAt);
   const articles = texts.filter((e) => warsawDate(e.publishedAt) === newest).slice(0, count);
@@ -202,9 +202,9 @@ async function main() {
 
   // Faza 3
   log.phase('Faza 3 — filtrowanie (Gemini)');
-  const filtered = await filterClusters(clusters, recentTopics());
+  const { main: filtered, disasters } = await filterClusters(clusters, recentTopics());
 
-  if (filtered.length === 0) {
+  if (filtered.length === 0 && disasters.length === 0) {
     log.warn('Żaden wątek nie przeszedł filtra — kończę bez zapisu feed.xml');
     return;
   }
@@ -220,6 +220,16 @@ async function main() {
   const target = LIMIT || config.maxItemsPerRun;
   if (LIMIT) log.warn(`--limit ${LIMIT}: celuję w ${LIMIT} tekstów zamiast ${config.maxItemsPerRun}`);
   const synthesized = await synthesizeClusters(filtered, { target, recentTopics: recentTopics() });
+
+  // Katastrofa to tekst DODATKOWY, na końcu wydania — nie wypiera żadnego
+  // z tematów głównych. Przy --limit (tanie próby) pomijamy ją.
+  const maxDisasters = LIMIT ? 0 : (config.maxDisastersPerRun ?? 1);
+  if (disasters.length > 0 && maxDisasters > 0) {
+    log.info(`Dodatkowo: katastrofa (${disasters.length} kandydat${disasters.length === 1 ? '' : 'ów'})`);
+    synthesized.push(...await synthesizeClusters(disasters, {
+      target: maxDisasters, recentTopics: recentTopics(), before: synthesized,
+    }));
+  }
   log.ok(`Zsyntezowano ${synthesized.length} artykułów`);
 
   if (synthesized.length === 0) {

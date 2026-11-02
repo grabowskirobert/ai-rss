@@ -42,13 +42,14 @@ const CATEGORIES = [
   'katastrofy-i-kleski',
 ];
 
-// Katastrofa ma trafić do wydania, ale nie może wypierać tematów, które coś
-// tłumaczą — w zestawie właściwym i w rezerwie najwyżej jedna.
+// Katastrofa to DODATKOWY tekst ponad zestaw właściwy — nie wypiera żadnego
+// z tematów, które coś tłumaczą. Wybierana osobno, z jedną pozycją rezerwy.
 const DISASTER = 'katastrofy-i-kleski';
 const MAX_DISASTERS = config.maxDisastersPerRun ?? 1;
+const DISASTER_PICKS = MAX_DISASTERS > 0 ? MAX_DISASTERS + 1 : 0;
 
 export async function filterClusters(clusters, recentTopics = []) {
-  if (clusters.length === 0) return [];
+  if (clusters.length === 0) return { main: [], disasters: [] };
 
   // Wybieramy z zapasem: temat bywa odrzucony dopiero na etapie syntezy
   // (paywall, brak korpusu, materiał wyłącznie z serwisów bez redakcji),
@@ -79,6 +80,9 @@ ${recentTopics.map((t) => `- ${t}`).join('\n')}
 Lista poniżej to WĄTKI, nie pojedyncze artykuły. Jeden wątek = jedno wydarzenie opisane przez jednego lub kilku wydawców; deduplikacja została już zrobiona. Przy każdym wątku podana jest liczba niezależnych wydawców, którzy go opisali.
 
 Wybierz ${targetCount} wątków, uporządkowanych od najważniejszego. Pierwsze ${config.maxItemsPerRun} to zestaw właściwy, kolejne ${config.filterReserve} to rezerwa na wypadek, gdyby któregoś nie dało się opracować — dobierz je równie starannie.
+${DISASTER_PICKS > 0 ? `
+OSOBNO, ponad te ${targetCount} wątków, dołóż do ${DISASTER_PICKS} wątków kategorii "${DISASTER}" (najważniejszy pierwszy, kolejny to rezerwa) — tylko jeśli są katastrofy powyżej progu opisanego niżej; jeśli nie ma, nie dokładaj żadnego. Katastrofy NIE wchodzą do ${targetCount} wątków głównych i nie liczą się do żadnych proporcji ani limitów poniżej.
+` : ''}
 
 NAJWAŻNIEJSZA ZASADA — RÓŻNORODNOŚĆ:
 - Każdy wybrany wątek musi dotyczyć INNEGO wydarzenia i INNEGO obszaru tematycznego.
@@ -106,7 +110,7 @@ CO WARTO WYBIERAĆ:
 - POWAŻNE katastrofy i klęski żywiołowe (kategoria "${DISASTER}") — czytelnik ma o nich wiedzieć, nawet jeśli nie stoi za nimi żadna decyzja polityczna. Próg: ofiary śmiertelne albo wielu rannych, masowe ewakuacje, paraliż infrastruktury krytycznej (kolej, prąd, woda, mosty, lotniska), ogłoszony stan klęski lub alarm powodziowy. Przykłady: zderzenie pociągów, powódź, duże trzęsienie ziemi, pożar z wieloma ofiarami, katastrofa lotnicza, awaria przemysłowa.
   - Polska i kraje sąsiednie: próg niższy — liczy się już kilka ofiar albo realny paraliż regionu.
   - Reszta świata: tylko zdarzenia dużej skali (dziesiątki ofiar, setki tysięcy poszkodowanych lub ewakuowanych).
-  - Najwyżej ${MAX_DISASTERS} taki wątek w całym zestawie (razem z rezerwą). Nie liczy się do limitu tematów polskich ani światowych — zastępuje najsłabszy z nich.
+  - Taki wątek oznacz kategorią "${DISASTER}" i dołóż OSOBNO, ponad wątki główne (patrz wyżej) — nie zastępuje żadnego z nich.
 
 CO ODRZUCAĆ:
 - Clickbait i sensacja bez treści; nagłówki bez faktu w środku.
@@ -136,26 +140,24 @@ Bez markdown, bez wyjaśnień, tylko JSON.`;
 
     const seen = new Set();
     const selected = [];
-    let disasters = 0;
+    const disasters = [];
 
     for (const entry of parsed) {
       const idx = typeof entry === 'number' ? entry : entry?.index;
       if (typeof idx !== 'number' || idx < 0 || idx >= candidates.length) continue;
       if (seen.has(idx)) continue;
       seen.add(idx);
-      if (entry?.kategoria === DISASTER) {
-        if (disasters >= MAX_DISASTERS) {
-          log.info(`  pomijam kolejną katastrofę (limit ${MAX_DISASTERS}): ${candidates[idx].members[0].title}`);
-          continue;
-        }
-        disasters++;
-      }
-      selected.push({
+      const pick = {
         ...candidates[idx],
         category: entry?.kategoria || 'nieokreslona',
         topic: entry?.temat || candidates[idx].members[0].title,
-      });
-      if (selected.length >= targetCount) break;
+      };
+      if (pick.category === DISASTER) {
+        if (disasters.length < DISASTER_PICKS) disasters.push(pick);
+        else log.info(`  pomijam kolejną katastrofę (limit ${DISASTER_PICKS}): ${pick.members[0].title}`);
+      } else if (selected.length < targetCount) {
+        selected.push(pick);
+      }
     }
 
     log.ok(`Filtr wybrał ${selected.length} wątków (${config.maxItemsPerRun} + rezerwa):`);
@@ -168,9 +170,16 @@ Bez markdown, bez wyjaśnień, tylko JSON.`;
       log.warn(`Mała różnorodność: tylko ${categories.size} kategorie (${[...categories].join(', ')})`);
     }
 
-    return selected;
+    if (disasters.length > 0) {
+      log.ok(`Katastrofy (dodatkowo, ponad ${config.maxItemsPerRun} tekstów):`);
+      disasters.forEach((cluster, i) =>
+        log.info(`  ${i + 1}.${i >= MAX_DISASTERS ? ' (rezerwa)' : ''} ${cluster.publisherCount}× ${cluster.members[0].title}  ← ${cluster.topic}`)
+      );
+    }
+
+    return { main: selected, disasters };
   } catch (err) {
     log.error(`Filtr nie powiódł się: ${err.message}`);
-    return [];
+    return { main: [], disasters: [] };
   }
 }
