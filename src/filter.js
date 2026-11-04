@@ -2,6 +2,7 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 import config from '../config.json' with { type: 'json' };
 import { log } from './logger.js';
 import { record } from './costs.js';
+import { extractJson } from './json-extract.js';
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 const FILTER_MODEL = config.models.filter;
@@ -17,16 +18,19 @@ const model = genAI.getGenerativeModel({
 });
 const fallbackModel = genAI.getGenerativeModel({ model: FALLBACK_MODEL });
 
+// Zwraca sparsowaną tablicę. Błąd API ALBO nieczytelna odpowiedź (np. tekst
+// dopisany po JSON-ie) przełącza na model zapasowy — inaczej jedno złe
+// zdanie z modelu kasuje całe wydanie.
 async function generate(prompt) {
   try {
     const result = await model.generateContent(prompt);
     record(FILTER_MODEL, result.response, 'filtr');
-    return result.response.text();
+    return extractJson(result.response.text(), '[');
   } catch (err) {
     log.warn(`Model ${FILTER_MODEL} zawiódł (${err.message.slice(0, 120)}) — fallback na ${FALLBACK_MODEL}`);
     const result = await fallbackModel.generateContent(prompt);
     record(FALLBACK_MODEL, result.response, 'filtr');
-    return result.response.text();
+    return extractJson(result.response.text(), '[');
   }
 }
 
@@ -134,8 +138,7 @@ Pole "temat" opisuje wątek, nie nagłówek — posłuży do unikania powtórek 
 Bez markdown, bez wyjaśnień, tylko JSON.`;
 
   try {
-    const text = (await generate(prompt)).trim().replace(/```json|```/g, '').trim();
-    const parsed = JSON.parse(text);
+    const parsed = await generate(prompt);
     if (!Array.isArray(parsed)) return [];
 
     const seen = new Set();

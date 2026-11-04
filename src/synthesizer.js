@@ -2,6 +2,7 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 import config from '../config.json' with { type: 'json' };
 import { log } from './logger.js';
 import { record } from './costs.js';
+import { extractJson } from './json-extract.js';
 import { buildCorpus, renderCorpus } from './extractor.js';
 import { hostOf, resolveUrl, tierOf, trustLevel } from './trust.js';
 
@@ -212,11 +213,8 @@ function stripHtml(html) {
 }
 
 function parseJsonArray(text) {
-  const cleaned = text.trim().replace(/```json|```/g, '').trim();
-  const start = cleaned.indexOf('[');
-  const end = cleaned.lastIndexOf(']');
-  if (start === -1 || end === -1) return [];
-  const parsed = JSON.parse(cleaned.slice(start, end + 1));
+  if (!String(text).includes('[')) return [];
+  const parsed = extractJson(text, '[');
   return Array.isArray(parsed) ? parsed : [];
 }
 
@@ -385,7 +383,7 @@ async function editOut(title, html, earlier) {
   try {
     const result = await editorModel.generateContent(EDITOR_PROMPT(title, units, earlier));
     record(MODELS.editor || MODELS.fallback, result.response, 'redakcja');
-    const parsed = JSON.parse(result.response.text().replace(/```json|```/g, '').trim());
+    const parsed = extractJson(result.response.text(), '{');
     drop = new Set((parsed.skresl || []).map(Number).filter((n) => Number.isInteger(n) && n > 0 && n < units.length));
   } catch (err) {
     log.warn(`Redakcja nie powiodła się (${err.message.slice(0, 90)}) — tekst bez zmian`);
