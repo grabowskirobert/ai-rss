@@ -1,5 +1,315 @@
 [
   {
+    "guid": "https://www.scmp.com/news/china/diplomacy/article/3373853/us-congress-ramps-pressure-nvidias-jensen-huang-over-alleged-china-spy-links",
+    "title": "Zarząd Nvidii bada sprawę romansu prezesa firmy Jensena Huanga",
+    "link": "https://www.scmp.com/news/china/diplomacy/article/3373853/us-congress-ramps-pressure-nvidias-jensen-huang-over-alleged-china-spy-links",
+    "html": "<h3>Kluczowe fakty</h3>\n<ul>\n  <li>Zarząd amerykańskiego koncernu Nvidia wszczął wewnętrzne śledztwo w sprawie relacji prezesa Jensena Huanga z Alice Huang, menedżerką firmy ze Singapuru, którą amerykańskie służby wywiadowcze uznały za chińską agentkę.</li>\n  <li>Jensen Huang, który w zeszłym roku zarobił 36 milionów dolarów i w marcu posiadał około 3,5 procent akcji spółki, popiera przegląd procedur i zadeklarował pełną współpracę z zarządem.</li>\n  <li>Zgodnie z ujawnioną dokumentacją korporacyjną Huang jest zatrudniony na czas nieokreślony i może zostać zwolniony w dowolnym momencie bez prawa do odprawy.</li>\n  \n  <li>Po ujawnieniu informacji o sprawdzaniu postępowania szefa przedsiębiorstwa akcje Nvidii spadły w poniedziałek o ponad 4 procent, mimo ogólnych wzrostów na giełdzie.</li>\n  \n  <li>Zdaniem Davida Yoffie, profesora Harvard Business School, zarząd spółki skupi się na weryfikacji naruszeń wewnętrznych procedur, podczas gdy Federalne Biuro Śledcze (FBI) może badać ewentualne złamanie prawa, a Kongres USA – wpływ relacji szefa firmy na amerykańską politykę handlową.</li>\n  <li>Ekspert Ryan Fedasiuk z ośrodka badawczego Foundation for American Innovation wskazuje, że sprawa wywołuje pytania o potencjalne wycieki wrażliwych informacji dotyczących strategicznych planów rządu USA oraz spółek z branży technologicznej.</li>\n  <li>Według Sama Bresnicka z Center for Security and Emerging Technology na Uniwersytecie Georgetown, sprawa romansu przyspieszy zaostrzenie kontroli eksportowej ze strony Departamentu Handlu USA, mimo że w trakcie drugiej kadencji prezydenta Donalda Trumpa łagodzono dotychczasowe restrykcje i zezwalano na sprzedaż do Chin starszych generacji chipów.</li>\n</ul>\n<h3>Jak do tego doszło</h3>\n<p>Chińskie Ministerstwo Spraw Zagranicznych odrzuciło oskarżenia o operację szpiegowską wymierzoną w szefa Nvidii, określając je jako bezpodstawne i stanowiące element kampanii oszczerств.</p>\n<h3>Różne perspektywy</h3>\n<p>Prezydent USA Donald Trump oświadcił, że FBI bada sprawę relacji szefa Nvidii z kobietą podejrzewaną o powiązania z chińskim wywiadem, wyrażając jednocześnie przekonanie, że dyrektor generalny nie miał świadomości jej domniemanej działalności.</p>\n<h3>Czego jeszcze nie wiemy</h3>\n<p>Nie wiadomo jeszcze, jak dokładnie zakończy się wewnętrzne dochodzenie zarządu ani czy doprowadzi ono do odwołania Jensena Huanga ze stanowiska prezesa. Niewyjaśniona pozostaje kwestia, czy sprawą oficjalnie zajmą się agencje federalne oraz Kongres USA, a także czy w trakcie relacji doszło do przekazania Chinom jakichkolwiek poufnych danych technologicznych. Przedsiębiorstwo Nvidia nie przekazało oficjalnego komentarza w tej sprawie.</p>",
+    "imageUrl": "https://cdn.i-scmp.com/sites/default/files/styles/1280x720/public/d8/images/canvas/2026/11/10/496935b8-04fd-47cd-bb8b-2dbaa1b3bf97_a1337fc5.jpg?itok=QuaRs_Y7&v=1794264051",
+    "source": "News - South China Morning Post",
+    "sources": [
+      {
+        "title": "WIRED — Jensen Huang’s Troubles Leave the AI Industry Reeling",
+        "uri": "https://www.wired.com/story/jensen-huangs-troubles-leaves-the-ai-industry-reeling/"
+      },
+      {
+        "title": "POLITICO — Europe needs Nvidia. It’ll take more than a spy scandal to change that.",
+        "uri": "https://www.politico.eu/article/europe-needs-nvidia-spy-scandal-ai-microchips-germany-jensen-huang/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication"
+      }
+    ],
+    "backgroundSources": [
+      {
+        "title": "aljazeera.com",
+        "uri": "https://www.aljazeera.com/news/2026/11/10/trump-says-fbi-probing-nvidia-ceo-huangs-affair-with-alleged-spy"
+      },
+      {
+        "title": "pbs.org",
+        "uri": "https://www.pbs.org/newshour/world/what-we-know-and-what-we-dont-as-nvidia-investigates-an-alleged-spy-plot-involving-its-ceo"
+      },
+      {
+        "title": "washingtonpost.com",
+        "uri": "https://www.washingtonpost.com/technology/2026/11/08/nvidia-jensen-huang-investigation-affair-spy/"
+      },
+      {
+        "title": "theguardian.com",
+        "uri": "https://www.theguardian.com/technology/2026/nov/09/alice-huang-nvidia-ceo-jensen-huang-china-spy"
+      }
+    ],
+    "publishers": [
+      "WIRED",
+      "POLITICO"
+    ],
+    "corroborations": [
+      "washingtonpost.com",
+      "theguardian.com"
+    ],
+    "trustLevel": "B",
+    "kind": "text",
+    "audio": null,
+    "durationSec": null,
+    "category": "nauka-technologia-klimat",
+    "topic": "Kongres USA bada powiązania szefa Nvidii",
+    "pubDate": "2026-11-09T22:17:04.000Z",
+    "publishedAt": "2026-11-10T04:43:50.845Z"
+  },
+  {
+    "guid": "https://novayagazeta.eu/articles/2026/11/09/v-moskve-vvodiat-ogranicheniia-na-prodazhu-benzina-na-zapravkakh-rosnefti-news",
+    "title": "Rosnieft ogranicza sprzedaż paliwa na stacjach w wielu regionach Rosji",
+    "link": "https://novayagazeta.eu/articles/2026/11/09/v-moskve-vvodiat-ogranicheniia-na-prodazhu-benzina-na-zapravkakh-rosnefti-news",
+    "html": "<h3>Kluczowe fakty</h3>\n<ul>\n  <li>Stacje benzynowe rosyjskiego koncernu naftowego Rosnieft wprowadziły limity sprzedaży paliwa, co jest odpowiedzią na powtarzające się ukraińskie ataki dronów dalekiego zasięgu i rakiet na rafinerie.</li>\n  <li>W miastach klienci mogą kupić maksymalnie 30 litrów benzyny, a na autostradach do 50 litrów, przy czym zabroniono tankowania do kanistrów.</li>\n  <li>Lokalne restrykcje w obwodzie leningradzkim obejmują limit 30 litrów benzyny oraz 50 litrów oleju napędowego na osobę, co według gubernatora Aleksandra Drozdienki ma zapobiec gwałtownemu wzrostowi popytu i masowemu Wykupywaniu paliwa po atakach z nocy z niedzieli na poniedziałek.</li>\n  <li>Najwcześniejsze ograniczenia wprowadzono 1 listopada w obwodzie niżnonowogrodzkim, gdzie władze zakazały sprzedaży benzyny w kanistrach oraz tankowania pojazdów zarejestrowanych poza tym regionem.</li>\n  <li>Według rosyjskiego portalu Meduza oraz brytyjskiego dziennika „Financial Times”, od 7 listopada ograniczenia obowiązują w co najmniej czterech regionach, w tym w Kraju Zabajkalskim, a także w Karelii, Buriacji, Kraju Krasnojarskim i obwodzie nowosibirskim.</li>\n  <li>Kijów wznowił uderzenia w rosyjski sektor naftowy 30 października po około dwutygodniowej przerwie wymuszonej naciskami ze strony Stanów Zjednoczonych, atakując w ostatnich tygodniach co najmniej osiem rafinerii, z których połowa należy do Rosnieftu.</li>\n  <li>Główny Zarząd Wywiadu Ministerstwa Obrony Ukrainy (HUR) poinformował na początku listopada, że 15 z 38 głównych rosyjskich rafinerii zostało całkowicie wyłączonych z eksploatacji, a kolejnych 12 musiało ograniczyć produkcję.</li>\n  <li>Według ustaleń agencji Bloomberg z końca października, sytuacja finansowa Rosnieftu ulega pogorszeniu, a sam koncern przyznaje, że dalsze miesiące wojny mogą przynieść długotrwałe szkody dla jego działalności.</li>\n  <li>W nocy na 9 listopada ukraińskie siły uderzyły w zakłady imienia Morozowa pod Petersburgiem, niszcząc trzy warsztaty produkcyjne paliwa stałego i materiałów wybuchowych do pocisków balistycznych 9M723 systemu Iskander-M oraz rakiet Topol-M.</li>\n</ul>\n<h3>Czego jeszcze nie wiemy</h3>\n<p>Niezależne źródła nie zweryfikowały dotąd pełnego zakresu szkód wyrządzonych w zakładach produkcyjnych pod Petersburgiem, a rosyjskie Ministerstwo Obrony nie odniosło się oficjalnie do tego incydentu. Nie ustalono również ostatecznej liczby wszystkich regionów Rosji, w których wprowadzono ograniczenia sprzedaży paliw.</p>",
+    "imageUrl": null,
+    "source": "Новая Газета. Европа",
+    "sources": [
+      {
+        "title": "The Kyiv Independent - News from Ukraine, Eastern Europe —  Ukraine war latest: Russia suffers record daily losses for 2nd time in a month ",
+        "uri": "https://kyivindependent.com/ukraine-war-latest-russia-suffers-record-daily-losses-for-2nd-time-in-a-month/"
+      },
+      {
+        "title": "Najnowsze wiadomości - TVN24 — Kryzys w Rosji. Nowe ograniczenia",
+        "uri": "https://tvn24.pl/biznes/ze-swiata/kryzys-w-rosji-nowe-ograniczenia-st9330914?source=rss"
+      },
+      {
+        "title": "Bankier.pl - Wiadomości — Rosnieft wprowadza limity na stacjach benzynowych. Uderzenie Ukrainy przynosi skutki",
+        "uri": "https://www.bankier.pl/wiadomosc/Rosnieft-wprowadza-limity-na-stacjach-benzynowych-Uderzenie-Ukrainy-przynosi-skutki-9226380.html?utm_source=RSS&utm_medium=RSS&utm_campaign=Wiadomosci"
+      }
+    ],
+    "backgroundSources": [
+      {
+        "title": "businessinsider.com.pl",
+        "uri": "https://businessinsider.com.pl/gospodarka/rosnieft-wprowadza-limity-na-paliwa-w-rosji-to-reakcja-na-dzialania-ukrainy/1sn55bf"
+      }
+    ],
+    "publishers": [
+      "The Kyiv Independent - News from Ukraine, Eastern Europe",
+      "Najnowsze wiadomości - TVN24",
+      "Bankier.pl - Wiadomości"
+    ],
+    "corroborations": [
+      "businessinsider.com.pl"
+    ],
+    "trustLevel": "A",
+    "kind": "text",
+    "audio": null,
+    "durationSec": null,
+    "category": "gospodarka",
+    "topic": "Ograniczenia sprzedaży benzyny na stacjach Rosnieftu",
+    "pubDate": "2026-11-09T17:56:45.000Z",
+    "publishedAt": "2026-11-10T04:43:50.845Z"
+  },
+  {
+    "guid": "https://www.theguardian.com/world/2026/nov/09/krakow-shooting-suspected-gunman-dead",
+    "title": "Śmierć podejrzanego o strzelaninę w Krakowie i brak jednoznacznych dowodów na motyw",
+    "link": "https://www.theguardian.com/world/2026/nov/09/krakow-shooting-suspected-gunman-dead",
+    "html": "<h3>Kluczowe fakty</h3>\n<ul>\n  <li>Zmarł 24-letni Polak podejrzewany o zastrzelenie w sobotę na krakowskim Rynku Głównym sześciu osób i ranienie kilkunastu kolejnych.</li>\n  \n  <li>Sprawca został ciężko ranny w wymianie ognia z policjantami, którzy postrzelili go trzy minuty po rozpoczęciu ataku, a mimo odniesionych obrażeń kontynuował strzelanie.</li>\n  <li>Rzecznik Prokuratury Krajowej Przemysław Nowak oświadczył w poniedziałek, że śledczy nie mają ustaleń pozwalających odpowiedzialnie i kategorycznie stwierdzić, by napastnik był inspirowany konkretną ideologią, i nie znaleźli oczywistych symboli wiązanych z ruchem skrajnie prawicowym lub skrajnie lewicowym.</li>\n  <li>Przedstawiciel rzecznika Ministerstwa Spraw Wewnętrznych i Administracji przekazał w radiu, że śledczy analizują naszywki i emblematy znajdujące się na odzieży napastnika, który miał na sobie strój w stylu wojskowym oraz kamizelkę kuloodporną.</li>\n  \n  <li>Minister sprawiedliwości Waldemar Żurek poinformował w Radio Zet, że postępowanie dotyczące terroryzmu będzie kontynuowane mimo śmierci sprawcy w celu ustalenia, czy działał sam, czy na zlecenie lub pod wpływem jakiejś grupy, apelując jednocześnie o powściągliwość w trakcie zbierania dowodów.</li>\n  <li>W krakowskim zamachu zginęło czterech obywateli Polski (trzy kobiety i mężczyzna), 32-letni Brytyjczyk oraz 51-letnia Austriaczka.</li>\n  <li>Większość z 16 rannych – wśród których są obywatele Austrii, Niemiec, Portugalii, Rosji i Wielkiej Brytanii – znajdowała się w stanie stabilnym, a dwaj ranni funkcjonariusze zostali wybudzeni ze śpiączki farmakologicznej.</li>\n  <li>Pierwszej pomocy dwóm postrzelonym policjantom – Arturowi Morańskiemu i byłemu komandosowi oraz strażakowi ochotnikowi Jakubowi Kulikowi – udzielili przypadkowi chirurdzy Michał Pędziwiatr i Mateusz Wierdak, którzy zatamowali krwawienie u najciężej rannego funkcjonariusza przed przyjazdem karetek.</li>\n  <li>Przed atakiem w Krakowie sprawca, który posiadał pozwolenie na broń palną i nie miał wcześniejszych wpisów w rejestrze karnym, prawdopodobnie zastrzelił w rodzinnym domu w Ostrowcu Świętokrzyskim swojego 53-letniego ojca, 52-letnią matkę oraz 21-letnią siostrę.</li>\n  <li>W reakcji na zdarzenie ogłoszono dwudniową żałobę narodową, opuszczono flagi do połowy masztu w kraju oraz przed siedzibą Komisji Europejskiej w Brukseli, a na krakowskim Rynku Głównym po raz pierwszy od czasów drugiej wojny światowej powstrzymano odgrywanie hejnału mariackiego.</li>\n</ul>\n<h3>Czego jeszcze nie wiemy</h3>\n<p>Różnice pojawiają się również w relacjach dotyczących liczby poszkodowanych – część źródeł podaje 15, a inne 16 rannych hospitalizowanych po strzelaninie.</p>",
+    "imageUrl": "https://i.guim.co.uk/img/media/0ba10a22ab6a52877b5b62e92b1e10dcd36af391/57_0_6880_5504/master/6880.jpg?width=140&quality=85&auto=format&fit=max&s=8276a967b04304d3d9492a2a87a2eb6a",
+    "source": "World news | The Guardian",
+    "sources": [
+      {
+        "title": "World news | The Guardian — Polish prosecutors say ‘too early’ to tell if Kraków gunman was motivated by political ideology",
+        "uri": "https://www.theguardian.com/world/2026/nov/09/krakow-shooting-suspected-gunman-dead"
+      },
+      {
+        "title": "World | Deutsche Welle — Krakow mass shooting suspect has died in hospital, police in Poland say",
+        "uri": "https://www.dw.com/en/krakow-mass-shooting-suspect-has-died-in-hospital-police-in-poland-say/a-79895626?maca=en-rss-en-world-4025-rdf"
+      },
+      {
+        "title": "BBC News Polska — Sprawca strzelaniny w Krakowie zmarł w szpitalu - policja",
+        "uri": "https://www.bbc.com/polska/articles/cmvg6gwl5e6vo?at_medium=RSS&at_campaign=rss"
+      }
+    ],
+    "backgroundSources": [
+      {
+        "title": "rmf24.pl",
+        "uri": "https://www.rmf24.pl/fakty/polska/news-nie-zyje-sprawca-strzelaniny-w-krakowie,nId,7912345"
+      },
+      {
+        "title": "pap.pl",
+        "uri": "https://www.pap.pl/aktualnosci/nie-zyje-sprawca-strzelaniny-w-krakowie-zmarl-w-szpitalu-wideo"
+      },
+      {
+        "title": "onet.pl",
+        "uri": "https://www.onet.pl/informacje/onetwiadomosc/tajemnicze-emblematy-na-odziezy-zamachowca-zwiazane-z-roznymi-motywami/0g0z65w,79cfc278"
+      },
+      {
+        "title": "rp.pl",
+        "uri": "https://www.rp.pl/kraj/art41234560-masakra-w-krakowie-co-wiadomo-o-24-latku"
+      }
+    ],
+    "publishers": [
+      "World news | The Guardian",
+      "World | Deutsche Welle",
+      "BBC News Polska"
+    ],
+    "corroborations": [
+      "rmf24.pl",
+      "pap.pl"
+    ],
+    "trustLevel": "A",
+    "kind": "text",
+    "audio": null,
+    "durationSec": null,
+    "category": "polska-spoleczenstwo",
+    "topic": "Śledztwo po strzelaninie i śmierci sprawcy w Krakowie",
+    "pubDate": "2026-11-09T15:52:26.000Z",
+    "publishedAt": "2026-11-10T04:43:50.845Z"
+  },
+  {
+    "guid": "https://theconversation.com/can-gadi-eisenkot-turn-the-disaster-bloc-into-israels-next-government-295859",
+    "title": "Gadi Eizenkot otrzymał misję utworzenia rządu w Izraelu",
+    "link": "https://theconversation.com/can-gadi-eisenkot-turn-the-disaster-bloc-into-israels-next-government-295859",
+    "html": "<h3>Kluczowe fakty</h3>\n<ul>\n  <li>Prezydent Izraela Jitzchak Herzog powierzył Gadziemu Eizenkotowi misję sformowania nowego rządu po tym, jak wybory parlamentarne z 27 października nie przyniosły rozstrzygnięcia.</li>\n  <li>Eizenkot, były szef sztabu sił zbrojnych i lider partii Jaszary, otrzymał 28 dni na utworzenie koalicji, z możliwością przedłużenia tego terminu o 14 dni, choć inne podane ramy czasowe wskazują na 45-dniowy wyścig.</li>\n  <li>Partia Likud urzędującego premiera Benjamina Netanjahu zdobyła 53 mandaty w 120-osobowym Knesecie, podczas gdy tak zwany „blok zmiany” pod wodzą Eizenkota kontroluje 48 miejsc, a żaden z nich nie ma wymaganej większości 61 deputowanych.</li>\n  <li>Dwie partie arabskie – Joint List oraz Ra'am – zdobyły łącznie rekordowe 19 mandatów, reprezentując interesy dwóch milionów arabskich obywateli Izraela, a ich poparcie daje stronom anty-Netanjahu teoretyczną większość 67 głosów.</li>\n  <li>Eizenkot postawił warunki wejścia do rządu: uznanie Izraela za państwo żydowskie i demokratyczne, ścisłe przestrzeganie wartości z deklaracji niepodległości, obowiązkowa służba narodowa dla wszystkich oraz uznanie Hamasu za organizację terrorystyczną, co stwarza bariery dlaugrupowania Joint List oraz lidera Ra'am, Mansoura Abbasa.</li>\n  <li>Partia Ra'am zadeklarowała wsparcie dla rządu Eizenkota, jednak historyczny precedens z 2021 roku pod przewodnictwem Naftalego Bennetta – z udziałem ugrupowania Ra'am – przetrwał tylko 12 miesięcy i rozpadł się z powodu sporu o przepisy dotyczące osadników na Zachodnim Brzegu.</li>\n  <li>Ugrupowanie Yisrael Beytenu pod przewodnictwem Avigdora Libermana wykluczyło funkcjonowanie w ramach rządu mniejszościowego opierającego się na zewnętrznym wsparciu ugrupowań arabskich.</li>\n  <li>Alternatywnym rozwiązaniem jest włączenie ortodoksyjnych partii żydowskich, takich jak United Torah Judaism i Szas, które kładą nacisk na zwolnienie swoich współwyznawców z obowiązkowej służby wojskowej.</li>\n  <li>Rozważana jest również opcja rządu jedności narodowej z rotacyjnym stanowiskiem premiera dzielonym między Netanjahu a Eizenkota, mimo że Eizenkot wcześniej publicznie wykluczał utworzenie wspólnego gabinetu z liderem Likudu.</li>\n  <li>Formowanie rządu przypada na okres po ataku Hamasu z 7 października 2023 roku, trwających walk w Strefie Gazy, przemocy osadników wobec Palestyńczyków na Zachodnim Brzegu, a także przejęcia kontroli nad oboma izbami Kongresu USA przez Partię Demokratyczną w wyborach połówkowych.</li>\n</ul>\n<h3>Różne perspektywy</h3>\n<p>Gadi Eisenkot oświadczył, że państwo znajduje się w stanie kryzysu i że sformowanie rządu będzie wymagało podjęcia kreatywnych oraz niekonwencjonalnych kroków politycznych.</p>\n<h3>Czego jeszcze nie wiemy</h3>\n<p>Nadal nie wiadomo, czy Eizenkot zdoła przełamać opór własnych partnerów politycznych przed oficjalnym współdziałaniem z arabskimi ugrupowaniami parlamentarnymi, ani czy partie ortodoksyjne zgodzą się na ugodę w sprawie poboru do wojska. Nie ma również pewności, jak dokładnie wyglądają oficjalne ramy czasowe misji tworzenia rządu, ponieważ źródła wskazują na standardowy okres 28 dni z opcją 14-dniowej prolongaty bądź na 45-dniowy termin wyznaczony przez prezydenta. W przypadku braku porozumienia koalicyjnego nie można wykluczyć ponownych wyborów parlamentarnych w Izraelu.</p>",
+    "imageUrl": null,
+    "source": "The Conversation – Articles (GLOBAL)",
+    "sources": [
+      {
+        "title": "The Conversation – Articles (GLOBAL) — Can Gadi Eisenkot turn the ‘disaster bloc’ into Israel’s next government?",
+        "uri": "https://theconversation.com/can-gadi-eisenkot-turn-the-disaster-bloc-into-israels-next-government-295859"
+      },
+      {
+        "title": "France 24 - International breaking news, top stories and headlines — Will Eisenkot succeed in 'minefield of Israeli politics' where 'so many other generals' have failed?",
+        "uri": "https://www.france24.com/en/tv-shows/spotlight/20261109-will-eisenkot-succeed-in-minefield-of-israeli-politics-where-so-many-other-generals-have-failed"
+      },
+      {
+        "title": "Foreign Policy — The Vexing Arithmetic of Israeli Coalition-Building",
+        "uri": "https://foreignpolicy.com/2026/11/09/israel-eisenkot-netanyahu-election-government-herzog/"
+      }
+    ],
+    "backgroundSources": [
+      {
+        "title": "theguardian.com",
+        "uri": "https://www.theguardian.com/world/2026/nov/07/israels-president-picks-yashar-leader-gadi-eisenkot-to-form-government"
+      },
+      {
+        "title": "timesofisrael.com",
+        "uri": "https://www.timesofisrael.com/eisenkot-tasked-with-forming-government-vows-creative-and-unconventional-path-to-emergency-coalition/"
+      },
+      {
+        "title": "pbs.org",
+        "uri": "https://www.pbs.org/newshour/world/israels-president-formally-gives-eisenkot-the-first-chance-to-form-the-next-government"
+      }
+    ],
+    "publishers": [
+      "The Conversation – Articles (GLOBAL)",
+      "France 24 - International breaking news, top stories and headlines",
+      "Foreign Policy"
+    ],
+    "corroborations": [
+      "theguardian.com",
+      "pbs.org",
+      "timesofisrael.com"
+    ],
+    "trustLevel": "A",
+    "kind": "text",
+    "audio": null,
+    "durationSec": null,
+    "category": "geopolityka-i-dyplomacja",
+    "topic": "Gadi Eisenkot próbuje sformować nowy rząd w Izraelu",
+    "pubDate": "2026-11-09T18:41:47.000Z",
+    "publishedAt": "2026-11-10T04:43:50.845Z"
+  },
+  {
+    "guid": "https://www.dw.com/pl/rosja-zarzuca-zachodowi-przygotowania-do-wojny-2800-żołnierzy-z-11-państw-ćwiczy-jak-zabezpieczyć-pokój-w-ukrainie/a-79900902?maca=pol-rss-pol-all-1492-rdf",
+    "title": "Zachodnia koalicja rozpoczęła w Polsce manewry wojskowe Koalicja 26.2",
+    "link": "https://www.dw.com/pl/rosja-zarzuca-zachodowi-przygotowania-do-wojny-2800-żołnierzy-z-11-państw-ćwiczy-jak-zabezpieczyć-pokój-w-ukrainie/a-79900902?maca=pol-rss-pol-all-1492-rdf",
+    "html": "<h3>Kluczowe fakty</h3>\n<ul>\n  <li>9 listopada rozpoczęły się pierwsze ćwiczenia Wielonarodowych Sił Ukraina pod kryptonimem „Koalicja 26.2” (lub „Koalicja”), organizowane przez tak zwaną koalicję chętnych pod przewodem Wielkiej Brytanii oraz Francji.</li>\n  <li>Rozpoczęte manewry mają potrwać do 22 listopada i odbywają się głównie na polskim poligonie w Nowej Dębie – około 100 kilometrów od granicy z Ukrainą – a także w przestrzeni powietrznej nad Rumunią oraz w zachodniej części Morza Czarnego.</li>\n  <li>Głównym celem ćwiczeń jest sprawdzenie dowodzenia, mobilności oraz gotowości sił międzynarodowych do niesienia wsparcia Ukrainie i odbudowy jej armii po ewentualnym zakończeniu wojny oraz podpisaniu porozumienia pokojowego z Rosją.</li>\n  <li>Projekt opiera się na wcześniejszych ustaleniach, które ogłosił premier Polski Donald Tusk w lipcu, po paryskim szczycie koalicji chętnych.</li>\n  <li>W manewrach uczestniczą żołnierze z 11 państw – oprócz Francji i Wielkiej Brytanii są to Polska, Niemcy, Belgia, Estonia, Litwa, Holandia, Hiszpania, Szwecja oraz Turcja.</li>\n  <li>Liczba personelu biorącego udział w ćwiczeniach jest w źródłach podawana różnie: część relacji mówi o 2800 żołnierzach, z kolei według informacji polskiego resortu obrony całkowity stan osobowy sięga blisko 5000 ludzi, w czym zawiera się niespełna 2000 żołnierzy z Polski, 1100 z Francji, 300 z Wielkiej Brytanii (wraz z samolotami Typhoon i Voyager) oraz kilkuset z Holandii.</li>\n  <li>W ramach ćwiczeń wojska tureckie prowadzą symulowane operacje rozminowywania Morza Czarnego w celu odblokowania cywilnej żeglugi, z kolei siły powietrzne trenują zabezpieczanie przestrzeni powietrznej dla lotnictwa komercyjnego, a strona francuska planuje wysłanie instruktorów do szkolenia kadr wojskowych.</li>\n  <li>Przedstawiciele rządów i dowódcy, w tym brytyjski minister obrony Wes Streeting oraz dowodzący siłami MNF-U brytyjski generał broni Tom Bateman, zaznaczają, że zagraniczne wojska nie będą pełniły funkcji sił pokojowych ani obserwacyjnych i wejdą do akcji wyłącznie na wyraźny wniosek władz w Kijowie po ustaniu walk.</li>\n  <li>Ministerstwo Obrony Narodowej w Warszawie potwierdziło, że Polska zapewnia wsparcie logistyczne i gości manewry, jednak nie wyśle własnych żołnierzy na terytorium Ukrainy.</li>\n  <li>Przedstawiciele władz w Moskwie ostro skrytykowali ćwiczenia: rzeczniczka rosyjskiego MSZ Maria Zacharowa oświadczyła, że Zachód ignoruje obawy bezpieczeństwa Rosji i napędza eskalację, dodając, iż zagraniczne wojska w Ukrainie staną się celami militarnymi, a obecność Europejczyków przy stole negocjacyjnym jest wykluczona, z kolei sekretarz Rady Bezpieczeństwa Federacji Rosyjskiej Siergiej Szojgu nazwał manewry ofensywnymi i zarzucił państwom zachodnim straszenie obywateli w celu odwrócenia uwagi od problemów wewnętrznych.</li>\n  <li>Wydarzenia zbiegają się w czasie z planowanymi w Abu Zabi rozmowami trójstronnymi z udziałem Ukrainy, Rosji i Stanów Zjednoczonych oraz delegatów z państw europejskich i NATO, podczas gdy szefowa unijnej dyplomacji Kaja Kallas oceniła w Paryżu, że Rosja jedynie pozoruje chęć negocjacji i wezwała do opierania gwarancji na egzekwowaniu memorandum budapeszteńskiego z 1994 roku.</li>\n</ul>\n<h3>Czego jeszcze nie wiemy</h3>\n<p>Nie jest również jasne, czy uzgodnienia dotyczące powojennych gwarancji bezpieczeństwa zostaną zaakceptowane w trakcie rozmów dyplomatycznych w Abu Zabi oraz jakie ostatecznie funkcje przypiszą sojusznikom władze w Kijowie po zakończeniu działań wojennych.</p>",
+    "imageUrl": null,
+    "source": "DW.com´s Polish Homepage",
+    "sources": [
+      {
+        "title": "DW.com´s Polish Homepage — Rosja zarzuca Zachodowi przygotowania do wojny. 2800 żołnierzy z 11 państw ćwiczy, jak zabezpieczyć pokój w Ukrainie",
+        "uri": "https://www.dw.com/pl/rosja-zarzuca-zachodowi-przygotowania-do-wojny-2800-żołnierzy-z-11-państw-ćwiczy-jak-zabezpieczyć-pokój-w-ukrainie/a-79900902?maca=pol-rss-pol-all-1492-rdf"
+      },
+      {
+        "title": "Bankier.pl - Wiadomości — \"Rosja jedynie udaje, że negocjuje zakończenie wojny w Ukrainie\"",
+        "uri": "https://www.bankier.pl/wiadomosc/Rosja-jedynie-udaje-ze-negocjuje-zakonczenie-wojny-w-Ukrainie-9226382.html?utm_source=RSS&utm_medium=RSS&utm_campaign=Wiadomosci"
+      },
+      {
+        "title": "The Kyiv Independent - News from Ukraine, Eastern Europe —  Coalition of the Willing kicks off first exercise for post-war Ukraine deployment ",
+        "uri": "https://kyivindependent.com/coalition-of-the-willing-kicks-off-first-exercise-for-post-war-ukraine-deployment/"
+      },
+      {
+        "title": "Notes From Poland — Coalition of the Willing military exercises begin in Poland to prepare support for postwar Ukraine",
+        "uri": "https://notesfrompoland.com/2026/11/09/coalition-of-the-willing-military-exercises-begin-in-poland-to-prepare-support-for-postwar-ukraine/"
+      }
+    ],
+    "backgroundSources": [],
+    "publishers": [
+      "DW.com´s Polish Homepage",
+      "Bankier.pl - Wiadomości",
+      "The Kyiv Independent - News from Ukraine, Eastern Europe",
+      "Notes From Poland"
+    ],
+    "corroborations": [],
+    "trustLevel": "A",
+    "kind": "text",
+    "audio": null,
+    "durationSec": null,
+    "category": "wojna-i-bezpieczenstwo",
+    "topic": "Rosja krytykuje manewry wojskowe zachodniej koalicji",
+    "pubDate": "2026-11-10T04:38:38.944Z",
+    "publishedAt": "2026-11-10T04:43:50.845Z"
+  },
+  {
+    "guid": "https://www.scmp.com/news/world/europe/article/3373832/turkey-steel-factory-blast-kills-6",
+    "title": "Wybuch w hucie stali w zachodniej Turcji spowodował śmierć co najmniej 17 osób",
+    "link": "https://www.scmp.com/news/world/europe/article/3373832/turkey-steel-factory-blast-kills-6",
+    "html": "<h3>Kluczowe fakty</h3>\n<ul>\n  <li>W zakładzie hutniczym Habas Demir Celik w mieście Aliaga, położonym w prowincji Izmir około 60 kilometrów na północ od miasta Izmir, doszło w poniedziałek 9 listopada około południa do eksplozji i pożaru.</li>\n  <li>Zdarzenie miało miejsce podczas prac konserwacyjnych przy jednym z elektrycznych pieców łukowych w fabryce należącej do jednego z głównych producentów stali w kraju.</li>\n  <li>Przyczyną wybuchu było przewrócenie się suwnicy transportującej wymienny kocioł do wnętrza pieca używanego w procesie odlewania płynnej stali, co doprowadziło do wpadnięcia materiałów do jego wnętrza.</li>\n  <li>W wyniku eksplozji zginęło co najmniej 17 osób, a 12 zostało rannych, przy czym wszystkie ofiary i poszkodowani to pracownicy zakładu.</li>\n  <li>Turecka telewizja NTV oraz serwis BBC News powołujący się na lokalne media poinformowały o zatrzymaniu pięciu osób w związku ze sprawą.</li>\n  <li>Minister spraw wewnętrznych Mustafę Ciftci przekazał, że odpowiednie służby od samego początku prowadzą w sposób skoordynowany akcję poszukiwawczo-ratunkową oraz walczą z pożarem.</li>\n  <li>Niezależna organizacja społeczeństwa obywatelskiego Turkish Health and Safety Labor Watch zwróciła uwagę, że wypadki w miejscach pracy pozostają chronicznym problemem w Turcji.</li>\n  <li>Dzielnica Aliaga, w której doszło do wypadku, stanowi ważny port morski i jeden z głównych tureckich ośrodków złomowania statków.</li>\n  <li>Na miejscu zdarzenia powstał duży słup dymu i pożar wewnątrz hali, a siła wybuchu wstrząsnęła ziemią w sposób, który skłonił świadków do przypuszczenia, że nastąpiło trzęsienie ziemi.</li>\n</ul>\n<h3>Czego jeszcze nie wiemy</h3>\n<p>Liczba ofiar śmiertelnych w oficjalnych przekazach stopniowo rosła: biuro gubernatora informowało najpierw o trzech zmarłych, następnie o sześciu, prezydent Recep Tayyip Erdogan po posiedzeniu rządu podał liczbę 16 śmiertelnych ofiar i 13 rannych, a minister zdrowia Kemal Memişoğlu zaktualizował ten bilans do 17 zmarłych po śmierci jednego z ciężko rannych pacjentów. Gubernator prowincji Izmir Süleyman Elban oraz burmistrz Cemil Tugay wskazali, że pod gruzami zawalonej platformy wciąż mogą znajdować się ludzie, a ostateczny bilans poszkodowanych będzie znany po całkowitym usunięciu gruzowiska. Władze i śledczy nie ujawnili jeszcze tożsamości pięciu zatrzymanych osób ani stawianych im zarzutów.</p>",
+    "imageUrl": "https://cdn.i-scmp.com/sites/default/files/styles/1280x720/public/d8/images/canvas/2026/11/09/b74ee419-f7c9-4cd8-a9da-91730ac7a70f_8d4e6ae3.jpg?itok=KKSyi3fr&v=1794229911",
+    "source": "News - South China Morning Post",
+    "sources": [
+      {
+        "title": "World News: Latest International News & Updates | The Hindu — Six dead in blast at steel factory near Turkiye’s Izmir: officials",
+        "uri": "https://www.thehindu.com/news/international/blast-at-steel-factory-near-turkiyes-izmir-death-toll/article71682667.ece"
+      },
+      {
+        "title": "Najnowsze wiadomości - TVN24 — Eksplozja w hucie stali w Turcji. Zginęło 16 osób",
+        "uri": "https://tvn24.pl/swiat/turcja-aliaga-wybuch-w-hucie-stali-zabici-i-ranni-zatrzymano-piec-osob-st9331131?source=rss"
+      },
+      {
+        "title": "BBC News — Turkey steel factory blast kills at least 17 people",
+        "uri": "https://www.bbc.co.uk/news/articles/cq2d6d5z9y5jo?at_medium=RSS&at_campaign=rss"
+      }
+    ],
+    "backgroundSources": [],
+    "publishers": [
+      "World News: Latest International News & Updates | The Hindu",
+      "Najnowsze wiadomości - TVN24",
+      "BBC News"
+    ],
+    "corroborations": [],
+    "trustLevel": "A",
+    "kind": "text",
+    "audio": null,
+    "durationSec": null,
+    "category": "katastrofy-i-kleski",
+    "topic": "Wybuch w hucie stali w Turcji",
+    "pubDate": "2026-11-09T13:12:03.000Z",
+    "publishedAt": "2026-11-10T04:43:50.845Z"
+  },
+  {
+    "guid": "odsluch-2026-11-10",
+    "title": "ODSŁUCH — 2026-11-10 (17:27)",
+    "link": "https://grabowskirobert.github.io/ai-rss/audio/odsluch-2026-11-10.mp3",
+    "html": "<p>Całe dzisiejsze wydanie do odsłuchania — 6 tematów, 17:27.</p><h3>W tym odcinku</h3><ul><li style=\"margin-bottom:0.3em\">Zarząd Nvidii bada sprawę romansu prezesa firmy Jensena Huanga</li><li style=\"margin-bottom:0.3em\">Rosnieft ogranicza sprzedaż paliwa na stacjach w wielu regionach Rosji</li><li style=\"margin-bottom:0.3em\">Śmierć podejrzanego o strzelaninę w Krakowie i brak jednoznacznych dowodów na motyw</li><li style=\"margin-bottom:0.3em\">Gadi Eizenkot otrzymał misję utworzenia rządu w Izraelu</li><li style=\"margin-bottom:0.3em\">Zachodnia koalicja rozpoczęła w Polsce manewry wojskowe Koalicja 26.2</li><li style=\"margin-bottom:0.3em\">Wybuch w hucie stali w zachodniej Turcji spowodował śmierć co najmniej 17 osób</li></ul>",
+    "imageUrl": null,
+    "source": "AI RSS",
+    "sources": [],
+    "backgroundSources": [],
+    "publishers": [],
+    "corroborations": [],
+    "trustLevel": null,
+    "kind": "audio",
+    "audio": {
+      "url": "https://grabowskirobert.github.io/ai-rss/audio/odsluch-2026-11-10.mp3",
+      "type": "audio/mpeg",
+      "length": 8378924
+    },
+    "durationSec": 1047.27,
+    "category": "odsluch",
+    "topic": "odsłuch wydania 2026-11-10",
+    "pubDate": "2026-11-10T04:43:50.843Z",
+    "publishedAt": "2026-11-10T04:43:50.845Z"
+  },
+  {
     "guid": "620ad868-db7e-11f1-9f57-c1ea51b6f7a3",
     "title": "Władze wszczęły śledztwo w sprawie terrorystycznego ataku w Krakowie",
     "link": "https://www.france24.com/en/poland-in-shock-after-6-killed-in-krakow-far-right-shooting",
@@ -1873,322 +2183,5 @@
     "topic": "Hakerski atak na chłodnie marketów w Europie",
     "pubDate": "2026-11-02T14:18:58.000Z",
     "publishedAt": "2026-11-03T04:00:41.731Z"
-  },
-  {
-    "guid": "https://www.polsatnews.pl/wiadomosc/2026-11-02/kryzys-wokol-trybunalu-konstytucyjnego-miller-i-morawiecki-starli-sie-w-wieczorze-rymanowskiego/",
-    "title": "Pomysł konstruktywnego wotum nieufności i starcie polityków o wejście prezydenta do TK",
-    "link": "https://www.polsatnews.pl/wiadomosc/2026-11-02/kryzys-wokol-trybunalu-konstytucyjnego-miller-i-morawiecki-starli-sie-w-wieczorze-rymanowskiego/",
-    "html": "<h3>Kluczowe fakty</h3>\n<ul>\n  <li>Po wydarzeniach z nocy z 31 października na 1 listopada w siedzibie polskiego Trybunału Konstytucyjnego politycy opozycji i koalicji rządzącej zaprezentowali odmienne oceny sytuacji oraz propozycje dalszych kroków politycznych.</li>\n  <li>Były premier Mateusz Morawiecki poinformował o złożeniu wniosku o konstruktywne wotum nieufności wobec szefa rządu Donalda Tuska, proponując na stanowisko nowego premiera byłego marszałka Sejmu Marka Jurka.</li>\n  <li>Plan Morawieckiego zakłada przeprowadzenie tak zwanego resetu rządu, a w dalszej kolejności – po najbliższych wyborach – przeprowadzenie resetu Trybunału Konstytucyjnego, którego autorytet i wiarygodność zdaniem polityka uległy osłabieniu.</li>\n  <li>Wnioskodawcy konstruktywnego wotum nieufności potrzebują większości 231 głosów w Sejmie, przy czym obecna koalicja rządząca posiada przewagę 12 mandatów.</li>\n  <li>Morawiecki przyznał, że zdobycie większości będzie trudne, ponieważ wymaga poparcia ze strony wszystkich partii poza Platformą Obywatelską, wskazując jednak na trwające rozmowy poselskie oraz na 15 głosów w klubie Polski 2050 i sceptycyzm w klubie PSL, a także na wypowiedź marszałka Sejmu Szymona Hołowni sugerującą brak wiedzy premiera o działaniach policji.</li>\n  <li>Alternatywna propozycja pełnego resetu konstytucyjnego wymagałaby zmiany ustawy zasadniczej, co zgodnie ze słowami byłego premiera Leszka Millera wymaga poparcia większości co najmniej 307 posłów.</li>\n  <li>Konfrontacja w budynku Trybunału Konstytucyjnego rozpoczęła się w piątkowy wieczór, gdy najstarsza stażem sędzia wybrana w tej kadencji, Anna Korwin-Piotrowska, wydała zarządzenie o przerwie w czynnościach prezesa Bogdana Święczkowskiego i wiceprezesa Bartłomieja Sochańskiego, a następnie wezwała policję z powodu ryzyka zakłócenia porządku i zagrożenia zdrowia sędziów przez manifestujących pod budynkiem aktywistów, w tym Roberta Bąkiewicza i posła Goska.</li>\n  <li>O około pierwszej w nocy do budynku Trybunału wszedł prezydent Karol Nawrocki, przechodząc przez tłum protestujących i drzwiami obok sędzi Korwin-Piotrowskiej wraz z odsuniętym wiceprezesem Sochańskim oraz pierwszym prezesem Sądu Najwyższego Zbigniewem Kapińskim.</li>\n  <li>Poseł Prawa i Sprawiedliwości Michał Wójcik argumentował legalność wejścia głowy państwa zapisami artykułu 126 ustęp 1 konstytucji o gwarantowaniu ciągłości władzy, podczas gdy poseł Lewicy Tomasz Trela oraz reprezentanci koalicji uznali to działanie za przekroczenie uprawnień i złamanie prawa.</li>\n  <li>Unijny komisarz do spraw sprawiedliwości Michael McGrath poparł w deklaracji dla mediów premiera Donalda Tuska, zaznaczając, że mianowanie nowych sędziów leży wyłącznie w kompetencjach Sejmu.</li>\n</ul>\n<h3>Jak do tego doszło</h3>\n<p>Wieloletni spór o kształt sądownictwa konstytucyjnego doprowadził do głębokiego podziału wokół obsady i legalności organu.</p>\n<h3>Różne perspektywy</h3>\n<p>Prezydent Karol Nawrocki ocenił nocne wydarzenia w siedzibie Trybunału Konstytucyjnego jako naruszenie porządku konstytucyjnego i siłowe przejęcie organu państwa.</p>\n<h3>Czego jeszcze nie wiemy</h3>\n<p>Nie ustalono dotąd, kto z ramienia policji bezpośrednio dowodził piątkową akcją pod siedzibą Trybunału Konstytucyjnego. Wciąż brak jednoznacznych informacji, czy opozycja zdoła pozyskać wymaganą większość posłów do poparcia wniosku o wotum nieufności. Nie podano również oficjalnego aktu prawnego, na który powoływał się prezydent wchodząc nocą do budynku instytucji.</p>",
-    "imageUrl": "https://ipla.pluscdn.pl/dituel/cp/hk/hkog96a8xa4iipm1ny47ftf37jtkkaki.jpeg",
-    "source": "Polsat News - Wiadomości - Polska",
-    "sources": [
-      {
-        "title": "Polsat News - Wiadomości - Polska — Kryzys wokół Trybunału Konstytucyjnego. Miller i Morawiecki starli się w \"Wieczorze Rymanowskiego\"",
-        "uri": "https://www.polsatnews.pl/wiadomosc/2026-11-02/kryzys-wokol-trybunalu-konstytucyjnego-miller-i-morawiecki-starli-sie-w-wieczorze-rymanowskiego/"
-      },
-      {
-        "title": "Najnowsze wiadomości - TVN24 — Wydarzenie, które \"przejdzie do historii\". Spór Tomasza Treli i Michała Wójcika o wejście prezydenta do TK",
-        "uri": "https://tvn24.pl/polska/wejscie-karola-nawrockiego-do-trybunalu-konstytucyjnego-tomasz-trela-i-michal-wojcik-komentuja-st9319039?source=rss"
-      },
-      {
-        "title": "POLITICO — Crisis over top court shapes Poland’s battle lines before 2027 election",
-        "uri": "https://www.politico.eu/article/crisis-over-top-court-shapes-polands-battle-lines-before-2027-election/?utm_source=RSS_Feed&utm_medium=RSS&utm_campaign=RSS_Syndication"
-      }
-    ],
-    "backgroundSources": [
-      {
-        "title": "wiadomosci.onet.pl",
-        "uri": "https://wiadomosci.onet.pl/kraj/kulisy-nocnej-akcji-karola-nawrockiego-w-trybunale-na-poczatku-bylo-bardzo-ostro/569w6w3"
-      },
-      {
-        "title": "businessinsider.com.pl",
-        "uri": "https://businessinsider.com.pl/prawo/prezes-i-wiceprezes-tk-odsuniety-oto-trzy-powody-decyzji/126780w"
-      },
-      {
-        "title": "wyborcza.pl",
-        "uri": "https://wyborcza.pl/7,75398,32274577,spor-o-trybunal-konstytucyjny-korwin-piotrowska-zapowiada-zarzadzenie.html"
-      }
-    ],
-    "publishers": [
-      "Polsat News - Wiadomości - Polska",
-      "Najnowsze wiadomości - TVN24",
-      "POLITICO"
-    ],
-    "corroborations": [
-      "wiadomosci.onet.pl",
-      "businessinsider.com.pl"
-    ],
-    "trustLevel": "A",
-    "kind": "text",
-    "audio": null,
-    "durationSec": null,
-    "category": "polska-polityka",
-    "topic": "Kryzys i spór polityczny wokół Trybunału Konstytucyjnego",
-    "pubDate": "2026-11-02T18:26:00.000Z",
-    "publishedAt": "2026-11-03T04:00:41.731Z"
-  },
-  {
-    "guid": "https://www.dw.com/en/us-to-drop-south-africa-rwanda-from-duty-free-trade-initiative/a-79834508?maca=en-rss-en-world-4025-rdf",
-    "title": "USA wykluczą RPA i Rwandę z bezcłowego programu handlowego AGOA od 2027 roku",
-    "link": "https://www.dw.com/en/us-to-drop-south-africa-rwanda-from-duty-free-trade-initiative/a-79834508?maca=en-rss-en-world-4025-rdf",
-    "html": "<h3>Kluczowe fakty</h3>\n<ul>\n  <li>Amerykański przedstawiciel ds. handlu Jamieson Greer ogłosił w poniedziałek, że prezydent Donald Trump zamierza usunąć Republikę Południowej Afryki oraz Rwandę z programu preferencji handlowych AGOA z dniem 1 stycznia 2027 roku.</li>\n  <li>Program African Growth and Opportunity Act, wprowadzony w 2000 roku przez prezydenta Billa Clintona i przedłużony w lutym przez Trumpa, umożliwia ponad 30 państwom z Afryki Subsaharyjskiej bezcłowy eksport do USA ponad 1800 produktów.</li>\n  <li>Kryteria uczestnictwa w inicjatywie obejmują eliminowanie barier w handlu i inwestycjach z USA, utrzymanie otwartej gospodarki rynkowej oraz przestrzeganie zasad praworządności, praw człowieka i praw pracowniczych.</li>\n  <li>Strona amerykańska uzasadniła decyzję działaniami obu rządów niezgodnymi z kryteriami AGOA, wskazując na bariery handlowe, a w przypadku RPA także na korupcję oraz zagrożenia dla bezpieczeństwa narodowego i polityki zagranicznej USA, w tym spór o zaskarżenie Izraela przed Międzynarodowym Trybunałem Sprawiedliwości i zarzuty o prześladowanie białej ludności.</li>\n  <li>W odniesieniu do Rwandy Waszyngton powołał się dodatkowo na kwestie praworządności i praw człowieka oraz nałożył w ubiegłym tygodniu sankcje na tamtejsze ministerstwo obrony, wybrane osoby, instytucje i rafinerię złota w związku z oskarżeniami o wspieranie rebeliantów z grupy M23 w Demokratycznej Republice Konga.</li>\n  <li>RPA jest największym beneficjentem programu, wysyłając pod jego szyldem w 2025 roku towary o wartości 1,7 miliarda dolarów — głównie pojazdy silnikowe, części samochodowe, produkty rolne, w tym cytrusy, oraz wino.</li>\n  <li>Ministerstwo Handlu RPA oraz prezydent Cyril Ramaphosa oświadczyli, że kraj przygotowywał się na taki ruch, a towary objęte AGOA stanowią około 10 procent całego południowoafrykańskiego eksportu do USA i 1 procent ogólnego eksportu globalnego.</li>\n  <li>Po wykluczeniu z programu towary z RPA zostaną obłożone dodatkową stawką celną Najwyższego Uprzywilejowania na poziomie około 3,4 procent, co przy obecnych taryfach zwiększy obciążenie niektórych produktów z 12,5 procent do 15,9 procent.</li>\n  <li>W 2025 roku eksport rolny z RPA do USA osiągnął wartość 504 milionów dolarów mimo 30-procentowych stawek celnych, przy czym w drugim kwartale tego samego roku nastąpił wzrost wysyłek dzięki trzymiesięcznemu zawieszeniu podwyższonych taryf.</li>\n  <li>Władze w Pretorii zapowiedziały wsparcie dla poszkodowanych sektorów, w tym branży cytrusowej ostrzegającej przed zagrożeniem dla miejsc pracy, przy jednoczesnym poszukiwaniu nowych umów handlowych na rynkach w Azji, Bliskim Wschodzie i w Chinach.</li>\n  <li>Głównymi towarami eksportowanymi przez Rwandę do Stanów Zjednoczonych pozostają kawa, herbata oraz minerały.</li>\n</ul>\n<h3>Czego jeszcze nie wiemy</h3>\n<p>Biuro Przedstawiciela Handlowego USA nie przedstawiło w poniedziałkowym oświadczeniu konkretnych przykładów barier handlowych ani szczegółowych incydentów naruszających amerykańskie bezpieczeństwo narodowe. Nie ogłoszono również oficjalnej odpowiedzi władz Rwandy na zapowiedź zawieszenia oraz na zarzuty dotyczące wspierania ugrupowania M23, którym Kigali systematycznie zaprzecza.</p>",
-    "imageUrl": null,
-    "source": "World | Deutsche Welle",
-    "sources": [
-      {
-        "title": "World | Deutsche Welle — US to drop South Africa, Rwanda from duty-free trade initiative",
-        "uri": "https://www.dw.com/en/us-to-drop-south-africa-rwanda-from-duty-free-trade-initiative/a-79834508?maca=en-rss-en-world-4025-rdf"
-      },
-      {
-        "title": "Daily Maverick - Latest News — Leaving Agoa is a 3.4% tariff bump, not a door slammed on the US market",
-        "uri": "https://www.dailymaverick.co.za/opinionista/2026-11-02-leaving-agoa-is-a-34-tariff-bump-not-a-door-slammed-on-the-us-market/"
-      },
-      {
-        "title": "Al Jazeera – Breaking News, World News and Video from Al Jazeera — US to suspend South Africa and Rwanda from duty-free trade access",
-        "uri": "https://www.aljazeera.com/economy/2026/11/2/us-to-suspend-south-africa-and-rwanda-from-duty-free-trade-access?traffic_source=rss"
-      }
-    ],
-    "backgroundSources": [],
-    "publishers": [
-      "World | Deutsche Welle",
-      "Daily Maverick - Latest News",
-      "Al Jazeera – Breaking News, World News and Video from Al Jazeera"
-    ],
-    "corroborations": [],
-    "trustLevel": "A",
-    "kind": "text",
-    "audio": null,
-    "durationSec": null,
-    "category": "geopolityka-i-dyplomacja",
-    "topic": "USA usuwają RPA i Rwandę z umowy AGOA",
-    "pubDate": "2026-11-03T03:56:32.626Z",
-    "publishedAt": "2026-11-03T04:00:41.731Z"
-  },
-  {
-    "guid": "odsluch-2026-11-03",
-    "title": "ODSŁUCH — 2026-11-03 (18:14)",
-    "link": "https://grabowskirobert.github.io/ai-rss/audio/odsluch-2026-11-03.mp3",
-    "html": "<p>Całe dzisiejsze wydanie do odsłuchania — 5 tematów, 18:14.</p><h3>W tym odcinku</h3><ul><li style=\"margin-bottom:0.3em\">Rosyjski atak na centrum pomocy humanitarnej w Komyszuwasze</li><li style=\"margin-bottom:0.3em\">Iliana Jotowa wygrywa drugą turę wyborów prezydenckich w Bułgarii</li><li style=\"margin-bottom:0.3em\">Hakerskie ataki na systemy chłodnicze supermarketów w dziewięciu krajach Europy</li><li style=\"margin-bottom:0.3em\">Pomysł konstruktywnego wotum nieufności i starcie polityków o wejście prezydenta do TK</li><li style=\"margin-bottom:0.3em\">USA wykluczą RPA i Rwandę z bezcłowego programu handlowego AGOA od 2027 roku</li></ul>",
-    "imageUrl": null,
-    "source": "AI RSS",
-    "sources": [],
-    "backgroundSources": [],
-    "publishers": [],
-    "corroborations": [],
-    "trustLevel": null,
-    "kind": "audio",
-    "audio": {
-      "url": "https://grabowskirobert.github.io/ai-rss/audio/odsluch-2026-11-03.mp3",
-      "type": "audio/mpeg",
-      "length": 8754476
-    },
-    "durationSec": 1094.22,
-    "category": "odsluch",
-    "topic": "odsłuch wydania 2026-11-03",
-    "pubDate": "2026-11-03T04:00:41.730Z",
-    "publishedAt": "2026-11-03T04:00:41.731Z"
-  },
-  {
-    "guid": "https://www.project-syndicate.org/commentary/politics-of-poland-judicial-crisis-by-maciej-kisilowski-2026-10",
-    "title": "Przejęcie kierownictwa w TK i nocna wejście prezydenta do budynku",
-    "link": "https://www.project-syndicate.org/commentary/politics-of-poland-judicial-crisis-by-maciej-kisilowski-2026-10?utm_source=rss&utm_medium=feed&utm_campaign=main&utm_content=en",
-    "html": "<h3>Kluczowe fakty</h3>\n<ul>\n  <li>Sędzia Anna Korwin-Piotrowska, wybrana do Trybunału Konstytucyjnego przez Sejm 13 marca i zaprzysiężona w Sejmie 9 kwietnia po braku zaproszenia od prezydenta, wydała 31 października o 18:00 zarządzenia o miesięcznej przerwie w czynnościach prezesa Bogdana Święczkowskiego i wiceprezesa Bartłomieja Sochańskiego, przejmując kierownictwo jako najstarsza stażem.</li>\n  <li>W uzasadnieniu decyzji Korwin-Piotrowska zarzuciła Święczkowskiemu pomijanie alfabetycznej kolejności przy wyznaczaniu składów, niedopuszczanie sędziów do orzekania i Zgromadzenia Ogólnego oraz narażenie instytucji na utratę środków budżetowych, a Sochańskiemu uleganie naciskom politycznym i brak reakcji na te działania.</li>\n  <li>Zarządzenia Korwin-Piotrowskiej zbiegły się z wnioskami ministra sprawiedliwości i prokuratora generalnego Waldemara Żurka o uchylenie immunitetów Święczkowskiego i Sochańskiego w celu pociągnięcia ich do odpowiedzialności karnej.</li>\n  <li>W piątek przed budynkiem TK odbył się protest z udziałem lidera PiS Jarosława Kaczyńskiego, Roberta Bąkiewicza z Ruchu Ochrony Granic oraz Grzegorza Brauna z Konfederacji Korony Polskiej; protestujący przecięli łańcuch na ogrodzeniu, po czym próbujący wejść Święczkowski został zatrzymany przez kordon policji.</li>\n  <li>Prezydent Karol Nawrocki przerwał wizytę w Senegalu, po czym po konsultacjach w Pałacu Prezydenckim z udziałem pierwszego prezesa Sądu Najwyższego Zbigniewa Kapińskiego i Święczkowskiego, wszedł przed 1:00 w nocy do budynku TK i przebywał tam z grupą współpracowników do 4:00 rano.</li>\n  <li>Rzecznik prezydenta Rafał Leśkiewicz zapowiedział złożenie zawiadomień do prokuratury przeciwko Annie Korwin-Piotrowskiej, Maciejowi Berkowi i Krystianowi Markiewiczowi w związku z naruszeniem nietykalności prezydenta podczas jego nocy w Trybunale.</li>\n  <li>Premier Donald Tusk w sobotnim orędziu wykluczył kompromis w sprawie reformy praworządności, z kolei politycy PSL, Razem, Polski 2050, Rozwoju Plus i Konfederacji podczas konsultacji u prezydenta zaproponowali \"reset konstytucyjny\" poprzez wybór całego 15-osobowego składu TK, a Sławomir Mentzen i Krzysztof Bosak zapowiedzieli wniosek o skrócenie kadencji Sejmu.</li>\n  <li>Wydarzenia zostały wykorzystane przez rosyjską dyplomację: rzeczniczka MSZ Maria Zacharowa porównała sytuację do ukraińskiego Majdanu z 2014 roku, powołując się na protesty z udziałem Jarosława Kaczyńskiego i Jacka Protasiewicza oraz misję mediacyjną Aleksandra Kwaśniewskiego z 2004 roku, a senator Aleksiej Puszkow nazwał spór walką euroliberałów z prawicowymi konserywatystami.</li>\n  <li>Wypowiedzi te zbiegły się w czasie ze szczytem G20 w Atlancie, gdzie szef rosyjskiego MSZ Siergiej Ławrow 30 października skrytykował obecność polskiego ministra na obradach, a także z przypadającym 4 listopada rosyjskim Dniem Jedności Narodowej, upamiętniającym wypędzenie Polaków z Kremla w 1612 roku.</li>\n  <li>Niemiecka prasa analizuje polityczne tło kryzysu przed wyborami parlamentarnymi w 2027 roku: tygodnik \"Der Spiegel\" sugeruje, że spór wokół TK może zjednoczyć podzieloną prawicę wokół prezydenta Nawrockiego, natomiast \"Tageszeitung\" i były naczelny \"Berliner Zeitung\" Tomasz Kurianowicz wskazują na obawy prawicy przed utratą wpływu na sądownictwo oraz krytyczne oceny metod premiera Tuska ze strony publicysty Klausa Bachmanna.</li>\n</ul>\n<h3>Jak do tego doszło</h3>\n<p>Anna Korwin-Piotrowska oświadczyła, że dotychczasowy paraliż w Trybunale Konstytucyjnym skutkował ogromnymi zaległościami w rozpatrywaniu spraw obywateli i konieczne było przywrócenie sprawnego działania instytucji.</p>\n<h3>Różne perspektywy</h3>\n<p>Sędzia Trybunału Konstytucyjnego Jakub Stelina uznał, że odsunięcie prezesa Bogdana Święczkowskiego przez sędzię najstarszą stażem jest trudne do pogodzenia z obowiązującymi przepisami prawnymi.</p>\n<h3>Czego jeszcze nie wiemy</h3>\n<p>Nie ujawniono dotąd konkretnych zarzutów i materiałów z akt spraw karnych, na podstawie których prokurator generalny wystąpił o uchylenie immunitetów Święczkowskiemu i Sochańskiemu. Otwarta pozostaje kwestia, czy sędziowie podporządkują się zaleceniu sędzi Korwin-Piotrowskiej o wykonywaniu obowiązków służbowych poza siedzibą Trybunału oraz czy planowane na 3 listopada Zgromadzenie Ogólne w sprawie budżetu na 2027 rok dojdzie do skutku w warunkach podwójnego kierownictwa w instytucji.</p>",
-    "imageUrl": "https://webapi.project-syndicate.org/library/a2d1ea009657c89ef9470df448ed3639.16-9-xlarge.1.jpg",
-    "source": "Project Syndicate",
-    "sources": [
-      {
-        "title": "Project Syndicate — The Politics of Poland’s Judicial Crisis",
-        "uri": "https://www.project-syndicate.org/commentary/politics-of-poland-judicial-crisis-by-maciej-kisilowski-2026-10?utm_source=rss&utm_medium=feed&utm_campaign=main&utm_content=en"
-      },
-      {
-        "title": "oko.press — Moskwa fantazjuje o zagranicznej interwencji w Polsce w sprawie TK",
-        "uri": "https://oko.press/na-zywo/na-zywo-relacja/moskwa-fantazjuje-o-zagranicznej-interwencji-w-polsce-w-sprawie-tk"
-      },
-      {
-        "title": "Najnowsze wiadomości - TVN24 — Co wydarzyło się w Trybunale Konstytucyjnym i wokół niego. Najważniejsze fakty",
-        "uri": "https://tvn24.pl/polska/co-wydarzylo-sie-w-trybunale-konstytucyjnym-i-wokol-niego-najwazniejsze-informacje-st9317148?source=rss"
-      },
-      {
-        "title": "DW.com´s Polish Homepage — Nocna wizyta Nawrockiego w TK. Niemiecka prasa pyta, czy spór stanie się spoiwem podzielonej prawicy",
-        "uri": "https://www.dw.com/pl/nocna-wizyta-nawrockiego-w-tk-niemiecka-prasa-pyta-czy-spór-stanie-się-spoiwem-podzielonej-prawicy/a-79821028?maca=pol-rss-pol-all-1492-rdf"
-      }
-    ],
-    "backgroundSources": [
-      {
-        "title": "wiadomosci.onet.pl",
-        "uri": "https://wiadomosci.onet.pl/kraj/sedzia-korwin-piotrowska-publikuje-wystapienie-tlumaczy-jakie-plany-ma-tk/e7fj3ns"
-      },
-      {
-        "title": "rp.pl",
-        "uri": "https://www.rp.pl/polityka/art45423921-waldemar-zurek-chce-uchylenia-immunitetow-wladz-tk-do-trybunalu-trafilo-50-tomow-akt"
-      },
-      {
-        "title": "businessinsider.com.pl",
-        "uri": "https://businessinsider.com.pl/prawo/kryzys-w-tk-czy-korwin-piotrowska-dzialala-zgodnie-z-prawem/y7rx2lf"
-      }
-    ],
-    "publishers": [
-      "Project Syndicate",
-      "oko.press",
-      "Najnowsze wiadomości - TVN24",
-      "DW.com´s Polish Homepage"
-    ],
-    "corroborations": [
-      "wiadomosci.onet.pl",
-      "rp.pl"
-    ],
-    "trustLevel": "A",
-    "kind": "text",
-    "audio": null,
-    "durationSec": null,
-    "category": "polska-polityka",
-    "topic": "Kryzys wokół Trybunału Konstytucyjnego i konfrontacja władz",
-    "pubDate": "2026-11-01T14:34:36.000Z",
-    "publishedAt": "2026-11-02T02:37:37.738Z"
-  },
-  {
-    "guid": "https://www.scmp.com/business/cryptocurrency/article/3372910/binance-sees-spike-withdrawals-exchange-returns-online-after-us63-billion-hack",
-    "title": "Binance wznawia wypłaty i pokrywa straty po rekordowym ataku hakerskim",
-    "link": "https://www.scmp.com/business/cryptocurrency/article/3372910/binance-sees-spike-withdrawals-exchange-returns-online-after-us63-billion-hack",
-    "html": "<h3>Kluczowe fakty</h3>\n<ul>\n  <li>Giełda kryptowalut Binance wznowiła stopniowo odblokowywanie wypłat dla klientów po kradzieży ponad 6 miliardów dolarów w aktywach wirtualnych, do której doszło 29 października.</li>\n  <li>Amerykańskie Biuro Śledcze ogłosiło 31 października, że za cyberatakiem stoi powiązana z Koreą Północną grupa TraderTraitor, będąca częścią Lazarus Group odpowiedzialnej między innymi za włamanie do Sony Pictures w 2014 roku oraz kradzież 1,5 miliarda dolarów z giełdy Bybit w ubiegłym roku.</li>\n  <li>Północnokoreańscy hakerzy zamieniają skradzione środki głównie na kryptowalutę ethereum, a służby spodziewają się dalszego prania pieniędzy przy użyciu usług zdecentralizowanych finansów oraz natychmiastowej wymiany, apelując do sektora prywatnego o blokowanie powiązanych adresów.</li>\n  <li>Współprezes giełdy Richard Teng wyjaśnił, że sprawcy użyli złośliwego oprogramowania na przejętym laptopie, które usunęło ślady swojej aktywności, co utrudnia śledztwo.</li>\n  <li>Binance wyznaczyło około 6,34 miliarda dolarów z własnych zasobów na pokrycie strat, z czego 95 proc. skradzionych aktywów zostało już odkupionych na rynku, a pozostałe 5 proc. stanowią mniej płynne tokeny, których pozyskanie wymaga więcej czasu.</li>\n  <li>Środki na odkup kryptowalut pochodzą z firmowego funduszu rezerwowego SAFU, z którego przeznaczono połowę zgromadzonych zasobów z zobowiązaniem do ich uzupełnienia do poziomu 1 miliarda dolarów, a także z funduszu ubezpieczeń kontraktów terminowych oraz ze skarbu spółki.</li>\n  <li>Pierwszy etap odblokowywania wypłat objął 15 tokenów, w tym bitcoin, ethereum, dogecoin, XRP oraz wybrane stablecoiny USDC i USDT, a także aktywa na sieciach BNB Smart Chain i Avalanche.</li>\n  \n  <li>Prezydent Donald Trump oświadczył w wypowiedzi opublikowanej w serwisie X, że udział Korei Północnej w tym zdarzeniu nie jest jeszcze pewny, a w przypadku potwierdzenia tych doniesień sprawa będzie przedmiotem rozmów z władzami w Pjongjangu.</li>\n  <li>Założyciel Binance Changpeng Zhao, skazany wcześniej w Stanach Zjednoczonych za brak odpowiednich procedur przeciwko praniu pieniędzy i ułaskawiony w zeszłym roku przez Donalda Trumpa, podziękował amerykańskim służbom za pomoc w śledzeniu i zamrażaniu aktywów, z których do 30 października udało się zablokować około 3 miliardów dolarów.</li>\n  <li>Giełda, posiadająca 335 milionów zarejestrowanych użytkowników i zarządzająca aktywami o wartości 171 miliardów dolarów według stanu z 28 października, zanotowała spadek cen głównych kryptowalut po ujawnieniu ataku, w tym bitcoina o blisko 5 proc., ethereum o prawie 6 proc. oraz natywnego tokena BNB o niemal 10 proc.</li>\n</ul>\n<h3>Czego jeszcze nie wiemy</h3>\n<p>Wydane oświadczenia wykazują rozbieżności w ocenie skali odpływu kapitału: platforma analityczna DefiLlama oszacowała wypłaty netto na 4,36 miliarda dolarów, czemu zaprzeczył rzecznik Binance, wskazując, że wyliczenia te nie uwzględniają przesunięć do nowego gorącego portfela giełdy i różnią się od danych podawanych przez firmę. Niewiadomą pozostaje dokładny czas potrzebny na odkupienie pozostałych 5 proc. mniej płynnych tokenów oraz to, czy służbom uda się odzyskać aktywa zamrożone we współpracy z innymi podmiotami branży kryptowalut.</p>",
-    "imageUrl": "https://cdn.i-scmp.com/sites/default/files/styles/1280x720/public/d8/images/canvas/2026/11/02/60e108b7-0cb6-44ed-b288-627120359d56_372c1ba5.jpg?itok=1YMOiXeP&v=1793562717",
-    "source": "News - South China Morning Post",
-    "sources": [
-      {
-        "title": "World news | The Guardian — Binance resumes customer withdrawals after record $6.3bn hack",
-        "uri": "https://www.theguardian.com/business/2026/nov/01/binance-losses-covered-hack-fbi-north-korea-cryptocurrency"
-      },
-      {
-        "title": "Daily Maverick - Latest News — Binance sees spike in withdrawals as exchange returns online after $6.3 billion heist",
-        "uri": "https://www.dailymaverick.co.za/article/2026-11-01-binance-sees-spike-in-withdrawals-as-exchange-returns-online-after-63-billion-heist/"
-      },
-      {
-        "title": "World | Deutsche Welle — FBI says North Korea behind $6 billion Binance crypto theft",
-        "uri": "https://www.dw.com/en/fbi-says-north-korea-behind-6-billion-binance-crypto-theft/a-79819998?maca=en-rss-en-world-4025-rdf"
-      }
-    ],
-    "backgroundSources": [
-      {
-        "title": "pbs.org",
-        "uri": "https://www.pbs.org/newshour/world/fbi-says-north-korea-was-behind-6-3-billion-binance-heist-the-biggest-crypto-hack-in-history"
-      },
-      {
-        "title": "theguardian.com",
-        "uri": "https://www.theguardian.com/business/2026/nov/01/investors-take-out-36bn-from-binance-after-record-hack-that-stole-billions"
-      }
-    ],
-    "publishers": [
-      "World news | The Guardian",
-      "Daily Maverick - Latest News",
-      "World | Deutsche Welle"
-    ],
-    "corroborations": [
-      "theguardian.com"
-    ],
-    "trustLevel": "A",
-    "kind": "text",
-    "audio": null,
-    "durationSec": null,
-    "category": "gospodarka",
-    "topic": "Atak hakerski na giełdę kryptowalut Binance",
-    "pubDate": "2026-11-01T19:53:28.000Z",
-    "publishedAt": "2026-11-02T02:37:37.738Z"
-  },
-  {
-    "guid": "https://www.scmp.com/news/us/us-elections/article/3372795/will-losing-us-midterms-see-trump-double-down-or-signal-beginning-end",
-    "title": "W USA trwają wybory połówkowe do Kongresu i władz stanowych",
-    "link": "https://www.scmp.com/news/us/us-elections/article/3372795/will-losing-us-midterms-see-trump-double-down-or-signal-beginning-end",
-    "html": "<h3>Kluczowe fakty</h3>\n<ul>\n  <li>W wtorek, 3 listopada, Amerykanie głosują w wyborach połówkowych, w których Partia Demokratyczna dąży do przejęcia kontroli nad Izbą Reprezentantów oraz utrzymania większości w Senacie, podczas gdy Partia Republikańska walczy o zachowanie wpływu na Kongres.</li>\n  <li>Zgodnie z przedwyborczymi sondażami Demokraci prowadzą w ponad 218 okręgach potrzebnych do zdobycia większości w niższej izbie parlamentu, a w kluczowych wyścigach do Senatu remisują lub nieznacznie wygrywają ze swoimi rywalami.</li>\n  <li>W badaniu New York Times stan wyścigu do Senatu w Karolinie Południowej — gdzie Donald Trump wygrał w 2024 roku różnicą 18 punktów procentowych — wykazuje remis, natomiast sondaże CNN dają przewagę Demokratom w Teksasie, Kansas i Maine.</li>\n  <li>Przedstawiciel firmy badawczej Ipsos Public Affairs, Clifford Young, wskazuje, że przewidywanie wyników utrudnia odmowa udziału w badaniach ze strony wyborców o poglądach antyinstytucjonalnych i skrajnie konserwatywnych, a także powszechne rezygnowanie z telefonów stacjonarnych.</li>\n  <li>Wybory odbywają się w warunkach niskich notowań społecznych prezydenta Donalda Trumpa oraz niezadowolenia obywateli z rosnących kosztów żywności i rachunków, choć Republikanie dysponowali przewagą finansową rzędu setek milionów dolarów na spoty wyborcze w ostatnich tygodniach kampanii.</li>\n  <li>Podczas wyborów połówkowych w 2010 roku Republikanie przejęli ponad 60 mandatów w Izbie Reprezentantów na tle trudności gospodarczych po kryzysie finansowym oraz obaw przed reformą ochrony zdrowia prezydenta Baracka Obamy.</li>\n  <li>Administracja Donalda Trumpa przygotowała spisy osób potencjalnie nieposiadających obywatelstwa USA, które mogą posłużyć do podważania ważności wyników głosowania; w postępowaniu przed sądem w Los Angeles Departament Sprawiedliwości dążył do zablokowania podliczenia ponad 20 000 kart korespondencyjnych w Kalifornii.</li>\n  <li>Równolegle z wyborami do parlamentu w 36 stanach odbywają się wybory gubernatorów, przy czym aż w 19 z nich dotychczasowi szefowie stanowych egzekutyw nie ubiegają się o reelekcję z powodu limitu kadencji — jak Demokrata Gavin Newsom w Kalifornii — lub dobrowolnej rezygnacji, jak Republikańska gubernator Iowa Kim Reynolds.</li>\n  <li>Po decyzji Sądu Najwyższego USA z 2022 roku znoszącej konstytucyjne prawo do aborcji, około dziesięciu gubernatorów wydało rozporządzenia wykonawcze chroniące pacjentki i personel medyczny, przeciwdziałając zakazom wprowadzonym przez legislatury w 13 stanach.</li>\n  <li>Gubernatorzy podejmują decyzje o wdrożeniu programów federalnych, co było widoczne po uchwaleniu reformy Affordable Care Act w 2010 roku, gdy gubernatorzy Steve Beshear z Kentucky i Earl Ray Tomblin z Wirginii Zachodniej rozszerzyli ubezpieczenia Medicaid w 2013 roku bez zgody stanowych parlamentów, w przeciwieństwie do gubernatora Florydy Ricka Scotta.</li>\n  \n</ul>\n<h3>Czego jeszcze nie wiemy</h3>\n<p>Ostateczny wpływ zestawień osób bez obywatelstwa na spory prawne wokół wyników wyborczych pozostaje nieznany. Ze względu na margines błędu w badaniach opinii publicznej oraz potencjalne niedoszacowanie wyborców konserwatywnych, faktyczna frekwencja i skłonność niezdecydowanych wyborców do oddania głosu na konkretną partię rozstrzygną się dopiero po zamknięciu lokali wyborczych.</p>",
-    "imageUrl": "https://cdn.i-scmp.com/sites/default/files/styles/1280x720/public/d8/images/canvas/2026/10/31/34b7902e-d90f-48e9-b836-f054e4fbe1e7_57a4a6ff.jpg?itok=8Su0yolb&v=1793387648",
-    "source": "News - South China Morning Post",
-    "sources": [
-      {
-        "title": "Latest articles - The Japan Times —  How Trump’s noncitizen voter lists could affect the midterms ",
-        "uri": "https://www.japantimes.co.jp/news/2026/11/02/world/trump-noncitizen-voter-lists-midterms/"
-      },
-      {
-        "title": "BBC News — Democrats have high hopes for midterms, but polls have let them down before",
-        "uri": "https://www.bbc.co.uk/news/articles/cmg47p3edv4do?at_medium=RSS&at_campaign=rss"
-      },
-      {
-        "title": "Al Jazeera – Breaking News, World News and Video from Al Jazeera — Why governors’ races are important in the 2026 US midterms",
-        "uri": "https://www.aljazeera.com/news/2026/11/1/why-governors-races-are-important-in-the-2026-us-midterms?traffic_source=rss"
-      }
-    ],
-    "backgroundSources": [
-      {
-        "title": "maristpoll.marist.edu",
-        "uri": "https://maristpoll.marist.edu/polls/u-s-midterm-elections-october-2026/"
-      },
-      {
-        "title": "theguardian.com",
-        "uri": "https://www.theguardian.com/us-news/ng-interactive/2026/nov/01/us-midterms-trump-blue-wave"
-      }
-    ],
-    "publishers": [
-      "Latest articles - The Japan Times",
-      "BBC News",
-      "Al Jazeera – Breaking News, World News and Video from Al Jazeera"
-    ],
-    "corroborations": [
-      "theguardian.com"
-    ],
-    "trustLevel": "A",
-    "kind": "text",
-    "audio": null,
-    "durationSec": null,
-    "category": "geopolityka-i-dyplomacja",
-    "topic": "Wybory połówkowe do Kongresu w USA",
-    "pubDate": "2026-11-02T00:00:25.000Z",
-    "publishedAt": "2026-11-02T02:37:37.738Z"
-  },
-  {
-    "guid": "https://novayagazeta.eu/articles/2026/11/01/kstovskii-npz-zagorelsia-posle-ataki-ukrainy-news",
-    "title": "Ukraińskie drony zaatakowały rafinerię naftową w rosyjskim Kstowie",
-    "link": "https://novayagazeta.eu/articles/2026/11/01/kstovskii-npz-zagorelsia-posle-ataki-ukrainy-news",
-    "html": "<h3>Kluczowe fakty</h3>\n<ul>\n  <li>Po trwającej kilka dni przerwie Ukraina wznowiła uderzenia w rosyjski sektor energetyczny, atakując zakłady położone w odległości około 800 kilometrów od granicy państwowej.</li>\n  <li>Gubernator obwodu niżniowogrodzkiego Gleb Nikitin poinformował, że w nocy na 1 listopada doszło do zmasowanego uderzenia ponad 100 dronów, w wyniku którego znaczne uszkodzenia odniósł obiekt przemysłowy w rejonie kstowskim.</li>\n  <li>Ukraińskie kanały w aplikacji Telegram opublikowały nagrania przedstawiające pożar w zakładach NORSI, znanych formalnie jako Łukoil-Niżniegorodorgsintiez, stanowiących czwartą co do wielkości rafinerię w Rosji i drugiego producenta benzyny w tym kraju.</li>\n  <li>Obiekt w Kstowie przetwarza rocznie około 15–17 milionów ton ropy naftowej, produkując między innymi bitum, benzynę oraz paliwo lotnicze i napędowe wykorzystywane przez rosyjską armię.</li>\n  <li>Był to kolejny atak na te same zakłady produkcyjne — poprzedni potwierdzony uderzeniowy nalot miał miejsce 26 sierpnia, co wywołało wówczas duży pożar i zmusiło przedsiębiorstwo do całkowitego wstrzymania działalności.</li>\n  <li>Wysoki rangą rosyjski urzędnik Aleksander Nowak przekazał w państwowej telewizji, że ukraińskie siły uderzyły łącznie w trzy rafinerie ropy naftowej oraz jeden kompleks gazowo-chemiczny.</li>\n  <li>Prezydent Stanów Zjednoczonych Donald Trump od tygodni wywierał naciski na władze w Kijowie, domagając się zaprzestania bombardowań infrastruktury paliwowej i obarczając te akcje odpowiedzialnością za rosnące ceny oleju napędowego.</li>\n  <li>Ukraińskie media i władze traktują naloty bezzałogowców jako odwet za stałe niszczenie ich krajowej infrastruktury energetycznej przez wojska rosyjskie.</li>\n</ul>\n<h3>Czego jeszcze nie wiemy</h3>\n<p>Władze obwodu niżniowogrodzkiego nie sprecyzowały oficjalnie profilu uszkodzonego przedsiębiorstwa, nazywając go jedynie obiektem przemysłowym. Dziennikarze Independent nie byli w stanie niezależnie zweryfikować nagrań pożaru opublikowanych przez ukraińskie kanały informacyjne. Nie podano również stopnia zniszczeń w pozostałych dwóch rafineriach i zakładzie chemicznym wspomnianych przez Aleksandra Nowaka.</p>",
-    "imageUrl": null,
-    "source": "Новая Газета. Европа",
-    "sources": [
-      {
-        "title": "World News: Latest International News & Updates | The Hindu — Russia says drone hit 'industrial enterprise' near Moscow, Kyiv claims hit major refinery",
-        "uri": "https://www.thehindu.com/news/international/russia-says-drone-hit-industrial-enterprise-near-moscow-kyiv-claims-hit-major-refinery/article71653925.ece"
-      },
-      {
-        "title": "The Kyiv Independent - News from Ukraine, Eastern Europe —  Russian oil refinery in Kstovo ablaze after reported overnight drone strike ",
-        "uri": "https://kyivindependent.com/russian-oil-refinery-in-kstovo-ablaze-after-reported-overnight-drone-strike/"
-      },
-      {
-        "title": "BBC News — Israeli strikes in Gaza kill eight including child, hospitals say",
-        "uri": "https://www.bbc.co.uk/news/articles/cmqln14rrzxvo?at_medium=RSS&at_campaign=rss"
-      }
-    ],
-    "backgroundSources": [
-      {
-        "title": "kyivindependent.com",
-        "uri": "https://kyivindependent.com/russian-oil-refinery-in-kstovo-ablaze-after-reported-overnight-drone-strike/"
-      },
-      {
-        "title": "intellinews.com",
-        "uri": "https://www.intellinews.com/missile-war-monitor-drone-attack-badly-damages-a-plant-in-kstovo-as-fire-is-reported-at-lukoil-s-biggest-refinery-388277/"
-      }
-    ],
-    "publishers": [
-      "World News: Latest International News & Updates | The Hindu",
-      "The Kyiv Independent - News from Ukraine, Eastern Europe",
-      "BBC News"
-    ],
-    "corroborations": [
-      "kyivindependent.com",
-      "intellinews.com"
-    ],
-    "trustLevel": "A",
-    "kind": "text",
-    "audio": null,
-    "durationSec": null,
-    "category": "wojna-i-bezpieczenstwo",
-    "topic": "Ukraiński atak dronów na rafinerię w Kstowie",
-    "pubDate": "2026-11-01T07:23:23.000Z",
-    "publishedAt": "2026-11-02T02:37:37.738Z"
   }
 ]
