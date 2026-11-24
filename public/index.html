@@ -6,8 +6,8 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Odsłuch">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="theme-color" content="#f3eee4" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#14120f" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#eaf3f1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0d1514" media="(prefers-color-scheme: dark)">
 <title>Odsłuch</title>
 <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
 <link rel="icon" href="icons/icon-192.png" type="image/png" sizes="192x192">
@@ -18,32 +18,32 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f3eee4;
-    --bg-glow: #fbf3e3;
-    --card: #fffdf8;
-    --ink: #1b1a17;
-    --muted: #7a7366;
-    --line: #e4dccd;
-    --accent: #b4441f;
-    --accent-soft: rgba(180, 68, 31, .14);
-    --on-accent: #fffdf8;
-    --bar: #d9cfbd;
-    --shadow: 0 1px 2px rgba(60, 40, 10, .06), 0 12px 32px -12px rgba(60, 40, 10, .18);
+    --bg: #eaf3f1;
+    --bg-glow: #f4fbf8;
+    --card: #fbfefd;
+    --ink: #14201e;
+    --muted: #5f7370;
+    --line: #d3e3df;
+    --accent: #0f7f78;
+    --accent-soft: rgba(15, 127, 120, .14);
+    --on-accent: #fbfefd;
+    --bar: #c3d6d2;
+    --shadow: 0 1px 2px rgba(10, 50, 45, .06), 0 12px 32px -12px rgba(10, 50, 45, .18);
     --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
     --sans: 'Inter', -apple-system, system-ui, sans-serif;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #14120f;
-      --bg-glow: #221a12;
-      --card: #1d1a16;
-      --ink: #f4eee3;
-      --muted: #9b9385;
-      --line: #2f2a23;
-      --accent: #f0875a;
-      --accent-soft: rgba(240, 135, 90, .16);
-      --on-accent: #1a1209;
-      --bar: #3a342b;
+      --bg: #0d1514;
+      --bg-glow: #10282a;
+      --card: #16201f;
+      --ink: #e8f4f1;
+      --muted: #8aa39f;
+      --line: #25363a;
+      --accent: #4fd1b8;
+      --accent-soft: rgba(79, 209, 184, .16);
+      --on-accent: #06231f;
+      --bar: #2f4443;
       --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 16px 40px -16px rgba(0, 0, 0, .6);
     }
   }
@@ -64,7 +64,7 @@
   /* Nagłówek */
   .masthead { display: flex; align-items: center; justify-content: space-between; margin: 4px 2px 22px; }
   .brand { display: flex; align-items: center; gap: 10px; font-family: var(--serif); font-weight: 700; font-size: 1.15rem; letter-spacing: -.01em; }
-  .brand img { width: 34px; height: 34px; border-radius: 9px; box-shadow: 0 4px 12px -4px rgba(150, 47, 18, .55); transition: transform .4s cubic-bezier(.3, 1.6, .5, 1); }
+  .brand img { width: 34px; height: 34px; border-radius: 9px; box-shadow: 0 4px 12px -4px rgba(30, 58, 138, .55); transition: transform .4s cubic-bezier(.3, 1.6, .5, 1); }
   body.playing .brand img { transform: rotate(-6deg) scale(1.05); }
   .brand small { font-family: var(--sans); font-weight: 500; font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-left: -4px; }
   .onair {
